@@ -2,7 +2,7 @@
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0px;
-  background-color: #fef8ea;
+  background-color:  #fef3e0;
   color: #333;
   line-height: 1.1;
 }
@@ -239,4 +239,39 @@ button:hover {
   button {
     width: 100%;
   }
+}
+.main-holiday-btn {
+  display: inline-block;
+  padding: 15px 40px;
+  background-color: #f89b3a;
+  color: white;
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.main-holiday-btn:hover {
+  background-color: #e5831f;
+  box-shadow: 0 0 15px rgba(249, 115, 22, 0.6);
+}
+.main-holiday-btn {
+  display: inline-block;
+  padding: 20px 40px;
+  font-size: 1.5rem;
+  background-color: transparent;
+  color: #f97316;
+  border: 2px solid #f97316;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.main-holiday-btn:hover {
+  background-color: #f97316;
+  color: white;
 }
