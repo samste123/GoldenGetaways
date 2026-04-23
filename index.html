@@ -1,66 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GoldenGetaways</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Golden Getaways</title>
+
+<style>
+body {
+  margin: 0;
+  background: #f3efe8;
+  display: flex;
+  justify-content: center;
+}
+
+/* WRAPPER */
+.wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 636px; /* or 1000px if you want bigger */
+  margin: auto;
+}
+
+/* IMAGE */
+.main-img {
+  width: 100%;
+  display: block;
+}
+
+/* CLICK AREAS */
+.click {
+  position: absolute;
+  display: block;
+  cursor: pointer;
+}
+
+/* TOP BUTTON */
+.top-btn {
+  bottom: 48%;
+  left: 10%;
+  width: 80%;
+  height: 6%;
+}
+
+/* PHONE PREVIEW */
+.phone {
+  top: 2%;
+  left: 55%;
+  width: 35%;
+  height: 45%;
+  border-radius: 30px;
+}
+
+/* BOTTOM BUTTON */
+.bottom-btn {
+  bottom: 5%;
+  left: 10%;
+  width: 80%;
+  height: 7%;
+}
+
+/* TEST MODE (shows boxes) */
+.show .click {
+  background: rgba(255,0,0,0.2);
+  outline: 2px solid red;
+}
+
+@media (max-width: 768px) {
+  body {
+    display: block;
+  }
+
+  .wrapper {
+    max-width: 100%;
+  }
+}
+</style>
 </head>
+
 <body>
-  <header class="hero">
-    <div class="hero-overlay">
-      <div class="hero-text">
-        <h1>GoldenGetaways</h1>
-        <p>Dream getaways. No dream budget needed.</p>
-        
-        <div class="hero-logo-container">
-          <img src="logo.png.jpeg" alt="GoldenGetaways logo" class="hero-logo" />
-        </div>
-      </div>
-    </div>
-  </header>
 
-  <main class="container">
-    <section class="intro">
-      <p>Hey, we are GoldenGetaways, and we help people find dreamy affordable holidays using exclusive travel deals. Scroll down to explore my favorite current offers and plan your perfect escape — all on a budget.</p>
-    </section>
-   <section class="main-button-section" style="text-align: center;">
-  <a href="https://booking.goldengetaways.uk" class="main-holiday-btn">
-    Our Holidays Here
-  </a>
-</section>
+<div class="wrapper" id="wrap">
 
+  <img src="membership.png" class="main-img">
 
-    <section class="travel-hacks">
-      <h2>Watch My Travel Tok</h2>
-      <p>Latest TikTok: <br><strong>@GoldenGetaways1</strong> on TikTok</p>
-    </section>
+  <!-- CLICK AREAS -->
+  <div class="click top-btn"></div>
+  <div class="click phone"></div>
+  <div class="click bottom-btn"></div>
 
-    <section class="cheat-sheet">
-      <h2>Want free holiday recomendations?</h2>
-      <p>Get 5-star holidays for 2-star prices.</p>
-      <form action="https://formspree.io/f/movezlvp" method="POST">
-        <input type="email" name="email" placeholder="Email" required />
-        <button type="submit">Sign Up</button>
-      </form>
-    </section>
+</div>
 
-    <section class="about">
-      <h2>About Me</h2>
-  <p>At GoldenGetaways, we believe unforgettable holidays shouldn’t come with a sky-high price tag. I created this platform to help people just like you discover luxury escapes at unbeatable value.
+<script>
+const STRIPE_LINK = "https://buy.stripe.com/4gM3cubAZ0ySb232J81oI02";
 
-Whether you’re chasing sunsets in Greece, exploring hidden gems in Europe, or planning a spontaneous weekend break, I personally handpick the best travel deals on the market — no spam, no gimmicks, just real savings.
+// make all clickable areas go to Stripe
+document.querySelectorAll('.click').forEach(el => {
+  el.addEventListener('click', () => {
+    window.open(STRIPE_LINK, '_blank');
+  });
+});
 
-ATOL Protected ✈️ – Your peace of mind is my priority. Book with confidence knowing your holiday is financially protected from the moment you pay.
+// add ?test=1 to URL to see click zones
+if (window.location.search.includes("test=1")) {
+  document.getElementById("wrap").classList.add("show");
+}
+</script>
 
-When you book through GoldenGetaways, you're not just planning a trip — you're unlocking the dream holiday you deserve, for a price you didn’t think was possible.
-
-Let’s get you somewhere amazing.</p>
-  <p>You can also email us directly at 
-    <a href="mailto:goldengetaways0@gmail.com" style="color: orange; text-decoration: none;">
-      goldengetaways0@gmail.com
-    </a>.
-  </p>
-</main>
 </body>
 </html>
