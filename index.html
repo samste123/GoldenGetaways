@@ -9,21 +9,20 @@
 body {
   margin: 0;
   background: #f3efe8;
-  display: flex;
-  justify-content: center;
 }
 
 /* WRAPPER */
 .wrapper {
   position: relative;
   width: 100%;
-  max-width: 636px; /* or 1000px if you want bigger */
-  margin: auto;
+  max-width: 636px;
+  margin: 0 auto;
 }
 
 /* IMAGE */
 .main-img {
   width: 100%;
+  height: auto;
   display: block;
 }
 
@@ -59,17 +58,14 @@ body {
   height: 7%;
 }
 
-/* TEST MODE (shows boxes) */
+/* TEST MODE */
 .show .click {
   background: rgba(255,0,0,0.2);
   outline: 2px solid red;
 }
 
+/* MOBILE FIX */
 @media (max-width: 768px) {
-  body {
-    display: block;
-  }
-
   .wrapper {
     max-width: 100%;
   }
