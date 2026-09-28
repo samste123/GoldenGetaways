@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Support | GoldenGetaways</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy: #00111f;
+      --navy-light: #062238;
+      --gold: #d8a13f;
+      --gold-light: #f0bd5c;
+      --white: #f8f5ef;
+      --muted: #aeb7c1;
+      --border: rgba(216,161,63,0.28);
+      --soft-border: rgba(255,255,255,0.08);
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(
+          circle at 70% 10%,
+          #08263c 0%,
+          #00111f 38%,
+          #000b15 100%
+        );
+      color: var(--white);
+      font-family: "DM Sans", sans-serif;
+      padding: 45px 25px 70px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    .page {
+      width: min(1100px, 100%);
+      margin: auto;
+    }
+
+    .back {
+      display: inline-block;
+      color: var(--gold-light);
+      margin-bottom: 35px;
+    }
+
+    .eyebrow {
+      color: var(--gold-light);
+      letter-spacing: 3px;
+      font-size: 11px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 54px;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .intro {
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 35px;
+      max-width: 700px;
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .support-card {
+      padding: 26px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(7,29,47,0.97),
+          rgba(1,15,27,0.98)
+        );
+    }
+
+    .support-icon {
+      width: 48px;
+      height: 48px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+      margin-bottom: 18px;
+
+      background: rgba(216,161,63,0.08);
+      border: 1px solid rgba(216,161,63,0.28);
+
+      color: var(--gold-light);
+      font-size: 21px;
+    }
+
+    .support-card h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+
+    .support-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .support-link {
+      color: var(--gold-light);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .member-group {
+      margin-bottom: 28px;
+      padding: 30px;
+
+      border: 1px solid var(--border);
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(216,161,63,0.07),
+          rgba(5,30,49,0.95)
+        );
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .member-group h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 30px;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+
+    .member-group p {
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 680px;
+    }
+
+    .group-button {
+      min-height: 50px;
+      padding: 0 22px;
+
+      display: inline-flex;
+      align-items: center;
+
+      border-radius: 11px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #b77b24,
+          #e0aa47
+        );
+
+      color: white;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .form-card {
+      border: 1px solid var(--border);
+      border-radius: 20px;
+
+      padding: 32px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(7,29,47,0.98),
+          rgba(1,15,27,0.98)
+        );
+    }
+
+    .form-card h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 31px;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+
+    .form-card > p {
+      color: var(--muted);
+      margin-bottom: 26px;
+      line-height: 1.6;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+
+      background: rgba(255,255,255,0.025);
+      color: white;
+
+      outline: none;
+    }
+
+    .field input,
+    .field select {
+      height: 52px;
+      padding: 0 15px;
+    }
+    .field select {
+  color-scheme: dark;
+}
+
+.field select option {
+  background: #061d30;
+  color: #ffffff;
+}
+    .field textarea {
+      padding: 14px 15px;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(216,161,63,0.08);
+    }
+
+    .submit-button {
+      min-height: 52px;
+      padding: 0 25px;
+
+      border: none;
+      border-radius: 11px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #b77b24,
+          #e0aa47
+        );
+
+      color: white;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .submit-button:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .status-message {
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--gold-light);
+      display: none;
+    }
+
+    .status-message.error {
+      color: #ff9f9f;
+    }
+
+    @media (max-width: 850px) {
+      .support-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .member-group {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 42px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .form-card {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+
+    <a href="dashboard.html" class="back">
+      ← Back to Dashboard
+    </a>
+
+    <p class="eyebrow">
+      GOLDENGETAWAYS MEMBER SUPPORT
+    </p>
+
+    <h1>How can we help?</h1>
+
+    <p class="intro">
+      Whether you need help with a holiday request, your membership,
+      billing or anything else, you can reach GoldenGetaways support here.
+    </p>
+
+
+    <section class="support-grid">
+
+      <article class="support-card">
+
+        <div class="support-icon">
+          ✈
+        </div>
+
+        <h2>
+          Holiday Support
+        </h2>
+
+        <p>
+          Need help with a destination, booking request,
+          hotel or travel plan?
+        </p>
+
+        <a
+          href="my-requests.html"
+          class="support-link"
+        >
+          View My Requests →
+        </a>
+
+      </article>
+
+
+      <article class="support-card">
+
+        <div class="support-icon">
+          ♔
+        </div>
+
+        <h2>
+          Membership & Billing
+        </h2>
+
+        <p>
+          Manage your subscription, payment method
+          or cancellation securely.
+        </p>
+
+        <a
+          href="member-membership.html"
+          class="support-link"
+        >
+          Manage Membership →
+        </a>
+
+      </article>
+
+
+      <article class="support-card">
+
+        <div class="support-icon">
+          ◉
+        </div>
+
+        <h2>
+          General Support
+        </h2>
+
+        <p>
+          For anything else, send us a message
+          using the support form below.
+        </p>
+
+        <a
+          href="#supportForm"
+          class="support-link"
+        >
+          Contact Support →
+        </a>
+
+      </article>
+
+    </section>
+
+
+    <section
+      class="member-group"
+      id="memberGroup"
+    >
+
+      <div>
+
+        <p class="eyebrow">
+          PRIVATE MEMBER COMMUNITY
+        </p>
+
+        <h2>
+          Join the GoldenGetaways Member Group
+        </h2>
+
+        <p>
+          Get member updates, deals, giveaways
+          and community support directly through
+          our WhatsApp group.
+        </p>
+
+      </div>
+
+
+      <a
+        href="https://chat.whatsapp.com/CE72K1F3MTx69kjHlkVZwc"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group-button"
+      >
+        Join WhatsApp Group →
+      </a>
+
+    </section>
+
+
+    <section
+      class="form-card"
+      id="supportForm"
+    >
+
+      <h2>
+        Send us a message
+      </h2>
+
+      <p>
+        Tell us what you need help with
+        and we'll get back to you.
+      </p>
+
+
+      <form id="supportMessageForm">
+
+        <div class="form-row">
+
+          <div class="field">
+
+            <label for="supportName">
+              Name
+            </label>
+
+            <input
+              id="supportName"
+              type="text"
+              placeholder="Your name"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="supportEmail">
+              Email
+            </label>
+
+            <input
+              id="supportEmail"
+              type="email"
+              placeholder="Your email"
+              required
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="supportCategory">
+            What do you need help with?
+          </label>
+
+          <select
+            id="supportCategory"
+            required
+          >
+
+            <option value="">
+              Choose a category
+            </option>
+
+            <option value="holiday">
+              Holiday Request
+            </option>
+
+            <option value="membership">
+              Membership
+            </option>
+
+            <option value="billing">
+              Billing
+            </option>
+
+            <option value="points">
+              Points & Rewards
+            </option>
+
+            <option value="referral">
+              Referrals
+            </option>
+
+            <option value="competition">
+              Competitions
+            </option>
+
+            <option value="other">
+              Something Else
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="supportMessage">
+            Message
+          </label>
+
+          <textarea
+            id="supportMessage"
+            rows="6"
+            placeholder="Tell us what you need help with..."
+            required
+          ></textarea>
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="submit-button"
+          id="supportSubmitButton"
+        >
+          Send Message →
+        </button>
+
+
+        <div
+          class="status-message"
+          id="supportStatus"
+        >
+          Your message has been sent.
+        </div>
+
+      </form>
+
+    </section>
+
+  </main>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+
+
+  <script>
+
+    let currentSession = null;
+
+
+    async function loadSupportPage() {
+
+      const {
+        data: { session }
+      } =
+        await supabaseClient.auth.getSession();
+
+
+      if (!session) {
+        window.location.href = "join.html";
+        return;
+      }
+
+
+      currentSession = session;
+
+
+      const user =
+        session.user;
+
+
+      const fallbackName =
+        user.email
+          ? user.email.split("@")[0]
+          : "Member";
+
+
+      const {
+        data: profile,
+        error: profileError
+      } =
+        await supabaseClient
+          .from("profiles")
+          .select("full_name")
+          .eq("id", user.id)
+          .maybeSingle();
+
+
+      if (profileError) {
+        console.error(
+          "Profile load error:",
+          profileError
+        );
+      }
+
+
+      document
+        .getElementById(
+          "supportName"
+        )
+        .value =
+          profile?.full_name ||
+          user.user_metadata?.full_name ||
+          fallbackName;
+
+
+      document
+        .getElementById(
+          "supportEmail"
+        )
+        .value =
+          user.email || "";
+
+    }
+
+
+
+    document
+      .getElementById(
+        "supportMessageForm"
+      )
+      .addEventListener(
+        "submit",
+        async (event) => {
+
+          event.preventDefault();
+
+
+          if (!currentSession) {
+            window.location.href =
+              "join.html";
+
+            return;
+          }
+
+
+          const name =
+            document
+              .getElementById(
+                "supportName"
+              )
+              .value
+              .trim();
+
+
+          const email =
+            document
+              .getElementById(
+                "supportEmail"
+              )
+              .value
+              .trim();
+
+
+          const category =
+            document
+              .getElementById(
+                "supportCategory"
+              )
+              .value;
+
+
+          const message =
+            document
+              .getElementById(
+                "supportMessage"
+              )
+              .value
+              .trim();
+
+
+          const statusElement =
+            document.getElementById(
+              "supportStatus"
+            );
+
+
+          const submitButton =
+            document.getElementById(
+              "supportSubmitButton"
+            );
+
+
+          statusElement.style.display =
+            "none";
+
+          statusElement.classList.remove(
+            "error"
+          );
+
+
+          submitButton.disabled =
+            true;
+
+          submitButton.textContent =
+            "Sending...";
+
+
+          const {
+            error
+          } =
+            await supabaseClient
+              .from("support_messages")
+              .insert({
+                user_id:
+                  currentSession.user.id,
+
+                name,
+
+                email,
+
+                category,
+
+                message,
+
+                status:
+                  "open"
+              });
+
+
+          if (error) {
+
+            console.error(
+              "Support message error:",
+              error
+            );
+
+
+            statusElement.textContent =
+              "We couldn't send your message. Please try again.";
+
+            statusElement.classList.add(
+              "error"
+            );
+
+            statusElement.style.display =
+              "block";
+
+
+            submitButton.disabled =
+              false;
+
+            submitButton.textContent =
+              "Send Message →";
+
+
+            return;
+          }
+
+
+          statusElement.textContent =
+            "Your message has been sent.";
+
+          statusElement.style.display =
+            "block";
+
+
+          document
+            .getElementById(
+              "supportCategory"
+            )
+            .value = "";
+
+
+          document
+            .getElementById(
+              "supportMessage"
+            )
+            .value = "";
+
+
+          submitButton.disabled =
+            false;
+
+          submitButton.textContent =
+            "Send Message →";
+
+        }
+      );
+
+
+
+    loadSupportPage();
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,4777 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Member Group Chat | GoldenGetaways
+  </title>
+
+  <meta
+    name="description"
+    content="GoldenGetaways member group chat for holiday inspiration, community messages, competitions and member games."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  >
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      background:
+        radial-gradient(
+          circle at 70% 0%,
+          #08283f 0%,
+          #00111f 42%,
+          #000a13 100%
+        );
+
+      color: white;
+
+      font-family:
+        "DM Sans",
+        sans-serif;
+
+      overflow-x: hidden;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    /* =========================================
+       HEADER
+    ========================================= */
+
+    .header {
+      position: relative;
+
+      z-index: 100;
+
+      width: 100%;
+
+      background:
+        rgba(0,17,31,0.96);
+
+      border-bottom:
+        1px solid
+        rgba(216,161,63,0.18);
+    }
+
+
+    /* =========================================
+       PAGE
+    ========================================= */
+
+    .chat-page {
+      width:
+        min(
+          1600px,
+          calc(100% - 48px)
+        );
+
+      margin:
+        0 auto;
+
+      padding:
+        34px 0 60px;
+    }
+
+
+    /* =========================================
+       TOP INTRO
+    ========================================= */
+
+    .chat-top {
+      margin-bottom: 26px;
+
+      display: flex;
+
+      align-items: flex-end;
+
+      justify-content: space-between;
+
+      gap: 30px;
+    }
+
+    .chat-top-copy {
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      margin:
+        0 0 10px;
+
+      color:
+        var(--gold-light);
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      letter-spacing: 3px;
+    }
+
+    .chat-top h1 {
+      margin:
+        0 0 10px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size:
+        clamp(
+          40px,
+          4vw,
+          60px
+        );
+
+      font-weight: 400;
+
+      line-height: 1;
+    }
+
+    .chat-top h1 em {
+      color:
+        var(--gold-light);
+
+      font-weight: 400;
+    }
+
+    .chat-top-description {
+      margin: 0;
+
+      color:
+        #bec8d0;
+
+      font-size: 14px;
+
+      line-height: 1.7;
+    }
+
+    .chat-status {
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      padding:
+        12px 16px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.26);
+
+      border-radius: 100px;
+
+      background:
+        rgba(5,29,47,0.75);
+
+      color:
+        #d9dfe4;
+
+      font-size: 12px;
+
+      white-space: nowrap;
+    }
+
+    .status-dot {
+      width: 8px;
+
+      height: 8px;
+
+      border-radius: 50%;
+
+      background:
+        #41d483;
+
+      box-shadow:
+        0 0 12px
+        rgba(65,212,131,0.6);
+    }
+
+
+    /* =========================================
+       MAIN LAYOUT
+    ========================================= */
+
+    .chat-layout {
+      display: grid;
+
+      grid-template-columns:
+        280px
+        minmax(0,1fr)
+        300px;
+
+      gap: 20px;
+
+      align-items: stretch;
+    }
+
+
+    /* =========================================
+       SHARED PANEL
+    ========================================= */
+
+    .panel {
+      border:
+        1px solid
+        rgba(216,161,63,0.24);
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          160deg,
+          rgba(6,31,50,0.97),
+          rgba(1,16,28,0.99)
+        );
+
+      box-shadow:
+        0 20px 50px
+        rgba(0,0,0,0.18);
+    }
+
+
+    /* =========================================
+       LEFT SIDEBAR
+    ========================================= */
+
+    .left-sidebar {
+      padding: 20px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 18px;
+    }
+
+    .group-card {
+      padding-bottom: 18px;
+
+      border-bottom:
+        1px solid
+        rgba(255,255,255,0.07);
+    }
+
+    .group-icon {
+      width: 64px;
+
+      height: 64px;
+
+      margin-bottom: 15px;
+
+      display: grid;
+
+      place-items: center;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.45);
+
+      border-radius: 17px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(216,161,63,0.15),
+          rgba(0,17,31,0.7)
+        );
+
+      color:
+        var(--gold-light);
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 24px;
+    }
+
+    .group-card h2 {
+      margin:
+        0 0 6px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 23px;
+
+      font-weight: 400;
+    }
+
+    .group-card p {
+      margin: 0;
+
+      color:
+        #aeb8c1;
+
+      font-size: 12px;
+
+      line-height: 1.6;
+    }
+
+    .sidebar-label {
+      margin:
+        0 0 8px;
+
+      color:
+        var(--gold-light);
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 2px;
+    }
+
+    .sidebar-link {
+      min-height: 47px;
+
+      padding:
+        0 12px;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 11px;
+
+      border-radius: 10px;
+
+      color:
+        #d9e0e5;
+
+      font-size: 13px;
+
+      transition:
+        0.2s ease;
+    }
+
+    .sidebar-link:hover,
+    .sidebar-link.active {
+      background:
+        rgba(216,161,63,0.09);
+
+      color:
+        var(--gold-light);
+    }
+
+    .sidebar-link-icon {
+      width: 30px;
+
+      height: 30px;
+
+      display: grid;
+
+      place-items: center;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.18);
+
+      border-radius: 8px;
+
+      background:
+        rgba(255,255,255,0.02);
+    }
+
+    .online-members {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 12px;
+    }
+
+    .online-member {
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+    }
+
+    .member-avatar {
+      position: relative;
+
+      width: 38px;
+
+      height: 38px;
+
+      display: grid;
+
+      place-items: center;
+
+      flex-shrink: 0;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.26);
+
+      border-radius: 50%;
+
+      background:
+        linear-gradient(
+          135deg,
+          #12354d,
+          #062036
+        );
+
+      color:
+        white;
+
+      font-size: 11px;
+
+      font-weight: 700;
+    }
+
+    .member-avatar.owner {
+      border-color:
+        rgba(216,161,63,0.75);
+
+      color:
+        var(--gold-light);
+    }
+
+    .member-online-dot {
+      position: absolute;
+
+      right: -1px;
+
+      bottom: 1px;
+
+      width: 9px;
+
+      height: 9px;
+
+      border:
+        2px solid
+        #041a2b;
+
+      border-radius: 50%;
+
+      background:
+        #41d483;
+    }
+
+    .member-info {
+      min-width: 0;
+    }
+
+    .member-name {
+      display: block;
+
+      overflow: hidden;
+
+      color:
+        #edf1f4;
+
+      font-size: 13px;
+
+      font-weight: 600;
+
+      text-overflow: ellipsis;
+
+      white-space: nowrap;
+    }
+
+    .member-role {
+      display: block;
+
+      margin-top: 2px;
+
+      color:
+        #8f9ca7;
+
+      font-size: 10px;
+    }
+
+    .owner-role {
+      color:
+        var(--gold-light);
+    }
+
+
+    /* =========================================
+       CHAT PANEL
+    ========================================= */
+
+    .chat-panel {
+      min-width: 0;
+
+      min-height: 760px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      overflow: hidden;
+    }
+
+    .chat-header {
+      min-height: 76px;
+
+      padding:
+        0 22px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      border-bottom:
+        1px solid
+        rgba(255,255,255,0.07);
+    }
+
+    .chat-header-left {
+      display: flex;
+
+      align-items: center;
+
+      gap: 13px;
+    }
+
+    .chat-header-icon {
+      width: 44px;
+
+      height: 44px;
+
+      display: grid;
+
+      place-items: center;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.34);
+
+      border-radius: 11px;
+
+      background:
+        rgba(216,161,63,0.08);
+
+      color:
+        var(--gold-light);
+
+      font-size: 18px;
+    }
+
+    .chat-header h2 {
+      margin:
+        0 0 3px;
+
+      font-size: 16px;
+
+      font-weight: 600;
+    }
+
+    .chat-header p {
+      margin: 0;
+
+      color:
+        #8997a3;
+
+      font-size: 11px;
+    }
+
+    .chat-header-actions {
+      display: flex;
+
+      gap: 8px;
+    }
+
+    .icon-button {
+      width: 38px;
+
+      height: 38px;
+
+      display: grid;
+
+      place-items: center;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.20);
+
+      border-radius: 9px;
+
+      background:
+        rgba(255,255,255,0.02);
+
+      color:
+        #d7dee3;
+
+      transition:
+        0.2s ease;
+    }
+
+    .icon-button:hover {
+      border-color:
+        rgba(216,161,63,0.55);
+
+      color:
+        var(--gold-light);
+    }
+
+
+    /* =========================================
+       PINNED MESSAGE
+    ========================================= */
+
+    .pinned-message {
+      margin:
+        15px 18px 0;
+
+      padding:
+        14px 16px;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 13px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.30);
+
+      border-radius: 11px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(216,161,63,0.08),
+          rgba(5,30,48,0.72)
+        );
+    }
+
+    .pin-icon {
+      width: 34px;
+
+      height: 34px;
+
+      display: grid;
+
+      place-items: center;
+
+      flex-shrink: 0;
+
+      border-radius: 9px;
+
+      background:
+        rgba(216,161,63,0.11);
+
+      color:
+        var(--gold-light);
+    }
+
+    .pin-content {
+      min-width: 0;
+
+      flex: 1;
+    }
+
+    .pin-content small {
+      display: block;
+
+      margin-bottom: 3px;
+
+      color:
+        var(--gold-light);
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 1.6px;
+    }
+
+    .pin-content p {
+      margin: 0;
+
+      overflow: hidden;
+
+      color:
+        #d8dee3;
+
+      font-size: 13px;
+
+      text-overflow: ellipsis;
+
+      white-space: nowrap;
+    }
+
+
+    /* =========================================
+       MESSAGES
+    ========================================= */
+
+    .messages {
+      flex: 1;
+
+      min-height: 0;
+
+      padding:
+        18px 18px 26px;
+
+      overflow-y: auto;
+
+      scrollbar-width: thin;
+
+      scrollbar-color:
+        rgba(216,161,63,0.25)
+        transparent;
+    }
+
+    .day-divider {
+      margin:
+        14px 0 22px;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      color:
+        #7f8d98;
+
+      font-size: 10px;
+
+      font-weight: 600;
+
+      letter-spacing: 1.5px;
+    }
+
+    .day-divider::before,
+    .day-divider::after {
+      content: "";
+
+      height: 1px;
+
+      flex: 1;
+
+      background:
+        rgba(255,255,255,0.06);
+    }
+
+    .message-row {
+      margin-bottom: 22px;
+
+      display: flex;
+
+      align-items: flex-start;
+
+      gap: 12px;
+    }
+
+    .message-row.owner-message {
+      padding:
+        16px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.18);
+
+      border-radius: 13px;
+
+      background:
+        rgba(216,161,63,0.035);
+    }
+
+    .message-main {
+      min-width: 0;
+
+      flex: 1;
+    }
+
+    .message-topline {
+      margin-bottom: 6px;
+
+      display: flex;
+
+      align-items: center;
+
+      flex-wrap: wrap;
+
+      gap: 7px;
+    }
+
+    .message-name {
+      font-size: 14px;
+
+      font-weight: 600;
+    }
+
+    .owner-name {
+      color:
+        var(--gold-light);
+    }
+
+    .owner-badge {
+      padding:
+        3px 7px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.35);
+
+      border-radius: 100px;
+
+      color:
+        var(--gold-light);
+
+      font-size: 8px;
+
+      font-weight: 700;
+
+      letter-spacing: 1px;
+    }
+
+    .message-time {
+      color:
+        #71808c;
+
+      font-size: 10px;
+    }
+
+    .message-text {
+      margin: 0;
+
+      color:
+        #d2d9de;
+
+      font-size: 15px;
+
+      line-height: 1.65;
+    }
+
+    .message-reactions {
+      margin-top: 9px;
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 6px;
+    }
+
+    .reaction {
+      min-height: 27px;
+
+      padding:
+        0 9px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 5px;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+      border-radius: 100px;
+
+      background:
+        rgba(255,255,255,0.03);
+
+      color:
+        #c9d2d8;
+
+      font-size: 11px;
+    }
+    .message-reply-button {
+  margin-top: 8px;
+  margin-right: 6px;
+  padding: 5px 10px;
+
+  border: 1px solid rgba(216, 161, 63, 0.28);
+  border-radius: 7px;
+
+  background: rgba(216, 161, 63, 0.07);
+  color: #aeb7c1;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.message-reply-button:hover {
+  background: rgba(216, 161, 63, 0.14);
+  border-color: rgba(216, 161, 63, 0.55);
+  color: #f0bd5c;
+}
+   .message-delete-button {
+  margin-top: 8px;
+  padding: 5px 10px;
+
+  border: 1px solid rgba(216, 161, 63, 0.28);
+  border-radius: 7px;
+
+  background: rgba(216, 161, 63, 0.07);
+  color: #aeb7c1;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.message-delete-button:hover {
+  background: rgba(216, 161, 63, 0.14);
+  border-color: rgba(216, 161, 63, 0.55);
+  color: #f0bd5c;
+}
+
+.message-delete-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.reply-preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+
+  margin: 0 0 8px;
+  padding: 10px 12px;
+
+  background: rgba(216, 161, 63, 0.06);
+  border: 1px solid rgba(216, 161, 63, 0.28);
+  border-left: 3px solid var(--gold);
+
+  border-radius: 10px;
+}
+
+.reply-preview[hidden] {
+  display: none;
+}
+
+.reply-preview-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  min-width: 0;
+  flex: 1;
+}
+
+.reply-preview-label {
+  color: var(--gold-light);
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.reply-preview-text {
+  display: block;
+
+  color: #aeb7c1;
+
+  font-size: 12px;
+  line-height: 1.4;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.reply-preview-close {
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  padding: 0;
+
+  border: 1px solid rgba(216, 161, 63, 0.25);
+  border-radius: 7px;
+
+  background: rgba(0, 17, 31, 0.55);
+  color: #aeb7c1;
+
+  font-size: 18px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.reply-preview-close:hover {
+  color: var(--gold-light);
+  border-color: rgba(216, 161, 63, 0.55);
+  background: rgba(216, 161, 63, 0.1);
+}
+  /* SENT MESSAGE REPLY QUOTE */
+
+.message-reply-quote {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  margin: 3px 0 8px;
+  padding: 8px 11px;
+
+  background: rgba(216, 161, 63, 0.06);
+  border-left: 3px solid var(--gold);
+  border-radius: 7px;
+
+  max-width: 520px;
+}
+
+.message-reply-quote-name {
+  color: var(--gold-light);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.message-reply-quote-text {
+  color: #aeb7c1;
+  font-size: 12px;
+  line-height: 1.4;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* HOLD-DOWN REACTION PICKER */
+
+.floating-reaction-picker {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 8px);
+
+  z-index: 999;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  padding: 7px 9px;
+
+  border: 1px solid rgba(216, 161, 63, 0.4);
+  border-radius: 999px;
+
+  background: #061d2f;
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.45);
+
+  white-space: nowrap;
+}
+
+.floating-reaction-button {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 50%;
+
+  background: transparent;
+
+  font-size: 21px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease;
+}
+
+.floating-reaction-button:hover {
+  background: rgba(216, 161, 63, 0.12);
+  transform: scale(1.15);
+}
+
+.floating-reaction-button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+/* =========================================
+   MESSAGE REACTIONS
+========================================= */
+
+.message-reactions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 9px;
+}
+
+.message-reaction-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  min-width: 34px;
+  height: 30px;
+  padding: 0 9px;
+
+  border: 1px solid rgba(216, 161, 63, 0.25);
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.035);
+  color: #f8f5ef;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.message-reaction-button:hover {
+  background: rgba(216, 161, 63, 0.11);
+  border-color: rgba(216, 161, 63, 0.55);
+  transform: translateY(-1px);
+}
+
+.message-reaction-button.active {
+  background: rgba(216, 161, 63, 0.16);
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+
+.message-reaction-button:disabled {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+}
+    /* =========================================
+       GAME MESSAGE
+    ========================================= */
+
+    .game-message {
+      margin:
+        4px 0 22px 50px;
+
+      padding: 19px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.38);
+
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(216,161,63,0.08),
+          rgba(5,31,50,0.95)
+        );
+    }
+
+    .game-message-label {
+      margin-bottom: 8px;
+
+      color:
+        var(--gold-light);
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 1.8px;
+    }
+
+    .game-message h3 {
+      margin:
+        0 0 8px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 24px;
+
+      font-weight: 400;
+    }
+
+    .game-message p {
+      margin:
+        0 0 13px;
+
+      color:
+        #bcc6ce;
+
+      font-size: 14px;
+
+      line-height: 1.6;
+    }
+
+    .game-countdown {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      padding:
+        8px 11px;
+
+      border-radius: 8px;
+
+      background:
+        rgba(0,17,31,0.60);
+
+      color:
+        #e3e7ea;
+
+      font-size: 11px;
+    }
+    /* =========================================
+   HOLIDAY DEAL — GROUP CHAT CARD
+========================================= */
+
+.holiday-deal-message {
+  width: 100%;
+  padding: 10px 0;
+}
+
+.holiday-chat-card {
+  width: min(520px, 100%);
+  overflow: hidden;
+
+  border: 1px solid rgba(216, 161, 63, 0.35);
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #08283f,
+      #00111f 70%
+    );
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.35);
+}
+
+.holiday-chat-image {
+  display: block;
+  width: 100%;
+  height: 250px;
+
+  object-fit: cover;
+}
+
+.holiday-chat-content {
+  padding: 22px;
+}
+
+.holiday-chat-label {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #e1aa47;
+
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.holiday-chat-destination {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: rgba(255, 255, 255, 0.65);
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.holiday-chat-hotel {
+  margin: 0 0 14px;
+
+  color: white;
+
+  font-family: "Playfair Display", serif;
+  font-size: 27px;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.holiday-chat-price {
+  margin-bottom: 14px;
+
+  color: #e8b65a;
+
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.holiday-chat-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+
+  margin-bottom: 14px;
+
+  color: #eef3f6;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.holiday-chat-details {
+  margin: 0 0 18px;
+
+  color: rgba(255, 255, 255, 0.72);
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.holiday-chat-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 48px;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #b77b24,
+      #e1aa47
+    );
+
+  color: white;
+  text-decoration: none;
+
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.holiday-chat-button:hover {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 10px 25px rgba(216, 161, 63, 0.22);
+}
+.holiday-chat-delete {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+
+  border: 1px solid rgba(255, 90, 90, 0.25);
+  border-radius: 8px;
+
+  background: transparent;
+  color: rgba(255, 150, 150, 0.8);
+
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.holiday-chat-delete:hover {
+  background: rgba(255, 70, 70, 0.08);
+  border-color: rgba(255, 90, 90, 0.5);
+  color: #ffaaaa;
+}
+
+.holiday-chat-delete:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+@media (max-width: 600px) {
+  .holiday-chat-card {
+    width: 100%;
+    border-radius: 14px;
+  }
+
+  .holiday-chat-image {
+    height: 190px;
+  }
+
+  .holiday-chat-content {
+    padding: 17px;
+  }
+
+  .holiday-chat-hotel {
+    font-size: 22px;
+  }
+
+  .holiday-chat-price {
+    font-size: 24px;
+  }
+}
+    /* =========================================
+   HOLIDAY DEAL POPUP
+========================================= */
+
+.holiday-deal-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(0, 8, 15, 0.82);
+  backdrop-filter: blur(8px);
+}
+
+.holiday-deal-modal[hidden] {
+  display: none;
+}
+
+.holiday-deal-box {
+  width: min(560px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+
+  padding: 28px;
+
+  border: 1px solid rgba(216, 161, 63, 0.35);
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #08283f,
+      #00111f 65%,
+      #000b14
+    );
+
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+}
+
+.holiday-deal-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-bottom: 24px;
+}
+
+.holiday-deal-heading span {
+  color: var(--gold-light);
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.holiday-deal-heading h2 {
+  margin: 5px 0 0;
+
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.holiday-deal-close {
+  width: 38px;
+  height: 38px;
+
+  border: 1px solid rgba(216, 161, 63, 0.3);
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.03);
+  color: white;
+
+  font-size: 23px;
+}
+
+#holidayDealForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+#holidayDealForm label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  color: #dce3e8;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+#holidayDealForm input,
+#holidayDealForm textarea {
+  width: 100%;
+
+  padding: 13px 14px;
+
+  border: 1px solid rgba(216, 161, 63, 0.2);
+  border-radius: 9px;
+
+  outline: none;
+
+  background: rgba(0, 12, 22, 0.75);
+  color: white;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+}
+
+#holidayDealForm textarea {
+  resize: vertical;
+  min-height: 85px;
+}
+
+#holidayDealForm input:focus,
+#holidayDealForm textarea:focus {
+  border-color: rgba(216, 161, 63, 0.7);
+}
+
+.holiday-deal-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.holiday-deal-submit {
+  min-height: 50px;
+  margin-top: 5px;
+
+  border: none;
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #b77b24,
+      #e1aa47
+    );
+
+  color: white;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .holiday-deal-box {
+    padding: 20px;
+  }
+
+  .holiday-deal-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+    /* =========================================
+       COMPOSER
+    ========================================= */
+
+    .composer-wrap {
+      padding:
+        15px 18px 18px;
+
+      border-top:
+        1px solid
+        rgba(255,255,255,0.07);
+
+      background:
+        rgba(0,13,24,0.72);
+    }
+
+    .composer {
+      display: grid;
+
+      grid-template-columns:
+        auto
+        1fr
+        auto;
+
+      align-items: center;
+
+      gap: 9px;
+
+      padding:
+        7px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.24);
+
+      border-radius: 13px;
+
+      background:
+        rgba(5,28,45,0.92);
+    }
+
+    .composer-add {
+      width: 40px;
+
+      height: 40px;
+
+      display: grid;
+
+      place-items: center;
+
+      border: none;
+
+      border-radius: 9px;
+
+      background:
+        rgba(255,255,255,0.03);
+
+      color:
+        #c5cfd6;
+
+      font-size: 19px;
+    }
+
+    .composer input {
+      width: 100%;
+
+      min-width: 0;
+
+      border: none;
+
+      outline: none;
+
+      background: transparent;
+
+      color: white;
+
+      font-size: 14px;
+    }
+
+    .composer input::placeholder {
+      color:
+        #71808c;
+    }
+
+    .send-button {
+      min-height: 40px;
+
+      padding:
+        0 16px;
+
+      border: none;
+
+      border-radius: 9px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #b77b24,
+          #e1aa47
+        );
+
+      color: white;
+
+      font-size: 12px;
+
+      font-weight: 600;
+    }
+
+    .composer-note {
+      margin:
+        8px 3px 0;
+
+      color:
+        #657480;
+
+      font-size: 9px;
+    }
+
+
+    /* =========================================
+       RIGHT SIDEBAR
+    ========================================= */
+
+    .right-sidebar {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 18px;
+    }
+
+    .side-panel {
+      padding: 20px;
+    }
+
+    .side-panel-title {
+      margin:
+        0 0 15px;
+
+      color:
+        var(--gold-light);
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 2px;
+    }
+
+    .next-game {
+      padding: 17px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.28);
+
+      border-radius: 13px;
+
+      background:
+        rgba(216,161,63,0.04);
+    }
+
+    .next-game-badge {
+      display: inline-flex;
+
+      margin-bottom: 10px;
+
+      padding:
+        5px 8px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.28);
+
+      border-radius: 100px;
+
+      color:
+        var(--gold-light);
+
+      font-size: 7px;
+
+      font-weight: 700;
+
+      letter-spacing: 1px;
+    }
+
+    .next-game h3 {
+      margin:
+        0 0 7px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 22px;
+
+      font-weight: 400;
+    }
+
+    .next-game p {
+      margin:
+        0 0 15px;
+
+      color:
+        #aeb9c1;
+
+      font-size: 11px;
+
+      line-height: 1.6;
+    }
+
+    .countdown-boxes {
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          3,
+          1fr
+        );
+
+      gap: 7px;
+    }
+
+    .countdown-box {
+      padding:
+        9px 6px;
+
+      text-align: center;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.07);
+
+      border-radius: 9px;
+
+      background:
+        rgba(0,17,31,0.55);
+    }
+
+    .countdown-box strong {
+      display: block;
+
+      color:
+        white;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 18px;
+
+      font-weight: 400;
+    }
+
+    .countdown-box span {
+      color:
+        #7b8995;
+
+      font-size: 7px;
+
+      letter-spacing: 1px;
+    }
+
+
+    /* =========================================
+       POINTS
+    ========================================= */
+
+    .points-row {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 12px;
+
+      padding:
+        12px 0;
+
+      border-bottom:
+        1px solid
+        rgba(255,255,255,0.06);
+    }
+
+    .points-row:last-child {
+      border-bottom: none;
+    }
+
+    .points-user {
+      display: flex;
+
+      align-items: center;
+
+      gap: 9px;
+    }
+
+    .points-avatar {
+      width: 32px;
+
+      height: 32px;
+
+      display: grid;
+
+      place-items: center;
+
+      border-radius: 50%;
+
+      background:
+        #0a2940;
+
+      font-size: 9px;
+
+      font-weight: 700;
+    }
+
+    .points-name {
+      font-size: 11px;
+    }
+
+    .points-value {
+      color:
+        var(--gold-light);
+
+      font-size: 11px;
+
+      font-weight: 600;
+    }
+
+
+    /* =========================================
+       GROUP RULES
+    ========================================= */
+
+    .rule-list {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 11px;
+    }
+
+    .rule-item {
+      display: flex;
+
+      align-items: flex-start;
+
+      gap: 9px;
+
+      color:
+        #aeb8c0;
+
+      font-size: 10px;
+
+      line-height: 1.5;
+    }
+
+    .rule-check {
+      color:
+        var(--gold-light);
+
+      font-weight: 700;
+    }
+
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+
+    @media (max-width: 1250px) {
+
+      .chat-layout {
+        grid-template-columns:
+          240px
+          minmax(0,1fr);
+      }
+
+      .right-sidebar {
+        grid-column:
+          1 / -1;
+
+        display: grid;
+
+        grid-template-columns:
+          repeat(
+            3,
+            1fr
+          );
+      }
+
+    }
+
+
+    @media (max-width: 900px) {
+
+      .chat-page {
+        width:
+          calc(100% - 28px);
+
+        padding-top: 20px;
+      }
+
+      .chat-top {
+        align-items: flex-start;
+
+        flex-direction: column;
+      }
+
+      .chat-layout {
+        grid-template-columns:
+          1fr;
+      }
+
+      .left-sidebar {
+        display: none;
+      }
+
+      .right-sidebar {
+        grid-column: auto;
+
+        grid-template-columns:
+          1fr 1fr;
+      }
+
+      .chat-panel {
+        min-height: 700px;
+      }
+
+    }
+
+
+    @media (max-width: 650px) {
+
+      .chat-page {
+        width:
+          calc(100% - 16px);
+      }
+
+      .chat-top h1 {
+        font-size: 42px;
+      }
+
+      .right-sidebar {
+        grid-template-columns:
+          1fr;
+      }
+
+      .chat-header {
+        padding:
+          0 14px;
+      }
+
+      .chat-header-actions {
+        display: none;
+      }
+
+      .pinned-message {
+        margin:
+          12px 12px 0;
+      }
+
+      .pin-content p {
+        white-space: normal;
+      }
+
+      .messages {
+        padding:
+          16px 12px 22px;
+      }
+
+      .message-text {
+        font-size: 14px;
+      }
+
+      .message-name {
+        font-size: 13px;
+      }
+
+      .game-message {
+        margin-left: 0;
+      }
+
+      .composer-wrap {
+        padding:
+          12px;
+      }
+
+      .send-button {
+        padding:
+          0 12px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================================
+       HEADER
+  ========================================= -->
+
+  <header class="header">
+
+    <a
+      href="index.html"
+      class="logo"
+    >
+
+      <div class="logo-icon">
+
+        <img
+          src="images/logo-small.webp"
+          alt="GoldenGetaways icon"
+        >
+
+      </div>
+
+      <div class="logo-text">
+
+        <span>
+          GoldenGetaways
+        </span>
+
+        <small>
+          EST 2025
+        </small>
+
+      </div>
+
+    </a>
+
+
+    <nav class="desktop-nav">
+
+      <a href="dashboard.html">
+        Dashboard
+      </a>
+
+      <a href="my-requests.html">
+        My Requests
+      </a>
+
+      <a href="points.html">
+        Points
+      </a>
+
+      <a
+        href="group-chat.html"
+        class="active"
+      >
+        Group Chat
+      </a>
+
+      <a href="competitions.html">
+        Competitions
+      </a>
+
+      <a href="support.html">
+        Support
+      </a>
+
+    </nav>
+
+
+    <a
+      href="account-settings.html"
+      class="button gold-button header-button"
+    >
+      My Account
+      <span>→</span>
+    </a>
+
+
+    <button
+      class="mobile-menu-button"
+      id="menuButton"
+      aria-label="Open menu"
+    >
+      ☰
+    </button>
+
+  </header>
+
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="member-membership.html">Membership</a>
+    <a href="my-requests.html">My Requests</a>
+    <a href="points.html">Points & Rewards</a>
+    <a href="group-chat.html">Group Chat</a>
+    <a href="mini-games.html">Mini Games</a>
+    <a href="referrals.html">Referrals</a>
+    <a href="competitions.html">Competitions</a>
+    <a href="support.html">Support</a>
+    <a href="account-settings.html">Account Settings</a>
+</nav>
+
+
+  <!-- =========================================
+       PAGE
+  ========================================= -->
+
+  <main class="chat-page">
+
+
+    <!-- =========================================
+         TOP
+    ========================================= -->
+
+    <section class="chat-top">
+
+      <div class="chat-top-copy">
+
+        <p class="eyebrow">
+          GOLDENGETAWAYS MEMBERS
+        </p>
+
+        <h1>
+          The member
+          <em>
+            group.
+          </em>
+        </h1>
+
+        <p class="chat-top-description">
+          Chat with other GoldenGetaways members,
+          share holiday inspiration, join mini-games
+          and keep up with everything happening in the community.
+        </p>
+
+      </div>
+
+
+    <div class="chat-status">
+
+  <span class="status-dot"></span>
+
+  <span id="onlineCount">
+    Connecting...
+  </span>
+
+</div>
+
+    </section>
+
+
+    <!-- =========================================
+         MAIN GRID
+    ========================================= -->
+
+    <section class="chat-layout">
+
+
+      <!-- =========================================
+           LEFT
+      ========================================= -->
+
+      <aside class="panel left-sidebar">
+
+
+        <div class="group-card">
+
+          <div class="group-icon">
+            GG
+          </div>
+
+          <h2>
+            GoldenGetaways
+          </h2>
+
+          <p>
+            Private member community
+            for holiday deals, chat,
+            games and travel inspiration.
+          </p>
+
+        </div>
+
+
+        <div>
+
+          <p class="sidebar-label">
+            GROUP
+          </p>
+
+          <a
+            href="#"
+            class="sidebar-link active"
+          >
+            <span class="sidebar-link-icon">
+              💬
+            </span>
+
+            General Chat
+          </a>
+
+          <a
+           href="mini-games.html"
+            class="sidebar-link"
+          >
+            <span class="sidebar-link-icon">
+              🎮
+            </span>
+
+            Mini Games
+          </a>
+
+          <a
+            href="points.html"
+            class="sidebar-link"
+          >
+            <span class="sidebar-link-icon">
+              ★
+            </span>
+
+            Points
+          </a>
+
+        </div>
+
+
+        <div>
+
+        <p class="sidebar-label">
+  ONLINE NOW
+</p>
+
+<div class="online-members" id="onlineMembers">
+  <span class="member-role">
+    Loading online members...
+  </span>
+</div>
+
+
+      </aside>
+
+
+      <!-- =========================================
+           CENTRE CHAT
+      ========================================= -->
+
+      <section class="panel chat-panel">
+
+
+        <div class="chat-header">
+
+          <div class="chat-header-left">
+
+            <div class="chat-header-icon">
+              #
+            </div>
+
+            <div>
+
+              <h2>
+                General Chat
+              </h2>
+
+              <p>
+                GoldenGetaways members
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="chat-header-actions">
+
+    <button
+  class="icon-button"
+  type="button"
+  id="editPinnedButton"
+  title="Edit pinned message"
+>
+  →
+</button>
+
+            <button
+              class="icon-button"
+              type="button"
+              title="Pinned messages"
+            >
+              📌
+            </button>
+
+            <button
+              class="icon-button"
+              type="button"
+              title="Group members"
+            >
+              👥
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="pinned-message">
+
+          <div class="pin-icon">
+            📌
+          </div>
+
+          <div class="pin-content">
+
+           <small id="pinnedBy">
+  PINNED MESSAGE
+</small>
+
+<p id="pinnedMessage">
+  Loading pinned message...
+</p>
+          </div>
+
+          <button
+            class="icon-button"
+            type="button"
+          >
+            →
+          </button>
+
+        </div>
+
+
+        <div class="messages">
+
+
+        </div>
+
+      <div class="composer-wrap">
+ <div class="reply-preview" id="replyPreview" hidden>
+
+  <div class="reply-preview-content">
+    <span class="reply-preview-label" id="replyPreviewLabel">
+      Replying to Member
+    </span>
+
+    <span class="reply-preview-text" id="replyPreviewText">
+      Message
+    </span>
+  </div>
+
+  <button
+    type="button"
+    class="reply-preview-close"
+    id="cancelReplyButton"
+    title="Cancel reply"
+  >
+    ×
+  </button>
+
+</div>
+  <form class="composer" id="chatForm">
+
+    <button
+      class="composer-add"
+      type="button"
+      id="attachmentButton"
+      title="Add attachment"
+    >
+      +
+    </button>
+
+    <input
+      id="messageInput"
+      type="text"
+      placeholder="Message the GoldenGetaways group..."
+      maxlength="1000"
+      autocomplete="off"
+    >
+
+    <button
+      class="send-button"
+      id="sendButton"
+      type="submit"
+    >
+      Send →
+    </button>
+
+  </form>
+
+  <p class="composer-note" id="composerNote">
+    Be respectful. Messages are visible to GoldenGetaways members.
+  </p>
+
+</div>
+<!-- HOLIDAY DEAL POPUP -->
+<div id="holidayDealModal" class="holiday-deal-modal" hidden>
+
+  <div class="holiday-deal-box">
+
+    <div class="holiday-deal-heading">
+      <div>
+        <span>GOLDENGETAWAYS</span>
+        <h2>Post a Holiday Deal</h2>
+      </div>
+
+      <button
+        type="button"
+        id="closeHolidayDeal"
+        class="holiday-deal-close"
+      >
+        ×
+      </button>
+    </div>
+
+    <form id="holidayDealForm">
+
+      <label>
+  Holiday image
+  <input
+    type="file"
+    id="dealImage"
+    accept="image/*"
+    required
+  >
+</label>
+
+      <label>
+        Hotel name
+        <input
+          type="text"
+          id="dealHotel"
+          placeholder="e.g. Akasha Beach Hotel & Spa"
+          required
+        >
+      </label>
+
+      <label>
+        Destination
+        <input
+          type="text"
+          id="dealDestination"
+          placeholder="e.g. Crete, Greece"
+          required
+        >
+      </label>
+
+      <div class="holiday-deal-row">
+
+        <label>
+          From price
+          <input
+            type="text"
+            id="dealPrice"
+            placeholder="£499pp"
+            required
+          >
+        </label>
+
+        <label>
+          Duration
+          <input
+            type="text"
+            id="dealDuration"
+            placeholder="7 Nights"
+          >
+        </label>
+
+      </div>
+
+      <label>
+        Board basis
+        <input
+          type="text"
+          id="dealBoard"
+          placeholder="e.g. All Inclusive"
+        >
+      </label>
+
+      <label>
+        Main details
+        <textarea
+          id="dealDetails"
+          placeholder="Beachfront • 2 pools • 28km from airport • 5★"
+          rows="3"
+        ></textarea>
+      </label>
+
+      <label>
+        Holiday link
+        <input
+          type="url"
+          id="dealLink"
+          placeholder="Paste the holiday link..."
+          required
+        >
+      </label>
+
+      <button
+        type="submit"
+        class="holiday-deal-submit"
+      >
+        Post Holiday Deal →
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+      </section>
+
+
+      <!-- =========================================
+           RIGHT
+      ========================================= -->
+
+      <aside class="right-sidebar">
+
+
+        <section class="panel side-panel">
+
+          <section class="panel side-panel">
+
+  <p class="side-panel-title">
+    NEXT MINI GAME
+  </p>
+
+  <div
+    class="next-game"
+    id="nextGameCard"
+  >
+
+    <span
+      class="next-game-badge"
+      id="nextGameBadge"
+    >
+      LOADING...
+    </span>
+
+    <h3 id="nextGameTitle">
+      Loading mini game...
+    </h3>
+
+    <p id="nextGameDescription">
+      Checking for the latest GoldenGetaways mini game.
+    </p>
+
+    <div
+      class="countdown-boxes"
+      id="nextGameCountdown"
+    >
+
+      <div class="countdown-box">
+        <strong id="nextGameHours">00</strong>
+        <span>HOURS</span>
+      </div>
+
+      <div class="countdown-box">
+        <strong id="nextGameMinutes">00</strong>
+        <span>MINS</span>
+      </div>
+
+      <div class="countdown-box">
+        <strong id="nextGameSeconds">00</strong>
+        <span>SECS</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+         
+
+
+        <section class="panel side-panel">
+
+          <p class="side-panel-title">
+            THIS MONTH'S LEADERS
+          </p>
+
+        <div id="realLeaderboard">
+  <p style="opacity:.65;">Loading leaderboard...</p>
+</div>
+      
+
+        </section>
+
+
+        <section class="panel side-panel">
+
+          <p class="side-panel-title">
+            GROUP RULES
+          </p>
+
+          <div class="rule-list">
+
+
+            <div class="rule-item">
+
+              <span class="rule-check">
+                ✓
+              </span>
+
+              Be respectful to other members.
+
+            </div>
+
+
+            <div class="rule-item">
+
+              <span class="rule-check">
+                ✓
+              </span>
+
+              No spam or unrelated advertising.
+
+            </div>
+
+
+            <div class="rule-item">
+
+              <span class="rule-check">
+                ✓
+              </span>
+
+              Mini-game answers may be hidden
+              while a game is active.
+
+            </div>
+
+
+            <div class="rule-item">
+
+              <span class="rule-check">
+                ✓
+              </span>
+
+              Have fun and help other travellers.
+
+            </div>
+
+
+          </div>
+
+        </section>
+
+
+      </aside>
+
+
+    </section>
+
+
+  </main>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+<script src="script.js"></script>
+
+      <script>
+document.addEventListener("DOMContentLoaded", async () => {
+
+  const chatForm = document.getElementById("chatForm");
+  const messageInput = document.getElementById("messageInput");
+  const sendButton = document.getElementById("sendButton");
+  const attachmentButton =
+  document.getElementById("attachmentButton");
+  const ADMIN_USER_ID =
+  "b8435cc9-2b06-4751-b02c-5141f09a9cdc";
+
+const holidayDealModal =
+  document.getElementById("holidayDealModal");
+
+const closeHolidayDeal =
+  document.getElementById("closeHolidayDeal");
+
+
+if (closeHolidayDeal && holidayDealModal) {
+  closeHolidayDeal.addEventListener("click", () => {
+    holidayDealModal.hidden = true;
+  });
+}
+
+if (holidayDealModal) {
+  holidayDealModal.addEventListener("click", (event) => {
+    if (event.target === holidayDealModal) {
+      holidayDealModal.hidden = true;
+    }
+  });
+}
+  const messagesContainer = document.querySelector(".messages");
+  const composerNote = document.getElementById("composerNote");
+  const replyPreview = document.getElementById("replyPreview");
+const replyPreviewLabel = document.getElementById("replyPreviewLabel");
+const replyPreviewText = document.getElementById("replyPreviewText");
+const cancelReplyButton = document.getElementById("cancelReplyButton");
+  if (!chatForm || !messageInput || !sendButton || !messagesContainer) {
+    console.error("Group chat elements could not be found.");
+    return;
+  }
+
+  // =====================================================
+  // LOGGED-IN USER
+  // =====================================================
+
+  const {
+    data: { user },
+    error: userError
+  } = await supabaseClient.auth.getUser();
+
+  if (userError) {
+    console.error("Could not check logged-in user:", userError);
+    composerNote.textContent = "Unable to verify your account.";
+    return;
+  }
+
+  if (!user) {
+    window.location.href = "join.html";
+    return;
+  }
+  if (attachmentButton) {
+  // Hidden by default — only the admin account gets this feature
+  attachmentButton.style.display = "none";
+
+  if (user.id === ADMIN_USER_ID) {
+    attachmentButton.style.display = "grid";
+
+    if (holidayDealModal) {
+      attachmentButton.addEventListener("click", () => {
+        holidayDealModal.hidden = false;
+      });
+    }
+  }
+}
+
+  // =====================================================
+  // CURRENT MEMBER PROFILE
+  // =====================================================
+
+  const {
+    data: currentProfile,
+    error: profileError
+  } = await supabaseClient
+    .from("profiles")
+    .select("id, full_name, membership_status")
+    .eq("id", user.id)
+    .maybeSingle();
+
+  if (profileError) {
+    console.error("Could not load profile:", profileError);
+  }
+  if (
+  !currentProfile ||
+  currentProfile.membership_status !== "active"
+) {
+  window.location.href = "membership.html";
+  return;
+}
+  const currentName =
+    currentProfile?.full_name?.trim() ||
+    user.email?.split("@")[0] ||
+    "Member";
+   // ======================================================
+// REAL LEADERBOARD
+// ======================================================
+
+const realLeaderboard =
+  document.getElementById("realLeaderboard");
+
+if (realLeaderboard) {
+  const {
+    data: leaderboardMembers,
+    error: leaderboardError
+  } = await supabaseClient
+    .from("profiles")
+    .select("id, full_name, points")
+    .order("points", { ascending: false })
+    .limit(3);
+
+  if (leaderboardError) {
+    console.error("Leaderboard error:", leaderboardError);
+
+    realLeaderboard.innerHTML =
+      `<p style="opacity:.65;">Leaderboard unavailable.</p>`;
+  } else {
+    realLeaderboard.innerHTML = "";
+
+    (leaderboardMembers || []).forEach((member) => {
+      const name =
+        member.full_name?.trim() || "Member";
+
+      const initials = name
+        .split(" ")
+        .map(part => part.charAt(0))
+        .join("")
+        .slice(0, 2)
+        .toUpperCase();
+
+      const points = Number(member.points) || 0;
+
+      realLeaderboard.insertAdjacentHTML(
+        "beforeend",
+        `
+          <div class="points-row">
+            <div class="points-user">
+              <div class="points-avatar">
+                ${initials}
+              </div>
+
+              <span class="points-name">
+                ${name}
+              </span>
+            </div>
+
+            <span class="points-value">
+              ${points} pts
+            </span>
+          </div>
+        `
+      );
+    });
+
+    if (!leaderboardMembers?.length) {
+      realLeaderboard.innerHTML =
+        `<p style="opacity:.65;">No members yet.</p>`;
+    }
+  }
+}
+   // =====================================================
+// NEXT MINI GAME
+// =====================================================
+
+const nextGameBadge =
+  document.getElementById("nextGameBadge");
+
+const nextGameTitle =
+  document.getElementById("nextGameTitle");
+
+const nextGameDescription =
+  document.getElementById("nextGameDescription");
+
+const nextGameHours =
+  document.getElementById("nextGameHours");
+
+const nextGameMinutes =
+  document.getElementById("nextGameMinutes");
+
+const nextGameSeconds =
+  document.getElementById("nextGameSeconds");
+
+let nextGameTimer = null;
+
+async function loadNextMiniGame() {
+  const { data: games, error: gameError } =
+    await supabaseClient
+      .from("group_games")
+      .select("id, title, question, starts_at, ends_at, status")
+      .eq("status", "active")
+      .gte("ends_at", new Date().toISOString())
+      .order("ends_at", { ascending: true })
+      .limit(1);
+
+  if (gameError) {
+    console.error("Could not load mini game:", gameError);
+
+    nextGameBadge.textContent = "UNAVAILABLE";
+    nextGameTitle.textContent = "Mini game unavailable";
+    nextGameDescription.textContent =
+      "Please check back shortly.";
+
+    return;
+  }
+
+  const game = games?.[0];
+
+  if (!game) {
+    nextGameBadge.textContent = "NO ACTIVE GAME";
+    nextGameTitle.textContent = "No mini game right now";
+    nextGameDescription.textContent =
+      "The next GoldenGetaways mini game will appear here.";
+
+    nextGameHours.textContent = "00";
+    nextGameMinutes.textContent = "00";
+    nextGameSeconds.textContent = "00";
+
+    return;
+  }
+
+  nextGameTitle.textContent = game.title;
+  nextGameDescription.textContent = game.question;
+
+  const endsAt = new Date(game.ends_at);
+
+  function updateNextGameCountdown() {
+    const remaining =
+      endsAt.getTime() - Date.now();
+
+    if (remaining <= 0) {
+      clearInterval(nextGameTimer);
+
+      nextGameBadge.textContent = "ROUND CLOSED";
+      nextGameHours.textContent = "00";
+      nextGameMinutes.textContent = "00";
+      nextGameSeconds.textContent = "00";
+
+      return;
+    }
+
+    const totalSeconds =
+      Math.floor(remaining / 1000);
+
+    const hours =
+      Math.floor(totalSeconds / 3600);
+
+    const minutes =
+      Math.floor((totalSeconds % 3600) / 60);
+
+    const seconds =
+      totalSeconds % 60;
+
+    nextGameHours.textContent =
+      String(hours).padStart(2, "0");
+
+    nextGameMinutes.textContent =
+      String(minutes).padStart(2, "0");
+
+    nextGameSeconds.textContent =
+      String(seconds).padStart(2, "0");
+
+    nextGameBadge.textContent = "LIVE NOW";
+  }
+
+  updateNextGameCountdown();
+
+  nextGameTimer =
+    setInterval(updateNextGameCountdown, 1000);
+}
+
+await loadNextMiniGame();
+
+  // =====================================================
+// CHECK IF CURRENT USER IS AN ADMIN / OWNER
+// =====================================================
+
+const {
+  data: adminRecord,
+  error: adminError
+} = await supabaseClient
+  .from("admin_users")
+  .select("user_id")
+  .eq("user_id", user.id)
+  .maybeSingle();
+
+if (adminError) {
+  console.error("Could not check admin status:", adminError);
+}
+
+const currentUserIsAdmin = !!adminRecord;
+// ======================================================
+// REAL LEADERBOARD
+// ======================================================
+
+if (realLeaderboard) {
+
+  const {
+    data: leaderboardMembers,
+    error: leaderboardError
+  } = await supabaseClient
+    .from("profiles")
+    .select("id, full_name, points")
+    .order("points", { ascending: false })
+    .limit(3);
+
+  if (leaderboardError) {
+
+    console.error(
+      "Could not load leaderboard:",
+      leaderboardError
+    );
+
+    realLeaderboard.innerHTML =
+      `<p style="opacity:.65;">Leaderboard unavailable.</p>`;
+
+  } else if (!leaderboardMembers?.length) {
+
+    realLeaderboard.innerHTML =
+      `<p style="opacity:.65;">No members yet.</p>`;
+
+  } else {
+
+    realLeaderboard.innerHTML =
+      leaderboardMembers.map(member => {
+
+        const name =
+          member.full_name?.trim() || "Member";
+
+        const initials = name
+          .split(" ")
+          .map(part => part.charAt(0))
+          .join("")
+          .slice(0, 2)
+          .toUpperCase();
+
+        const points =
+          Number(member.points) || 0;
+
+        return `
+          <div class="points-row">
+
+            <div class="points-user">
+
+              <div class="points-avatar">
+                ${initials}
+              </div>
+
+              <span class="points-name">
+                ${name}
+              </span>
+
+            </div>
+
+            <span class="points-value">
+              ${points} pts
+            </span>
+
+          </div>
+        `;
+
+      }).join("");
+
+  }
+}
+const editPinnedButton =
+  document.getElementById("editPinnedButton");
+
+if (editPinnedButton) {
+
+  if (!currentUserIsAdmin) {
+    editPinnedButton.style.display = "none";
+  }
+
+  editPinnedButton.addEventListener(
+    "click",
+    async () => {
+      alert("PIN BUTTON WORKING");
+
+      const newPinnedMessage =
+        window.prompt(
+          "Enter the message you want to pin:"
+        );
+
+      if (!newPinnedMessage) {
+        return;
+      }
+
+      const cleanMessage =
+        newPinnedMessage.trim();
+
+      if (
+        cleanMessage.length < 1 ||
+        cleanMessage.length > 500
+      ) {
+        alert(
+          "Pinned messages must be between 1 and 500 characters."
+        );
+
+        return;
+      }
+
+      const { error } =
+        await supabaseClient
+          .from("group_pinned_messages")
+          .insert({
+            message: cleanMessage,
+            pinned_by: user.id
+          });
+
+      if (error) {
+        console.error(
+          "Could not pin message:",
+          error
+        );
+
+        alert(
+          "Could not save the pinned message."
+        );
+
+        return;
+      }
+
+      await loadPinnedMessage();
+    }
+  );
+}
+  // =====================================================
+  // PROFILE CACHE
+  // =====================================================
+
+  const profileCache = new Map();
+
+ profileCache.set(user.id, {
+  id: user.id,
+  full_name: currentName,
+  is_admin: currentUserIsAdmin
+});
+
+
+  async function getProfile(userId) {
+
+    if (profileCache.has(userId)) {
+      return profileCache.get(userId);
+    }
+
+    const {
+      data,
+      error
+    } = await supabaseClient
+      .from("profiles")
+      .select("id, full_name")
+      .eq("id", userId)
+      .maybeSingle();
+
+    if (error) {
+      console.error("Could not load member profile:", error);
+    }
+
+   const profile = data || {
+  id: userId,
+  full_name: "Member"
+};
+
+
+// Check whether this member is an Owner/Admin
+const {
+  data: isAdmin,
+  error: adminCheckError
+} = await supabaseClient.rpc(
+  "is_group_admin",
+  {
+    check_user_id: userId
+  }
+);
+
+if (adminCheckError) {
+  console.error(
+    "Could not check member admin status:",
+    adminCheckError
+  );
+}
+
+profile.is_admin = isAdmin === true;
+
+
+profileCache.set(userId, profile);
+
+return profile;
+  }
+
+
+  // =====================================================
+  // HELPERS
+  // =====================================================
+
+  function getInitials(name) {
+
+    const words = name
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean);
+
+    if (!words.length) {
+      return "M";
+    }
+
+    if (words.length === 1) {
+      return words[0]
+        .slice(0, 2)
+        .toUpperCase();
+    }
+
+    return (
+      words[0][0] +
+      words[words.length - 1][0]
+    ).toUpperCase();
+  }
+
+
+  function formatTime(dateString) {
+
+    return new Date(dateString)
+      .toLocaleTimeString("en-GB", {
+        hour: "2-digit",
+        minute: "2-digit"
+      });
+  }
+
+
+  function scrollToBottom() {
+
+    messagesContainer.scrollTop =
+      messagesContainer.scrollHeight;
+  }
+
+
+  // =====================================================
+  // RENDER MESSAGE
+  // =====================================================
+
+  async function renderMessage(message) {
+
+    if (
+      document.querySelector(
+        `[data-message-id="${message.id}"]`
+      )
+    ) {
+      return;
+    }
+   if (message.message_type === "holiday_deal") {
+
+  const dealRow =
+    document.createElement("div");
+
+  dealRow.className =
+    "message-row owner-message holiday-deal-message";
+
+  dealRow.dataset.messageId =
+    message.id;
+
+
+  const card =
+    document.createElement("article");
+
+  card.className =
+    "holiday-chat-card";
+
+
+  const image =
+    document.createElement("img");
+
+  image.className =
+    "holiday-chat-image";
+
+  image.src =
+    message.deal_image || "";
+
+  image.alt =
+    message.deal_hotel || "Holiday deal";
+
+
+  const content =
+    document.createElement("div");
+
+  content.className =
+    "holiday-chat-content";
+
+
+  const label =
+    document.createElement("span");
+
+  label.className =
+    "holiday-chat-label";
+
+  label.textContent =
+    "GOLDENGETAWAYS DEAL";
+
+
+  const destination =
+    document.createElement("span");
+
+  destination.className =
+    "holiday-chat-destination";
+
+  destination.textContent =
+    message.deal_destination || "";
+
+
+  const hotel =
+    document.createElement("h3");
+
+  hotel.className =
+    "holiday-chat-hotel";
+
+  hotel.textContent =
+    message.deal_hotel || "Holiday Deal";
+
+
+  const price =
+    document.createElement("div");
+
+  price.className =
+    "holiday-chat-price";
+
+  price.textContent =
+    message.deal_price || "";
+
+
+  const info =
+    document.createElement("div");
+
+  info.className =
+    "holiday-chat-info";
+
+  if (message.deal_duration) {
+    const duration =
+      document.createElement("span");
+
+    duration.textContent =
+      `✦ ${message.deal_duration}`;
+
+    info.appendChild(duration);
+  }
+
+  if (message.deal_board) {
+    const board =
+      document.createElement("span");
+
+    board.textContent =
+      `✦ ${message.deal_board}`;
+
+    info.appendChild(board);
+  }
+
+
+  const details =
+    document.createElement("p");
+
+  details.className =
+    "holiday-chat-details";
+
+  details.textContent =
+    message.deal_details || "";
+
+
+  const button =
+    document.createElement("a");
+
+  button.className =
+    "holiday-chat-button";
+
+  button.textContent =
+    "VIEW HOLIDAY →";
+
+  try {
+    const dealUrl =
+      new URL(message.deal_link);
+
+    if (
+      dealUrl.protocol === "https:" ||
+      dealUrl.protocol === "http:"
+    ) {
+      button.href = dealUrl.href;
+    } else {
+      button.removeAttribute("href");
+    }
+  } catch {
+    button.removeAttribute("href");
+  }
+
+  button.target = "_blank";
+  button.rel = "noopener noreferrer";
+
+
+  content.appendChild(label);
+  content.appendChild(destination);
+  content.appendChild(hotel);
+  content.appendChild(price);
+  content.appendChild(info);
+
+  if (message.deal_details) {
+    content.appendChild(details);
+  }
+
+ content.appendChild(button);
+
+// Admin-only delete button
+if (user.id === ADMIN_USER_ID) {
+
+  const deleteDealButton =
+    document.createElement("button");
+
+  deleteDealButton.type = "button";
+  deleteDealButton.className =
+    "holiday-chat-delete";
+
+  deleteDealButton.textContent =
+    "Delete Deal";
+
+  deleteDealButton.addEventListener(
+    "click",
+    async () => {
+
+      const confirmed =
+        window.confirm(
+          `Delete ${message.deal_hotel || "this holiday deal"}?`
+        );
+
+      if (!confirmed) {
+        return;
+      }
+
+      deleteDealButton.disabled = true;
+      deleteDealButton.textContent =
+        "Deleting...";
+
+      const { error } =
+        await supabaseClient
+          .from("group_messages")
+          .delete()
+          .eq("id", message.id);
+
+      if (error) {
+        console.error(
+          "Could not delete holiday deal:",
+          error
+        );
+
+        alert(
+          "Could not delete this holiday deal."
+        );
+
+        deleteDealButton.disabled = false;
+        deleteDealButton.textContent =
+          "Delete Deal";
+
+        return;
+      }
+
+      dealRow.remove();
+    }
+  );
+
+  content.appendChild(deleteDealButton);
+}
+
+card.appendChild(image);
+card.appendChild(content);
+
+dealRow.appendChild(card);
+
+messagesContainer.appendChild(dealRow);
+
+return;
+}
+
+    const profile =
+      await getProfile(message.user_id);
+
+    const memberName =
+      profile?.full_name?.trim() ||
+      "Member";
+
+    const isOwnMessage =
+      message.user_id === user.id;
+    const isAdmin =
+  profile?.is_admin === true;
+    const messageRow =
+      document.createElement("div");
+
+   messageRow.className =
+  isAdmin
+    ? "message-row owner-message"
+    : "message-row";
+    messageRow.dataset.messageId =
+      message.id;
+
+
+    // Avatar
+    const avatar =
+      document.createElement("div");
+
+   avatar.className =
+  isAdmin
+    ? "member-avatar owner"
+    : "member-avatar";
+    avatar.textContent =
+      getInitials(memberName);
+
+
+    // Main
+    const messageMain =
+      document.createElement("div");
+
+    messageMain.className =
+      "message-main";
+  // Press-and-hold detection for reactions
+let holdTimer = null;
+let holdTriggered = false;
+
+function startMessageHold(event) {
+  holdTriggered = false;
+
+ holdTimer = setTimeout(() => {
+  holdTriggered = true;
+
+  alert("HOLD WORKING");
+
+  if (typeof showReactionPicker === "function") {
+    showReactionPicker(messageMain, message);
+  }
+}, 500);
+}
+function cancelMessageHold() {
+  if (holdTimer) {
+    clearTimeout(holdTimer);
+    holdTimer = null;
+  }
+}
+
+  messageMain.addEventListener("mousedown", startMessageHold);
+
+messageMain.addEventListener("mouseup", cancelMessageHold);
+
+messageMain.addEventListener("mouseleave", cancelMessageHold);
+
+messageMain.addEventListener("touchstart", startMessageHold, {
+  passive: true
+});
+
+messageMain.addEventListener("touchend", cancelMessageHold);
+
+messageMain.addEventListener("touchcancel", cancelMessageHold);
+
+function showReactionPicker(messageMain, message) {
+
+  // Remove any picker already open
+  document
+    .querySelectorAll(".floating-reaction-picker")
+    .forEach((picker) => picker.remove());
+
+  const picker = document.createElement("div");
+  picker.className = "floating-reaction-picker";
+
+  const emojis = ["❤️", "👍", "😂", "🔥"];
+
+  emojis.forEach((emoji) => {
+
+    const button = document.createElement("button");
+
+    button.type = "button";
+    button.className = "floating-reaction-button";
+    button.textContent = emoji;
+
+  button.addEventListener("click", async (event) => {
+  event.stopPropagation();
+
+  button.disabled = true;
+
+  const {
+    data: existingReaction,
+    error: findError
+  } = await supabaseClient
+    .from("group_message_reactions")
+    .select("id")
+    .eq("message_id", message.id)
+    .eq("user_id", user.id)
+    .eq("emoji", emoji)
+    .maybeSingle();
+
+  if (findError) {
+    console.error(
+      "Could not check reaction:",
+      findError
+    );
+
+    button.disabled = false;
+    return;
+  }
+
+  if (existingReaction) {
+
+    const { error } = await supabaseClient
+      .from("group_message_reactions")
+      .delete()
+      .eq("id", existingReaction.id);
+
+    if (error) {
+      console.error(
+        "Could not remove reaction:",
+        error
+      );
+
+      button.disabled = false;
+      return;
+    }
+
+  } else {
+
+    const { error } = await supabaseClient
+      .from("group_message_reactions")
+      .insert({
+        message_id: message.id,
+        user_id: user.id,
+        emoji: emoji
+      });
+
+    if (error) {
+      console.error(
+        "Could not add reaction:",
+        error
+      );
+
+      button.disabled = false;
+      return;
+    }
+  }
+
+picker.remove();
+
+await loadMessages();
+
+});
+
+picker.appendChild(button);
+
+});
+
+messageMain.style.position = "relative";
+messageMain.appendChild(picker);
+
+}
+    // Top line
+    const topLine =
+      document.createElement("div");
+
+    topLine.className =
+      "message-topline";
+
+
+    const name =
+      document.createElement("span");
+
+    name.className =
+      isOwnMessage
+        ? "message-name owner-name"
+        : "message-name";
+
+    name.textContent =
+      memberName;
+
+
+    const time =
+      document.createElement("span");
+
+    time.className =
+      "message-time";
+
+    time.textContent =
+      formatTime(message.created_at);
+
+
+    topLine.appendChild(name);
+
+if (isAdmin) {
+
+  const ownerBadge =
+    document.createElement("span");
+
+  ownerBadge.className =
+    "owner-badge";
+
+  ownerBadge.textContent =
+    "OWNER";
+
+  topLine.appendChild(ownerBadge);
+
+}
+
+topLine.appendChild(time);
+
+
+    // Message text
+    const text =
+      document.createElement("p");
+
+    text.className =
+      "message-text";
+
+    // textContent prevents members injecting HTML/JS.
+    text.textContent =
+      message.message;
+
+
+    messageMain.appendChild(topLine);
+    // Show the original message when this is a reply
+if (message.reply_to_id) {
+
+  const {
+    data: repliedMessage,
+    error: replyError
+  } = await supabaseClient
+    .from("group_messages")
+    .select("id, user_id, message")
+    .eq("id", message.reply_to_id)
+    .maybeSingle();
+
+  if (!replyError && repliedMessage) {
+
+    const repliedProfile =
+      await getProfile(repliedMessage.user_id);
+
+    const repliedName =
+      repliedProfile?.full_name?.trim() ||
+      "Member";
+
+    const replyQuote =
+      document.createElement("div");
+
+    replyQuote.className =
+      "message-reply-quote";
+
+    const replyQuoteName =
+      document.createElement("span");
+
+    replyQuoteName.className =
+      "message-reply-quote-name";
+
+    replyQuoteName.textContent =
+      repliedName;
+
+    const replyQuoteText =
+      document.createElement("span");
+
+    replyQuoteText.className =
+      "message-reply-quote-text";
+
+    replyQuoteText.textContent =
+      repliedMessage.message;
+
+    replyQuote.appendChild(replyQuoteName);
+    replyQuote.appendChild(replyQuoteText);
+
+    messageMain.appendChild(replyQuote);
+  }
+}
+    messageMain.appendChild(text);
+ // =====================================================
+// SAVED REACTION COUNTS
+// =====================================================
+
+const reactionBar =
+  document.createElement("div");
+
+reactionBar.className =
+  "message-reactions";
+
+const {
+  data: savedReactions,
+  error: reactionsError
+} = await supabaseClient
+  .from("group_message_reactions")
+  .select("id, user_id, emoji")
+  .eq("message_id", message.id);
+
+if (reactionsError) {
+  console.error(
+    "Could not load reactions:",
+    reactionsError
+  );
+}
+
+const reactionEmojis =
+  ["❤️", "👍", "😂", "🔥"];
+
+reactionEmojis.forEach((emoji) => {
+
+  const emojiReactions =
+    (savedReactions || []).filter(
+      reaction => reaction.emoji === emoji
+    );
+
+  // Only show reactions that somebody has actually used
+  if (emojiReactions.length === 0) {
+    return;
+  }
+
+  const reactionCount =
+    document.createElement("span");
+
+  reactionCount.className =
+    "reaction";
+
+  reactionCount.textContent =
+    `${emoji} ${emojiReactions.length}`;
+
+  reactionBar.appendChild(
+    reactionCount
+  );
+
+});
+
+if (reactionBar.children.length > 0) {
+  messageMain.appendChild(reactionBar);
+}
+    // Reply button
+const replyButton =
+  document.createElement("button");
+
+replyButton.type = "button";
+replyButton.className = "message-reply-button";
+replyButton.textContent = "Reply";
+replyButton.title = "Reply to this message";
+
+replyButton.addEventListener("click", () => {
+
+ replyingToMessage = {
+  id: message.id,
+  name: memberName,
+  message: message.message
+};
+
+replyPreviewLabel.textContent =
+  `Replying to ${memberName}`;
+
+replyPreviewText.textContent =
+  message.message.length > 100
+    ? `${message.message.slice(0, 100)}…`
+    : message.message;
+
+replyPreview.hidden = false;
+
+messageInput.focus();
+
+});
+
+messageMain.appendChild(replyButton);
+   // Owner can delete any message.
+// Members can delete their own messages.
+if (currentUserIsAdmin || isOwnMessage) {
+
+  const deleteButton =
+    document.createElement("button");
+
+  deleteButton.type = "button";
+  deleteButton.className = "message-delete-button";
+  deleteButton.textContent = "Delete";
+  deleteButton.title = "Delete message";
+deleteButton.addEventListener("click", async () => {
+
+  const confirmed =
+    window.confirm(
+      "Delete this message from the group?"
+    );
+
+  if (!confirmed) {
+    return;
+  }
+
+  deleteButton.disabled = true;
+  deleteButton.textContent = "Deleting...";
+
+  const { error } =
+    await supabaseClient
+      .from("group_messages")
+      .delete()
+      .eq("id", message.id);
+
+  if (error) {
+
+    console.error(
+      "Could not delete message:",
+      error
+    );
+
+    deleteButton.disabled = false;
+    deleteButton.textContent = "Delete";
+
+    alert("Could not delete this message.");
+
+    return;
+  }
+
+  messageRow.remove();
+
+});
+  messageMain.appendChild(deleteButton);
+
+}
+    messageRow.appendChild(avatar);
+    messageRow.appendChild(messageMain);
+
+    messagesContainer.appendChild(messageRow);
+  }
+
+   // =====================================================
+// LOAD PINNED MESSAGE
+// =====================================================
+
+async function loadPinnedMessage() {
+
+  const pinnedMessage =
+    document.getElementById("pinnedMessage");
+
+  const pinnedBy =
+    document.getElementById("pinnedBy");
+
+  if (!pinnedMessage || !pinnedBy) {
+    return;
+  }
+
+  const {
+    data,
+    error
+  } = await supabaseClient
+    .from("group_pinned_messages")
+    .select("id, message, pinned_by, created_at")
+    .order("created_at", {
+      ascending: false
+    })
+    .limit(1)
+    .maybeSingle();
+
+  if (error) {
+    console.error(
+      "Could not load pinned message:",
+      error
+    );
+
+    pinnedBy.textContent =
+      "PINNED MESSAGE";
+
+    pinnedMessage.textContent =
+      "No pinned message.";
+
+    return;
+  }
+
+  if (!data) {
+    pinnedBy.textContent =
+      "PINNED MESSAGE";
+
+    pinnedMessage.textContent =
+      "No pinned message yet.";
+
+    return;
+  }
+
+  const profile =
+    await getProfile(data.pinned_by);
+
+  const pinnedName =
+    profile?.full_name?.trim() ||
+    "Owner";
+
+  pinnedBy.textContent =
+    `PINNED BY ${pinnedName.toUpperCase()}`;
+
+  pinnedMessage.textContent =
+    data.message;
+}
+  // =====================================================
+  // LOAD SAVED CHAT HISTORY
+  // =====================================================
+  await loadPinnedMessage();
+  async function loadMessages() {
+
+    composerNote.textContent =
+      "Loading messages...";
+
+    const {
+      data,
+      error
+    } = await supabaseClient
+      .from("group_messages")
+ .select("id, user_id, message, created_at, reply_to_id, message_type, deal_image, deal_hotel, deal_destination, deal_price, deal_duration, deal_board, deal_details, deal_link")
+      .order("created_at", {
+        ascending: true
+      })
+      .limit(200);
+
+    if (error) {
+
+      console.error(
+        "Could not load group messages:",
+        error
+      );
+
+      composerNote.textContent =
+        "Messages could not be loaded.";
+
+      return;
+    }
+
+
+    // Removes the fake demo messages.
+    messagesContainer.innerHTML = "";
+
+
+    const divider =
+      document.createElement("div");
+
+    divider.className =
+      "day-divider";
+
+    divider.textContent =
+      "GROUP CHAT";
+
+    messagesContainer.appendChild(divider);
+
+
+    for (const message of data || []) {
+      await renderMessage(message);
+    }
+
+
+    composerNote.textContent =
+      "Be respectful. Messages are visible to GoldenGetaways members.";
+
+    scrollToBottom();
+  }
+
+
+  // =====================================================
+  // SEND MESSAGE
+  // =====================================================
+
+  let sending = false;
+  let replyingToMessage = null;
+  function cancelReply() {
+
+  replyingToMessage = null;
+
+  replyPreview.hidden = true;
+
+  replyPreviewLabel.textContent =
+    "Replying to Member";
+
+  replyPreviewText.textContent =
+    "Message";
+
+}
+
+cancelReplyButton.addEventListener(
+  "click",
+  cancelReply
+);
+  async function sendMessage() {
+
+    if (sending) {
+      return;
+    }
+
+
+    const message =
+      messageInput.value.trim();
+
+
+    if (!message) {
+      return;
+    }
+
+
+    if (message.length > 1000) {
+
+      composerNote.textContent =
+        "Messages must be 1,000 characters or less.";
+
+      return;
+    }
+
+
+    sending = true;
+
+    sendButton.disabled = true;
+
+    const originalMessage =
+      messageInput.value;
+      const replyBeingSent =
+  replyingToMessage;
+
+
+    messageInput.value = "";
+
+
+    const {
+      data,
+      error
+    } = await supabaseClient
+    .from("group_messages")
+.insert({
+  user_id: user.id,
+  message: message,
+  reply_to_id: replyBeingSent
+    ? replyBeingSent.id
+    : null
+})
+.select(
+  "id, user_id, message, created_at, reply_to_id"
+)
+.single();
+
+
+    sending = false;
+
+    sendButton.disabled = false;
+
+
+    if (error) {
+
+      console.error(
+        "Could not send message:",
+        error
+      );
+
+      messageInput.value =
+        originalMessage;
+
+      composerNote.textContent =
+        "Message failed to send. Please try again.";
+
+      return;
+    }
+
+
+   replyingToMessage = null;
+
+if (replyPreview) {
+  replyPreview.hidden = true;
+}
+    composerNote.textContent =
+      "Be respectful. Messages are visible to GoldenGetaways members.";
+
+    scrollToBottom();
+
+    messageInput.focus();
+  }
+
+
+  // =====================================================
+  // FORM SUBMIT
+  // =====================================================
+
+  chatForm.addEventListener(
+    "submit",
+    async (event) => {
+
+      event.preventDefault();
+
+      await sendMessage();
+    }
+  );
+  // =====================================================
+// POST HOLIDAY DEAL
+// =====================================================
+
+const holidayDealForm =
+  document.getElementById("holidayDealForm");
+
+if (holidayDealForm) {
+  holidayDealForm.addEventListener(
+    "submit",
+    async (event) => {
+      event.preventDefault();
+
+      // Admin only
+      if (user.id !== ADMIN_USER_ID) {
+        alert("Admin only.");
+        return;
+      }
+
+      const imageFile =
+        document.getElementById("dealImage").files[0];
+
+      const hotel =
+        document.getElementById("dealHotel").value.trim();
+
+      const destination =
+        document.getElementById("dealDestination").value.trim();
+
+      const price =
+        document.getElementById("dealPrice").value.trim();
+
+      const duration =
+        document.getElementById("dealDuration").value.trim();
+
+      const board =
+        document.getElementById("dealBoard").value.trim();
+
+      const details =
+        document.getElementById("dealDetails").value.trim();
+
+      const link =
+        document.getElementById("dealLink").value.trim();
+
+      if (!imageFile || !hotel || !destination || !price || !link) {
+        alert("Please fill in all required fields.");
+        return;
+      }
+
+      if (!imageFile.type.startsWith("image/")) {
+        alert("Please choose an image file.");
+        return;
+      }
+
+      if (imageFile.size > 10 * 1024 * 1024) {
+        alert("Image must be under 10MB.");
+        return;
+      }
+
+      let holidayUrl;
+
+      try {
+        holidayUrl = new URL(link);
+      } catch {
+        alert("Please enter a valid holiday link.");
+        return;
+      }
+
+      if (
+        holidayUrl.protocol !== "https:" &&
+        holidayUrl.protocol !== "http:"
+      ) {
+        alert("Holiday link must start with http:// or https://");
+        return;
+      }
+
+      const submitButton =
+        holidayDealForm.querySelector(
+          ".holiday-deal-submit"
+        );
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Posting Deal...";
+
+      const extension =
+        imageFile.name.split(".").pop() || "jpg";
+
+      const filePath =
+        `${user.id}/${Date.now()}-${crypto.randomUUID()}.${extension}`;
+
+      const {
+        error: uploadError
+      } = await supabaseClient.storage
+        .from("holiday-deals")
+        .upload(
+          filePath,
+          imageFile,
+          {
+            cacheControl: "3600",
+            upsert: false
+          }
+        );
+
+      if (uploadError) {
+        console.error(
+          "Holiday image upload failed:",
+          uploadError
+        );
+
+        alert("Image upload failed. Please try again.");
+
+        submitButton.disabled = false;
+        submitButton.textContent = "Post Holiday Deal →";
+        return;
+      }
+
+      const {
+        data: publicUrlData
+      } = supabaseClient.storage
+        .from("holiday-deals")
+        .getPublicUrl(filePath);
+
+      const imageUrl =
+        publicUrlData.publicUrl;
+
+      const {
+        error: dealError
+      } = await supabaseClient
+        .from("group_messages")
+        .insert({
+          user_id: user.id,
+          message: `Holiday deal: ${hotel}`,
+          message_type: "holiday_deal",
+          deal_image: imageUrl,
+          deal_hotel: hotel,
+          deal_destination: destination,
+          deal_price: price,
+          deal_duration: duration || null,
+          deal_board: board || null,
+          deal_details: details || null,
+          deal_link: holidayUrl.href,
+          reply_to_id: null
+        });
+
+      if (dealError) {
+        console.error(
+          "Holiday deal failed to post:",
+          dealError
+        );
+
+        alert("Holiday deal failed to post.");
+
+        submitButton.disabled = false;
+        submitButton.textContent = "Post Holiday Deal →";
+        return;
+      }
+
+      holidayDealForm.reset();
+      holidayDealModal.hidden = true;
+
+      submitButton.disabled = false;
+      submitButton.textContent = "Post Holiday Deal →";
+
+      await loadMessages();
+      scrollToBottom();
+    }
+  );
+}
+
+
+  // =====================================================
+  // SUPABASE REALTIME
+  // =====================================================
+
+  // =====================================================
+// REAL ONLINE MEMBERS — SUPABASE PRESENCE
+// =====================================================
+
+const onlineMembersContainer =
+  document.getElementById("onlineMembers");
+
+const onlineCount =
+  document.getElementById("onlineCount");
+
+
+function renderOnlineMembers(state) {
+
+  const members = [];
+
+  Object.values(state).forEach((presences) => {
+
+    presences.forEach((presence) => {
+
+      // Prevent same account appearing multiple times
+      if (
+        !members.some(
+          member => member.user_id === presence.user_id
+        )
+      ) {
+        members.push(presence);
+      }
+
+    });
+
+  });
+
+
+  // Update number at top
+  if (onlineCount) {
+
+    onlineCount.textContent =
+      members.length === 1
+        ? "1 member online"
+        : `${members.length} members online`;
+
+  }
+
+
+  // Update sidebar
+  if (!onlineMembersContainer) {
+    return;
+  }
+
+
+  onlineMembersContainer.innerHTML = "";
+
+
+  if (members.length === 0) {
+
+    const empty =
+      document.createElement("span");
+
+    empty.className =
+      "member-role";
+
+    empty.textContent =
+      "No members online";
+
+    onlineMembersContainer.appendChild(empty);
+
+    return;
+  }
+
+
+  members.forEach((member) => {
+
+    const row =
+      document.createElement("div");
+
+    row.className =
+      "online-member";
+
+
+    const avatar =
+      document.createElement("div");
+
+    avatar.className =
+      member.is_admin
+        ? "member-avatar owner"
+        : "member-avatar";
+
+    avatar.textContent =
+      getInitials(member.name || "Member");
+
+
+    const dot =
+      document.createElement("span");
+
+    dot.className =
+      "member-online-dot";
+
+    avatar.appendChild(dot);
+
+
+    const info =
+      document.createElement("div");
+
+    info.className =
+      "member-info";
+
+
+    const name =
+      document.createElement("span");
+
+    name.className =
+      "member-name";
+
+    name.textContent =
+      member.name || "Member";
+
+
+    const role =
+      document.createElement("span");
+
+    role.className =
+      member.is_admin
+        ? "member-role owner-role"
+        : "member-role";
+
+    role.textContent =
+      member.is_admin
+        ? "Owner"
+        : "Member";
+
+
+    info.appendChild(name);
+    info.appendChild(role);
+
+    row.appendChild(avatar);
+    row.appendChild(info);
+
+    onlineMembersContainer.appendChild(row);
+
+  });
+
+}
+
+
+// Create presence channel
+const presenceChannel =
+  supabaseClient.channel(
+    "goldengetaways-online-members",
+    {
+      config: {
+        presence: {
+          key: user.id
+        }
+      }
+    }
+  );
+
+
+presenceChannel
+  .on(
+    "presence",
+    {
+      event: "sync"
+    },
+    () => {
+
+      const state =
+        presenceChannel.presenceState();
+
+      renderOnlineMembers(state);
+
+    }
+  )
+  .subscribe(async (status) => {
+
+    if (status === "SUBSCRIBED") {
+
+      await presenceChannel.track({
+
+        user_id: user.id,
+
+        name: currentName,
+
+        is_admin: currentUserIsAdmin,
+
+        online_at:
+          new Date().toISOString()
+
+      });
+
+    }
+
+  });
+  // =====================================================
+// LIVE REACTION UPDATES
+// =====================================================
+
+const reactionChannel =
+  supabaseClient
+    .channel("goldengetaways-live-reactions")
+    .on(
+      "postgres_changes",
+      {
+        event: "*",
+        schema: "public",
+        table: "group_message_reactions"
+      },
+      async () => {
+
+        await loadMessages();
+
+      }
+    )
+    .subscribe();
+
+  const chatChannel =
+    supabaseClient
+      .channel("goldengetaways-group-chat")
+      .on(
+        "postgres_changes",
+        {
+          event: "INSERT",
+          schema: "public",
+          table: "group_messages"
+        },
+
+        async (payload) => {
+
+          await renderMessage(
+            payload.new
+          );
+
+          scrollToBottom();
+        }
+      )
+      .on(
+  "postgres_changes",
+  {
+    event: "DELETE",
+    schema: "public",
+    table: "group_messages"
+  },
+
+  (payload) => {
+
+    const deletedMessage =
+      document.querySelector(
+        `[data-message-id="${payload.old.id}"]`
+      );
+
+    if (deletedMessage) {
+      deletedMessage.remove();
+    }
+
+  }
+)
+      .subscribe((status) => {
+
+        console.log(
+          "GoldenGetaways realtime:",
+          status
+        );
+      });
+
+
+  // =====================================================
+  // LOAD EVERYTHING
+  // =====================================================
+
+  await loadMessages();
+
+  messageInput.focus();
+
+
+  // =====================================================
+  // CLEAN UP REALTIME
+  // =====================================================
+
+ window.addEventListener(
+  "beforeunload",
+  () => {
+
+    supabaseClient.removeChannel(
+      chatChannel
+    );
+
+    supabaseClient.removeChannel(
+      presenceChannel
+    );
+
+  }
+);
+});
+</script>
+
+
+
+
+
+</body>
+
+</html>

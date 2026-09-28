@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>How It Works | GoldenGetaways</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+
+    .how-hero {
+      position: relative;
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      padding: 155px 5% 90px;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          90deg,
+         rgba(0,17,31,0.62) 0%,
+rgba(0,17,31,0.35) 35%,
+rgba(0,17,31,0.08) 62%,
+rgba(0,17,31,0.00) 100%
+        ),
+       url("images/how.it.works.webp") center/cover no-repeat;
+    }
+
+    .how-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 650px;
+    }
+
+    .how-eyebrow {
+      color: var(--gold-light);
+      font-size: 13px;
+      letter-spacing: 4px;
+      margin-bottom: 22px;
+    }
+
+    .how-hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(52px, 5.5vw, 78px);
+      line-height: 1;
+      font-weight: 400;
+      margin-bottom: 25px;
+    }
+
+    .how-hero h1 em {
+      color: var(--gold-light);
+      font-weight: 400;
+    }
+
+    .how-hero-description {
+      max-width: 590px;
+      font-size: 18px;
+      line-height: 1.65;
+      color: #eeeeee;
+    }
+
+    .real-help {
+      width: fit-content;
+      margin-top: 30px;
+      padding: 14px 22px;
+      border: 1px solid var(--border-gold);
+      border-radius: 8px;
+      color: #f3f3f3;
+    }
+
+
+    /* PROCESS */
+
+    .process-section {
+      padding: 80px 5%;
+      text-align: center;
+      background: #00111f;
+    }
+
+    .process-section h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 42px;
+      font-weight: 400;
+      margin-bottom: 55px;
+    }
+
+    .process-grid {
+      max-width: 1250px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px;
+    }
+
+    .process-step {
+      text-align: center;
+    }
+
+    .process-icon {
+      width: 76px;
+      height: 76px;
+      margin: 0 auto 18px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--gold-light);
+      font-size: 30px;
+    }
+
+    .step-number {
+      color: var(--gold-light);
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .process-step h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .process-step p {
+      color: #cfd3d7;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+
+    /* MESSAGE EXAMPLES */
+
+    .message-section {
+      padding: 25px 5% 80px;
+      background: #00111f;
+    }
+
+    .message-box {
+      max-width: 1250px;
+      margin: auto;
+      border: 1px solid var(--border-gold);
+      border-radius: 22px;
+      padding: 45px 35px;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(5,30,49,0.96),
+          rgba(0,17,31,0.98)
+        );
+    }
+
+    .message-heading {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .message-heading p {
+      color: var(--gold-light);
+      font-size: 12px;
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+    }
+
+    .message-heading h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 42px;
+      font-weight: 400;
+    }
+
+    .message-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .message-card {
+      border: 1px solid rgba(216,161,63,0.45);
+      border-radius: 12px;
+      padding: 24px 16px;
+      text-align: center;
+      min-height: 175px;
+    }
+
+    .message-card .message-icon {
+      color: var(--gold-light);
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .message-card h3 {
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    .message-card p {
+      color: #d6d9dc;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+
+    /* FINAL CTA */
+
+    .how-cta {
+      padding: 0 5% 70px;
+      background: #00111f;
+    }
+
+    .how-cta-box {
+      max-width: 1250px;
+      margin: auto;
+      border: 1px solid var(--border-gold);
+      border-radius: 22px;
+      padding: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      background:
+        linear-gradient(
+          120deg,
+          rgba(4,31,50,0.98),
+          rgba(0,17,31,0.98)
+        );
+    }
+
+    .how-cta-box h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 40px;
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .how-cta-box h2 em {
+      color: var(--gold-light);
+    }
+
+    .how-cta-box p {
+      color: #d6d6d6;
+    }
+
+
+    @media (max-width: 950px) {
+
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .message-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+    }
+
+    @media (max-width: 650px) {
+
+      .how-hero {
+        min-height: 700px;
+        padding: 150px 25px 80px;
+      }
+
+      .how-hero h1 {
+        font-size: 52px;
+      }
+
+      .process-grid,
+      .message-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .how-cta-box {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 35px 25px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <!-- HEADER -->
+
+  <header class="header">
+
+    <a href="index.html" class="logo">
+
+      <div class="logo-icon">
+        <img src="images/logo-small.webp" alt="GoldenGetaways icon">
+      </div>
+
+      <div class="logo-text">
+        <span>GoldenGetaways</span>
+        <small>EST 2025</small>
+      </div>
+
+    </a>
+
+
+   <nav class="desktop-nav">
+
+  <a href="index.html">Home</a>
+
+  <a href="membership.html">
+    Membership
+  </a>
+
+  <a href="our-getaways.html">
+    Our Getaways
+  </a>
+
+  <a href="how-it-works.html" class="active">
+    How It Works
+  </a>
+
+  <a href="reviews.html">Reviews</a>
+  <a href="faq.html">FAQ</a>
+  <a href="join.html">Login / Join</a>
+
+</nav>
+
+
+    <a href="join.html" class="button gold-button header-button">
+      Join Now
+      <span>→</span>
+    </a>
+
+    <button class="mobile-menu-button" id="menuButton">
+      ☰
+    </button>
+   <div class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="membership.html">Membership</a>
+    <a href="how-it-works.html">How It Works</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="faq.html">FAQ</a>
+    <a href="join.html">Login / Join</a>
+    <a href="dashboard.html">Member Dashboard</a>
+</div>
+  </header>
+
+
+  <!-- HERO -->
+
+  <section class="how-hero">
+
+    <div class="how-hero-content">
+
+      <p class="how-eyebrow">
+        HOW IT WORKS
+      </p>
+
+      <h1>
+        Think of us as your<br>
+        <em>personal holiday assistant.</em>
+      </h1>
+
+      <p class="how-hero-description">
+        You message us what you need, we handle the searching,
+        comparing and helping — saving you time, stress and hours
+        of endless searching.
+      </p>
+
+      <div class="real-help">
+        Real people. Real help. Anytime you need it.
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PROCESS -->
+
+  <section class="process-section">
+
+    <p class="how-eyebrow">
+      THE PROCESS
+    </p>
+
+    <h2>
+      Getting help is simple.
+    </h2>
+
+
+    <div class="process-grid">
+
+      <div class="process-step">
+
+        <div class="process-icon">💬</div>
+
+        <div class="step-number">01</div>
+
+        <h3>Tell us what you need</h3>
+
+        <p>
+          Message us what you're looking for.
+          It can be a holiday, hotel, restaurant,
+          activity, problem or recommendation.
+        </p>
+
+      </div>
+
+
+      <div class="process-step">
+
+        <div class="process-icon">⌕</div>
+
+        <div class="step-number">02</div>
+
+        <h3>We do the searching</h3>
+
+        <p>
+          We search and compare the options
+          that actually match what you're
+          looking for.
+        </p>
+
+      </div>
+
+
+      <div class="process-step">
+
+        <div class="process-icon">➤</div>
+
+        <div class="step-number">03</div>
+
+        <h3>We send you options</h3>
+
+        <p>
+          You'll get clear choices so you can
+          compare your options without spending
+          hours searching yourself.
+        </p>
+
+      </div>
+
+
+      <div class="process-step">
+
+        <div class="process-icon">✓</div>
+
+        <div class="step-number">04</div>
+
+        <h3>You choose</h3>
+
+        <p>
+          You're always in control. We help
+          you decide, but the final choice
+          is completely yours.
+        </p>
+
+      </div>
+
+
+      <div class="process-step">
+
+        <div class="process-icon">☏</div>
+
+        <div class="step-number">05</div>
+
+        <h3>Message anytime</h3>
+
+        <p>
+          Before your trip, while you're away
+          or when planning your next one —
+          message us whenever you need help.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MESSAGE EXAMPLES -->
+
+  <section class="message-section">
+
+    <div class="message-box">
+
+      <div class="message-heading">
+
+        <p>WHAT CAN YOU MESSAGE US ABOUT?</p>
+
+        <h2>
+          Whatever you need, just ask.
+        </h2>
+
+      </div>
+
+
+      <div class="message-grid">
+
+        <div class="message-card">
+          <div class="message-icon">♨</div>
+          <h3>Best Restaurant</h3>
+          <p>
+            “What's the best restaurant near my hotel?”
+          </p>
+        </div>
+
+
+        <div class="message-card">
+          <div class="message-icon">🏷</div>
+          <h3>Cheapest Option</h3>
+          <p>
+            “Where can I find the cheapest place for this?”
+          </p>
+        </div>
+
+
+        <div class="message-card">
+          <div class="message-icon">♢</div>
+          <h3>Best Bar</h3>
+          <p>
+            “What's the best bar around here?”
+          </p>
+        </div>
+
+
+        <div class="message-card">
+          <div class="message-icon">☀</div>
+          <h3>Activities</h3>
+          <p>
+            “What activities are close to me?”
+          </p>
+        </div>
+
+
+        <div class="message-card">
+          <div class="message-icon">▤</div>
+          <h3>Hotel Advice</h3>
+          <p>
+            “Which hotel is better out of these two?”
+          </p>
+        </div>
+
+
+        <div class="message-card">
+          <div class="message-icon">♡</div>
+          <h3>Date Night</h3>
+          <p>
+            “Find me somewhere nice for date night.”
+          </p>
+        </div>
+
+
+        <div class="message-card">
+          <div class="message-icon">🚕</div>
+          <h3>Getting Around</h3>
+          <p>
+            “What's the cheapest way to get from the airport?”
+          </p>
+        </div>
+
+
+        <div class="message-card">
+          <div class="message-icon">⌖</div>
+          <h3>Things To Do</h3>
+          <p>
+            “Is there anything worth doing near my resort tonight?”
+          </p>
+        </div>
+
+
+        <div class="message-card">
+          <div class="message-icon">☼</div>
+          <h3>Holiday Ideas</h3>
+          <p>
+            “Find me somewhere warm in December.”
+          </p>
+        </div>
+
+
+        <div class="message-card">
+          <div class="message-icon">💬</div>
+          <h3>Booking Problems</h3>
+          <p>
+            “I've got a problem with my booking — what should I do?”
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FINAL CTA -->
+
+  <section class="how-cta">
+
+    <div class="how-cta-box">
+
+      <div>
+
+        <h2>
+          You don't have to spend hours searching.<br>
+          <em>Just message us.</em>
+        </h2>
+
+        <p>
+          We'll help you find what you need so you can
+          focus on enjoying your trip.
+        </p>
+
+      </div>
+
+
+      <a href="join.html" class="button gold-button">
+        Join GoldenGetaways
+        <span>→</span>
+      </a>
+
+    </div>
+
+  </section>
+ <script>
+const mobileMenuButton = document.querySelector(".mobile-menu-button");
+const mobileMenu = document.querySelector(".mobile-menu");
+
+if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener("click", function () {
+        mobileMenu.classList.toggle("open");
+    });
+}
+</script>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>

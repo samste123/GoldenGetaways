@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Membership | GoldenGetaways</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy: #00111f;
+      --navy-light: #062238;
+      --gold: #d8a13f;
+      --gold-light: #f0bd5c;
+      --white: #f8f5ef;
+      --muted: #aeb7c1;
+      --border: rgba(216,161,63,0.28);
+      --soft-border: rgba(255,255,255,0.08);
+    }
+
+    body {
+      min-height: 100vh;
+
+      background:
+        radial-gradient(
+          circle at 70% 10%,
+          #08263c 0%,
+          #00111f 38%,
+          #000b15 100%
+        );
+
+      color: var(--white);
+
+      font-family:
+        "DM Sans",
+        sans-serif;
+
+      padding: 45px 25px 70px;
+    }
+
+    .page {
+      width: min(1050px,100%);
+      margin: auto;
+    }
+
+    .back {
+      display: inline-block;
+
+      color: var(--gold-light);
+
+      margin-bottom: 35px;
+
+      text-decoration: none;
+    }
+
+    .eyebrow {
+      color: var(--gold-light);
+
+      letter-spacing: 3px;
+      font-size: 11px;
+
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 52px;
+      font-weight: 400;
+
+      margin-bottom: 12px;
+    }
+
+    .intro {
+      color: var(--muted);
+
+      line-height: 1.6;
+
+      margin-bottom: 35px;
+    }
+
+    .membership-card {
+      padding: 36px;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 22px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(7,29,47,0.98),
+          rgba(1,15,27,0.98)
+        );
+    }
+
+    .status-row {
+      padding-bottom: 28px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 25px;
+
+      border-bottom:
+        1px solid
+        var(--soft-border);
+    }
+
+    .status-label {
+      color: var(--muted);
+
+      font-size: 13px;
+
+      margin-bottom: 6px;
+    }
+
+    .status-value {
+      color: var(--gold-light);
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 34px;
+
+      text-transform: capitalize;
+    }
+
+    .price {
+      text-align: right;
+    }
+
+    .price strong {
+      color: var(--gold-light);
+
+      font-size: 30px;
+    }
+
+    .price span {
+      color: var(--muted);
+    }
+
+    .price-note {
+      display: block;
+
+      color: var(--muted);
+
+      font-size: 11px;
+
+      margin-top: 5px;
+    }
+
+    .details {
+      margin-top: 28px;
+
+      display: grid;
+      grid-template-columns:
+        repeat(2,1fr);
+
+      gap: 18px;
+    }
+
+    .detail-card {
+      padding: 22px;
+
+      border:
+        1px solid
+        var(--soft-border);
+
+      border-radius: 14px;
+
+      background:
+        rgba(255,255,255,0.02);
+    }
+
+    .detail-card small {
+      display: block;
+
+      color: var(--muted);
+
+      margin-bottom: 7px;
+    }
+
+    .detail-card strong {
+      font-size: 17px;
+    }
+
+    .manage-box {
+      margin-top: 30px;
+
+      padding: 28px;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 16px;
+
+      background:
+        rgba(216,161,63,0.04);
+    }
+
+    .manage-box h2 {
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 28px;
+      font-weight: 400;
+
+      margin-bottom: 8px;
+    }
+
+    .manage-box p {
+      color: var(--muted);
+
+      line-height: 1.6;
+
+      margin-bottom: 22px;
+    }
+
+    .manage-button {
+      min-height: 52px;
+
+      padding: 0 24px;
+
+      border: none;
+
+      border-radius: 11px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #b77b24,
+          #e0aa47
+        );
+
+      color: white;
+
+      cursor: pointer;
+
+      font-weight: 500;
+    }
+
+    .manage-button:disabled {
+      opacity: 0.55;
+
+      cursor: not-allowed;
+    }
+
+    .membership-message {
+      display: none;
+
+      margin-top: 15px;
+
+      color: var(--gold-light);
+
+      font-size: 13px;
+    }
+
+    .membership-message.error {
+      color: #ff9f9f;
+    }
+
+    @media (max-width: 650px) {
+      .status-row {
+        flex-direction: column;
+
+        align-items: flex-start;
+      }
+
+      .price {
+        text-align: left;
+      }
+
+      .details {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 42px;
+      }
+
+      .membership-card {
+        padding: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+
+    <a
+      href="dashboard.html"
+      class="back"
+    >
+      ← Back to Dashboard
+    </a>
+
+
+    <p class="eyebrow">
+      YOUR GOLDENGETAWAYS ACCOUNT
+    </p>
+
+
+    <h1>
+      Your Membership
+    </h1>
+
+
+    <p class="intro">
+      View your membership details
+      and manage your subscription.
+    </p>
+
+
+    <section class="membership-card">
+
+
+      <div class="status-row">
+
+
+        <div>
+
+          <div class="status-label">
+            Membership Status
+          </div>
+
+          <div
+            class="status-value"
+            id="membershipStatus"
+          >
+            Loading...
+          </div>
+
+        </div>
+
+
+        <div class="price">
+
+          <strong id="membershipPrice">
+            £2.99
+          </strong>
+
+          <span>
+            / month
+          </span>
+
+          <small
+            class="price-note"
+            id="priceNote"
+          >
+            GoldenGetaways Membership
+          </small>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="details">
+
+
+        <div class="detail-card">
+
+          <small>
+            Member Since
+          </small>
+
+          <strong id="memberSince">
+            Loading...
+          </strong>
+
+        </div>
+
+
+        <div class="detail-card">
+
+          <small>
+            Next Renewal
+          </small>
+
+          <strong id="renewalDate">
+            Loading...
+          </strong>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="manage-box">
+
+        <h2 id="manageTitle">
+          Manage your membership
+        </h2>
+
+
+        <p id="manageDescription">
+          Update your billing details,
+          payment method or cancel your
+          GoldenGetaways membership securely
+          through Stripe.
+        </p>
+
+
+        <button
+          class="manage-button"
+          id="manageMembershipButton"
+          type="button"
+        >
+          Loading...
+        </button>
+
+
+        <div
+          class="membership-message"
+          id="membershipMessage"
+        ></div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+
+
+  <script>
+
+    const CURRENT_PRICE_ID =
+      "price_1TOO8oCvUIaaFeQJk2NFafkt";
+
+
+    let currentMembershipStatus =
+      "pending";
+
+
+
+    // =====================================
+    // FORMAT DATE
+    // =====================================
+
+    function formatDate(value) {
+
+      if (!value) {
+        return "Not available yet";
+      }
+
+
+      const date =
+        new Date(value);
+
+
+      if (
+        Number.isNaN(
+          date.getTime()
+        )
+      ) {
+        return "Not available yet";
+      }
+
+
+      return date.toLocaleDateString(
+        "en-GB",
+        {
+          day: "numeric",
+          month: "short",
+          year: "numeric"
+        }
+      );
+
+    }
+
+
+
+    // =====================================
+    // LOAD MEMBERSHIP
+    // =====================================
+
+    async function loadMembership() {
+
+      const {
+        data: { session }
+      } =
+        await supabaseClient.auth.getSession();
+
+
+      if (!session) {
+
+        window.location.href =
+          "join.html";
+
+        return;
+      }
+
+
+      const {
+        data: profile,
+        error
+      } =
+        await supabaseClient
+          .from("profiles")
+          .select(`
+            membership_status,
+            member_since,
+            membership_renewal_date,
+            stripe_price_id,
+            stripe_customer_id,
+            stripe_subscription_id
+          `)
+          .eq(
+            "id",
+            session.user.id
+          )
+          .maybeSingle();
+
+
+      if (error) {
+
+        console.error(
+          "Membership profile error:",
+          error
+        );
+
+
+        document
+          .getElementById(
+            "membershipStatus"
+          )
+          .textContent =
+            "Unavailable";
+
+
+        return;
+      }
+
+
+
+      // =================================
+      // STATUS
+      // =================================
+
+      currentMembershipStatus =
+        (
+          profile?.membership_status ||
+          "pending"
+        )
+          .toLowerCase();
+
+
+      const displayStatus =
+        currentMembershipStatus
+          .charAt(0)
+          .toUpperCase() +
+        currentMembershipStatus
+          .slice(1);
+
+
+      document
+        .getElementById(
+          "membershipStatus"
+        )
+        .textContent =
+          displayStatus;
+
+
+
+      // =================================
+      // MEMBERSHIP PRICE
+      // =================================
+
+      const priceElement =
+        document.getElementById(
+          "membershipPrice"
+        );
+
+
+      const priceNote =
+        document.getElementById(
+          "priceNote"
+        );
+
+
+      if (
+        profile?.stripe_price_id ===
+        CURRENT_PRICE_ID
+      ) {
+
+        priceElement.textContent =
+          "£2.99";
+
+
+        priceNote.textContent =
+          "Current membership plan";
+
+      } else if (
+        profile?.stripe_price_id
+      ) {
+
+        /*
+          Existing legacy GoldenGetaways
+          subscriptions use the previous
+          £1.49 monthly membership.
+        */
+
+        priceElement.textContent =
+          "£1.49";
+
+
+        priceNote.textContent =
+          "Founding member price";
+
+      } else {
+
+        priceElement.textContent =
+          "£2.99";
+
+
+        priceNote.textContent =
+          currentMembershipStatus ===
+          "active"
+            ? "Membership price"
+            : "Current membership price";
+
+      }
+
+
+
+      // =================================
+      // MEMBER SINCE
+      // =================================
+
+      document
+        .getElementById(
+          "memberSince"
+        )
+        .textContent =
+          formatDate(
+            profile?.member_since
+          );
+
+
+
+      // =================================
+      // RENEWAL DATE
+      // =================================
+
+      const renewalElement =
+        document.getElementById(
+          "renewalDate"
+        );
+
+
+      if (
+        currentMembershipStatus ===
+        "cancelled"
+      ) {
+
+        renewalElement.textContent =
+          "Membership cancelled";
+
+      } else if (
+        currentMembershipStatus ===
+        "active"
+      ) {
+
+        renewalElement.textContent =
+          formatDate(
+            profile
+              ?.membership_renewal_date
+          );
+
+      } else {
+
+        renewalElement.textContent =
+          "Not active yet";
+
+      }
+
+
+
+      // =================================
+      // BUTTON CONTENT
+      // =================================
+
+      updateMembershipControls();
+
+    }
+
+
+
+    // =====================================
+    // MEMBERSHIP CONTROLS
+    // =====================================
+
+    function updateMembershipControls() {
+
+      const button =
+        document.getElementById(
+          "manageMembershipButton"
+        );
+
+
+      const title =
+        document.getElementById(
+          "manageTitle"
+        );
+
+
+      const description =
+        document.getElementById(
+          "manageDescription"
+        );
+
+
+      if (
+        currentMembershipStatus ===
+        "active"
+      ) {
+
+        title.textContent =
+          "Manage your membership";
+
+
+        description.textContent =
+          "Update your billing details, payment method or cancel your GoldenGetaways membership securely through Stripe.";
+
+
+        button.textContent =
+          "Manage / Cancel Membership →";
+
+      } else if (
+        currentMembershipStatus ===
+        "cancelled"
+      ) {
+
+        title.textContent =
+          "Restart your membership";
+
+
+        description.textContent =
+          "Your membership is currently cancelled. Restart your GoldenGetaways membership to regain active member access.";
+
+
+        button.textContent =
+          "Restart Membership →";
+
+      } else {
+
+        title.textContent =
+          "Activate your membership";
+
+
+        description.textContent =
+          "Complete your GoldenGetaways membership securely through Stripe to activate your member benefits.";
+
+
+        button.textContent =
+          "Activate Membership →";
+
+      }
+
+    }
+
+
+
+    // =====================================
+    // MANAGE / CHECKOUT
+    // =====================================
+
+    document
+      .getElementById(
+        "manageMembershipButton"
+      )
+      .addEventListener(
+        "click",
+        async () => {
+
+          const button =
+            document.getElementById(
+              "manageMembershipButton"
+            );
+
+
+          const message =
+            document.getElementById(
+              "membershipMessage"
+            );
+
+
+          message.style.display =
+            "none";
+
+
+          message.classList.remove(
+            "error"
+          );
+
+
+          const {
+            data: { session }
+          } =
+            await supabaseClient
+              .auth
+              .getSession();
+
+
+          if (!session) {
+
+            window.location.href =
+              "join.html";
+
+            return;
+          }
+
+
+          button.disabled =
+            true;
+
+
+          button.textContent =
+            currentMembershipStatus ===
+            "active"
+              ? "Opening Stripe..."
+              : "Opening Checkout...";
+
+
+
+          const functionName =
+            currentMembershipStatus ===
+            "active"
+              ? "create-portal-session"
+              : "create-checkout-session";
+
+
+
+          const {
+            data,
+            error
+          } =
+            await supabaseClient
+              .functions
+              .invoke(
+                functionName,
+                {
+                  body: {}
+                }
+              );
+
+
+
+          if (error) {
+
+            console.error(
+              "Membership function error:",
+              error
+            );
+
+
+            message.textContent =
+              "We couldn't open your membership settings. Please try again.";
+
+
+            message.classList.add(
+              "error"
+            );
+
+
+            message.style.display =
+              "block";
+
+
+            button.disabled =
+              false;
+
+
+            updateMembershipControls();
+
+
+            return;
+          }
+
+
+
+          if (
+            data?.existing_member
+          ) {
+
+            message.textContent =
+              "Your existing membership was found and linked successfully.";
+
+
+            message.style.display =
+              "block";
+
+
+            setTimeout(
+              () => {
+                window.location.reload();
+              },
+              1000
+            );
+
+
+            return;
+          }
+
+
+
+          if (
+            data?.url
+          ) {
+
+            window.location.href =
+              data.url;
+
+            return;
+          }
+
+
+
+          message.textContent =
+            "Stripe didn't return a checkout link. Please try again.";
+
+
+          message.classList.add(
+            "error"
+          );
+
+
+          message.style.display =
+            "block";
+
+
+          button.disabled =
+            false;
+
+
+          updateMembershipControls();
+
+        }
+      );
+
+
+
+    // =====================================
+    // LOAD
+    // =====================================
+
+    async function startAfterEmailVerification() {
+    await loadMembership();
+
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get("checkout") !== "1") {
+        return;
+    }
+
+    // Remove checkout=1 so refreshing doesn't reopen Stripe
+    window.history.replaceState(
+        {},
+        "",
+        window.location.pathname
+    );
+
+    const {
+        data: { session }
+    } = await supabaseClient.auth.getSession();
+
+    if (!session) {
+        return;
+    }
+
+    const { data, error } =
+        await supabaseClient.functions.invoke(
+            "create-checkout-session",
+            {
+                body: {}
+            }
+        );
+
+    if (error) {
+        console.error("Checkout error:", error);
+        return;
+    }
+
+    if (data?.existing_member) {
+     window.location.href = "member-membership.html?checkout=1";
+        return;
+    }
+
+    if (data?.url) {
+        window.location.href = data.url;
+    }
+}
+
+startAfterEmailVerification();
+
+  </script>
+
+</body>
+</html>

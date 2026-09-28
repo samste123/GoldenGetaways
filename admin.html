@@ -1,0 +1,4375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Admin | GoldenGetaways</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy: #00111f;
+      --navy-2: #021b2d;
+      --gold: #d8a13f;
+      --gold-light: #f0bd5c;
+      --white: #f8f5ef;
+      --muted: #aeb7c1;
+      --border: rgba(216,161,63,0.25);
+      --soft-border: rgba(255,255,255,0.08);
+      --green: #69d69b;
+      --red: #ff8d8d;
+      --blue: #78baff;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "DM Sans", sans-serif;
+      color: var(--white);
+
+      background:
+        radial-gradient(
+          circle at 70% 10%,
+          #08263c 0%,
+          #00111f 38%,
+          #000b15 100%
+        );
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* ACCESS */
+
+    .access-screen {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 30px;
+    }
+
+    .access-card {
+      width: min(500px,100%);
+      padding: 40px;
+      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(7,29,47,0.98),
+          rgba(1,15,27,0.98)
+        );
+    }
+
+    .access-card h1 {
+      font-family: "Playfair Display", serif;
+      color: var(--gold-light);
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .access-card p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* LAYOUT */
+
+    .admin-layout {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 270px 1fr;
+    }
+
+    .sidebar {
+      height: 100vh;
+      position: sticky;
+      top: 0;
+      padding: 30px 20px;
+
+      display: flex;
+      flex-direction: column;
+
+      border-right: 1px solid rgba(216,161,63,0.15);
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(1,18,31,0.99),
+          rgba(0,11,21,0.99)
+        );
+    }
+
+    .brand {
+      margin-bottom: 35px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    .brand strong {
+      display: block;
+      font-family: "Playfair Display", serif;
+      color: var(--gold-light);
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    .brand small {
+      color: var(--muted);
+      letter-spacing: 2px;
+      font-size: 9px;
+    }
+
+    .admin-label {
+      margin-bottom: 18px;
+      color: var(--gold-light);
+      font-size: 10px;
+      letter-spacing: 3px;
+    }
+
+    .nav {
+      display: grid;
+      gap: 7px;
+    }
+
+    .nav-button {
+      min-height: 48px;
+      padding: 0 14px;
+
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      border: 1px solid transparent;
+      border-radius: 11px;
+
+      background: transparent;
+      color: #c5ccd3;
+      text-align: left;
+    }
+
+    .nav-button:hover {
+      color: white;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .nav-button.active {
+      color: var(--gold-light);
+      border-color: rgba(216,161,63,0.3);
+      background: rgba(216,161,63,0.08);
+    }
+
+    .sidebar-bottom {
+      margin-top: auto;
+    }
+
+    .dashboard-link,
+    .logout-button {
+      width: 100%;
+      min-height: 46px;
+      margin-top: 10px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid var(--border);
+      border-radius: 11px;
+
+      background: transparent;
+      color: var(--gold-light);
+    }
+
+    /* MAIN */
+
+    .main {
+      width: 100%;
+      padding: 38px 42px 70px;
+      overflow: hidden;
+    }
+
+    .topbar {
+      margin-bottom: 30px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .eyebrow {
+      margin-bottom: 7px;
+      color: var(--gold-light);
+      font-size: 10px;
+      letter-spacing: 3px;
+    }
+
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 45px;
+      font-weight: 400;
+    }
+
+    .topbar p {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .refresh-button {
+      min-height: 44px;
+      padding: 0 18px;
+
+      border: 1px solid var(--border);
+      border-radius: 10px;
+
+      background: transparent;
+      color: var(--gold-light);
+    }
+
+    /* STATS */
+
+    .stats-grid {
+      margin-bottom: 25px;
+
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 16px;
+    }
+
+    .stat-card {
+      min-height: 130px;
+      padding: 22px;
+
+      border: 1px solid var(--border);
+      border-radius: 16px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(7,29,47,0.96),
+          rgba(1,15,27,0.98)
+        );
+    }
+
+    .stat-card small {
+      display: block;
+      margin-bottom: 9px;
+      color: var(--muted);
+    }
+
+    .stat-card strong {
+      font-family: "Playfair Display", serif;
+      color: var(--gold-light);
+      font-size: 33px;
+      font-weight: 400;
+    }
+
+    /* SECTIONS */
+
+    .admin-section {
+      display: none;
+    }
+
+    .admin-section.active {
+      display: block;
+    }
+
+    .panel {
+      margin-bottom: 24px;
+      padding: 26px;
+
+      border: 1px solid var(--border);
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(7,29,47,0.96),
+          rgba(1,15,27,0.97)
+        );
+    }
+
+    .panel-header {
+      margin-bottom: 22px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .panel-header h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+      font-weight: 400;
+    }
+
+    .panel-header p {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .search-input {
+      width: min(300px,100%);
+      height: 44px;
+      padding: 0 14px;
+
+      border: 1px solid var(--soft-border);
+      border-radius: 10px;
+
+      outline: none;
+      background: rgba(255,255,255,0.025);
+      color: white;
+    }
+
+    /* TABLE */
+
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      min-width: 850px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 14px 12px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--soft-border);
+      font-size: 12px;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    td {
+      color: #e5e7e9;
+    }
+
+    .member-name {
+      color: white;
+      font-weight: 500;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .id-text {
+      max-width: 160px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      padding: 6px 10px;
+
+      border: 1px solid rgba(216,161,63,0.3);
+      border-radius: 100px;
+
+      color: var(--gold-light);
+      font-size: 10px;
+      text-transform: capitalize;
+    }
+
+    .status-active,
+    .status-completed,
+    .status-resolved {
+      color: var(--green);
+      border-color: rgba(105,214,155,0.3);
+    }
+
+    .status-cancelled,
+    .status-closed {
+      color: var(--red);
+      border-color: rgba(255,141,141,0.3);
+    }
+
+    .status-in_progress {
+      color: var(--blue);
+      border-color: rgba(120,186,255,0.3);
+    }
+
+    .status-select {
+      min-height: 36px;
+      padding: 0 9px;
+
+      border: 1px solid var(--soft-border);
+      border-radius: 8px;
+
+      background: #061d30;
+      color: white;
+      color-scheme: dark;
+    }
+
+    .status-select option {
+      background: #061d30;
+      color: white;
+    }
+
+    .small-button {
+      min-height: 36px;
+      padding: 0 12px;
+
+      border: none;
+      border-radius: 8px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #b77b24,
+          #e0aa47
+        );
+
+      color: white;
+      font-size: 11px;
+    }
+
+    .small-button.secondary {
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--gold-light);
+    }
+
+    .empty {
+      padding: 35px 10px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* MEMBER CARDS */
+
+    .member-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .member-card {
+      padding: 20px;
+
+      border: 1px solid var(--soft-border);
+      border-radius: 14px;
+
+      background: rgba(255,255,255,0.018);
+    }
+
+    .member-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .member-card h3 {
+      margin-bottom: 5px;
+      font-size: 16px;
+    }
+
+    .member-card-grid {
+      margin-top: 18px;
+
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 12px;
+    }
+
+    .member-mini {
+      padding: 12px;
+
+      border: 1px solid var(--soft-border);
+      border-radius: 10px;
+    }
+
+    .member-mini small {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+    }
+
+    .member-actions {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* MONTHLY COMPETITION INFO */
+
+    .competition-info {
+      margin-bottom: 22px;
+      padding: 20px;
+
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 12px;
+
+      border: 1px solid var(--border);
+      border-radius: 14px;
+
+      background: rgba(216,161,63,0.04);
+    }
+
+    .competition-info-box {
+      padding: 12px;
+
+      border: 1px solid var(--soft-border);
+      border-radius: 10px;
+    }
+
+    .competition-info-box small {
+      display: block;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+
+    .competition-info-box strong {
+      color: var(--gold-light);
+      font-size: 13px;
+    }
+
+    /* MODAL */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+
+      display: none;
+      align-items: center;
+      justify-content: center;
+
+      padding: 25px;
+
+      background: rgba(0,8,16,0.82);
+      backdrop-filter: blur(8px);
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-card {
+      width: min(520px,100%);
+      padding: 30px;
+      max-height: 85vh;
+overflow-y: auto;
+      position: relative;
+
+      border: 1px solid var(--border);
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #071f33,
+          #01111f
+        );
+    }
+
+    .modal-card h2 {
+      margin-bottom: 8px;
+
+      font-family: "Playfair Display", serif;
+      font-weight: 400;
+    }
+
+    .modal-card > p {
+      margin-bottom: 22px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+
+      width: 36px;
+      height: 36px;
+
+      border: 1px solid var(--border);
+      border-radius: 50%;
+
+      background: transparent;
+      color: var(--gold-light);
+      font-size: 20px;
+    }
+
+    .field {
+      margin-bottom: 15px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 12px;
+    }
+
+    .field input {
+      width: 100%;
+      height: 48px;
+      padding: 0 13px;
+
+      border: 1px solid var(--soft-border);
+      border-radius: 10px;
+
+      background: rgba(255,255,255,0.025);
+      color: white;
+      outline: none;
+    }
+
+    .modal-submit {
+      width: 100%;
+      min-height: 48px;
+
+      border: none;
+      border-radius: 10px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #b77b24,
+          #e0aa47
+        );
+
+      color: white;
+      font-weight: 500;
+    }
+
+    /* TOAST */
+
+    .toast {
+      position: fixed;
+      right: 25px;
+      bottom: 25px;
+      z-index: 10000;
+
+      display: none;
+
+      max-width: 360px;
+      padding: 14px 18px;
+
+      border: 1px solid var(--border);
+      border-radius: 12px;
+
+      background: #062238;
+      color: var(--gold-light);
+
+      box-shadow: 0 15px 50px rgba(0,0,0,0.4);
+    }
+
+    .toast.error {
+      color: var(--red);
+    }
+
+    @media (max-width: 1150px) {
+      .stats-grid,
+      .competition-info {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .member-card-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+    }
+
+    @media (max-width: 850px) {
+      .admin-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        height: auto;
+        position: relative;
+      }
+
+      .nav {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .sidebar-bottom {
+        margin-top: 25px;
+      }
+
+      .main {
+        padding: 28px 20px 55px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .stats-grid,
+      .nav,
+      .member-card-grid,
+      .competition-info {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar,
+      .panel-header,
+      .member-card-top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      h1 {
+        font-size: 37px;
+      }
+
+      .search-input {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ACCESS -->
+
+  <div class="access-screen" id="accessScreen">
+
+    <div class="access-card">
+
+      <h1>
+        GoldenGetaways Admin
+      </h1>
+
+      <p id="accessMessage">
+        Checking administrator access...
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- APP -->
+
+  <div
+    class="admin-layout hidden"
+    id="adminApp"
+  >
+
+    <aside class="sidebar">
+
+      <a href="index.html" class="brand">
+
+        <img
+          src="images/logo-small.webp"
+          alt="GoldenGetaways"
+        >
+
+        <div>
+          <strong>GoldenGetaways</strong>
+          <small>ADMIN PORTAL</small>
+        </div>
+
+      </a>
+
+
+      <div class="admin-label">
+        MANAGEMENT
+      </div>
+
+
+      <nav class="nav">
+
+        <button
+          class="nav-button active"
+          data-section="overview"
+        >
+          ▦ Overview
+        </button>
+
+        <button
+          class="nav-button"
+          data-section="members"
+        >
+          ♔ Members
+        </button>
+
+        <button
+          class="nav-button"
+          data-section="holidays"
+        >
+          ✈ Holiday Requests
+        </button>
+
+        <button
+          class="nav-button"
+          data-section="support"
+        >
+          ◉ Support
+        </button>
+
+        <button
+          class="nav-button"
+          data-section="referrals"
+        >
+          ♧ Referrals
+        </button>
+
+        <button
+          class="nav-button"
+          data-section="points"
+        >
+          ★ Points
+        </button>
+
+        <button
+          class="nav-button"
+          data-section="competitions"
+        >
+          ♕ Competitions
+        </button> 
+      <a
+  href="admin-mini-games.html"
+  class="nav-button"
+>
+  🎮 Mini Games
+</a>
+      </nav>
+
+
+      <div class="sidebar-bottom">
+
+        <a
+          href="dashboard.html"
+          class="dashboard-link"
+        >
+          Member Dashboard
+        </a>
+
+        <button
+          class="logout-button"
+          id="adminLogoutButton"
+        >
+          Log Out
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <main class="main">
+
+      <div class="topbar">
+
+        <div>
+
+          <div class="eyebrow">
+            GOLDENGETAWAYS MANAGEMENT
+          </div>
+
+          <h1 id="sectionTitle">
+            Admin Overview
+          </h1>
+
+          <p>
+            Manage members, requests,
+            support and rewards.
+          </p>
+
+        </div>
+
+
+        <button
+          class="refresh-button"
+          id="refreshButton"
+        >
+          ↻ Refresh Data
+        </button>
+
+      </div>
+
+
+      <!-- OVERVIEW -->
+
+      <section
+        class="admin-section active"
+        id="section-overview"
+      >
+
+        <div class="stats-grid">
+
+          <div class="stat-card">
+            <small>Total Members</small>
+            <strong id="totalMembers">0</strong>
+          </div>
+
+          <div class="stat-card">
+            <small>Active Members</small>
+            <strong id="activeMembers">0</strong>
+          </div>
+
+          <div class="stat-card">
+            <small>Open Holiday Requests</small>
+            <strong id="openHolidayRequests">0</strong>
+          </div>
+
+          <div class="stat-card">
+            <small>Open Support Messages</small>
+            <strong id="openSupportMessages">0</strong>
+          </div>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="panel-header">
+
+            <div>
+              <h2>Recent Holiday Requests</h2>
+
+              <p>
+                Latest personalised getaway
+                requests from members.
+              </p>
+            </div>
+
+          </div>
+
+          <div id="overviewHolidayRequests">
+            <div class="empty">Loading...</div>
+          </div>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="panel-header">
+
+            <div>
+              <h2>Recent Support</h2>
+
+              <p>
+                Latest member support messages.
+              </p>
+            </div>
+
+          </div>
+
+          <div id="overviewSupport">
+            <div class="empty">Loading...</div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- MEMBERS -->
+
+      <section
+        class="admin-section"
+        id="section-members"
+      >
+
+        <div class="panel">
+
+          <div class="panel-header">
+
+            <div>
+              <h2>Members</h2>
+
+              <p>
+                View membership information,
+                points, referrals and Stripe links.
+              </p>
+            </div>
+
+
+            <input
+              class="search-input"
+              id="memberSearch"
+              placeholder="Search members..."
+            >
+
+          </div>
+
+          <div
+            class="member-list"
+            id="memberList"
+          >
+            <div class="empty">
+              Loading members...
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- HOLIDAYS -->
+
+      <section
+        class="admin-section"
+        id="section-holidays"
+      >
+
+        <div class="panel">
+
+          <div class="panel-header">
+
+            <div>
+              <h2>Holiday Requests</h2>
+
+              <p>
+                Review and manage personalised
+                travel requests.
+              </p>
+            </div>
+
+          </div>
+
+          <div
+            class="table-wrap"
+            id="holidayTable"
+          >
+            <div class="empty">
+              Loading holiday requests...
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- SUPPORT -->
+
+      <section
+        class="admin-section"
+        id="section-support"
+      >
+
+        <div class="panel">
+
+          <div class="panel-header">
+
+            <div>
+              <h2>Support Inbox</h2>
+
+              <p>
+                View and manage member
+                support messages.
+              </p>
+            </div>
+
+          </div>
+
+          <div
+            class="table-wrap"
+            id="supportTable"
+          >
+            <div class="empty">
+              Loading support...
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- REFERRALS -->
+
+      <section
+        class="admin-section"
+        id="section-referrals"
+      >
+
+        <div class="panel">
+
+          <div class="panel-header">
+
+            <div>
+              <h2>Referrals</h2>
+
+              <p>
+                Monitor pending and
+                completed referrals.
+              </p>
+            </div>
+
+          </div>
+
+          <div
+            class="table-wrap"
+            id="referralsTable"
+          >
+            <div class="empty">
+              Loading referrals...
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- POINTS -->
+
+      <section
+        class="admin-section"
+        id="section-points"
+      >
+
+        <div class="panel">
+
+          <div class="panel-header">
+
+            <div>
+              <h2>Points History</h2>
+
+              <p>
+                Review points awarded
+                across GoldenGetaways.
+              </p>
+            </div>
+
+          </div>
+
+          <div
+            class="table-wrap"
+            id="pointsTable"
+          >
+            <div class="empty">
+              Loading points...
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- COMPETITIONS -->
+
+      <section
+        class="admin-section"
+        id="section-competitions"
+      >
+
+        <div class="competition-info">
+
+          <div class="competition-info-box">
+            <small>Competition</small>
+            <strong id="adminCompetitionName">
+              Loading...
+            </strong>
+          </div>
+
+          <div class="competition-info-box">
+            <small>Prize Type</small>
+            <strong>
+              Member Points
+            </strong>
+          </div>
+
+          <div class="competition-info-box">
+            <small>Closes</small>
+            <strong id="adminCompetitionClose">
+              Loading...
+            </strong>
+          </div>
+
+          <div class="competition-info-box">
+            <small>Winner Draw</small>
+            <strong id="adminDrawStatus">
+              Loading...
+            </strong>
+          </div>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="panel-header">
+
+            <div>
+              <h2>This Month's Entries</h2>
+
+              <p>
+                One entry per member.
+                The winner can be chosen
+                on the final day of the month.
+              </p>
+            </div>
+
+          </div>
+
+          <div
+            class="table-wrap"
+            id="competitionEntriesTable"
+          >
+            <div class="empty">
+              Loading entries...
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="panel">
+
+          <div class="panel-header">
+
+            <div>
+              <h2>Competition Winners</h2>
+
+              <p>
+                Previous monthly member
+                points winners.
+              </p>
+            </div>
+
+          </div>
+
+          <div
+            class="table-wrap"
+            id="competitionWinnersTable"
+          >
+            <div class="empty">
+              Loading winners...
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- POINTS MODAL -->
+
+  <div
+    class="modal"
+    id="pointsModal"
+  >
+
+    <div class="modal-card">
+
+      <button
+        class="modal-close"
+        type="button"
+        data-close-modal="pointsModal"
+      >
+        ×
+      </button>
+
+
+      <h2>
+        Adjust Member Points
+      </h2>
+
+
+      <p id="pointsMemberName">
+        Member
+      </p>
+
+
+      <form id="pointsForm">
+
+        <input
+          type="hidden"
+          id="pointsUserId"
+        >
+
+
+        <div class="field">
+
+          <label for="pointsAmount">
+            Points
+          </label>
+
+          <input
+            type="number"
+            id="pointsAmount"
+            placeholder="e.g. 25 or -10"
+            required
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="pointsReason">
+            Reason
+          </label>
+
+          <input
+            type="text"
+            id="pointsReason"
+            maxlength="200"
+            placeholder="e.g. Community contribution"
+            required
+          >
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="modal-submit"
+          id="pointsSubmitButton"
+        >
+          Save Points
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- WINNER MODAL -->
+
+  <div
+    class="modal"
+    id="winnerModal"
+  >
+
+    <div class="modal-card">
+
+      <button
+        class="modal-close"
+        type="button"
+        data-close-modal="winnerModal"
+      >
+        ×
+      </button>
+
+
+      <h2>
+        Confirm Monthly Winner
+      </h2>
+
+
+      <p id="winnerMemberName">
+        Member
+      </p>
+
+
+      <form id="winnerForm">
+
+        <input
+          type="hidden"
+          id="winnerUserId"
+        >
+
+        <input
+          type="hidden"
+          id="winnerCompetitionId"
+        >
+
+
+        <div class="field">
+
+          <label for="winnerPoints">
+            Points Prize
+          </label>
+
+          <input
+            type="number"
+            id="winnerPoints"
+            min="1"
+            step="1"
+            placeholder="e.g. 100"
+            required
+          >
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="modal-submit"
+          id="winnerSubmitButton"
+        >
+          Award Points & Confirm Winner
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <!-- HOLIDAY REPLY MODAL -->
+
+<div class="modal" id="holidayReplyModal">
+
+  <div class="modal-card">
+
+    <button
+      class="modal-close"
+      type="button"
+      onclick="closeHolidayReply()"
+    >
+      ×
+    </button>
+
+    <h2>Send Holiday Options</h2>
+
+    <p id="holidayReplyMember">
+      Send personalised holiday options to this member.
+    </p>
+
+    <form id="holidayReplyForm">
+    <input
+  type="hidden"
+  id="holidayReplyRequestId"
+>
+   <div id="holidayOptionsContainer">
+
+  <div class="holiday-option-block">
+
+    <div class="holiday-option-title">
+      OPTION 1
+    </div>
+
+    <div class="field">
+      <label>Hotel name</label>
+      <input
+        type="text"
+        class="option-hotel"
+        placeholder="e.g. H10 Costa Adeje Palace"
+        required
+      >
+    </div>
+
+    <div class="field">
+      <label>Price</label>
+      <input
+        type="text"
+        class="option-price"
+        placeholder="e.g. £1,146 total"
+      >
+    </div>
+
+    <div class="field">
+      <label>Holiday link</label>
+      <input
+        type="url"
+        class="option-url"
+        placeholder="https://..."
+        required
+      >
+    </div>
+
+    <div class="field">
+      <label>Notes</label>
+      <input
+        type="text"
+        class="option-notes"
+        placeholder="e.g. All Inclusive · 200m from beach"
+      >
+    </div>
+
+  </div>
+
+</div>
+
+<button
+  type="button"
+  class="small-button secondary"
+  id="addHolidayOption"
+  style="width:100%; margin-bottom:12px;"
+>
+  + Add Another Holiday
+</button>
+
+<button
+  type="submit"
+  class="modal-submit"
+  id="holidayReplySubmit"
+>
+  Send All Options to Member →
+</button>
+
+    </form>
+
+  </div>
+
+</div>
+  <div
+    class="toast"
+    id="toast"
+  ></div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+
+
+  <script>
+
+    let members = [];
+    let holidayRequests = [];
+    let supportMessages = [];
+    let referrals = [];
+    let pointsHistory = [];
+    let competitionEntries = [];
+    let competitionWinners = [];
+
+
+    // =====================================
+    // HELPERS
+    // =====================================
+
+    function escapeHTML(value) {
+
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+    }
+
+
+    function formatDate(value) {
+
+      if (!value) {
+        return "—";
+      }
+
+      const date =
+        new Date(value);
+
+      if (
+        Number.isNaN(
+          date.getTime()
+        )
+      ) {
+        return "—";
+      }
+
+      return date.toLocaleDateString(
+        "en-GB",
+        {
+          day: "numeric",
+          month: "short",
+          year: "numeric"
+        }
+      );
+
+    }
+
+
+    function formatDateTime(value) {
+
+      if (!value) {
+        return "—";
+      }
+
+      const date =
+        new Date(value);
+
+      if (
+        Number.isNaN(
+          date.getTime()
+        )
+      ) {
+        return "—";
+      }
+
+      return date.toLocaleString(
+        "en-GB",
+        {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit"
+        }
+      );
+
+    }
+
+
+    function statusClass(status) {
+
+      return (
+        "status-badge status-" +
+        String(status || "")
+          .toLowerCase()
+          .replaceAll(" ", "_")
+      );
+
+    }
+
+
+    function memberById(userId) {
+
+      return members.find(
+        member =>
+          member.id === userId
+      );
+
+    }
+
+
+    function memberName(userId) {
+
+      return (
+        memberById(userId)
+          ?.full_name ||
+        "GoldenGetaways Member"
+      );
+
+    }
+
+
+    function showToast(
+      message,
+      isError = false
+    ) {
+
+      const toast =
+        document.getElementById(
+          "toast"
+        );
+
+      toast.textContent =
+        message;
+
+      toast.classList.toggle(
+        "error",
+        isError
+      );
+
+      toast.style.display =
+        "block";
+
+      clearTimeout(
+        window.adminToastTimer
+      );
+
+      window.adminToastTimer =
+        setTimeout(
+          () => {
+            toast.style.display =
+              "none";
+          },
+          3500
+        );
+
+    }
+
+
+    // =====================================
+    // MONTHLY COMPETITION
+    // =====================================
+
+    function getCompetitionDetails() {
+
+      const now =
+        new Date();
+
+      const year =
+        now.getFullYear();
+
+      const monthIndex =
+        now.getMonth();
+
+      const monthNumber =
+        String(
+          monthIndex + 1
+        ).padStart(
+          2,
+          "0"
+        );
+
+      const monthName =
+        now.toLocaleDateString(
+          "en-GB",
+          {
+            month: "long"
+          }
+        );
+
+      const lastDay =
+        new Date(
+          year,
+          monthIndex + 1,
+          0,
+          23,
+          59,
+          59,
+          999
+        );
+
+      const competitionId =
+        `monthly-points-${year}-${monthNumber}`;
+
+      return {
+        year,
+        monthIndex,
+        monthName,
+        lastDay,
+        competitionId
+      };
+
+    }
+
+
+    function getCurrentCompetitionId() {
+
+      return getCompetitionDetails()
+        .competitionId;
+
+    }
+
+
+    function isLastDayOfMonth() {
+
+      const now =
+        new Date();
+
+      const tomorrow =
+        new Date(
+          now.getFullYear(),
+          now.getMonth(),
+          now.getDate() + 1
+        );
+
+      return (
+        tomorrow.getMonth() !==
+        now.getMonth()
+      );
+
+    }
+
+
+    function competitionLabelFromId(
+      competitionId
+    ) {
+
+      const match =
+        String(
+          competitionId || ""
+        ).match(
+          /^monthly-points-(\d{4})-(\d{2})$/
+        );
+
+      if (!match) {
+        return competitionId;
+      }
+
+      const date =
+        new Date(
+          Number(match[1]),
+          Number(match[2]) - 1,
+          1
+        );
+
+      return (
+        date.toLocaleDateString(
+          "en-GB",
+          {
+            month: "long",
+            year: "numeric"
+          }
+        ) +
+        " Member Points Giveaway"
+      );
+
+    }
+
+
+    function renderCompetitionHeader() {
+
+      const details =
+        getCompetitionDetails();
+
+      document
+        .getElementById(
+          "adminCompetitionName"
+        )
+        .textContent =
+          `${details.monthName} Member Points Giveaway`;
+
+      document
+        .getElementById(
+          "adminCompetitionClose"
+        )
+        .textContent =
+          details.lastDay
+            .toLocaleDateString(
+              "en-GB",
+              {
+                day: "numeric",
+                month: "long",
+                year: "numeric"
+              }
+            );
+
+      document
+        .getElementById(
+          "adminDrawStatus"
+        )
+        .textContent =
+          isLastDayOfMonth()
+            ? "Winner can be chosen today"
+            : "Available on final day";
+
+    }
+
+
+    // =====================================
+    // ACCESS
+    // =====================================
+
+    async function checkAdminAccess() {
+
+      const {
+        data: { session }
+      } =
+        await supabaseClient
+          .auth
+          .getSession();
+
+      if (!session) {
+
+        window.location.href =
+          "join.html";
+
+        return;
+      }
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient.rpc(
+          "is_admin"
+        );
+
+      if (
+        error ||
+        data !== true
+      ) {
+
+        document
+          .getElementById(
+            "accessMessage"
+          )
+          .textContent =
+            "You do not have permission to access this area.";
+
+        setTimeout(
+          () => {
+            window.location.href =
+              "dashboard.html";
+          },
+          1800
+        );
+
+        return;
+      }
+
+      document
+        .getElementById(
+          "accessScreen"
+        )
+        .classList
+        .add("hidden");
+
+      document
+        .getElementById(
+          "adminApp"
+        )
+        .classList
+        .remove("hidden");
+
+      await loadAllData();
+
+    }
+
+
+    // =====================================
+    // LOAD DATA
+    // =====================================
+
+    async function loadAllData() {
+
+      const refresh =
+        document.getElementById(
+          "refreshButton"
+        );
+
+      refresh.disabled =
+        true;
+
+      refresh.textContent =
+        "Refreshing...";
+
+      await Promise.all([
+        loadMembers(),
+        loadHolidayRequests(),
+        loadSupportMessages(),
+        loadReferrals(),
+        loadPoints(),
+        loadCompetitionEntries(),
+        loadCompetitionWinners()
+      ]);
+
+      renderEverything();
+
+      refresh.disabled =
+        false;
+
+      refresh.textContent =
+        "↻ Refresh Data";
+
+    }
+
+
+    async function loadMembers() {
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient
+          .from("profiles")
+          .select("*")
+          .order(
+            "member_since",
+            {
+              ascending: false
+            }
+          );
+
+      if (error) {
+        console.error(
+          "Members:",
+          error
+        );
+        return;
+      }
+
+      members =
+        data || [];
+
+    }
+
+
+    async function loadHolidayRequests() {
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient
+          .from(
+            "holiday_requests"
+          )
+          .select("*")
+          .order(
+            "created_at",
+            {
+              ascending: false
+            }
+          );
+
+      if (error) {
+        console.error(
+          "Holiday requests:",
+          error
+        );
+        return;
+      }
+
+      holidayRequests =
+        data || [];
+
+    }
+
+
+    async function loadSupportMessages() {
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient
+          .from(
+            "support_messages"
+          )
+          .select("*")
+          .order(
+            "created_at",
+            {
+              ascending: false
+            }
+          );
+
+      if (error) {
+        console.error(
+          "Support:",
+          error
+        );
+        return;
+      }
+
+      supportMessages =
+        data || [];
+
+    }
+
+
+    async function loadReferrals() {
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient
+          .from("referrals")
+          .select("*")
+          .order(
+            "created_at",
+            {
+              ascending: false
+            }
+          );
+
+      if (error) {
+        console.error(
+          "Referrals:",
+          error
+        );
+        return;
+      }
+
+      referrals =
+        data || [];
+
+    }
+
+
+    async function loadPoints() {
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient
+          .from(
+            "points_history"
+          )
+          .select("*")
+          .order(
+            "created_at",
+            {
+              ascending: false
+            }
+          );
+
+      if (error) {
+        console.error(
+          "Points:",
+          error
+        );
+        return;
+      }
+
+      pointsHistory =
+        data || [];
+
+    }
+
+
+    async function loadCompetitionEntries() {
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient
+          .from(
+            "competition_entries"
+          )
+          .select("*")
+          .eq(
+            "competition_id",
+            getCurrentCompetitionId()
+          )
+          .order(
+            "created_at",
+            {
+              ascending: false
+            }
+          );
+
+      if (error) {
+
+        console.error(
+          "Competition entries:",
+          error
+        );
+
+        return;
+      }
+
+      competitionEntries =
+        data || [];
+
+    }
+
+
+    async function loadCompetitionWinners() {
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient
+          .from(
+            "competition_winners"
+          )
+          .select("*")
+          .like(
+            "competition_id",
+            "monthly-points-%"
+          )
+          .order(
+            "won_at",
+            {
+              ascending: false
+            }
+          );
+
+      if (error) {
+
+        console.error(
+          "Competition winners:",
+          error
+        );
+
+        return;
+      }
+
+      competitionWinners =
+        data || [];
+
+    }
+
+
+    // =====================================
+    // RENDER
+    // =====================================
+
+    function renderEverything() {
+
+      renderStats();
+      renderMembers();
+      renderHolidayRequests();
+      renderSupport();
+      renderReferrals();
+      renderPoints();
+      renderCompetitionHeader();
+      renderCompetitionEntries();
+      renderCompetitionWinners();
+      renderOverview();
+
+    }
+
+
+    function renderStats() {
+
+      const active =
+        members.filter(
+          member =>
+            String(
+              member.membership_status
+            ).toLowerCase() ===
+            "active"
+        ).length;
+
+      const holidays =
+        holidayRequests.filter(
+          request =>
+            ![
+              "completed",
+              "cancelled"
+            ].includes(
+              String(
+                request.status
+              ).toLowerCase()
+            )
+        ).length;
+
+      const support =
+        supportMessages.filter(
+          message =>
+            ![
+              "resolved",
+              "closed"
+            ].includes(
+              String(
+                message.status
+              ).toLowerCase()
+            )
+        ).length;
+
+      document
+        .getElementById(
+          "totalMembers"
+        ).textContent =
+          members.length;
+
+      document
+        .getElementById(
+          "activeMembers"
+        ).textContent =
+          active;
+
+      document
+        .getElementById(
+          "openHolidayRequests"
+        ).textContent =
+          holidays;
+
+      document
+        .getElementById(
+          "openSupportMessages"
+        ).textContent =
+          support;
+
+    }
+
+
+    // =====================================
+    // MEMBERS
+    // =====================================
+
+    function renderMembers(
+      searchValue = ""
+    ) {
+
+      const list =
+        document.getElementById(
+          "memberList"
+        );
+
+      const search =
+        String(searchValue)
+          .trim()
+          .toLowerCase();
+
+      const filtered =
+        members.filter(
+          member => {
+
+            return [
+              member.full_name,
+              member.id,
+              member.membership_status,
+              member.referral_code,
+              member.stripe_customer_id,
+              member.stripe_subscription_id
+            ]
+              .join(" ")
+              .toLowerCase()
+              .includes(search);
+
+          }
+        );
+
+      if (
+        filtered.length === 0
+      ) {
+
+        list.innerHTML = `
+          <div class="empty">
+            No members found.
+          </div>
+        `;
+
+        return;
+      }
+
+      list.innerHTML =
+        filtered.map(
+          member => {
+
+            const status =
+              member.membership_status ||
+              "pending";
+
+            return `
+              <div class="member-card">
+
+                <div class="member-card-top">
+
+                  <div>
+
+                    <h3>
+                      ${escapeHTML(
+                        member.full_name ||
+                        "GoldenGetaways Member"
+                      )}
+                    </h3>
+
+                    <div class="id-text">
+                      ${escapeHTML(
+                        member.id
+                      )}
+                    </div>
+
+                  </div>
+
+                  <span
+                    class="${statusClass(
+                      status
+                    )}"
+                  >
+                    ${escapeHTML(status)}
+                  </span>
+
+                </div>
+
+
+                <div class="member-card-grid">
+
+                  <div class="member-mini">
+                    <small>Points</small>
+                    <strong>
+                      ${Number(
+                        member.points ?? 0
+                      )}
+                    </strong>
+                  </div>
+
+                  <div class="member-mini">
+                    <small>Referrals</small>
+                    <strong>
+                      ${Number(
+                        member.referral_count ??
+                        0
+                      )}
+                    </strong>
+                  </div>
+
+                  <div class="member-mini">
+                    <small>Member Since</small>
+                    <strong>
+                      ${formatDate(
+                        member.member_since
+                      )}
+                    </strong>
+                  </div>
+
+                  <div class="member-mini">
+                    <small>Renewal</small>
+                    <strong>
+                      ${formatDate(
+                        member.membership_renewal_date
+                      )}
+                    </strong>
+                  </div>
+
+                </div>
+
+
+                <div class="member-card-grid">
+
+                  <div class="member-mini">
+                    <small>Referral Code</small>
+                    <strong>
+                      ${escapeHTML(
+                        member.referral_code ||
+                        "—"
+                      )}
+                    </strong>
+                  </div>
+
+                  <div class="member-mini">
+                    <small>Stripe Price</small>
+                    <div class="id-text">
+                      ${escapeHTML(
+                        member.stripe_price_id ||
+                        "—"
+                      )}
+                    </div>
+                  </div>
+
+                  <div class="member-mini">
+                    <small>Stripe Customer</small>
+                    <div class="id-text">
+                      ${escapeHTML(
+                        member.stripe_customer_id ||
+                        "—"
+                      )}
+                    </div>
+                  </div>
+
+                  <div class="member-mini">
+                    <small>Stripe Subscription</small>
+                    <div class="id-text">
+                      ${escapeHTML(
+                        member.stripe_subscription_id ||
+                        "—"
+                      )}
+                    </div>
+                  </div>
+
+                </div>
+
+
+                <div class="member-actions">
+
+                  <button
+                    class="small-button"
+                    onclick="openPointsModal('${member.id}')"
+                  >
+                    Adjust Points
+                  </button>
+
+                </div>
+
+              </div>
+            `;
+
+          }
+        ).join("");
+
+    }
+
+
+    // =====================================
+    // HOLIDAYS
+    // =====================================
+
+    function holidayStatusOptions(
+      current
+    ) {
+
+      return [
+        "pending",
+        "in_progress",
+        "completed",
+        "cancelled"
+      ]
+        .map(
+          status => `
+            <option
+              value="${status}"
+              ${
+                status === current
+                  ? "selected"
+                  : ""
+              }
+            >
+              ${status.replaceAll(
+                "_",
+                " "
+              )}
+            </option>
+          `
+        )
+        .join("");
+
+    }
+
+
+    function renderHolidayRequests() {
+
+      const container =
+        document.getElementById(
+          "holidayTable"
+        );
+
+      if (
+        holidayRequests.length === 0
+      ) {
+
+        container.innerHTML = `
+          <div class="empty">
+            No holiday requests.
+          </div>
+        `;
+
+        return;
+      }
+
+      container.innerHTML = `
+        <table>
+
+          <thead>
+            <tr>
+              <th>Member</th>
+              <th>Destination</th>
+              <th>Airport</th>
+              <th>Travellers</th>
+              <th>Nights</th>
+              <th>Budget</th>
+              <th>Notes</th>
+              <th>Created</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            ${
+              holidayRequests.map(
+                request => `
+                  <tr>
+
+                    <td>
+                      ${escapeHTML(
+                        memberName(
+                          request.user_id
+                        )
+                      )}
+                    </td>
+
+                    <td>
+                      ${escapeHTML(
+                        request.destination ||
+                        "—"
+                      )}
+                    </td>
+
+                    <td>
+                      ${escapeHTML(
+                        request.local_airport ||
+                        "—"
+                      )}
+                    </td>
+
+                    <td>
+                      ${Number(
+                        request.adults ?? 0
+                      )} adults
+                      ${
+                        Number(
+                          request.children ?? 0
+                        ) > 0
+                          ? ` / ${Number(
+                              request.children
+                            )} children`
+                          : ""
+                      }
+                    </td>
+
+                    <td>
+                      ${request.nights ?? "—"}
+                    </td>
+
+                    <td>
+                      ${
+                        request.budget
+                          ? "£" +
+                            Number(
+                              request.budget
+                            ).toLocaleString(
+                              "en-GB"
+                            )
+                          : "—"
+                      }
+                    </td>
+
+                    <td>
+                      ${escapeHTML(
+                        request.notes ||
+                        "—"
+                      )}
+                    </td>
+
+                    <td>
+                      ${formatDateTime(
+                        request.created_at
+                      )}
+                    </td>
+
+                    <td>
+
+                      <select
+                        class="status-select"
+                        onchange="
+                          updateHolidayStatus(
+                            ${request.id},
+                            this.value,
+                            this
+                          )
+                        "
+                      >
+                        ${holidayStatusOptions(
+                          request.status
+                        )}
+                    </select>
+
+</td>
+
+<td>
+  <button
+    class="small-button"
+    onclick="openHolidayReply(${request.id})"
+  >
+    Open / Reply
+  </button>
+</td>
+
+</tr>
+                `
+              ).join("")
+            }
+
+          </tbody>
+
+        </table>
+      `;
+
+    }
+
+    function openHolidayReply(requestId) {
+
+  const request = holidayRequests.find(
+    item => item.id === requestId
+  );
+
+  if (!request) {
+    showToast("Holiday request not found.", true);
+    return;
+  }
+
+  document.getElementById(
+    "holidayReplyRequestId"
+  ).value = request.id;
+
+  document.getElementById(
+    "holidayReplyMember"
+  ).textContent =
+    `Send holiday options to ${memberName(request.user_id)}.`;
+
+  document.getElementById("holidayOptionsContainer").innerHTML = `
+  <div class="holiday-option-block">
+
+    <div class="holiday-option-title">
+      OPTION 1
+    </div>
+
+    <div class="field">
+      <label>Hotel name</label>
+      <input
+        type="text"
+        class="option-hotel"
+        placeholder="e.g. H10 Costa Adeje Palace"
+        required
+      >
+    </div>
+
+    <div class="field">
+      <label>Price</label>
+      <input
+        type="text"
+        class="option-price"
+        placeholder="e.g. £1,146 total"
+      >
+    </div>
+
+    <div class="field">
+      <label>Holiday link</label>
+      <input
+        type="url"
+        class="option-url"
+        placeholder="https://..."
+        required
+      >
+    </div>
+
+    <div class="field">
+      <label>Notes</label>
+      <input
+        type="text"
+        class="option-notes"
+        placeholder="e.g. All Inclusive · 200m from beach"
+      >
+    </div>
+
+  </div>
+`;
+
+  document.getElementById(
+    "holidayReplyModal"
+  ).classList.add("open");
+
+}
+
+
+function closeHolidayReply() {
+
+  document.getElementById(
+    "holidayReplyModal"
+  ).classList.remove("open");
+
+}
+document.getElementById("addHolidayOption").addEventListener("click", () => {
+
+  const container = document.getElementById("holidayOptionsContainer");
+
+  const optionNumber =
+    container.querySelectorAll(".holiday-option-block").length + 1;
+
+  const option = document.createElement("div");
+
+  option.className = "holiday-option-block";
+
+  option.innerHTML = `
+    <div class="holiday-option-title" style="margin-top:24px;">
+      OPTION ${optionNumber}
+    </div>
+
+    <div class="field">
+      <label>Hotel name</label>
+      <input
+        type="text"
+        class="option-hotel"
+        placeholder="e.g. H10 Costa Adeje Palace"
+        required
+      >
+    </div>
+
+    <div class="field">
+      <label>Price</label>
+      <input
+        type="text"
+        class="option-price"
+        placeholder="e.g. £1,146 total"
+      >
+    </div>
+
+    <div class="field">
+      <label>Holiday link</label>
+      <input
+        type="url"
+        class="option-url"
+        placeholder="https://..."
+        required
+      >
+    </div>
+
+    <div class="field">
+      <label>Notes</label>
+      <input
+        type="text"
+        class="option-notes"
+        placeholder="e.g. All Inclusive · 200m from beach"
+      >
+    </div>
+
+    <button
+      type="button"
+      class="small-button"
+      onclick="removeHolidayOption(this)"
+      style="margin-bottom:10px;"
+    >
+      Remove Option
+    </button>
+  `;
+
+  container.appendChild(option);
+
+});
+
+
+function removeHolidayOption(button) {
+
+  button.closest(".holiday-option-block").remove();
+
+  document
+    .querySelectorAll("#holidayOptionsContainer .holiday-option-title")
+    .forEach((title, index) => {
+      title.textContent = `OPTION ${index + 1}`;
+    });
+
+}
+  document
+  .getElementById("holidayReplyForm")
+  .addEventListener("submit", async (event) => {
+
+    event.preventDefault();
+
+    const requestId =
+      document.getElementById("holidayReplyRequestId").value;
+
+    const optionBlocks =
+      document.querySelectorAll(".holiday-option-block");
+
+    const options = Array.from(optionBlocks).map(block => ({
+      request_id: requestId,
+      hotel_name: block.querySelector(".option-hotel").value.trim(),
+      price: block.querySelector(".option-price").value.trim(),
+      holiday_url: block.querySelector(".option-url").value.trim(),
+      notes: block.querySelector(".option-notes").value.trim()
+    }));
+
+    if (!requestId) {
+      showToast("Could not find this holiday request.", true);
+      return;
+    }
+
+    if (!options.length) {
+      showToast("Add at least one holiday option.", true);
+      return;
+    }
+
+    const invalidOption = options.some(
+      option => !option.hotel_name || !option.holiday_url
+    );
+
+    if (invalidOption) {
+      showToast(
+        "Each option needs a hotel name and holiday link.",
+        true
+      );
+      return;
+    }
+
+    const submitButton =
+      document.getElementById("holidayReplySubmit");
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
+
+    const { error } = await supabaseClient
+      .from("holiday_request_options")
+      .insert(options);
+
+    if (error) {
+      console.error("Holiday options error:", error);
+
+      showToast("Could not send holiday options.", true);
+
+      submitButton.disabled = false;
+      submitButton.textContent = "Send All Options to Member →";
+      return;
+    }
+
+    const { error: statusError } = await supabaseClient
+      .from("holiday_requests")
+      .update({ status: "completed" })
+      .eq("id", requestId);
+
+    if (statusError) {
+      console.error("Status update error:", statusError);
+    }
+
+    showToast("Holiday options sent!");
+
+    submitButton.disabled = false;
+    submitButton.textContent = "Send All Options to Member →";
+
+    closeHolidayReply();
+    loadHolidayRequests();
+  });
+    async function updateHolidayStatus(
+      requestId,
+      status,
+      element
+    ) {
+
+      element.disabled =
+        true;
+
+      const {
+        error
+      } =
+        await supabaseClient.rpc(
+          "admin_update_holiday_status",
+          {
+            target_request_id:
+              requestId,
+
+            new_status:
+              status
+          }
+        );
+
+      element.disabled =
+        false;
+
+      if (error) {
+
+        console.error(error);
+
+        showToast(
+          "Could not update holiday request.",
+          true
+        );
+
+        await loadAllData();
+
+        return;
+      }
+
+      const item =
+        holidayRequests.find(
+          request =>
+            request.id === requestId
+        );
+
+      if (item) {
+        item.status =
+          status;
+      }
+
+      renderStats();
+      renderOverview();
+
+      showToast(
+        "Holiday request updated."
+      );
+
+    }
+
+
+    // =====================================
+    // SUPPORT
+    // =====================================
+
+    function supportStatusOptions(
+      current
+    ) {
+
+      return [
+        "open",
+        "in_progress",
+        "resolved",
+        "closed"
+      ]
+        .map(
+          status => `
+            <option
+              value="${status}"
+              ${
+                status === current
+                  ? "selected"
+                  : ""
+              }
+            >
+              ${status.replaceAll(
+                "_",
+                " "
+              )}
+            </option>
+          `
+        )
+        .join("");
+
+    }
+
+
+    function renderSupport() {
+
+      const container =
+        document.getElementById(
+          "supportTable"
+        );
+
+      if (
+        supportMessages.length === 0
+      ) {
+
+        container.innerHTML = `
+          <div class="empty">
+            No support messages.
+          </div>
+        `;
+
+        return;
+      }
+
+      container.innerHTML = `
+        <table>
+
+          <thead>
+            <tr>
+              <th>Member</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Category</th>
+              <th>Message</th>
+              <th>Created</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            ${
+              supportMessages.map(
+                message => `
+                  <tr>
+
+                    <td>
+                      ${escapeHTML(
+                        memberName(
+                          message.user_id
+                        )
+                      )}
+                    </td>
+
+                    <td>
+                      ${escapeHTML(
+                        message.name
+                      )}
+                    </td>
+
+                    <td>
+                      ${escapeHTML(
+                        message.email
+                      )}
+                    </td>
+
+                    <td>
+                      ${escapeHTML(
+                        message.category
+                      )}
+                    </td>
+
+                    <td>
+                      ${escapeHTML(
+                        message.message
+                      )}
+                    </td>
+
+                    <td>
+                      ${formatDateTime(
+                        message.created_at
+                      )}
+                    </td>
+
+                    <td>
+
+                      <select
+                        class="status-select"
+                        onchange="
+                          updateSupportStatus(
+                            ${message.id},
+                            this.value,
+                            this
+                          )
+                        "
+                      >
+                        ${supportStatusOptions(
+                          message.status
+                        )}
+                      </select>
+
+                    </td>
+
+                  </tr>
+                `
+              ).join("")
+            }
+
+          </tbody>
+
+        </table>
+      `;
+
+    }
+
+
+    async function updateSupportStatus(
+      messageId,
+      status,
+      element
+    ) {
+
+      element.disabled =
+        true;
+
+      const {
+        error
+      } =
+        await supabaseClient.rpc(
+          "admin_update_support_status",
+          {
+            target_message_id:
+              messageId,
+
+            new_status:
+              status
+          }
+        );
+
+      element.disabled =
+        false;
+
+      if (error) {
+
+        console.error(error);
+
+        showToast(
+          "Could not update support message.",
+          true
+        );
+
+        await loadAllData();
+
+        return;
+      }
+
+      const item =
+        supportMessages.find(
+          message =>
+            message.id === messageId
+        );
+
+      if (item) {
+        item.status =
+          status;
+      }
+
+      renderStats();
+      renderOverview();
+
+      showToast(
+        "Support status updated."
+      );
+
+    }
+
+
+    // =====================================
+    // REFERRALS
+    // =====================================
+
+    function renderReferrals() {
+
+      const container =
+        document.getElementById(
+          "referralsTable"
+        );
+
+      if (
+        referrals.length === 0
+      ) {
+
+        container.innerHTML = `
+          <div class="empty">
+            No referrals yet.
+          </div>
+        `;
+
+        return;
+      }
+
+      container.innerHTML = `
+        <table>
+
+          <thead>
+            <tr>
+              <th>Referrer</th>
+              <th>Referred Member</th>
+              <th>Code</th>
+              <th>Status</th>
+              <th>Created</th>
+              <th>Completed</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            ${
+              referrals.map(
+                referral => `
+                  <tr>
+
+                    <td>
+                      ${escapeHTML(
+                        memberName(
+                          referral.referrer_user_id
+                        )
+                      )}
+                    </td>
+
+                    <td>
+                      ${
+                        referral.referred_user_id
+                          ? escapeHTML(
+                              memberName(
+                                referral.referred_user_id
+                              )
+                            )
+                          : "Pending"
+                      }
+                    </td>
+
+                    <td>
+                      ${escapeHTML(
+                        referral.referral_code
+                      )}
+                    </td>
+
+                    <td>
+                      <span
+                        class="${statusClass(
+                          referral.status
+                        )}"
+                      >
+                        ${escapeHTML(
+                          referral.status
+                        )}
+                      </span>
+                    </td>
+
+                    <td>
+                      ${formatDateTime(
+                        referral.created_at
+                      )}
+                    </td>
+
+                    <td>
+                      ${formatDateTime(
+                        referral.completed_at
+                      )}
+                    </td>
+
+                  </tr>
+                `
+              ).join("")
+            }
+
+          </tbody>
+
+        </table>
+      `;
+
+    }
+
+
+    // =====================================
+    // POINTS
+    // =====================================
+
+    function renderPoints() {
+
+      const container =
+        document.getElementById(
+          "pointsTable"
+        );
+
+      if (
+        pointsHistory.length === 0
+      ) {
+
+        container.innerHTML = `
+          <div class="empty">
+            No points history yet.
+          </div>
+        `;
+
+        return;
+      }
+
+      container.innerHTML = `
+        <table>
+
+          <thead>
+            <tr>
+              <th>Member</th>
+              <th>Points</th>
+              <th>Reason</th>
+              <th>Source</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            ${
+              pointsHistory.map(
+                record => `
+                  <tr>
+
+                    <td>
+                      ${escapeHTML(
+                        memberName(
+                          record.user_id
+                        )
+                      )}
+                    </td>
+
+                    <td>
+                      <strong
+                        style="
+                          color:
+                          ${
+                            Number(
+                              record.points
+                            ) >= 0
+                              ? "var(--green)"
+                              : "var(--red)"
+                          };
+                        "
+                      >
+                        ${
+                          Number(
+                            record.points
+                          ) >= 0
+                            ? "+"
+                            : ""
+                        }
+                        ${Number(
+                          record.points
+                        )}
+                      </strong>
+                    </td>
+
+                    <td>
+                      ${escapeHTML(
+                        record.reason
+                      )}
+                    </td>
+
+                    <td>
+                      ${escapeHTML(
+                        record.source_type ||
+                        "—"
+                      )}
+                    </td>
+
+                    <td>
+                      ${formatDateTime(
+                        record.created_at
+                      )}
+                    </td>
+
+                  </tr>
+                `
+              ).join("")
+            }
+
+          </tbody>
+
+        </table>
+      `;
+
+    }
+
+
+    // =====================================
+    // COMPETITION ENTRIES
+    // =====================================
+
+    function renderCompetitionEntries() {
+
+      const container =
+        document.getElementById(
+          "competitionEntriesTable"
+        );
+
+      const winnerAlreadyExists =
+        competitionWinners.some(
+          winner =>
+            winner.competition_id ===
+            getCurrentCompetitionId()
+        );
+
+      if (
+        competitionEntries.length === 0
+      ) {
+
+        container.innerHTML = `
+          <div class="empty">
+            No entries for this month's competition yet.
+          </div>
+        `;
+
+        return;
+      }
+
+      container.innerHTML = `
+        <table>
+
+          <thead>
+            <tr>
+              <th>Member</th>
+              <th>Competition</th>
+              <th>Status</th>
+              <th>Entered</th>
+              <th>Winner</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            ${
+              competitionEntries.map(
+                entry => {
+
+                  let buttonText =
+                    "Make Winner";
+
+                  let disabled =
+                    false;
+
+                  if (
+                    winnerAlreadyExists
+                  ) {
+
+                    buttonText =
+                      "Winner Chosen";
+
+                    disabled =
+                      true;
+
+                  } else if (
+                    !isLastDayOfMonth()
+                  ) {
+
+                    buttonText =
+                      "Available Month End";
+
+                    disabled =
+                      true;
+
+                  }
+
+                  return `
+                    <tr>
+
+                      <td>
+                        ${escapeHTML(
+                          memberName(
+                            entry.user_id
+                          )
+                        )}
+                      </td>
+
+                      <td>
+                        ${escapeHTML(
+                          competitionLabelFromId(
+                            entry.competition_id
+                          )
+                        )}
+                      </td>
+
+                      <td>
+                        <span
+                          class="${statusClass(
+                            entry.status
+                          )}"
+                        >
+                          ${escapeHTML(
+                            entry.status
+                          )}
+                        </span>
+                      </td>
+
+                      <td>
+                        ${formatDateTime(
+                          entry.created_at
+                        )}
+                      </td>
+
+                      <td>
+
+                        <button
+                          class="small-button"
+                          ${
+                            disabled
+                              ? "disabled"
+                              : ""
+                          }
+                          onclick="
+                            openWinnerModal(
+                              '${entry.user_id}',
+                              '${entry.competition_id}'
+                            )
+                          "
+                        >
+                          ${buttonText}
+                        </button>
+
+                      </td>
+
+                    </tr>
+                  `;
+
+                }
+              ).join("")
+            }
+
+          </tbody>
+
+        </table>
+      `;
+
+    }
+
+
+    function renderCompetitionWinners() {
+
+      const container =
+        document.getElementById(
+          "competitionWinnersTable"
+        );
+
+      if (
+        competitionWinners.length === 0
+      ) {
+
+        container.innerHTML = `
+          <div class="empty">
+            No monthly winners recorded yet.
+          </div>
+        `;
+
+        return;
+      }
+
+      container.innerHTML = `
+        <table>
+
+          <thead>
+            <tr>
+              <th>Member</th>
+              <th>Competition</th>
+              <th>Points Prize</th>
+              <th>Won</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            ${
+              competitionWinners.map(
+                winner => `
+                  <tr>
+
+                    <td>
+                      ${escapeHTML(
+                        memberName(
+                          winner.user_id
+                        )
+                      )}
+                    </td>
+
+                    <td>
+                      ${escapeHTML(
+                        competitionLabelFromId(
+                          winner.competition_id
+                        )
+                      )}
+                    </td>
+
+                    <td>
+                      ${escapeHTML(
+                        winner.prize
+                      )}
+                    </td>
+
+                    <td>
+                      ${formatDateTime(
+                        winner.won_at
+                      )}
+                    </td>
+
+                  </tr>
+                `
+              ).join("")
+            }
+
+          </tbody>
+
+        </table>
+      `;
+
+    }
+
+
+    // =====================================
+    // OVERVIEW
+    // =====================================
+
+    function renderOverview() {
+
+      const holidayContainer =
+        document.getElementById(
+          "overviewHolidayRequests"
+        );
+
+      const supportContainer =
+        document.getElementById(
+          "overviewSupport"
+        );
+
+      const latestHolidays =
+        holidayRequests.slice(
+          0,
+          5
+        );
+
+      const latestSupport =
+        supportMessages.slice(
+          0,
+          5
+        );
+
+      holidayContainer.innerHTML =
+        latestHolidays.length
+          ? latestHolidays.map(
+              request => `
+                <div
+                  class="member-card"
+                  style="margin-bottom:12px;"
+                >
+
+                  <div class="member-card-top">
+
+                    <div>
+
+                      <h3>
+                        ${escapeHTML(
+                          request.destination ||
+                          "Holiday Request"
+                        )}
+                      </h3>
+
+                      <div class="muted">
+                        ${escapeHTML(
+                          memberName(
+                            request.user_id
+                          )
+                        )}
+                        •
+                        ${formatDateTime(
+                          request.created_at
+                        )}
+                      </div>
+
+                    </div>
+
+                    <span
+                      class="${statusClass(
+                        request.status
+                      )}"
+                    >
+                      ${escapeHTML(
+                        request.status
+                      )}
+                    </span>
+
+                  </div>
+
+                </div>
+              `
+            ).join("")
+          : `
+              <div class="empty">
+                No holiday requests.
+              </div>
+            `;
+
+      supportContainer.innerHTML =
+        latestSupport.length
+          ? latestSupport.map(
+              message => `
+                <div
+                  class="member-card"
+                  style="margin-bottom:12px;"
+                >
+
+                  <div class="member-card-top">
+
+                    <div>
+
+                      <h3>
+                        ${escapeHTML(
+                          message.category
+                        )}
+                      </h3>
+
+                      <div class="muted">
+                        ${escapeHTML(
+                          message.name
+                        )}
+                        •
+                        ${formatDateTime(
+                          message.created_at
+                        )}
+                      </div>
+
+                      <p
+                        style="
+                          margin-top:10px;
+                          color:var(--muted);
+                        "
+                      >
+                        ${escapeHTML(
+                          message.message
+                        )}
+                      </p>
+
+                    </div>
+
+                    <span
+                      class="${statusClass(
+                        message.status
+                      )}"
+                    >
+                      ${escapeHTML(
+                        message.status
+                      )}
+                    </span>
+
+                  </div>
+
+                </div>
+              `
+            ).join("")
+          : `
+              <div class="empty">
+                No support messages.
+              </div>
+            `;
+
+    }
+
+
+    // =====================================
+    // ADJUST POINTS
+    // =====================================
+
+    function openPointsModal(
+      userId
+    ) {
+
+      document
+        .getElementById(
+          "pointsUserId"
+        ).value =
+          userId;
+
+      document
+        .getElementById(
+          "pointsMemberName"
+        ).textContent =
+          memberName(userId);
+
+      document
+        .getElementById(
+          "pointsAmount"
+        ).value =
+          "";
+
+      document
+        .getElementById(
+          "pointsReason"
+        ).value =
+          "";
+
+      document
+        .getElementById(
+          "pointsModal"
+        ).classList.add(
+          "open"
+        );
+
+    }
+
+
+    document
+      .getElementById(
+        "pointsForm"
+      )
+      .addEventListener(
+        "submit",
+        async event => {
+
+          event.preventDefault();
+
+          const userId =
+            document.getElementById(
+              "pointsUserId"
+            ).value;
+
+          const amount =
+            Number(
+              document.getElementById(
+                "pointsAmount"
+              ).value
+            );
+
+          const reason =
+            document.getElementById(
+              "pointsReason"
+            ).value.trim();
+
+          const button =
+            document.getElementById(
+              "pointsSubmitButton"
+            );
+
+          if (
+            !Number.isInteger(amount) ||
+            amount === 0
+          ) {
+
+            showToast(
+              "Enter a valid points amount.",
+              true
+            );
+
+            return;
+          }
+
+          button.disabled =
+            true;
+
+          button.textContent =
+            "Saving...";
+
+          const {
+            error
+          } =
+            await supabaseClient.rpc(
+              "admin_award_points",
+              {
+                target_user_id:
+                  userId,
+
+                amount,
+
+                award_reason:
+                  reason
+              }
+            );
+
+          button.disabled =
+            false;
+
+          button.textContent =
+            "Save Points";
+
+          if (error) {
+
+            console.error(error);
+
+            showToast(
+              "Could not update points.",
+              true
+            );
+
+            return;
+          }
+
+          document
+            .getElementById(
+              "pointsModal"
+            ).classList.remove(
+              "open"
+            );
+
+          showToast(
+            "Points updated successfully."
+          );
+
+          await loadAllData();
+
+        }
+      );
+
+
+    // =====================================
+    // MONTHLY WINNER
+    // =====================================
+
+    function openWinnerModal(
+      userId,
+      competitionId
+    ) {
+
+      if (
+        !isLastDayOfMonth()
+      ) {
+
+        showToast(
+          "The monthly winner can only be chosen on the final day of the month.",
+          true
+        );
+
+        return;
+      }
+
+      document
+        .getElementById(
+          "winnerUserId"
+        ).value =
+          userId;
+
+      document
+        .getElementById(
+          "winnerCompetitionId"
+        ).value =
+          competitionId;
+
+      document
+        .getElementById(
+          "winnerMemberName"
+        ).textContent =
+          memberName(userId) +
+          " — " +
+          competitionLabelFromId(
+            competitionId
+          );
+
+      document
+        .getElementById(
+          "winnerPoints"
+        ).value =
+          "";
+
+      document
+        .getElementById(
+          "winnerModal"
+        ).classList.add(
+          "open"
+        );
+
+    }
+
+
+    document
+      .getElementById(
+        "winnerForm"
+      )
+      .addEventListener(
+        "submit",
+        async event => {
+
+          event.preventDefault();
+
+          const userId =
+            document.getElementById(
+              "winnerUserId"
+            ).value;
+
+          const competitionId =
+            document.getElementById(
+              "winnerCompetitionId"
+            ).value;
+
+          const pointsPrize =
+            Number(
+              document.getElementById(
+                "winnerPoints"
+              ).value
+            );
+
+          const button =
+            document.getElementById(
+              "winnerSubmitButton"
+            );
+
+          if (
+            competitionId !==
+            getCurrentCompetitionId()
+          ) {
+
+            showToast(
+              "Invalid monthly competition.",
+              true
+            );
+
+            return;
+          }
+
+          if (
+            !isLastDayOfMonth()
+          ) {
+
+            showToast(
+              "Winner selection is only available on the final day of the month.",
+              true
+            );
+
+            return;
+          }
+
+          if (
+            !Number.isInteger(
+              pointsPrize
+            ) ||
+            pointsPrize <= 0
+          ) {
+
+            showToast(
+              "Enter a valid number of prize points.",
+              true
+            );
+
+            return;
+          }
+
+          button.disabled =
+            true;
+
+          button.textContent =
+            "Awarding Points...";
+
+          const {
+            error
+          } =
+            await supabaseClient.rpc(
+              "admin_award_competition_winner",
+              {
+                target_competition_id:
+                  competitionId,
+
+                target_user_id:
+                  userId,
+
+                points_prize:
+                  pointsPrize
+              }
+            );
+
+          button.disabled =
+            false;
+
+          button.textContent =
+            "Award Points & Confirm Winner";
+
+          if (error) {
+
+            console.error(
+              "Winner error:",
+              error
+            );
+
+            showToast(
+              error.message ||
+              "Could not confirm winner.",
+              true
+            );
+
+            return;
+          }
+
+          document
+            .getElementById(
+              "winnerModal"
+            ).classList.remove(
+              "open"
+            );
+
+          showToast(
+            `${pointsPrize} points awarded and winner confirmed.`
+          );
+
+          await loadAllData();
+
+        }
+      );
+
+
+    // =====================================
+    // MODALS
+    // =====================================
+
+    document
+      .querySelectorAll(
+        "[data-close-modal]"
+      )
+      .forEach(
+        button => {
+
+          button.addEventListener(
+            "click",
+            () => {
+
+              document
+                .getElementById(
+                  button.dataset
+                    .closeModal
+                )
+                .classList.remove(
+                  "open"
+                );
+
+            }
+          );
+
+        }
+      );
+
+
+    document
+      .querySelectorAll(
+        ".modal"
+      )
+      .forEach(
+        modal => {
+
+          modal.addEventListener(
+            "click",
+            event => {
+
+              if (
+                event.target === modal
+              ) {
+
+                modal.classList.remove(
+                  "open"
+                );
+
+              }
+
+            }
+          );
+
+        }
+      );
+
+
+    // =====================================
+    // NAVIGATION
+    // =====================================
+
+    const sectionTitles = {
+      overview:
+        "Admin Overview",
+
+      members:
+        "Member Management",
+
+      holidays:
+        "Holiday Requests",
+
+      support:
+        "Support Inbox",
+
+      referrals:
+        "Referral Management",
+
+      points:
+        "Points & Rewards",
+
+      competitions:
+        "Competitions"
+    };
+
+
+    document
+      .querySelectorAll(
+        ".nav-button"
+      )
+      .forEach(
+        button => {
+
+          button.addEventListener(
+            "click",
+            () => {
+
+              const section =
+                button.dataset.section;
+
+              document
+                .querySelectorAll(
+                  ".nav-button"
+                )
+                .forEach(
+                  item =>
+                    item.classList.remove(
+                      "active"
+                    )
+                );
+
+              button.classList.add(
+                "active"
+              );
+
+              document
+                .querySelectorAll(
+                  ".admin-section"
+                )
+                .forEach(
+                  item =>
+                    item.classList.remove(
+                      "active"
+                    )
+                );
+
+              document
+                .getElementById(
+                  "section-" +
+                  section
+                )
+                .classList.add(
+                  "active"
+                );
+
+              document
+                .getElementById(
+                  "sectionTitle"
+                )
+                .textContent =
+                  sectionTitles[
+                    section
+                  ];
+
+            }
+          );
+
+        }
+      );
+
+
+    // =====================================
+    // SEARCH
+    // =====================================
+
+    document
+      .getElementById(
+        "memberSearch"
+      )
+      .addEventListener(
+        "input",
+        event => {
+
+          renderMembers(
+            event.target.value
+          );
+
+        }
+      );
+
+
+    // =====================================
+    // REFRESH
+    // =====================================
+
+    document
+      .getElementById(
+        "refreshButton"
+      )
+      .addEventListener(
+        "click",
+        async () => {
+
+          await loadAllData();
+
+          showToast(
+            "Admin data refreshed."
+          );
+
+        }
+      );
+
+
+    // =====================================
+    // LOGOUT
+    // =====================================
+
+    document
+      .getElementById(
+        "adminLogoutButton"
+      )
+      .addEventListener(
+        "click",
+        async () => {
+
+          await supabaseClient
+            .auth
+            .signOut();
+
+          window.location.href =
+            "join.html";
+
+        }
+      );
+
+
+    // =====================================
+    // START
+    // =====================================
+
+    checkAdminAccess();
+
+  </script>
+
+</body>
+</html>

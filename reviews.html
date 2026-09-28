@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Reviews | GoldenGetaways</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+
+    .reviews-hero {
+      position: relative;
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      padding: 155px 5% 90px;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0,17,31,0.98) 0%,
+          rgba(0,17,31,0.86) 34%,
+          rgba(0,17,31,0.36) 62%,
+          rgba(0,17,31,0.04) 100%
+        ),
+     url("images/reviews-hero.webp") center/cover no-repeat;
+    }
+
+    .reviews-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 650px;
+    }
+
+    .reviews-eyebrow {
+      color: var(--gold-light);
+      font-size: 13px;
+      letter-spacing: 4px;
+      margin-bottom: 22px;
+    }
+
+    .reviews-hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(54px, 5.8vw, 82px);
+      line-height: 1;
+      font-weight: 400;
+      margin-bottom: 25px;
+    }
+
+    .reviews-hero h1 em {
+      color: var(--gold-light);
+      font-weight: 400;
+    }
+
+    .reviews-description {
+      max-width: 520px;
+      font-size: 18px;
+      line-height: 1.65;
+      color: #eeeeee;
+      margin-bottom: 30px;
+    }
+
+    .reviews-join {
+      border: 1px solid var(--gold);
+      background: rgba(0,0,0,0.18);
+    }
+
+
+    /* STATS */
+
+    .review-stats-wrap {
+      position: relative;
+      z-index: 5;
+      margin-top: -45px;
+      padding: 0 5%;
+    }
+
+    .review-stats {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--border-gold);
+      border-radius: 18px;
+      overflow: hidden;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(5,31,50,0.98),
+          rgba(0,17,31,0.99)
+        );
+      box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+    }
+
+    .review-stat {
+      padding: 30px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .review-stat:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 20%;
+      width: 1px;
+      height: 60%;
+      background: rgba(216,161,63,0.32);
+    }
+
+    .review-stat-icon {
+      color: var(--gold-light);
+      font-size: 35px;
+      margin-bottom: 8px;
+    }
+
+    .review-stat strong {
+      display: block;
+      font-family: "Playfair Display", serif;
+      font-size: 40px;
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+
+    .review-stat span {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: #f1f1f1;
+    }
+
+
+    /* REVIEWS */
+
+    .reviews-section {
+      background: #00111f;
+      padding: 80px 5% 70px;
+    }
+
+    .reviews-heading {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .reviews-heading p {
+      color: var(--gold-light);
+      font-size: 12px;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+    }
+
+    .reviews-heading h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 42px;
+      font-weight: 400;
+    }
+
+    .reviews-grid {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .review-card {
+      border: 1px solid rgba(216,161,63,0.42);
+      border-radius: 15px;
+      padding: 30px 26px;
+      min-height: 255px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(5,29,47,0.97),
+          rgba(0,17,31,0.98)
+        );
+    }
+
+    .stars {
+      color: var(--gold-light);
+      letter-spacing: 5px;
+      font-size: 21px;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    .review-text {
+      color: #f1f1f1;
+      font-size: 17px;
+      line-height: 1.55;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .review-author {
+      text-align: center;
+    }
+
+    .review-author strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 3px;
+    }
+
+    .review-author span {
+      color: var(--gold-light);
+      font-size: 14px;
+    }
+
+
+    /* BOTTOM CTA */
+
+    .reviews-cta {
+      background: #00111f;
+      padding: 0 5% 55px;
+    }
+
+    .reviews-cta-box {
+      max-width: 1200px;
+      margin: auto;
+      border: 1px solid var(--gold);
+      border-radius: 18px;
+      padding: 35px 45px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      background:
+        linear-gradient(
+          120deg,
+          rgba(4,30,49,0.98),
+          rgba(0,17,31,0.98)
+        );
+    }
+
+    .reviews-cta-copy {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .reviews-heart {
+      width: 75px;
+      height: 75px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--gold-light);
+      font-size: 40px;
+      flex-shrink: 0;
+    }
+
+    .reviews-cta h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 34px;
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 7px;
+    }
+
+    .reviews-cta p {
+      color: #dedede;
+      font-size: 14px;
+    }
+
+
+    /* TRUST */
+
+    .reviews-trust {
+      background: #00111f;
+      padding: 0 5% 55px;
+    }
+
+    .reviews-trust-grid {
+      max-width: 1050px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+    }
+
+    .reviews-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .reviews-trust-icon {
+      color: var(--gold-light);
+      font-size: 28px;
+    }
+
+    .reviews-trust-item strong {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 3px;
+    }
+
+    .reviews-trust-item small {
+      color: #cfd2d5;
+      font-size: 11px;
+    }
+
+
+    @media (max-width: 950px) {
+
+      .review-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .reviews-trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+    }
+
+    @media (max-width: 650px) {
+
+      .reviews-hero {
+        min-height: 700px;
+        padding: 150px 25px 80px;
+      }
+
+      .reviews-hero h1 {
+        font-size: 52px;
+      }
+
+      .review-stats,
+      .reviews-grid,
+      .reviews-trust-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .review-stat::after {
+        display: none;
+      }
+
+      .reviews-cta-box {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 30px 25px;
+      }
+
+      .reviews-cta-copy {
+        align-items: flex-start;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <!-- HEADER -->
+
+  <header class="header">
+
+    <a href="index.html" class="logo">
+
+      <div class="logo-icon">
+        <img src="images/logo-small.webp" alt="GoldenGetaways icon">
+      </div>
+
+      <div class="logo-text">
+        <span>GoldenGetaways</span>
+        <small>EST 2025</small>
+      </div>
+
+    </a>
+
+
+    <nav class="desktop-nav">
+
+      <a href="index.html">Home</a>
+
+      <a href="membership.html">
+  Membership
+</a>
+
+<a href="our-getaways.html">
+  Our Getaways
+</a>
+
+<a href="how-it-works.html">
+  How It Works
+</a>
+      <a href="reviews.html" class="active">
+        Reviews
+      </a>
+
+      <a href="faq.html">FAQ</a>
+      <a href="join.html">Login / Join</a>
+
+    </nav>
+
+
+    <a href="join.html" class="button gold-button header-button">
+      Join Now
+      <span>→</span>
+    </a>
+
+    <button class="mobile-menu-button" id="menuButton">
+      ☰
+    </button>
+   
+  </header>
+
+   <!-- MOBILE MENU -->
+
+<div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="membership.html">Membership</a>
+    <a href="how-it-works.html">How It Works</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="faq.html">FAQ</a>
+    <a href="join.html">Login / Join</a>
+    <a href="dashboard.html">Member Dashboard</a>
+</div>
+  <!-- HERO -->
+
+  <section class="reviews-hero">
+
+    <div class="reviews-hero-content">
+
+      <p class="reviews-eyebrow">
+        REAL MEMBERS. REAL RESULTS.
+      </p>
+
+      <h1>
+        Don't just take<br>
+        our word for it.<br>
+        See <em>what our<br>
+        members say.</em>
+      </h1>
+
+      <p class="reviews-description">
+        Real experiences from members who use GoldenGetaways
+        to make planning and enjoying their holidays easier.
+      </p>
+
+      <a href="join.html" class="button reviews-join">
+        Join GoldenGetaways
+        <span>→</span>
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- STATS -->
+
+  <section class="review-stats-wrap">
+
+    <div class="review-stats">
+
+      <div class="review-stat">
+        <div class="review-stat-icon">♧</div>
+        <strong>120+</strong>
+        <span>HAPPY MEMBERS</span>
+      </div>
+
+      <div class="review-stat">
+        <div class="review-stat-icon">💬</div>
+        <strong>10,000+</strong>
+        <span>MESSAGES REPLIED</span>
+      </div>
+
+      <div class="review-stat">
+        <div class="review-stat-icon">◎</div>
+        <strong>50+</strong>
+        <span>DESTINATIONS</span>
+      </div>
+
+      <div class="review-stat">
+        <div class="review-stat-icon">★</div>
+        <strong>4.8</strong>
+        <span>AVERAGE RATING</span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- REVIEWS -->
+
+  <section class="reviews-section">
+
+    <div class="reviews-heading">
+
+      <p>WHAT OUR MEMBERS SAY</p>
+
+      <h2>
+        Real reviews from real members.
+      </h2>
+
+    </div>
+
+
+    <div class="reviews-grid">
+
+      <article class="review-card">
+
+        <div>
+          <div class="stars">★★★★★</div>
+
+          <p class="review-text">
+            “Saved me hours of searching and found me a better hotel
+            for less money. Unreal service.”
+          </p>
+        </div>
+
+        <div class="review-author">
+          <strong>Chloe M.</strong>
+          <span>Tenerife</span>
+        </div>
+
+      </article>
+
+
+      <article class="review-card">
+
+        <div>
+          <div class="stars">★★★★★</div>
+
+          <p class="review-text">
+            “Asked for the best restaurant near my hotel and it was
+            spot on. 10/10.”
+          </p>
+        </div>
+
+        <div class="review-author">
+          <strong>Liam T.</strong>
+          <span>Cyprus</span>
+        </div>
+
+      </article>
+
+
+      <article class="review-card">
+
+        <div>
+          <div class="stars">★★★★★</div>
+
+          <p class="review-text">
+            “Helped me sort a problem with my booking while I was away.
+            Couldn't recommend more.”
+          </p>
+        </div>
+
+        <div class="review-author">
+          <strong>Sophie R.</strong>
+          <span>Turkey</span>
+        </div>
+
+      </article>
+
+
+      <article class="review-card">
+
+        <div>
+          <div class="stars">★★★★★</div>
+
+          <p class="review-text">
+            “I message for everything now. Flights, activities,
+            places to eat... they always come through.”
+          </p>
+        </div>
+
+        <div class="review-author">
+          <strong>Jack W.</strong>
+          <span>Greece</span>
+        </div>
+
+      </article>
+
+
+      <article class="review-card">
+
+        <div>
+          <div class="stars">★★★★★</div>
+
+          <p class="review-text">
+            “Found us the perfect villa last minute when everything
+            else was overpriced.”
+          </p>
+        </div>
+
+        <div class="review-author">
+          <strong>Megan L.</strong>
+          <span>Malta</span>
+        </div>
+
+      </article>
+
+
+      <article class="review-card">
+
+        <div>
+          <div class="stars">★★★★★</div>
+
+          <p class="review-text">
+            “Best decision joining. Feels like having a personal
+            assistant for all my holidays.”
+          </p>
+        </div>
+
+        <div class="review-author">
+          <strong>Daniel S.</strong>
+          <span>Dubai</span>
+        </div>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- CTA -->
+
+  <section class="reviews-cta">
+
+    <div class="reviews-cta-box">
+
+      <div class="reviews-cta-copy">
+
+        <div class="reviews-heart">
+          ♡
+        </div>
+
+        <div>
+
+          <h2>
+            Join 120+ members who get<br>
+            real help for their trips.
+          </h2>
+
+          <p>
+            We're here to make your holidays better.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <a href="join.html" class="button gold-button">
+        Join GoldenGetaways
+        <span>→</span>
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- TRUST -->
+
+  <section class="reviews-trust">
+
+    <div class="reviews-trust-grid">
+
+      <div class="reviews-trust-item">
+        <span class="reviews-trust-icon">◉</span>
+        <div>
+          <strong>REAL PEOPLE</strong>
+          <small>We reply, not bots.</small>
+        </div>
+      </div>
+
+      <div class="reviews-trust-item">
+        <span class="reviews-trust-icon">ϟ</span>
+        <div>
+          <strong>FAST RESPONSES</strong>
+          <small>Usually within minutes.</small>
+        </div>
+      </div>
+
+      <div class="reviews-trust-item">
+        <span class="reviews-trust-icon">♢</span>
+        <div>
+          <strong>TRUSTED BY MEMBERS</strong>
+          <small>Rated 4.8 overall.</small>
+        </div>
+      </div>
+
+      <div class="reviews-trust-item">
+        <span class="reviews-trust-icon">◷</span>
+        <div>
+          <strong>ANYTIME, ANYWHERE</strong>
+          <small>We're here when you need us.</small>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <script src="script.js"></script>
+  <script>
+const mobileMenuButton = document.querySelector(".mobile-menu-button");
+const mobileMenu = document.querySelector(".mobile-menu");
+
+if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener("click", function () {
+        mobileMenu.classList.toggle("open");
+    });
+}
+</script>
+
+</body>
+</html>

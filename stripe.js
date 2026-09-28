@@ -1,0 +1,2 @@
+const STRIPE_PUBLISHABLE_KEY = "pk_live_51TBIFKCvUIaaFeQJXjfpn8q6v0Zs52Aih23jYi5kq7EUrS4ai9Vvwhvx6w7QmXOUsFZJfaTNasX9Et3uaovt09y100ztjFqrhi";
+const stripeClient = Stripe(STRIPE_PUBLISHABLE_KEY);

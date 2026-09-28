@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Account Settings | GoldenGetaways</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy: #00111f;
+      --gold: #d8a13f;
+      --gold-light: #f0bd5c;
+      --white: #f8f5ef;
+      --muted: #aeb7c1;
+      --border: rgba(216,161,63,0.28);
+      --soft-border: rgba(255,255,255,0.08);
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(
+          circle at 70% 10%,
+          #08263c 0%,
+          #00111f 38%,
+          #000b15 100%
+        );
+      color: var(--white);
+      font-family: "DM Sans", sans-serif;
+      padding: 45px 25px 70px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .page {
+      width: min(1000px, 100%);
+      margin: auto;
+    }
+
+    .back {
+      display: inline-block;
+      color: var(--gold-light);
+      margin-bottom: 35px;
+    }
+
+    .eyebrow {
+      color: var(--gold-light);
+      letter-spacing: 3px;
+      font-size: 11px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 54px;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .intro {
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 700px;
+      margin-bottom: 35px;
+    }
+
+    .settings-grid {
+      display: grid;
+      gap: 22px;
+    }
+
+    .settings-card {
+      padding: 30px;
+
+      border: 1px solid var(--border);
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(7,29,47,0.98),
+          rgba(1,15,27,0.98)
+        );
+    }
+
+    .settings-card h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 30px;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+
+    .settings-card > p {
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+
+    .field input {
+      width: 100%;
+      height: 52px;
+      padding: 0 15px;
+
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+
+      background: rgba(255,255,255,0.025);
+      color: white;
+
+      outline: none;
+    }
+
+    .field input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(216,161,63,0.08);
+    }
+
+    .field input:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+    .save-button {
+      min-height: 50px;
+      padding: 0 22px;
+
+      border: none;
+      border-radius: 11px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #b77b24,
+          #e0aa47
+        );
+
+      color: white;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .save-button:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .message {
+      margin-top: 15px;
+      color: var(--gold-light);
+      font-size: 13px;
+      display: none;
+    }
+
+    .message.error {
+      color: #ff9f9f;
+    }
+
+    .danger-card {
+      border-color: rgba(255,120,120,0.18);
+    }
+
+    .logout-button {
+      min-height: 48px;
+      padding: 0 20px;
+
+      border: 1px solid var(--border);
+      border-radius: 11px;
+
+      background: transparent;
+      color: var(--gold-light);
+
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 42px;
+      }
+
+      .settings-card {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+
+    <a href="dashboard.html" class="back">
+      ← Back to Dashboard
+    </a>
+
+    <p class="eyebrow">
+      GOLDENGETAWAYS ACCOUNT
+    </p>
+
+    <h1>
+      Account Settings
+    </h1>
+
+    <p class="intro">
+      Manage your personal details, login password and account access.
+    </p>
+
+
+    <div class="settings-grid">
+
+
+      <!-- PROFILE DETAILS -->
+
+      <section class="settings-card">
+
+        <h2>
+          Profile details
+        </h2>
+
+        <p>
+          Update the name shown throughout your
+          GoldenGetaways member account.
+        </p>
+
+
+        <form id="profileForm">
+
+          <div class="field">
+
+            <label for="fullName">
+              Display Name
+            </label>
+
+            <input
+              id="fullName"
+              type="text"
+              placeholder="Your name"
+              maxlength="100"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="email">
+              Email Address
+            </label>
+
+            <input
+              id="email"
+              type="email"
+              disabled
+            >
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="save-button"
+            id="profileSaveButton"
+          >
+            Save Profile →
+          </button>
+
+
+          <div
+            class="message"
+            id="profileMessage"
+          >
+            Profile updated successfully.
+          </div>
+
+        </form>
+
+      </section>
+
+
+
+      <!-- PASSWORD -->
+
+      <section class="settings-card">
+
+        <h2>
+          Change password
+        </h2>
+
+        <p>
+          Choose a new password for your
+          GoldenGetaways account.
+        </p>
+
+
+        <form id="passwordForm">
+
+          <div class="field">
+
+            <label for="newPassword">
+              New Password
+            </label>
+
+            <input
+              id="newPassword"
+              type="password"
+              minlength="8"
+              placeholder="Enter a new password"
+              autocomplete="new-password"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="confirmPassword">
+              Confirm New Password
+            </label>
+
+            <input
+              id="confirmPassword"
+              type="password"
+              minlength="8"
+              placeholder="Confirm your new password"
+              autocomplete="new-password"
+              required
+            >
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="save-button"
+            id="passwordSaveButton"
+          >
+            Change Password →
+          </button>
+
+
+          <div
+            class="message"
+            id="passwordMessage"
+          >
+            Password updated successfully.
+          </div>
+
+        </form>
+
+      </section>
+
+
+
+      <!-- LOGOUT -->
+
+      <section class="settings-card danger-card">
+
+        <h2>
+          Account access
+        </h2>
+
+        <p>
+          Sign out of your GoldenGetaways
+          member account on this device.
+        </p>
+
+
+        <button
+          class="logout-button"
+          id="logoutButton"
+        >
+          Log Out
+        </button>
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+
+
+  <script>
+
+    let currentSession = null;
+
+
+
+    async function loadAccountSettings() {
+
+      const {
+        data: { session }
+      } =
+        await supabaseClient.auth.getSession();
+
+
+      if (!session) {
+
+        window.location.href =
+          "join.html";
+
+        return;
+      }
+
+
+      currentSession =
+        session;
+
+
+      const user =
+        session.user;
+
+
+      document
+        .getElementById("email")
+        .value =
+          user.email || "";
+
+
+      const {
+        data: profile,
+        error
+      } =
+        await supabaseClient
+          .from("profiles")
+          .select("full_name")
+          .eq("id", user.id)
+          .maybeSingle();
+
+
+      if (error) {
+
+        console.error(
+          "Profile error:",
+          error
+        );
+      }
+
+
+      const fallbackName =
+        user.email
+          ? user.email.split("@")[0]
+          : "Member";
+
+
+      document
+        .getElementById("fullName")
+        .value =
+          profile?.full_name ||
+          user.user_metadata?.full_name ||
+          fallbackName;
+
+    }
+
+
+
+    // =====================================
+    // SAVE DISPLAY NAME
+    // =====================================
+
+    document
+      .getElementById("profileForm")
+      .addEventListener(
+        "submit",
+        async (event) => {
+
+          event.preventDefault();
+
+
+          if (!currentSession) {
+            return;
+          }
+
+
+          const fullName =
+            document
+              .getElementById("fullName")
+              .value
+              .trim();
+
+
+          const message =
+            document.getElementById(
+              "profileMessage"
+            );
+
+
+          const button =
+            document.getElementById(
+              "profileSaveButton"
+            );
+
+
+          message.style.display =
+            "none";
+
+          message.classList.remove(
+            "error"
+          );
+
+
+          button.disabled =
+            true;
+
+          button.textContent =
+            "Saving...";
+
+
+          const {
+            error
+          } =
+            await supabaseClient.rpc(
+              "update_my_display_name",
+              {
+                new_full_name:
+                  fullName
+              }
+            );
+
+
+          if (error) {
+
+            console.error(
+              "Profile update error:",
+              error
+            );
+
+
+            message.textContent =
+              "We couldn't update your profile. Please try again.";
+
+            message.classList.add(
+              "error"
+            );
+
+            message.style.display =
+              "block";
+
+
+            button.disabled =
+              false;
+
+            button.textContent =
+              "Save Profile →";
+
+
+            return;
+          }
+
+
+          const {
+            error: metadataError
+          } =
+            await supabaseClient
+              .auth
+              .updateUser({
+                data: {
+                  full_name:
+                    fullName
+                }
+              });
+
+
+          if (metadataError) {
+
+            console.error(
+              "Metadata update error:",
+              metadataError
+            );
+          }
+
+
+          message.textContent =
+            "Profile updated successfully.";
+
+          message.style.display =
+            "block";
+
+
+          button.disabled =
+            false;
+
+          button.textContent =
+            "Save Profile →";
+
+        }
+      );
+
+
+
+    // =====================================
+    // CHANGE PASSWORD
+    // =====================================
+
+    document
+      .getElementById("passwordForm")
+      .addEventListener(
+        "submit",
+        async (event) => {
+
+          event.preventDefault();
+
+
+          const newPassword =
+            document
+              .getElementById("newPassword")
+              .value;
+
+
+          const confirmPassword =
+            document
+              .getElementById("confirmPassword")
+              .value;
+
+
+          const message =
+            document.getElementById(
+              "passwordMessage"
+            );
+
+
+          const button =
+            document.getElementById(
+              "passwordSaveButton"
+            );
+
+
+          message.style.display =
+            "none";
+
+          message.classList.remove(
+            "error"
+          );
+
+
+          if (
+            newPassword !==
+            confirmPassword
+          ) {
+
+            message.textContent =
+              "The passwords do not match.";
+
+            message.classList.add(
+              "error"
+            );
+
+            message.style.display =
+              "block";
+
+            return;
+          }
+
+
+          if (
+            newPassword.length < 8
+          ) {
+
+            message.textContent =
+              "Your password must be at least 8 characters.";
+
+            message.classList.add(
+              "error"
+            );
+
+            message.style.display =
+              "block";
+
+            return;
+          }
+
+
+          button.disabled =
+            true;
+
+          button.textContent =
+            "Updating...";
+
+
+          const {
+            error
+          } =
+            await supabaseClient
+              .auth
+              .updateUser({
+                password:
+                  newPassword
+              });
+
+
+          if (error) {
+
+            console.error(
+              "Password update error:",
+              error
+            );
+
+
+            message.textContent =
+              "We couldn't update your password. Please try again.";
+
+            message.classList.add(
+              "error"
+            );
+
+            message.style.display =
+              "block";
+
+
+            button.disabled =
+              false;
+
+            button.textContent =
+              "Change Password →";
+
+
+            return;
+          }
+
+
+          document
+            .getElementById(
+              "passwordForm"
+            )
+            .reset();
+
+
+          message.textContent =
+            "Password updated successfully.";
+
+          message.style.display =
+            "block";
+
+
+          button.disabled =
+            false;
+
+          button.textContent =
+            "Change Password →";
+
+        }
+      );
+
+
+
+    // =====================================
+    // LOG OUT
+    // =====================================
+
+    document
+      .getElementById(
+        "logoutButton"
+      )
+      .addEventListener(
+        "click",
+        async () => {
+
+          await supabaseClient
+            .auth
+            .signOut();
+
+
+          window.location.href =
+            "join.html";
+
+        }
+      );
+
+
+
+    loadAccountSettings();
+
+  </script>
+
+</body>
+</html>

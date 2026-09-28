@@ -1,0 +1,1852 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Mini Games | GoldenGetaways</title>
+
+  <meta
+    name="description"
+    content="GoldenGetaways member mini games, challenges and points."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  >
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      background:
+        radial-gradient(
+          circle at 70% 0%,
+          #08283f 0%,
+          #00111f 42%,
+          #000a13 100%
+        );
+
+      color: #f8f5ef;
+
+      font-family:
+        "DM Sans",
+        sans-serif;
+
+      overflow-x: hidden;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    /* =========================================
+       HEADER
+    ========================================= */
+
+    .header {
+      position: relative;
+      z-index: 100;
+      width: 100%;
+
+      background:
+        rgba(0, 17, 31, 0.96);
+
+      border-bottom:
+        1px solid
+        rgba(216, 161, 63, 0.18);
+    }
+
+
+    /* =========================================
+       PAGE
+    ========================================= */
+
+    .games-page {
+      width:
+        min(
+          1250px,
+          calc(100% - 48px)
+        );
+
+      margin: 0 auto;
+
+      padding:
+        55px 0 80px;
+    }
+
+
+    /* =========================================
+       HERO
+    ========================================= */
+
+    .games-hero {
+      position: relative;
+
+      padding:
+        54px 56px;
+
+      overflow: hidden;
+
+      border:
+        1px solid
+        rgba(216, 161, 63, 0.27);
+
+      border-radius: 22px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(216, 161, 63, 0.09),
+          rgba(5, 31, 50, 0.97) 45%,
+          rgba(1, 16, 28, 0.99)
+        );
+
+      box-shadow:
+        0 25px 70px
+        rgba(0, 0, 0, 0.22);
+    }
+
+    .games-hero::after {
+      content: "";
+
+      position: absolute;
+
+      width: 380px;
+      height: 380px;
+
+      right: -120px;
+      top: -170px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(216, 161, 63, 0.13),
+          transparent 70%
+        );
+
+      pointer-events: none;
+    }
+
+    .games-eyebrow {
+      margin:
+        0 0 12px;
+
+      color:
+        #f0bd5c;
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      letter-spacing: 3px;
+    }
+
+    .games-hero h1 {
+      max-width: 700px;
+
+      margin:
+        0 0 16px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size:
+        clamp(
+          44px,
+          5vw,
+          70px
+        );
+
+      font-weight: 400;
+
+      line-height: 1;
+    }
+
+    .games-hero h1 em {
+      color:
+        #f0bd5c;
+
+      font-weight: 400;
+    }
+
+    .games-description {
+      max-width: 680px;
+
+      margin: 0;
+
+      color:
+        #b6c1c9;
+
+      font-size: 14px;
+
+      line-height: 1.75;
+    }
+
+
+    /* =========================================
+       STATUS BAR
+    ========================================= */
+
+    .games-status-bar {
+      margin-top: 22px;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 14px;
+    }
+
+    .status-card {
+      padding:
+        18px 20px;
+
+      border:
+        1px solid
+        rgba(216, 161, 63, 0.20);
+
+      border-radius: 14px;
+
+      background:
+        rgba(5, 29, 47, 0.75);
+    }
+
+    .status-label {
+      display: block;
+
+      margin-bottom: 5px;
+
+      color:
+        #7f8d98;
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 1.5px;
+    }
+
+    .status-value {
+      color:
+        #f8f5ef;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 22px;
+
+      font-weight: 400;
+    }
+
+
+    /* =========================================
+       MAIN CONTENT
+    ========================================= */
+
+    .games-layout {
+      margin-top: 22px;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        330px;
+
+      gap: 22px;
+
+      align-items: start;
+    }
+
+    .panel {
+      border:
+        1px solid
+        rgba(216, 161, 63, 0.23);
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          160deg,
+          rgba(6, 31, 50, 0.97),
+          rgba(1, 16, 28, 0.99)
+        );
+
+      box-shadow:
+        0 20px 50px
+        rgba(0, 0, 0, 0.18);
+    }
+
+
+    /* =========================================
+       ACTIVE GAME
+    ========================================= */
+
+    .active-game {
+      padding: 30px;
+    }
+
+    .section-heading {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      margin-bottom: 25px;
+    }
+
+    .section-eyebrow {
+      margin:
+        0 0 5px;
+
+      color:
+        #f0bd5c;
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 2px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 30px;
+
+      font-weight: 400;
+    }
+
+    .live-badge {
+      padding:
+        7px 11px;
+
+      border:
+        1px solid
+        rgba(65, 212, 131, 0.35);
+
+      border-radius: 100px;
+
+      background:
+        rgba(65, 212, 131, 0.07);
+
+      color:
+        #62dd96;
+
+      font-size: 8px;
+
+      font-weight: 700;
+
+      letter-spacing: 1.2px;
+    }
+
+    .game-card {
+      padding: 25px;
+
+      border:
+        1px solid
+        rgba(216, 161, 63, 0.28);
+
+      border-radius: 15px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(216, 161, 63, 0.06),
+          rgba(0, 17, 31, 0.58)
+        );
+    }
+
+    .game-title {
+      margin:
+        0 0 10px;
+
+      color:
+        #f0bd5c;
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      letter-spacing: 1.7px;
+    }
+
+    .game-question {
+      margin:
+        0 0 10px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size:
+        clamp(
+          27px,
+          3vw,
+          38px
+        );
+
+      font-weight: 400;
+
+      line-height: 1.2;
+    }
+
+    .game-info {
+      margin:
+        0 0 23px;
+
+      color:
+        #aeb9c1;
+
+      font-size: 12px;
+
+      line-height: 1.6;
+    }
+
+
+    /* =========================================
+       COUNTDOWN
+    ========================================= */
+
+    .game-countdown {
+      margin-bottom: 24px;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 90px);
+
+      gap: 9px;
+    }
+
+    .countdown-box {
+      padding:
+        12px 8px;
+
+      text-align: center;
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+
+      border-radius: 10px;
+
+      background:
+        rgba(0, 17, 31, 0.68);
+    }
+
+    .countdown-box strong {
+      display: block;
+
+      color:
+        white;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 25px;
+
+      font-weight: 400;
+    }
+
+    .countdown-box span {
+      color:
+        #74838e;
+
+      font-size: 7px;
+
+      font-weight: 700;
+
+      letter-spacing: 1.2px;
+    }
+
+
+    /* =========================================
+       ANSWER
+    ========================================= */
+
+    .answer-form {
+      display: flex;
+
+      gap: 10px;
+    }
+
+    .answer-input {
+      min-width: 0;
+
+      flex: 1;
+
+      height: 48px;
+
+      padding:
+        0 15px;
+
+      outline: none;
+
+      border:
+        1px solid
+        rgba(216, 161, 63, 0.25);
+
+      border-radius: 10px;
+
+      background:
+        rgba(0, 17, 31, 0.72);
+
+      color:
+        white;
+
+      font-size: 13px;
+    }
+
+    .answer-input:focus {
+      border-color:
+        rgba(216, 161, 63, 0.65);
+    }
+
+    .answer-input::placeholder {
+      color:
+        #687783;
+    }
+
+    .answer-button {
+      min-width: 145px;
+
+      border: none;
+
+      border-radius: 10px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #b77b24,
+          #e1aa47
+        );
+
+      color:
+        white;
+
+      font-size: 11px;
+
+      font-weight: 700;
+    }
+
+    .answer-note {
+      margin:
+        11px 0 0;
+
+      color:
+        #697984;
+
+      font-size: 9px;
+    }
+
+
+    /* =========================================
+       EMPTY STATE
+    ========================================= */
+
+    .no-game {
+      padding:
+        55px 25px;
+
+      text-align: center;
+    }
+
+    .no-game-icon {
+      width: 64px;
+      height: 64px;
+
+      margin:
+        0 auto 16px;
+
+      display: grid;
+
+      place-items: center;
+
+      border:
+        1px solid
+        rgba(216, 161, 63, 0.3);
+
+      border-radius: 17px;
+
+      background:
+        rgba(216, 161, 63, 0.06);
+
+      font-size: 25px;
+    }
+
+    .no-game h3 {
+      margin:
+        0 0 8px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 28px;
+
+      font-weight: 400;
+    }
+
+    .no-game p {
+      margin: 0;
+
+      color:
+        #8d9aa4;
+
+      font-size: 12px;
+    }
+
+
+    /* =========================================
+       SIDE PANEL
+    ========================================= */
+
+    .side-panel {
+      padding: 22px;
+    }
+
+    .side-title {
+      margin:
+        0 0 17px;
+
+      color:
+        #f0bd5c;
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 2px;
+    }
+
+    .points-box {
+      padding: 18px;
+
+      border:
+        1px solid
+        rgba(216, 161, 63, 0.24);
+
+      border-radius: 13px;
+
+      background:
+        rgba(216, 161, 63, 0.04);
+    }
+
+    .points-box small {
+      display: block;
+
+      margin-bottom: 5px;
+
+      color:
+        #8c99a3;
+
+      font-size: 9px;
+
+      letter-spacing: 1px;
+    }
+
+    .points-number {
+      color:
+        #f0bd5c;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 36px;
+    }
+
+    .points-box p {
+      margin:
+        7px 0 0;
+
+      color:
+        #8e9ba5;
+
+      font-size: 10px;
+
+      line-height: 1.5;
+    }
+
+    .rules {
+      margin-top: 22px;
+    }
+
+    .rule {
+      padding:
+        11px 0;
+
+      display: flex;
+
+      gap: 9px;
+
+      border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.06);
+
+      color:
+        #aeb8c0;
+
+      font-size: 10px;
+
+      line-height: 1.5;
+    }
+
+    .rule:last-child {
+      border-bottom: none;
+    }
+
+    .rule-check {
+      color:
+        #f0bd5c;
+
+      font-weight: 700;
+    }
+
+    .back-button {
+      width: 100%;
+
+      min-height: 44px;
+
+      margin-top: 20px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border:
+        1px solid
+        rgba(216, 161, 63, 0.28);
+
+      border-radius: 10px;
+
+      color:
+        #d9e0e5;
+
+      font-size: 11px;
+
+      transition:
+        0.2s ease;
+    }
+
+    .back-button:hover {
+      border-color:
+        rgba(216, 161, 63, 0.6);
+
+      color:
+        #f0bd5c;
+
+      background:
+        rgba(216, 161, 63, 0.06);
+    }
+
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+
+    @media (max-width: 900px) {
+
+      .games-page {
+        width:
+          calc(100% - 28px);
+
+        padding-top: 30px;
+      }
+
+      .games-hero {
+        padding:
+          40px 32px;
+      }
+
+      .games-layout {
+        grid-template-columns:
+          1fr;
+      }
+
+      .games-status-bar {
+        grid-template-columns:
+          1fr;
+      }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+      .games-page {
+        width:
+          calc(100% - 16px);
+      }
+
+      .games-hero {
+        padding:
+          32px 22px;
+      }
+
+      .active-game {
+        padding: 20px;
+      }
+
+      .game-card {
+        padding: 20px;
+      }
+
+      .game-countdown {
+        grid-template-columns:
+          repeat(3, 1fr);
+      }
+
+      .answer-form {
+        flex-direction: column;
+      }
+
+      .answer-button {
+        min-height: 46px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- HEADER -->
+
+  <header class="header">
+
+    <a
+      href="index.html"
+      class="logo"
+    >
+
+      <div class="logo-icon">
+
+        <img
+          src="images/logo-small.webp"
+          alt="GoldenGetaways icon"
+        >
+
+      </div>
+
+      <div class="logo-text">
+
+        <span>
+          GoldenGetaways
+        </span>
+
+        <small>
+          EST 2025
+        </small>
+
+      </div>
+
+    </a>
+
+
+     <nav class="desktop-nav">
+
+      <a href="dashboard.html">
+        Dashboard
+      </a>
+
+      <a href="my-requests.html">
+        My Requests
+      </a>
+
+      <a href="points.html">
+        Points
+      </a>
+
+      <a href="group-chat.html">
+        Group Chat
+      </a>
+
+      <a href="competitions.html">
+        Competitions
+      </a>
+
+      <a href="support.html">
+        Support
+      </a>
+
+    </nav>
+
+
+    <a
+      href="account-settings.html"
+      class="button gold-button header-button"
+    >
+      My Account
+      <span>→</span>
+    </a>
+  <button
+    class="mobile-menu-button"
+    id="mobileMenuButton"
+    aria-label="Open menu"
+>
+    ☰
+</button>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="my-requests.html">My Requests</a>
+    <a href="points.html">Points</a>
+    <a href="group-chat.html">Group Chat</a>
+    <a href="competitions.html">Competitions</a>
+    <a href="support.html">Support</a>
+    <a href="account-settings.html">My Account</a>
+</div>
+
+
+  <!-- PAGE -->
+
+  <main class="games-page">
+
+
+    <section class="games-hero">
+
+      <p class="games-eyebrow">
+        GOLDENGETAWAYS MEMBERS
+      </p>
+
+      <h1>
+        Play. Win.
+        <em>Earn points.</em>
+      </h1>
+
+      <p class="games-description">
+        Take part in exclusive GoldenGetaways member games,
+        guess the answers and earn points towards future
+        rewards and giveaways.
+      </p>
+
+    </section>
+
+
+    <!-- STATUS -->
+
+    <section class="games-status-bar">
+
+      <div class="status-card">
+
+        <span class="status-label">
+          CURRENT GAME
+        </span>
+
+        <span
+          class="status-value"
+          id="currentGameStatus"
+        >
+          Checking...
+        </span>
+
+      </div>
+
+
+      <div class="status-card">
+
+        <span class="status-label">
+          YOUR POINTS
+        </span>
+
+        <span
+          class="status-value"
+          id="memberPoints"
+        >
+          —
+        </span>
+
+      </div>
+
+
+      <div class="status-card">
+
+        <span class="status-label">
+          YOUR ANSWER
+        </span>
+
+        <span
+          class="status-value"
+          id="answerStatus"
+        >
+          Not submitted
+        </span>
+
+      </div>
+
+    </section>
+
+
+    <!-- CONTENT -->
+
+    <section class="games-layout">
+
+
+      <section class="panel active-game">
+
+        <div class="section-heading">
+
+          <div>
+
+            <p class="section-eyebrow">
+              MEMBER MINI GAME
+            </p>
+
+            <h2>
+              Current game
+            </h2>
+
+          </div>
+
+          <span
+            class="live-badge"
+            id="liveBadge"
+          >
+            CHECKING
+          </span>
+
+        </div>
+
+
+        <div id="gameContainer">
+
+          <div class="no-game">
+
+            <div class="no-game-icon">
+              🎮
+            </div>
+
+            <h3>
+              Checking for a game...
+            </h3>
+
+            <p>
+              We're checking whether a GoldenGetaways
+              mini game is currently live.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- SIDE -->
+
+      <aside>
+
+
+        <section class="panel side-panel">
+
+          <p class="side-title">
+            YOUR MEMBER POINTS
+          </p>
+
+          <div class="points-box">
+
+            <small>
+              CURRENT BALANCE
+            </small>
+
+            <div
+              class="points-number"
+              id="sideMemberPoints"
+            >
+              —
+            </div>
+
+            <p>
+              Take part in GoldenGetaways activities
+              and mini games to build your member points.
+            </p>
+
+          </div>
+
+
+          <div class="rules">
+
+            <p class="side-title">
+              GAME RULES
+            </p>
+
+            <div class="rule">
+              <span class="rule-check">✓</span>
+              One answer per member for each game.
+            </div>
+
+            <div class="rule">
+              <span class="rule-check">✓</span>
+              Submit your answer before the game closes.
+            </div>
+
+            <div class="rule">
+              <span class="rule-check">✓</span>
+              Answers are hidden from other members.
+            </div>
+
+            <div class="rule">
+              <span class="rule-check">✓</span>
+              Points can be awarded after results are checked.
+            </div>
+
+          </div>
+
+
+          <a
+            href="group-chat.html"
+            class="back-button"
+          >
+            ← Back to Group Chat
+          </a>
+
+        </section>
+
+
+      </aside>
+
+
+    </section>
+
+
+  </main>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+  <script src="script.js"></script>
+  <script>
+document.addEventListener("DOMContentLoaded", async () => {
+const mobileMenuButton = document.getElementById("mobileMenuButton");
+const mobileMenu = document.getElementById("mobileMenu");
+
+if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("open");
+    });
+}
+  const currentGameStatus =
+    document.getElementById("currentGameStatus");
+
+  const liveBadge =
+    document.getElementById("liveBadge");
+
+  const gameContainer =
+    document.getElementById("gameContainer");
+
+
+  const {
+    data: { user },
+    error: userError
+  } = await supabaseClient.auth.getUser();
+
+
+  if (userError || !user) {
+    window.location.href = "join.html";
+    return;
+  }
+  // ============================================
+// ACTIVE MEMBERSHIP CHECK
+// ============================================
+
+const {
+  data: accessProfile,
+  error: accessProfileError
+} = await supabaseClient
+  .from("profiles")
+  .select("membership_status")
+  .eq("id", user.id)
+  .maybeSingle();
+
+if (
+  accessProfileError ||
+  !accessProfile ||
+  accessProfile.membership_status !== "active"
+) {
+  window.location.href = "membership.html";
+  return;
+}
+// =====================================================
+// MEMBER POINTS
+// =====================================================
+
+const memberPoints =
+  document.getElementById("memberPoints");
+
+const sideMemberPoints =
+  document.getElementById("sideMemberPoints");
+
+
+const {
+  data: memberProfile,
+  error: memberProfileError
+} = await supabaseClient
+  .from("profiles")
+  .select("points")
+  .eq("id", user.id)
+  .maybeSingle();
+
+
+if (memberProfileError) {
+
+  console.error(
+    "Could not load member points:",
+    memberProfileError
+  );
+
+} else {
+
+  const points =
+    memberProfile?.points ?? 0;
+
+  memberPoints.textContent =
+    `${points} pts`;
+
+  sideMemberPoints.textContent =
+    points;
+
+}
+
+  const now =
+    new Date().toISOString();
+
+
+  let {
+    data: game,
+    error: gameError
+  } = await supabaseClient
+    .from("group_games")
+    .select(
+      "id, title, question, starts_at, ends_at, status"
+    )
+    .eq("status", "active")
+    .lte("starts_at", now)
+    .gt("ends_at", now)
+    .order("created_at", {
+      ascending: false
+    })
+    .limit(1)
+    .maybeSingle();
+
+
+  if (gameError) {
+
+    console.error(
+      "Could not load mini game:",
+      gameError
+    );
+
+    currentGameStatus.textContent =
+      "Unavailable";
+
+    liveBadge.textContent =
+      "ERROR";
+
+    return;
+  }
+
+
+  if (!game) {
+    const {
+  data: finishedGame,
+  error: finishedGameError
+} =
+  await supabaseClient
+    .from("group_games")
+    .select(
+      "id, title, question, starts_at, ends_at, status, created_by, created_at"
+    )
+   .eq(
+  "status",
+  "ended"
+)
+.order(
+  "ends_at",
+  {
+    ascending: false
+  }
+)
+    .limit(1)
+    .maybeSingle();
+
+
+if (finishedGameError) {
+
+  console.error(
+    "Could not load finished game:",
+    finishedGameError
+  );
+
+}
+
+
+if (finishedGame) {
+
+  game =
+    finishedGame;
+
+} else {
+    currentGameStatus.textContent =
+      "No game live";
+
+    liveBadge.textContent =
+      "NO LIVE GAME";
+
+    gameContainer.innerHTML = `
+      <div class="no-game">
+
+        <div class="no-game-icon">
+          🎮
+        </div>
+
+        <h3>
+          No game is live right now.
+        </h3>
+
+        <p>
+          Check back soon for the next
+          GoldenGetaways member mini game.
+        </p>
+
+      </div>
+    `;
+
+   return;
+}
+
+}
+
+  currentGameStatus.textContent =
+    game.title;
+
+ const gameHasEnded =
+  game.status === "ended" ||
+  new Date(game.ends_at).getTime() <= Date.now();
+
+
+liveBadge.textContent =
+  gameHasEnded
+    ? "ENDED"
+    : "LIVE";
+
+  gameContainer.innerHTML = `
+    <div class="game-card">
+
+      <p class="game-title">
+        ${escapeHTML(game.title)}
+      </p>
+
+      <h3 class="game-question">
+        ${escapeHTML(game.question)}
+      </h3>
+
+     <p class="game-info">
+  ${
+    gameHasEnded
+      ? "This game has ended. Your submitted answer and result are shown below."
+      : "Submit your answer before the timer runs out. You can submit one answer for this game."
+  }
+</p>
+
+      <div class="game-countdown">
+
+        <div class="countdown-box">
+          <strong id="gameHours">00</strong>
+          <span>HOURS</span>
+        </div>
+
+        <div class="countdown-box">
+          <strong id="gameMinutes">00</strong>
+          <span>MINS</span>
+        </div>
+
+        <div class="countdown-box">
+          <strong id="gameSeconds">00</strong>
+          <span>SECS</span>
+        </div>
+
+      </div>
+
+      <form
+        class="answer-form"
+        id="answerForm"
+      >
+
+        <input
+          class="answer-input"
+          id="answerInput"
+          type="text"
+          maxlength="300"
+          placeholder="Enter your answer..."
+          autocomplete="off"
+          required
+        >
+
+        <button
+          class="answer-button"
+          id="answerButton"
+          type="submit"
+        >
+          Submit Answer
+        </button>
+
+      </form>
+
+      <p
+        class="answer-note"
+        id="answerNote"
+      >
+        Your answer is private and cannot be seen by other members.
+      </p>
+
+    </div>
+  `;
+   function updateCountdown() {
+
+  const hoursElement =
+    document.getElementById("gameHours");
+
+  const minutesElement =
+    document.getElementById("gameMinutes");
+
+  const secondsElement =
+    document.getElementById("gameSeconds");
+
+  if (
+    !hoursElement ||
+    !minutesElement ||
+    !secondsElement
+  ) {
+    return;
+  }
+
+  const endTime =
+    new Date(game.ends_at).getTime();
+
+  const now =
+    Date.now();
+
+  const remaining =
+    endTime - now;
+
+
+  if (remaining <= 0) {
+
+    hoursElement.textContent = "00";
+    minutesElement.textContent = "00";
+    secondsElement.textContent = "00";
+
+    liveBadge.textContent =
+      "ENDED";
+
+   currentGameStatus.textContent =
+  "Game ended";
+
+answerInput.disabled =
+  true;
+
+answerButton.disabled =
+  true;
+
+answerButton.textContent =
+  "Game Ended";
+
+loadFinishedGameResult(game);
+
+return;
+  }
+
+
+  const hours =
+    Math.floor(
+      remaining / (1000 * 60 * 60)
+    );
+
+  const minutes =
+    Math.floor(
+      (remaining % (1000 * 60 * 60)) /
+      (1000 * 60)
+    );
+
+  const seconds =
+    Math.floor(
+      (remaining % (1000 * 60)) /
+      1000
+    );
+
+
+  hoursElement.textContent =
+    String(hours).padStart(2, "0");
+
+  minutesElement.textContent =
+    String(minutes).padStart(2, "0");
+
+  secondsElement.textContent =
+    String(seconds).padStart(2, "0");
+}
+
+
+updateCountdown();
+
+setInterval(
+  updateCountdown,
+  1000
+);
+const answerForm =
+  document.getElementById("answerForm");
+
+const answerInput =
+  document.getElementById("answerInput");
+
+const answerButton =
+  document.getElementById("answerButton");
+
+const answerNote =
+  document.getElementById("answerNote");
+
+const answerStatus =
+  document.getElementById("answerStatus");
+  const {
+  data: existingAnswer,
+  error: existingAnswerError
+} = await supabaseClient
+  .from("group_game_answers")
+  .select("id, answer, submitted_at, points_awarded")
+  .eq("game_id", game.id)
+  .eq("user_id", user.id)
+  .maybeSingle();
+
+
+if (existingAnswerError) {
+
+  console.error(
+    "Could not check existing answer:",
+    existingAnswerError
+  );
+
+}
+
+
+if (existingAnswer) {
+
+  answerStatus.textContent =
+    "Submitted";
+
+  answerInput.value =
+    existingAnswer.answer;
+
+  answerInput.disabled =
+    true;
+
+  answerButton.disabled =
+    true;
+
+  if (gameHasEnded) {
+
+    const awardedPoints =
+      existingAnswer.points_awarded ?? 0;
+
+    if (awardedPoints > 0) {
+
+      answerButton.textContent =
+        `✓ +${awardedPoints} point${awardedPoints === 1 ? "" : "s"} awarded`;
+
+      answerNote.textContent =
+        `Your answer: ${existingAnswer.answer} • You earned +${awardedPoints} point${awardedPoints === 1 ? "" : "s"}!`;
+
+    } else {
+
+      answerButton.textContent =
+        "Game Ended";
+
+      answerNote.textContent =
+        `Your answer: ${existingAnswer.answer} • No points awarded`;
+
+    }
+
+  } else {
+
+    answerButton.textContent =
+      "Answer Submitted";
+
+    answerNote.textContent =
+      `Answer submitted: ${existingAnswer.answer}`;
+
+  }
+
+}
+
+answerForm.addEventListener(
+  "submit",
+  async (event) => {
+
+    event.preventDefault();
+
+    const answer =
+      answerInput.value.trim();
+
+    if (!answer) {
+      return;
+    }
+
+    answerButton.disabled = true;
+    answerButton.textContent =
+      "Submitting...";
+
+
+    const { error } =
+      await supabaseClient
+        .from("group_game_answers")
+        .insert({
+          game_id: game.id,
+          user_id: user.id,
+          answer: answer
+        });
+
+
+    if (error) {
+
+      console.error(
+        "Could not submit answer:",
+        error
+      );
+
+      answerButton.disabled = false;
+      answerButton.textContent =
+        "Submit Answer";
+
+      if (error.code === "23505") {
+
+        answerNote.textContent =
+          "You have already submitted an answer for this game.";
+
+      } else {
+
+        answerNote.textContent =
+          "Your answer could not be submitted. Please try again.";
+
+      }
+
+      return;
+    }
+
+
+    answerStatus.textContent =
+      "Submitted";
+
+    answerNote.textContent =
+      `Answer submitted: ${answer}`;
+
+    answerInput.disabled = true;
+
+    answerButton.textContent =
+      "Answer Submitted";
+
+    answerButton.disabled = true;
+
+  }
+);
+async function loadFinishedGameResult(game) {
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient.rpc(
+      "get_finished_game_result",
+      {
+        target_game_id: game.id
+      }
+    );
+
+
+  if (error) {
+
+    console.error(
+      "Could not load finished game result:",
+      error
+    );
+
+    return;
+  }
+
+
+  if (!data || data.length === 0) {
+    return;
+  }
+
+
+  const result =
+    data[0];
+
+
+  answerNote.innerHTML = `
+    <strong>Game finished.</strong><br>
+    Your answer: ${result.member_answer ?? "No answer submitted"}<br>
+    Correct answer: ${result.correct_answer}
+    ${
+      result.points_awarded > 0
+        ? `<br><strong>🎉 You earned +${result.points_awarded} point${result.points_awarded === 1 ? "" : "s"}!</strong>`
+        : `<br>No points awarded this time.`
+    }
+  `;
+
+}
+  function updateCountdown() {
+
+  const hoursElement =
+    document.getElementById("gameHours");
+
+  const minutesElement =
+    document.getElementById("gameMinutes");
+
+  const secondsElement =
+    document.getElementById("gameSeconds");
+
+  if (
+    !hoursElement ||
+    !minutesElement ||
+    !secondsElement
+  ) {
+    return;
+  }
+
+  const endTime =
+    new Date(game.ends_at).getTime();
+
+  const now =
+    Date.now();
+
+  const remaining =
+    endTime - now;
+
+
+  if (remaining <= 0) {
+
+    hoursElement.textContent = "00";
+    minutesElement.textContent = "00";
+    secondsElement.textContent = "00";
+
+    liveBadge.textContent =
+      "ENDED";
+
+    currentGameStatus.textContent =
+      "Game ended";
+
+    return;
+  }
+
+
+  const hours =
+    Math.floor(
+      remaining / (1000 * 60 * 60)
+    );
+
+  const minutes =
+    Math.floor(
+      (remaining % (1000 * 60 * 60)) /
+      (1000 * 60)
+    );
+
+  const seconds =
+    Math.floor(
+      (remaining % (1000 * 60)) /
+      1000
+    );
+
+
+  hoursElement.textContent =
+    String(hours).padStart(2, "0");
+
+  minutesElement.textContent =
+    String(minutes).padStart(2, "0");
+
+  secondsElement.textContent =
+    String(seconds).padStart(2, "0");
+}
+
+
+updateCountdown();
+
+setInterval(
+  updateCountdown,
+  1000
+);
+  function escapeHTML(value) {
+
+    const div =
+      document.createElement("div");
+
+    div.textContent =
+      value || "";
+
+    return div.innerHTML;
+  }
+
+});
+</script>
+</body>
+
+</html>

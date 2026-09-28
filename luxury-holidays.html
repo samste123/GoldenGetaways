@@ -1,0 +1,2052 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Luxury Holidays | Handpicked 5 Star & Premium Getaways | GoldenGetaways
+  </title>
+
+  <meta
+    name="description"
+    content="Explore handpicked luxury holidays with GoldenGetaways. Discover 5 star hotels, premium resorts, luxury all inclusive escapes and stylish beach holidays across popular destinations."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  >
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+
+      background:
+        radial-gradient(
+          circle at 70% 5%,
+          #08263c 0%,
+          #00111f 38%,
+          #000b15 100%
+        );
+
+      color: white;
+
+      overflow-x: hidden;
+    }
+
+
+    /* =========================================
+       HEADER
+    ========================================= */
+
+    .header {
+      position: absolute;
+
+      top: 0;
+      left: 0;
+
+      width: 100%;
+
+      z-index: 1000;
+
+      background: transparent;
+    }
+
+
+
+    /* =========================================
+       HERO
+    ========================================= */
+
+    .luxury-hero {
+      position: relative;
+
+      min-height: 650px;
+
+      display: flex;
+
+      align-items: center;
+
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(2,18,32,0.97) 0%,
+          rgba(2,18,32,0.88) 32%,
+          rgba(2,18,32,0.48) 58%,
+          rgba(2,18,32,0.10) 100%
+        ),
+        url("images/how-hero.webp")
+        center / cover
+        no-repeat;
+    }
+
+
+    .hero-inner {
+      width: 100%;
+
+      padding:
+        155px 6% 70px;
+
+      position: relative;
+
+      z-index: 2;
+    }
+
+
+    .hero-copy {
+      max-width: 780px;
+    }
+
+
+    .hero-eyebrow {
+      margin-bottom: 18px;
+
+      color: var(--gold-light);
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      letter-spacing: 4px;
+    }
+
+
+    .hero-copy h1 {
+      margin:
+        0 0 24px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size:
+        clamp(
+          58px,
+          5.8vw,
+          88px
+        );
+
+      font-weight: 400;
+
+      line-height: 0.96;
+    }
+
+
+    .hero-copy h1 em {
+      color: var(--gold-light);
+
+      font-weight: 400;
+    }
+
+
+    .hero-line {
+      width: 48px;
+
+      height: 2px;
+
+      margin-bottom: 24px;
+
+      background: var(--gold);
+    }
+
+
+    .hero-copy p {
+      max-width: 690px;
+
+      margin:
+        0 0 30px;
+
+      color: #e1e6ea;
+
+      font-size: 16px;
+
+      line-height: 1.75;
+    }
+
+
+    .hero-actions {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 13px;
+    }
+
+
+    .secondary-button {
+      min-height: 54px;
+
+      padding:
+        0 25px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.46);
+
+      border-radius: 12px;
+
+      background:
+        rgba(0,17,31,0.48);
+
+      color: var(--gold-light);
+
+      font-size: 14px;
+    }
+
+
+
+    /* =========================================
+       PAGE WIDTH
+    ========================================= */
+
+    .page-inner {
+      width: 88%;
+
+      max-width: 1500px;
+
+      margin:
+        0 auto;
+    }
+
+
+
+    /* =========================================
+       SEO INTRO
+    ========================================= */
+
+    .seo-intro {
+      padding:
+        80px 0 45px;
+
+      max-width: 1000px;
+    }
+
+
+    .section-eyebrow {
+      margin:
+        0 0 13px;
+
+      color: var(--gold-light);
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      letter-spacing: 4px;
+    }
+
+
+    .seo-intro h2 {
+      margin:
+        0 0 20px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size:
+        clamp(
+          42px,
+          4vw,
+          60px
+        );
+
+      font-weight: 400;
+
+      line-height: 1.05;
+    }
+
+
+    .seo-intro h2 em {
+      color: var(--gold-light);
+
+      font-weight: 400;
+    }
+
+
+    .seo-intro p {
+      margin:
+        0 0 16px;
+
+      color: #cbd2d7;
+
+      font-size: 15px;
+
+      line-height: 1.8;
+    }
+
+
+
+    /* =========================================
+       HOLIDAY GRID
+    ========================================= */
+
+    .holiday-section {
+      padding-bottom: 80px;
+    }
+
+
+    .holiday-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          2,
+          minmax(0,1fr)
+        );
+
+      gap: 24px;
+    }
+
+
+    .holiday-card {
+      overflow: hidden;
+
+      display: flex;
+
+      flex-direction: column;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.35);
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #062238,
+          #031827
+        );
+
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+
+    .holiday-card:hover {
+      transform:
+        translateY(-5px);
+
+      border-color:
+        rgba(216,161,63,0.68);
+
+      box-shadow:
+        0 22px 55px
+        rgba(0,0,0,0.25);
+    }
+
+
+    .holiday-image {
+      position: relative;
+
+      height: 320px;
+
+      overflow: hidden;
+    }
+
+
+    .holiday-image img {
+      width: 100%;
+
+      height: 100%;
+
+      display: block;
+
+      object-fit: cover;
+
+      transition:
+        transform 0.4s ease;
+    }
+
+
+    .holiday-card:hover
+    .holiday-image img {
+      transform:
+        scale(1.035);
+    }
+
+
+    .holiday-badge {
+      position: absolute;
+
+      top: 18px;
+
+      left: 18px;
+
+      min-height: 31px;
+
+      padding:
+        0 12px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.65);
+
+      border-radius: 50px;
+
+      background:
+        rgba(0,17,31,0.90);
+
+      color: var(--gold-light);
+
+      font-size: 9px;
+
+      font-weight: 600;
+
+      letter-spacing: 1.4px;
+    }
+
+
+    .holiday-content {
+      flex: 1;
+
+      display: flex;
+
+      flex-direction: column;
+
+      padding:
+        25px;
+    }
+
+
+    .holiday-location {
+      margin:
+        0 0 8px;
+
+      color: var(--gold-light);
+
+      font-size: 10px;
+
+      font-weight: 600;
+
+      letter-spacing: 2px;
+    }
+
+
+    .holiday-card h2 {
+      margin:
+        0 0 12px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 31px;
+
+      font-weight: 400;
+
+      line-height: 1.08;
+    }
+
+
+    .holiday-details {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 8px;
+
+      margin-bottom: 16px;
+    }
+
+
+    .holiday-details span {
+      padding:
+        7px 10px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.20);
+
+      border-radius: 7px;
+
+      background:
+        rgba(255,255,255,0.03);
+
+      color: #e6eaed;
+
+      font-size: 12px;
+    }
+
+
+    .holiday-description {
+      margin:
+        0 0 22px;
+
+      color: #c8cfd5;
+
+      font-size: 13px;
+
+      line-height: 1.7;
+    }
+
+
+    .holiday-bottom {
+      margin-top: auto;
+
+      padding-top: 18px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 18px;
+
+      border-top:
+        1px solid
+        rgba(255,255,255,0.07);
+    }
+
+
+    .holiday-price small {
+      display: block;
+
+      margin-bottom: 3px;
+
+      color: #aeb7c1;
+
+      font-size: 11px;
+    }
+
+
+    .holiday-price strong {
+      color: var(--gold-light);
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 30px;
+
+      font-weight: 400;
+    }
+
+
+    .book-button {
+      min-height: 48px;
+
+      padding:
+        0 19px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border-radius: 9px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #b77b24,
+          #e0aa47
+        );
+
+      color: white;
+
+      font-size: 13px;
+
+      font-weight: 500;
+
+      text-align: center;
+    }
+
+
+
+    /* =========================================
+       SEO BOTTOM
+    ========================================= */
+
+    .seo-bottom {
+      padding:
+        70px 0 80px;
+
+      border-top:
+        1px solid
+        rgba(255,255,255,0.05);
+    }
+
+
+    .seo-bottom-grid {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0,1fr)
+        minmax(300px,420px);
+
+      gap: 70px;
+    }
+
+
+    .seo-bottom h2 {
+      margin:
+        0 0 18px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size:
+        clamp(
+          38px,
+          3.5vw,
+          52px
+        );
+
+      font-weight: 400;
+
+      line-height: 1.08;
+    }
+
+
+    .seo-bottom h2 em {
+      color: var(--gold-light);
+
+      font-weight: 400;
+    }
+
+
+    .seo-bottom p {
+      margin:
+        0 0 16px;
+
+      color: #cad1d6;
+
+      font-size: 14px;
+
+      line-height: 1.8;
+    }
+
+
+    .seo-box {
+      padding: 26px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.35);
+
+      border-radius: 17px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(6,32,51,0.91),
+          rgba(1,17,30,0.97)
+        );
+    }
+
+
+    .seo-box h3 {
+      margin:
+        0 0 17px;
+
+      color: var(--gold-light);
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      letter-spacing: 2.5px;
+    }
+
+
+    .seo-link {
+      min-height: 52px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      border-bottom:
+        1px solid
+        rgba(255,255,255,0.07);
+
+      color: white;
+
+      font-size: 13px;
+    }
+
+
+    .seo-link:last-child {
+      border-bottom: none;
+    }
+
+
+    .seo-link span {
+      color: var(--gold-light);
+    }
+
+
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+
+    @media (max-width: 950px) {
+
+      .holiday-grid {
+        grid-template-columns:
+          1fr;
+      }
+
+
+      .seo-bottom-grid {
+        grid-template-columns:
+          1fr;
+
+        gap: 35px;
+      }
+
+    }
+
+
+    @media (max-width: 650px) {
+
+      .hero-inner {
+        padding:
+          125px 5% 55px;
+      }
+
+
+      .hero-copy h1 {
+        font-size: 52px;
+      }
+
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+
+      .hero-actions a {
+        width: 100%;
+      }
+
+
+      .page-inner {
+        width:
+          calc(100% - 36px);
+      }
+
+
+      .holiday-image {
+        height: 235px;
+      }
+
+
+      .holiday-bottom {
+        flex-direction: column;
+
+        align-items: stretch;
+      }
+
+
+      .book-button {
+        width: 100%;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================================
+       HEADER
+  ========================================= -->
+
+  <header class="header">
+
+
+    <a
+      href="index.html"
+      class="logo"
+    >
+
+      <div class="logo-icon">
+
+        <img
+          src="images/logo-small.webp"
+          alt="GoldenGetaways icon"
+        >
+
+      </div>
+
+
+      <div class="logo-text">
+
+        <span>
+          GoldenGetaways
+        </span>
+
+        <small>
+          EST 2025
+        </small>
+
+      </div>
+
+    </a>
+
+
+
+    <nav class="desktop-nav">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="membership.html">
+        Membership
+      </a>
+
+      <a
+        href="our-getaways.html"
+        class="active"
+      >
+        Our Getaways
+      </a>
+
+      <a href="how-it-works.html">
+        How It Works
+      </a>
+
+      <a href="reviews.html">
+        Reviews
+      </a>
+
+      <a href="faq.html">
+        FAQ
+      </a>
+
+      <a href="join.html">
+        Login / Join
+      </a>
+
+    </nav>
+
+
+
+    <a
+      href="join.html"
+      class="button gold-button header-button"
+    >
+      Join Now
+      <span>→</span>
+    </a>
+
+
+
+    <button
+      class="mobile-menu-button"
+      id="menuButton"
+      aria-label="Open menu"
+    >
+      ☰
+    </button>
+
+
+  </header>
+
+
+
+  <!-- =========================================
+       HERO
+  ========================================= -->
+
+  <section class="luxury-hero">
+
+
+    <div class="hero-inner">
+
+
+      <div class="hero-copy">
+
+
+        <p class="hero-eyebrow">
+          LUXURY HOLIDAYS
+        </p>
+
+
+        <h1>
+
+          Handpicked
+
+          <em>
+            luxury
+          </em>
+
+          getaways.
+
+        </h1>
+
+
+        <div class="hero-line"></div>
+
+
+        <p>
+
+          Explore GoldenGetaways handpicked luxury holidays,
+          from stylish 5 star hotels and premium beach resorts
+          to spa escapes, adults-only stays and luxury
+          all inclusive holidays.
+
+        </p>
+
+
+        <div class="hero-actions">
+
+
+          <a
+            href="#holidays"
+            class="button gold-button"
+          >
+            View Luxury Holidays
+            <span>↓</span>
+          </a>
+
+
+          <a
+            href="our-getaways.html"
+            class="secondary-button"
+          >
+            ← Back to Our Getaways
+          </a>
+
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+
+  <main class="page-inner">
+
+
+    <!-- =========================================
+         SEO INTRO
+    ========================================= -->
+
+    <section class="seo-intro">
+
+
+      <p class="section-eyebrow">
+        OUR HANDPICKED LUXURY HOLIDAYS
+      </p>
+
+
+      <h2>
+
+        Discover beautiful
+
+        <em>
+          5 star luxury holidays.
+        </em>
+
+      </h2>
+
+
+      <p>
+
+        Looking for a holiday that feels a little more special?
+        Our handpicked luxury holidays bring together stylish
+        5 star hotels, premium resorts, beachfront stays and
+        high-end escapes across popular sunshine destinations.
+
+      </p>
+
+
+      <p>
+
+        Whether you're searching for a luxury all inclusive holiday,
+        a relaxing spa resort, a premium adults-only hotel
+        or a luxury beach getaway, these featured holidays
+        are designed to give you inspiration across a range
+        of destinations and travel styles.
+
+      </p>
+
+
+      <p>
+
+        Browse the 10 featured luxury holidays below.
+        Prices can vary depending on dates, departure airport
+        and availability, so GoldenGetaways members can also
+        request a personalised holiday search for options
+        tailored to their budget and preferences.
+
+      </p>
+
+
+    </section>
+
+
+
+    <!-- =========================================
+         10 LUXURY HOLIDAYS
+    ========================================= -->
+
+    <section
+      class="holiday-section"
+      id="holidays"
+    >
+
+
+      <div class="holiday-grid">
+
+
+
+        <!-- HOLIDAY 1 -->
+
+        <article class="holiday-card">
+
+          <div class="holiday-image">
+
+            <img
+              src="images/ixian-grand.webp"
+              alt="Luxury adults only all inclusive holiday in Rhodes"
+            >
+
+            <span class="holiday-badge">
+              LUXURY ALL INCLUSIVE
+            </span>
+
+          </div>
+
+
+          <div class="holiday-content">
+
+            <p class="holiday-location">
+              GREECE • RHODES • IXIA
+            </p>
+
+
+            <h2>
+              Luxury Adults Only Rhodes Getaway
+            </h2>
+
+
+            <div class="holiday-details">
+
+              <span>7 Nights</span>
+
+              <span>5 Star</span>
+
+              <span>All Inclusive</span>
+
+              <span>Adults Only 18+</span>
+
+              <span>Flights Included</span>
+
+            </div>
+
+
+            <p class="holiday-description">
+              A luxury adults-only beachfront escape in Rhodes
+              with beautiful sea views, stylish pools and
+              all inclusive dining, ideal for a relaxing
+              couples getaway.
+            </p>
+
+
+            <div class="holiday-bottom">
+
+
+              <div class="holiday-price">
+
+                <small>
+                  From
+                </small>
+
+                <strong>
+                  £610pp
+                </strong>
+
+              </div>
+
+
+              <a
+                href="join.html"
+                class="book-button"
+              >
+                Become a Member & Book Now →
+              </a>
+
+
+            </div>
+
+
+          </div>
+
+        </article>
+
+
+<!-- HOLIDAY 2 -->
+
+<article class="holiday-card">
+
+  <div class="holiday-image">
+
+    <img
+      src="images/stella-island-luxury.webp"
+      alt="Stella Island luxury adults only resort in Crete"
+    >
+
+    <span class="holiday-badge">
+      LUXURY ADULTS ONLY
+    </span>
+
+  </div>
+
+
+  <div class="holiday-content">
+
+    <p class="holiday-location">
+      GREECE • CRETE • ANALYPSIS
+    </p>
+
+
+    <h2>
+      Stella Island Luxury Adults Only Crete Getaway
+    </h2>
+
+
+    <div class="holiday-details">
+
+      <span>7 Nights</span>
+
+      <span>5 Star</span>
+
+      <span>Half Board</span>
+
+      <span>Adults Only</span>
+
+      <span>Flights Included</span>
+
+    </div>
+
+
+    <p class="holiday-description">
+      A premium adults-only escape in Crete featuring
+      beautiful pools, stylish surroundings and a
+      relaxing resort atmosphere, perfect for couples
+      looking for a luxury getaway.
+    </p>
+
+
+    <div class="holiday-bottom">
+
+
+      <div class="holiday-price">
+
+        <small>
+          From
+        </small>
+
+        <strong>
+          £1,035pp
+        </strong>
+
+      </div>
+
+
+      <a
+        href="join.html"
+        class="book-button"
+      >
+        Become a Member & Book Now →
+      </a>
+
+
+    </div>
+
+
+  </div>
+
+</article>
+
+        <!-- HOLIDAY 3 -->
+
+<article class="holiday-card">
+
+  <div class="holiday-image">
+
+    <img
+      src="images/essence-at-the-fives.webp"
+      alt="Essence at the Fives Beach luxury all inclusive resort in Mexico"
+    >
+
+    <span class="holiday-badge">
+      LUXURY ALL INCLUSIVE
+    </span>
+
+  </div>
+
+
+  <div class="holiday-content">
+
+    <p class="holiday-location">
+      MEXICO • RIVIERA MAYA • PLAYA DEL CARMEN
+    </p>
+
+
+    <h2>
+      Essence at the Fives Beach Luxury Getaway
+    </h2>
+
+
+    <div class="holiday-details">
+
+      <span>7 Nights</span>
+
+      <span>5 Star</span>
+
+      <span>All Inclusive</span>
+
+      <span>Luxury Resort</span>
+
+      <span>Flights Included</span>
+
+    </div>
+
+
+    <p class="holiday-description">
+      Escape to a luxury all inclusive resort in Riviera
+      Maya with beautiful tropical surroundings, stylish
+      pools and a stunning beach setting.
+    </p>
+
+
+    <div class="holiday-bottom">
+
+
+      <div class="holiday-price">
+
+        <small>
+          From
+        </small>
+
+        <strong>
+          £960pp
+        </strong>
+
+      </div>
+
+
+      <a
+        href="join.html"
+        class="book-button"
+      >
+        Become a Member & Book Now →
+      </a>
+
+
+    </div>
+
+
+  </div>
+
+</article>
+
+
+
+      <!-- HOLIDAY 4 -->
+
+<article class="holiday-card">
+
+  <div class="holiday-image">
+
+    <img
+      src="images/mitsis-rodos-village.webp"
+      alt="Mitsis Rodos Village luxury all inclusive resort in Rhodes"
+    >
+
+    <span class="holiday-badge">
+      LUXURY ALL INCLUSIVE
+    </span>
+
+  </div>
+
+
+  <div class="holiday-content">
+
+    <p class="holiday-location">
+      GREECE • RHODES • KIOTARI
+    </p>
+
+
+    <h2>
+      Mitsis Rodos Village Luxury Getaway
+    </h2>
+
+
+    <div class="holiday-details">
+
+      <span>8 Nights</span>
+
+      <span>5 Star</span>
+
+      <span>All Inclusive</span>
+
+      <span>Luxury Resort</span>
+
+      <span>Flights Included</span>
+
+    </div>
+
+
+    <p class="holiday-description">
+      Enjoy a luxury all inclusive escape in Kiotari,
+      Rhodes, with beautiful pools, palm-lined
+      surroundings and stunning views towards the
+      Mediterranean.
+    </p>
+
+
+    <div class="holiday-bottom">
+
+
+      <div class="holiday-price">
+
+        <small>
+          From
+        </small>
+
+        <strong>
+          £680pp
+        </strong>
+
+      </div>
+
+
+      <a
+        href="join.html"
+        class="book-button"
+      >
+        Become a Member & Book Now →
+      </a>
+
+
+    </div>
+
+
+  </div>
+
+</article>
+
+
+
+       <!-- HOLIDAY 5 -->
+
+<article class="holiday-card">
+
+  <div class="holiday-image">
+
+    <img
+      src="images/ax-odycy.webp"
+      alt="AX ODYCY luxury hotel in Qawra Malta"
+    >
+
+    <span class="holiday-badge">
+      LUXURY MALTA
+    </span>
+
+  </div>
+
+
+  <div class="holiday-content">
+
+    <p class="holiday-location">
+      MALTA • QAWRA
+    </p>
+
+
+    <h2>
+      AX ODYCY Malta Luxury Getaway
+    </h2>
+
+
+    <div class="holiday-details">
+
+      <span>7 Nights</span>
+
+      <span>4 Star</span>
+
+      <span>Bed & Breakfast</span>
+
+      <span>Luxury Hotel</span>
+
+      <span>Flights Included</span>
+
+    </div>
+
+
+    <p class="holiday-description">
+      A stylish seaside escape in Qawra, Malta,
+      with beautiful waterfront surroundings,
+      modern facilities and a relaxing atmosphere
+      for a premium Mediterranean getaway.
+    </p>
+
+
+    <div class="holiday-bottom">
+
+
+      <div class="holiday-price">
+
+        <small>
+          From
+        </small>
+
+        <strong>
+          £615pp
+        </strong>
+
+      </div>
+
+
+      <a
+        href="join.html"
+        class="book-button"
+      >
+        Become a Member & Book Now →
+      </a>
+
+
+    </div>
+
+
+  </div>
+
+</article>
+
+
+        <!-- HOLIDAY 6 -->
+
+<article class="holiday-card">
+
+  <div class="holiday-image">
+
+    <img
+      src="images/ella-helea.webp"
+      alt="Ella Helea luxury all inclusive resort in Rhodes"
+    >
+
+    <span class="holiday-badge">
+      LUXURY ALL INCLUSIVE
+    </span>
+
+  </div>
+
+
+  <div class="holiday-content">
+
+    <p class="holiday-location">
+      GREECE • RHODES • KOSKINOU
+    </p>
+
+
+    <h2>
+      Ella Helea Luxury Rhodes Getaway
+    </h2>
+
+
+    <div class="holiday-details">
+
+      <span>8 Nights</span>
+
+      <span>5 Star</span>
+
+      <span>All Inclusive</span>
+
+      <span>Luxury Resort</span>
+
+      <span>Flights Included</span>
+
+    </div>
+
+
+    <p class="holiday-description">
+      A luxurious all inclusive escape in Rhodes,
+      surrounded by beautiful pools, palm-lined
+      grounds and stylish resort spaces, perfect
+      for a premium Mediterranean getaway.
+    </p>
+
+
+    <div class="holiday-bottom">
+
+
+      <div class="holiday-price">
+
+        <small>
+          From
+        </small>
+
+        <strong>
+          £840pp
+        </strong>
+
+      </div>
+
+
+      <a
+        href="join.html"
+        class="book-button"
+      >
+        Become a Member & Book Now →
+      </a>
+
+
+    </div>
+
+
+  </div>
+
+</article>
+
+<!-- HOLIDAY 7 -->
+
+<article class="holiday-card">
+
+  <div class="holiday-image">
+
+    <img
+      src="images/mett-marbella-estepona.webp"
+      alt="METT Marbella Estepona luxury hotel in Costa del Sol"
+    >
+
+    <span class="holiday-badge">
+      LUXURY COSTA DEL SOL
+    </span>
+
+  </div>
+
+
+  <div class="holiday-content">
+
+    <p class="holiday-location">
+      SPAIN • COSTA DEL SOL • ESTEPONA
+    </p>
+
+
+    <h2>
+      METT Marbella – Estepona Luxury Getaway
+    </h2>
+
+
+    <div class="holiday-details">
+
+      <span>7 Nights</span>
+
+      <span>5 Star</span>
+
+      <span>Bed & Breakfast</span>
+
+      <span>Luxury Hotel</span>
+
+      <span>Flights Included</span>
+
+    </div>
+
+
+    <p class="holiday-description">
+      A stylish 5 star escape on the Costa del Sol,
+      with beautiful pool areas, palm-lined surroundings
+      and a premium resort atmosphere, perfect for
+      a luxury Spanish getaway.
+    </p>
+
+
+    <div class="holiday-bottom">
+
+
+      <div class="holiday-price">
+
+        <small>
+          From
+        </small>
+
+        <strong>
+          £910pp
+        </strong>
+
+      </div>
+
+
+      <a
+        href="join.html"
+        class="book-button"
+      >
+        Become a Member & Book Now →
+      </a>
+
+
+    </div>
+
+
+  </div>
+
+</article>
+
+
+       <!-- HOLIDAY 8 -->
+
+<article class="holiday-card">
+
+  <div class="holiday-image">
+
+    <img
+      src="images/iberostar-sabila.webp"
+      alt="Iberostar Selection Sábila adults only luxury hotel in Tenerife"
+    >
+
+    <span class="holiday-badge">
+      LUXURY ADULTS ONLY
+    </span>
+
+  </div>
+
+
+  <div class="holiday-content">
+
+    <p class="holiday-location">
+      SPAIN • TENERIFE • COSTA ADEJE
+    </p>
+
+
+    <h2>
+      Iberostar Selection Sábila Adults Only Tenerife Getaway
+    </h2>
+
+
+    <div class="holiday-details">
+
+      <span>7 Nights</span>
+
+      <span>5 Star</span>
+
+      <span>Bed & Breakfast</span>
+
+      <span>Adults Only</span>
+
+      <span>Flights Included</span>
+
+    </div>
+
+
+    <p class="holiday-description">
+      A luxurious adults-only escape in Costa Adeje,
+      Tenerife, featuring beautiful pools, stylish
+      surroundings and a premium setting close to
+      the Atlantic coast.
+    </p>
+
+
+    <div class="holiday-bottom">
+
+
+      <div class="holiday-price">
+
+        <small>
+          From
+        </small>
+
+        <strong>
+          £935pp
+        </strong>
+
+      </div>
+
+
+      <a
+        href="join.html"
+        class="book-button"
+      >
+        Become a Member & Book Now →
+      </a>
+
+
+    </div>
+
+
+  </div>
+
+</article>
+
+        <!-- HOLIDAY 9 -->
+
+<article class="holiday-card">
+
+  <div class="holiday-image">
+
+    <img
+      src="images/live-aqua-punta-cana.webp"
+      alt="Live Aqua Beach Resort Punta Cana adults only luxury resort"
+    >
+
+    <span class="holiday-badge">
+      LUXURY ADULTS ONLY
+    </span>
+
+  </div>
+
+
+  <div class="holiday-content">
+
+    <p class="holiday-location">
+      DOMINICAN REPUBLIC • PUNTA CANA • UVERO ALTO
+    </p>
+
+
+    <h2>
+      Live Aqua Beach Resort Punta Cana Adults Only Getaway
+    </h2>
+
+
+    <div class="holiday-details">
+
+      <span>7 Nights</span>
+
+      <span>5 Star</span>
+
+      <span>All Inclusive</span>
+
+      <span>Adults Only</span>
+
+      <span>Flights Included</span>
+
+    </div>
+
+
+    <p class="holiday-description">
+      A luxurious adults-only escape in Punta Cana,
+      with stunning pools, tropical surroundings and
+      a premium all inclusive resort experience on
+      the Dominican Republic's beautiful east coast.
+    </p>
+
+
+    <div class="holiday-bottom">
+
+
+      <div class="holiday-price">
+
+        <small>
+          From
+        </small>
+
+        <strong>
+          £1,435pp
+        </strong>
+
+      </div>
+
+
+      <a
+        href="join.html"
+        class="book-button"
+      >
+        Become a Member & Book Now →
+      </a>
+
+
+    </div>
+
+
+  </div>
+
+</article>
+
+
+
+      <!-- HOLIDAY 10 -->
+
+<article class="holiday-card">
+
+  <div class="holiday-image">
+
+    <img
+      src="images/fodele-beach-water-park.webp"
+      alt="Fodele Beach and Water Park Holiday Resort in Crete"
+    >
+
+    <span class="holiday-badge">
+      LUXURY ALL INCLUSIVE
+    </span>
+
+  </div>
+
+
+  <div class="holiday-content">
+
+    <p class="holiday-location">
+      GREECE • CRETE • FODELE
+    </p>
+
+
+    <h2>
+      Fodele Beach & Water Park Luxury Getaway
+    </h2>
+
+
+    <div class="holiday-details">
+
+      <span>7 Nights</span>
+
+      <span>5 Star</span>
+
+      <span>All Inclusive</span>
+
+      <span>Water Park</span>
+
+      <span>Flights Included</span>
+
+    </div>
+
+
+    <p class="holiday-description">
+      A luxury all inclusive escape on the coast of
+      Crete, with beautiful pools, a stunning beachfront
+      setting and an on-site water park for the perfect
+      premium Greek getaway.
+    </p>
+
+
+    <div class="holiday-bottom">
+
+      <div class="holiday-price">
+
+        <small>
+          From
+        </small>
+
+        <strong>
+          £695pp
+        </strong>
+
+      </div>
+
+
+      <a
+        href="join.html"
+        class="book-button"
+      >
+        Become a Member & Book Now →
+      </a>
+
+    </div>
+
+  </div>
+
+</article>
+
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- =========================================
+         SEO BOTTOM
+    ========================================= -->
+
+    <section class="seo-bottom">
+
+
+      <div class="seo-bottom-grid">
+
+
+        <div>
+
+
+          <p class="section-eyebrow">
+            LUXURY HOLIDAY INSPIRATION
+          </p>
+
+
+          <h2>
+
+            Find your next
+
+            <em>
+              premium escape.
+            </em>
+
+          </h2>
+
+
+          <p>
+
+            Luxury holidays can include everything from
+            stylish 5 star beach resorts and private pool stays
+            to premium all inclusive hotels, spa escapes
+            and adults-only retreats.
+
+          </p>
+
+
+          <p>
+
+            GoldenGetaways features luxury holiday inspiration
+            across popular destinations, with options suited
+            to couples, adults-only trips, beachfront escapes
+            and high-end all inclusive holidays.
+
+          </p>
+
+
+          <p>
+
+            If the holidays above aren't quite right,
+            members can request a personalised search
+            based on their dates, preferred airport,
+            budget and holiday style.
+
+          </p>
+
+
+        </div>
+
+
+
+        <aside class="seo-box">
+
+
+          <h3>
+            EXPLORE MORE HOLIDAYS
+          </h3>
+
+
+          <a
+            href="all-inclusive-holidays.html"
+            class="seo-link"
+          >
+            All Inclusive Holidays
+            <span>→</span>
+          </a>
+
+
+          <a
+            href="family-holidays.html"
+            class="seo-link"
+          >
+            Family Holidays
+            <span>→</span>
+          </a>
+
+
+          <a
+            href="adults-only-holidays.html"
+            class="seo-link"
+          >
+            Adults Only Holidays
+            <span>→</span>
+          </a>
+
+
+          <a
+            href="beach-holidays.html"
+            class="seo-link"
+          >
+            Beach Holidays
+            <span>→</span>
+          </a>
+
+
+          <a
+            href="couples-holidays.html"
+            class="seo-link"
+          >
+            Couples Holidays
+            <span>→</span>
+          </a>
+
+
+          <a
+            href="our-getaways.html"
+            class="seo-link"
+          >
+            View All Getaways
+            <span>→</span>
+          </a>
+
+
+        </aside>
+
+
+      </div>
+
+
+    </section>
+
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+
+</body>
+
+</html>

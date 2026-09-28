@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    About GoldenGetaways | The Story Behind GoldenGetaways
+  </title>
+
+  <meta
+    name="description"
+    content="Meet the person behind GoldenGetaways and discover why GoldenGetaways was created to make finding holidays simpler, more personal and better value."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  >
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+
+      background:
+        radial-gradient(
+          circle at 72% 5%,
+          #08263c 0%,
+          #00111f 38%,
+          #000b15 100%
+        );
+
+      color: white;
+
+      overflow-x: hidden;
+    }
+
+
+    /* =========================================
+       HEADER
+    ========================================= */
+
+    .header {
+      position: absolute;
+
+      top: 0;
+      left: 0;
+
+      width: 100%;
+
+      z-index: 1000;
+
+      background: transparent;
+    }
+
+
+    /* =========================================
+       HERO
+    ========================================= */
+
+    .about-hero {
+      position: relative;
+
+      min-height: 720px;
+
+      display: flex;
+
+      align-items: center;
+
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(2,18,32,0.98) 0%,
+          rgba(2,18,32,0.90) 32%,
+          rgba(2,18,32,0.55) 58%,
+          rgba(2,18,32,0.16) 100%
+        ),
+        url("images/hero-bg.webp")
+        center / cover
+        no-repeat;
+    }
+
+    .hero-inner {
+      width: 100%;
+
+      padding:
+        150px 6% 80px;
+
+      position: relative;
+
+      z-index: 2;
+    }
+
+    .hero-copy {
+      max-width: 800px;
+    }
+
+    .hero-eyebrow {
+      margin:
+        0 0 18px;
+
+      color: var(--gold-light);
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      letter-spacing: 4px;
+    }
+
+    .hero-copy h1 {
+      margin:
+        0 0 25px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size:
+        clamp(
+          58px,
+          5.8vw,
+          88px
+        );
+
+      font-weight: 400;
+
+      line-height: 0.96;
+    }
+
+    .hero-copy h1 em {
+      color: var(--gold-light);
+
+      font-weight: 400;
+    }
+
+    .hero-line {
+      width: 50px;
+
+      height: 2px;
+
+      margin-bottom: 25px;
+
+      background: var(--gold);
+    }
+
+    .hero-description {
+      max-width: 650px;
+
+      margin:
+        0 0 30px;
+
+      color: #e4e8eb;
+
+      font-size: 16px;
+
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 13px;
+    }
+
+    .secondary-button {
+      min-height: 54px;
+
+      padding:
+        0 25px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.46);
+
+      border-radius: 12px;
+
+      background:
+        rgba(0,17,31,0.48);
+
+      color: var(--gold-light);
+
+      font-size: 14px;
+    }
+
+
+    /* =========================================
+       PAGE WIDTH
+    ========================================= */
+
+    .page-inner {
+      width: 88%;
+
+      max-width: 1400px;
+
+      margin:
+        0 auto;
+    }
+
+
+    /* =========================================
+       STORY INTRO
+    ========================================= */
+
+    .story-intro {
+      padding:
+        90px 0 70px;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0,1fr)
+        minmax(320px,460px);
+
+      align-items: center;
+
+      gap: 75px;
+    }
+
+    .section-eyebrow {
+      margin:
+        0 0 14px;
+
+      color: var(--gold-light);
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      letter-spacing: 4px;
+    }
+
+    .story-copy h2,
+    .story-section h2 {
+      margin:
+        0 0 20px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size:
+        clamp(
+          42px,
+          4vw,
+          60px
+        );
+
+      font-weight: 400;
+
+      line-height: 1.06;
+    }
+
+    .story-copy h2 em,
+    .story-section h2 em {
+      color: var(--gold-light);
+
+      font-weight: 400;
+    }
+
+    .story-copy p,
+    .story-section p {
+      margin:
+        0 0 17px;
+
+      color: #cad1d7;
+
+      font-size: 15px;
+
+      line-height: 1.85;
+    }
+
+
+    /* =========================================
+       FOUNDER CARD
+    ========================================= */
+
+    .founder-card {
+      overflow: hidden;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.40);
+
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          160deg,
+          rgba(7,35,55,0.96),
+          rgba(1,16,28,0.99)
+        );
+
+      box-shadow:
+        0 28px 70px
+        rgba(0,0,0,0.28);
+    }
+
+    .founder-image {
+      height: 390px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(216,161,63,0.10),
+          rgba(0,17,31,0.85)
+        );
+    }
+
+    .founder-image-inner {
+      width: 130px;
+
+      height: 130px;
+
+      display: grid;
+
+      place-items: center;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.48);
+
+      border-radius: 50%;
+
+      background:
+        rgba(0,17,31,0.72);
+
+      color: var(--gold-light);
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 50px;
+    }
+
+    .founder-content {
+      padding: 28px;
+    }
+
+    .founder-content p {
+      margin:
+        0 0 8px;
+
+      color: var(--gold-light);
+
+      font-size: 10px;
+
+      font-weight: 600;
+
+      letter-spacing: 2.5px;
+    }
+
+    .founder-content h3 {
+      margin:
+        0 0 8px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 29px;
+
+      font-weight: 400;
+    }
+
+    .founder-content span {
+      color: #c7ced4;
+
+      font-size: 13px;
+
+      line-height: 1.6;
+    }
+
+
+    /* =========================================
+       STORY SECTIONS
+    ========================================= */
+
+    .story-section {
+      padding:
+        80px 0;
+
+      border-top:
+        1px solid
+        rgba(255,255,255,0.055);
+    }
+
+    .story-section-inner {
+      max-width: 960px;
+    }
+
+
+    /* =========================================
+       VALUES
+    ========================================= */
+
+    .values-section {
+      padding:
+        80px 0;
+
+      border-top:
+        1px solid
+        rgba(255,255,255,0.055);
+    }
+
+    .values-heading {
+      max-width: 800px;
+
+      margin-bottom: 34px;
+    }
+
+    .values-heading h2 {
+      margin:
+        0 0 14px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size:
+        clamp(
+          40px,
+          4vw,
+          56px
+        );
+
+      font-weight: 400;
+    }
+
+    .values-heading h2 em {
+      color: var(--gold-light);
+
+      font-weight: 400;
+    }
+
+    .values-heading p {
+      margin: 0;
+
+      color: #c9d0d6;
+
+      font-size: 15px;
+
+      line-height: 1.75;
+    }
+
+    .values-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          3,
+          minmax(0,1fr)
+        );
+
+      gap: 20px;
+    }
+
+    .value-card {
+      padding: 28px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.28);
+
+      border-radius: 17px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(6,32,51,0.93),
+          rgba(1,17,30,0.98)
+        );
+    }
+
+    .value-number {
+      width: 46px;
+
+      height: 46px;
+
+      margin-bottom: 18px;
+
+      display: grid;
+
+      place-items: center;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.46);
+
+      border-radius: 50%;
+
+      color: var(--gold-light);
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 20px;
+    }
+
+    .value-card h3 {
+      margin:
+        0 0 9px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 25px;
+
+      font-weight: 400;
+    }
+
+    .value-card p {
+      margin: 0;
+
+      color: #c6cdd3;
+
+      font-size: 13px;
+
+      line-height: 1.7;
+    }
+
+
+    /* =========================================
+       PERSONAL NOTE
+    ========================================= */
+
+    .personal-note {
+      margin:
+        80px 0;
+
+      padding:
+        45px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.42);
+
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(216,161,63,0.07),
+          rgba(3,27,44,0.97)
+        );
+    }
+
+    .personal-note p:first-child {
+      margin:
+        0 0 15px;
+
+      color: var(--gold-light);
+
+      font-size: 10px;
+
+      font-weight: 600;
+
+      letter-spacing: 3px;
+    }
+
+    .personal-note blockquote {
+      max-width: 1050px;
+
+      margin: 0;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size:
+        clamp(
+          28px,
+          3vw,
+          42px
+        );
+
+      font-weight: 400;
+
+      line-height: 1.35;
+
+      color: white;
+    }
+
+    .personal-note blockquote em {
+      color: var(--gold-light);
+
+      font-weight: 400;
+    }
+
+
+    /* =========================================
+       CTA
+    ========================================= */
+
+    .about-cta {
+      margin-bottom: 90px;
+
+      padding:
+        40px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 35px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.43);
+
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(7,34,54,0.97),
+          rgba(1,16,28,0.99)
+        );
+    }
+
+    .about-cta h2 {
+      margin:
+        0 0 8px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 36px;
+
+      font-weight: 400;
+    }
+
+    .about-cta p {
+      max-width: 700px;
+
+      margin: 0;
+
+      color: #cad1d6;
+
+      font-size: 14px;
+
+      line-height: 1.7;
+    }
+
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+
+    @media (max-width: 950px) {
+
+      .story-intro {
+        grid-template-columns:
+          1fr;
+
+        gap: 45px;
+      }
+
+      .founder-card {
+        max-width: 600px;
+      }
+
+      .values-grid {
+        grid-template-columns:
+          1fr;
+      }
+
+    }
+
+
+    @media (max-width: 650px) {
+
+      .hero-inner {
+        padding:
+          125px 5% 60px;
+      }
+
+      .hero-copy h1 {
+        font-size: 52px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions a {
+        width: 100%;
+      }
+
+      .page-inner {
+        width:
+          calc(100% - 36px);
+      }
+
+      .founder-image {
+        height: 300px;
+      }
+
+      .personal-note {
+        padding:
+          30px 24px;
+      }
+
+      .about-cta {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding:
+          30px 24px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================================
+       HEADER
+  ========================================= -->
+
+  <header class="header">
+
+
+    <a
+      href="index.html"
+      class="logo"
+    >
+
+      <div class="logo-icon">
+
+        <img
+          src="images/logo-small.webp"
+          alt="GoldenGetaways icon"
+        >
+
+      </div>
+
+
+      <div class="logo-text">
+
+        <span>
+          GoldenGetaways
+        </span>
+
+        <small>
+          EST 2025
+        </small>
+
+      </div>
+
+    </a>
+
+
+    <nav class="desktop-nav">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="membership.html">
+        Membership
+      </a>
+
+      <a href="our-getaways.html">
+        Our Getaways
+      </a>
+
+      <a href="how-it-works.html">
+        How It Works
+      </a>
+
+      <a
+        href="about.html"
+        class="active"
+      >
+        About
+      </a>
+
+      <a href="reviews.html">
+        Reviews
+      </a>
+
+      <a href="faq.html">
+        FAQ
+      </a>
+
+      <a href="join.html">
+        Login / Join
+      </a>
+
+    </nav>
+
+
+    <a
+      href="join.html"
+      class="button gold-button header-button"
+    >
+      Join Now
+      <span>→</span>
+    </a>
+
+
+    <button
+      class="mobile-menu-button"
+      id="menuButton"
+      aria-label="Open menu"
+    >
+      ☰
+    </button>
+
+
+  </header>
+
+
+  <!-- =========================================
+       HERO
+  ========================================= -->
+
+  <section class="about-hero">
+
+
+    <div class="hero-inner">
+
+
+      <div class="hero-copy">
+
+
+        <p class="hero-eyebrow">
+          THE STORY BEHIND GOLDENGETAWAYS
+        </p>
+
+
+        <h1>
+
+          More than just
+
+          <em>
+            holiday deals.
+          </em>
+
+        </h1>
+
+
+        <div class="hero-line"></div>
+
+
+        <p class="hero-description">
+
+          GoldenGetaways started with a simple idea:
+          make finding a great holiday feel easier,
+          more personal and better value.
+
+        </p>
+
+
+        <div class="hero-actions">
+
+
+          <a
+            href="#my-story"
+            class="button gold-button"
+          >
+            Read My Story
+            <span>↓</span>
+          </a>
+
+
+          <a
+            href="our-getaways.html"
+            class="secondary-button"
+          >
+            Explore Our Getaways
+          </a>
+
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+  <main class="page-inner">
+
+
+    <!-- =========================================
+         INTRO
+    ========================================= -->
+
+    <section
+      class="story-intro"
+      id="my-story"
+    >
+
+
+      <div class="story-copy">
+
+
+        <p class="section-eyebrow">
+          WHO I AM
+        </p>
+
+
+        <h2>
+
+          The person behind
+
+          <em>
+            GoldenGetaways.
+          </em>
+
+        </h2>
+
+
+        <p>
+
+          I'm the person behind GoldenGetaways,
+          and I started it because I wanted to build
+          something that made finding holidays feel
+          simpler and more personal.
+
+        </p>
+
+
+        <p>
+
+          Searching for a holiday can quickly become
+          overwhelming. There are hundreds of hotels,
+          different websites, changing prices and
+          endless options to compare.
+
+        </p>
+
+
+        <p>
+
+          I wanted GoldenGetaways to give people
+          somewhere they could come for inspiration,
+          useful holiday recommendations and,
+          as a member, personalised help finding
+          something that actually suits them.
+
+        </p>
+
+
+      </div>
+
+
+      <aside class="founder-card">
+
+
+        <div class="founder-image">
+
+
+          <div class="founder-image-inner">
+            GG
+          </div>
+
+
+        </div>
+
+
+        <div class="founder-content">
+
+
+          <p>
+            FOUNDER OF GOLDENGETAWAYS
+          </p>
+
+
+          <h3>
+            Behind the brand
+          </h3>
+
+
+          <span>
+
+            GoldenGetaways was created to put
+            a more personal experience behind
+            finding and choosing your next getaway.
+
+          </span>
+
+
+        </div>
+
+
+      </aside>
+
+
+    </section>
+
+
+    <!-- =========================================
+         WHY I STARTED IT
+    ========================================= -->
+
+    <section class="story-section">
+
+
+      <div class="story-section-inner">
+
+
+        <p class="section-eyebrow">
+          WHY I STARTED GOLDENGETAWAYS
+        </p>
+
+
+        <h2>
+
+          Holidays should feel exciting,
+
+          <em>
+            not complicated.
+          </em>
+
+        </h2>
+
+
+        <p>
+
+          I started GoldenGetaways because I could see
+          how much time people spend scrolling through
+          holiday websites, comparing prices and trying
+          to work out which option is actually worth booking.
+
+        </p>
+
+
+        <p>
+
+          I wanted to create something different:
+          a place where people could discover handpicked
+          getaway inspiration without having to search
+          through thousands of options themselves.
+
+        </p>
+
+
+        <p>
+
+          The goal was never just to show people holidays.
+          I wanted members to be able to tell us what
+          they're looking for — their budget,
+          preferred airport, destination and travel style —
+          and have help narrowing everything down.
+
+        </p>
+
+
+      </div>
+
+
+    </section>
+
+
+    <!-- =========================================
+         WHAT I WANTED TO BUILD
+    ========================================= -->
+
+    <section class="story-section">
+
+
+      <div class="story-section-inner">
+
+
+        <p class="section-eyebrow">
+          THE IDEA
+        </p>
+
+
+        <h2>
+
+          A travel membership that feels
+
+          <em>
+            genuinely useful.
+          </em>
+
+        </h2>
+
+
+        <p>
+
+          GoldenGetaways is built around making holiday
+          discovery more enjoyable. That means handpicked
+          holiday inspiration, personalised searches
+          and support when members need help.
+
+        </p>
+
+
+        <p>
+
+          I also wanted GoldenGetaways to feel like
+          a community rather than another faceless website.
+          Members should know there are real people
+          behind the service who actually care about
+          making it better.
+
+        </p>
+
+
+        <p>
+
+          As GoldenGetaways grows, the aim is simple:
+          keep improving what members get,
+          keep finding better ways to help people
+          discover holidays and keep the service personal.
+
+        </p>
+
+
+      </div>
+
+
+    </section>
+
+
+    <!-- =========================================
+         VALUES
+    ========================================= -->
+
+    <section class="values-section">
+
+
+      <div class="values-heading">
+
+
+        <p class="section-eyebrow">
+          WHAT GOLDENGETAWAYS STANDS FOR
+        </p>
+
+
+        <h2>
+
+          Built around
+
+          <em>
+            three simple ideas.
+          </em>
+
+        </h2>
+
+
+        <p>
+
+          Everything I want GoldenGetaways to become
+          comes back to making the experience easier,
+          more personal and genuinely useful for members.
+
+        </p>
+
+
+      </div>
+
+
+      <div class="values-grid">
+
+
+        <article class="value-card">
+
+
+          <div class="value-number">
+            01
+          </div>
+
+
+          <h3>
+            Keep it simple
+          </h3>
+
+
+          <p>
+
+            Finding a holiday shouldn't mean spending
+            hours comparing endless options.
+            GoldenGetaways helps narrow things down.
+
+          </p>
+
+
+        </article>
+
+
+        <article class="value-card">
+
+
+          <div class="value-number">
+            02
+          </div>
+
+
+          <h3>
+            Make it personal
+          </h3>
+
+
+          <p>
+
+            Different people want different holidays.
+            Personalised searches help members find
+            options based on what actually matters to them.
+
+          </p>
+
+
+        </article>
+
+
+        <article class="value-card">
+
+
+          <div class="value-number">
+            03
+          </div>
+
+
+          <h3>
+            Always improve
+          </h3>
+
+
+          <p>
+
+            GoldenGetaways is constantly being developed.
+            The aim is to keep adding more value,
+            better features and a better member experience.
+
+          </p>
+
+
+        </article>
+
+
+      </div>
+
+
+    </section>
+
+
+    <!-- =========================================
+         PERSONAL NOTE
+    ========================================= -->
+
+    <section class="personal-note">
+
+
+      <p>
+        A NOTE FROM ME
+      </p>
+
+
+      <blockquote>
+
+        I don't want GoldenGetaways to feel like
+        another faceless travel website.
+        I want members to feel like there's
+        <em>
+          someone genuinely helping them find
+          their next getaway.
+        </em>
+
+      </blockquote>
+
+
+    </section>
+
+
+    <!-- =========================================
+         CTA
+    ========================================= -->
+
+    <section class="about-cta">
+
+
+      <div>
+
+
+        <h2>
+          Ready to find your next getaway?
+        </h2>
+
+
+        <p>
+
+          Explore our handpicked holiday categories
+          or join GoldenGetaways and get access
+          to personalised holiday searches
+          and member support.
+
+        </p>
+
+
+      </div>
+
+
+      <div class="hero-actions">
+
+
+        <a
+          href="our-getaways.html"
+          class="secondary-button"
+        >
+          Explore Getaways
+        </a>
+
+
+        <a
+          href="join.html"
+          class="button gold-button"
+        >
+          Become a Member
+          <span>→</span>
+        </a>
+
+
+      </div>
+
+
+    </section>
+
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+
+</body>
+
+</html>

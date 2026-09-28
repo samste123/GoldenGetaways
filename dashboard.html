@@ -1,0 +1,3126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Member Dashboard | GoldenGetaways</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy: #00111f;
+      --navy-2: #021b2d;
+      --navy-3: #062238;
+
+      --gold: #d8a13f;
+      --gold-light: #f0bd5c;
+
+      --white: #f8f5ef;
+      --muted: #aeb7c1;
+
+      --border: rgba(216,161,63,0.24);
+      --soft-border: rgba(255,255,255,0.08);
+    }
+
+    body {
+      min-height: 100vh;
+
+      font-family:
+        "DM Sans",
+        sans-serif;
+
+      color: var(--white);
+
+      background:
+        radial-gradient(
+          circle at 70% 10%,
+          #08263c 0%,
+          #00111f 35%,
+          #000b15 100%
+        );
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    .dashboard-layout {
+      min-height: 100vh;
+
+      display: grid;
+      grid-template-columns:
+        275px 1fr;
+    }
+
+
+    /* =========================
+       SIDEBAR
+    ========================= */
+
+    .sidebar {
+      min-height: 100vh;
+      height: 100vh;
+
+      position: sticky;
+      top: 0;
+
+      padding: 32px 22px;
+
+      display: flex;
+      flex-direction: column;
+
+      border-right:
+        1px solid
+        rgba(216,161,63,0.15);
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(1,18,31,0.98),
+          rgba(0,11,21,0.99)
+        );
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+
+      gap: 13px;
+
+      margin-bottom: 42px;
+    }
+
+    .brand img {
+      width: 54px;
+      height: 54px;
+
+      border-radius: 50%;
+
+      object-fit: contain;
+    }
+
+    .brand-text strong {
+      display: block;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      color: var(--gold-light);
+
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    .brand-text small {
+      color: var(--muted);
+
+      letter-spacing: 3px;
+
+      font-size: 9px;
+    }
+
+    .sidebar-nav {
+      display: grid;
+
+      gap: 8px;
+    }
+
+    .nav-link {
+      min-height: 52px;
+
+      padding: 0 16px;
+
+      display: flex;
+      align-items: center;
+
+      gap: 14px;
+
+      border-radius: 12px;
+
+      color: #c5ccd3;
+
+      transition: 0.2s;
+    }
+
+    .nav-link:hover {
+      color: white;
+
+      background:
+        rgba(255,255,255,0.04);
+    }
+
+    .nav-link.active {
+      color: var(--gold-light);
+
+      border:
+        1px solid
+        rgba(216,161,63,0.34);
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(216,161,63,0.16),
+          rgba(216,161,63,0.04)
+        );
+    }
+
+    .admin-nav-link {
+      margin-top: 5px;
+
+      color: var(--gold-light);
+
+      border:
+        1px solid
+        rgba(216,161,63,0.22);
+
+      background:
+        rgba(216,161,63,0.045);
+    }
+
+    .admin-nav-link:hover {
+      color: white;
+
+      border-color:
+        rgba(216,161,63,0.42);
+
+      background:
+        rgba(216,161,63,0.1);
+    }
+
+    .nav-icon {
+      width: 25px;
+
+      text-align: center;
+
+      font-size: 19px;
+    }
+
+    .giveaway-box {
+      margin-top: auto;
+
+      padding: 22px;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 16px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(8,34,54,0.9),
+          rgba(2,17,30,0.98)
+        );
+    }
+
+    .giveaway-box h3 {
+      color: var(--gold-light);
+
+      margin-bottom: 10px;
+
+      font-size: 15px;
+    }
+
+    .giveaway-box p {
+      color: var(--muted);
+
+      line-height: 1.6;
+
+      font-size: 13px;
+
+      margin-bottom: 18px;
+    }
+
+    .giveaway-box a {
+      color: var(--gold-light);
+
+      font-size: 13px;
+    }
+
+    .member-footer {
+      margin-top: 20px;
+
+      padding-top: 20px;
+
+      border-top:
+        1px solid
+        var(--soft-border);
+
+      display: flex;
+      align-items: center;
+
+      gap: 12px;
+    }
+
+    .member-avatar {
+      width: 42px;
+      height: 42px;
+
+      display: grid;
+      place-items: center;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 50%;
+
+      background:
+        #09243a;
+
+      color: var(--gold-light);
+
+      font-weight: 600;
+    }
+
+    .member-footer strong {
+      display: block;
+
+      font-size: 13px;
+    }
+
+    .member-footer small {
+      color: var(--muted);
+
+      font-size: 11px;
+    }
+
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    .dashboard-main {
+      width: 100%;
+
+      max-width: 1650px;
+
+      margin: auto;
+
+      padding:
+        38px 46px 55px;
+    }
+
+    .topbar {
+      margin-bottom: 30px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+    .eyebrow {
+      color: var(--gold-light);
+
+      letter-spacing: 3px;
+
+      font-size: 11px;
+
+      margin-bottom: 7px;
+    }
+
+    .topbar h1 {
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 47px;
+
+      font-weight: 400;
+    }
+
+    .topbar h1 span {
+      color: var(--gold-light);
+
+      font-style: italic;
+    }
+
+    .topbar p {
+      margin-top: 7px;
+
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+    .logout-button {
+      height: 46px;
+
+      padding: 0 20px;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 12px;
+
+      background:
+        transparent;
+
+      color: var(--gold-light);
+
+      transition: 0.2s;
+    }
+    @media (max-width: 850px) {
+    .logout-button {
+        position: absolute;
+        top: 17px;
+        right: 30px;
+        left: auto;
+        width: auto;
+        height: 40px;
+        padding: 0 16px;
+        margin: 0;
+        z-index: 100;
+        font-size: 14px;
+    }
+}
+    .logout-button:hover {
+      background:
+        rgba(216,161,63,0.08);
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .member-hero {
+    min-height: 0;
+height: 360px;
+
+      margin-bottom: 28px;
+
+      padding: 32px;
+
+      position: relative;
+
+      display: flex;
+      align-items: center;
+
+      overflow: hidden;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 22px;
+
+      background:
+        linear-gradient(
+          90deg,
+         rgba(0,17,31,0.65) 0%,
+rgba(0,17,31,0.18) 45%,
+rgba(0,17,31,0.00) 100%
+        ),
+        url("images/dashboard-hero.png")
+        center 55% / cover
+        no-repeat;
+    }
+
+    .hero-content {
+      max-width: 580px;
+
+      z-index: 2;
+       background: linear-gradient(
+        90deg,
+        rgba(0, 17, 31, 0.88) 0%,
+        rgba(0, 17, 31, 0.65) 65%,
+        rgba(0, 17, 31, 0) 100%
+    );
+    padding: 18px 40px 18px 18px;
+    }
+
+    .hero-content h2 {
+      margin-bottom: 18px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size:
+        clamp(
+          38px,
+          4vw,
+          62px
+        );
+
+      font-weight: 400;
+
+      line-height: 1.05;
+    }
+
+    .hero-content h2 em {
+      color: var(--gold-light);
+
+      font-weight: 400;
+    }
+
+    .hero-content p {
+      max-width: 480px;
+
+      color: #d3d7dc;
+
+      line-height: 1.7;
+
+      font-size: 15px;
+    }
+
+
+    /* =========================
+       STATS
+    ========================= */
+
+    .stats-grid {
+      margin-bottom: 28px;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4,1fr);
+
+      gap: 18px;
+    }
+
+    .stat-card {
+      min-height: 155px;
+
+      padding: 24px;
+
+      display: flex;
+      align-items: center;
+
+      gap: 18px;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 17px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(8,31,49,0.95),
+          rgba(2,17,30,0.96)
+        );
+    }
+
+    .stat-icon {
+      width: 58px;
+      height: 58px;
+
+      flex:
+        0 0 58px;
+
+      display: grid;
+      place-items: center;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.22);
+
+      border-radius: 50%;
+
+      background:
+        rgba(216,161,63,0.07);
+
+      color: var(--gold-light);
+
+      font-size: 25px;
+    }
+
+    .stat-label {
+      color: var(--muted);
+
+      font-size: 12px;
+
+      margin-bottom: 6px;
+    }
+
+    .stat-value {
+      color: var(--gold-light);
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 29px;
+
+      font-weight: 400;
+    }
+
+    .stat-sub {
+      margin-top: 5px;
+
+      color: #abb4bd;
+
+      font-size: 11px;
+    }
+
+
+    /* =========================
+       PANELS
+    ========================= */
+
+    .dashboard-grid {
+      margin-bottom: 24px;
+
+      display: grid;
+
+      grid-template-columns:
+        1.05fr 0.95fr;
+
+      gap: 22px;
+    }
+
+    .panel {
+      padding: 28px;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(7,29,47,0.96),
+          rgba(1,15,27,0.97)
+        );
+    }
+
+    .panel-header {
+      margin-bottom: 25px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+    .panel-header h3 {
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 25px;
+
+      font-weight: 400;
+    }
+
+    .panel-header a {
+      color: var(--gold-light);
+
+      font-size: 12px;
+    }
+
+
+    /* =========================
+       POINTS
+    ========================= */
+
+    .points-content {
+      display: flex;
+      align-items: center;
+
+      gap: 28px;
+    }
+
+    .points-circle {
+      width: 125px;
+      height: 125px;
+
+      flex:
+        0 0 125px;
+
+      display: grid;
+      place-items: center;
+
+      border:
+        10px solid
+        rgba(216,161,63,0.13);
+
+      outline:
+        3px solid
+        var(--gold);
+
+      border-radius: 50%;
+
+      color: var(--gold-light);
+
+      font-size: 42px;
+    }
+
+    .points-info {
+      flex: 1;
+    }
+
+    .points-total {
+      margin-bottom: 14px;
+
+      color: var(--gold-light);
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 37px;
+    }
+
+    .points-total span {
+      color: white;
+
+      font-family:
+        "DM Sans",
+        sans-serif;
+
+      font-size: 16px;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 8px;
+
+      overflow: hidden;
+
+      border-radius: 50px;
+
+      background:
+        rgba(255,255,255,0.08);
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+
+      border-radius: inherit;
+
+      background:
+        linear-gradient(
+          90deg,
+          #a86e1d,
+          #f0bd5c
+        );
+
+      transition: 0.5s;
+    }
+
+    .progress-text {
+      margin-top: 10px;
+
+      display: flex;
+      justify-content: space-between;
+
+      color: var(--muted);
+
+      font-size: 11px;
+    }
+
+
+    /* =========================
+       QUICK ACTIONS
+    ========================= */
+
+    .quick-actions {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2,1fr);
+
+      gap: 14px;
+    }
+
+    .quick-action {
+      min-height: 100px;
+
+      padding: 18px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      gap: 10px;
+
+      border:
+        1px solid
+        var(--soft-border);
+
+      border-radius: 14px;
+
+      background:
+        rgba(255,255,255,0.018);
+
+      transition: 0.2s;
+    }
+
+    .quick-action:hover {
+      transform:
+        translateY(-2px);
+
+      border-color:
+        var(--border);
+
+      background:
+        rgba(216,161,63,0.04);
+    }
+
+    .quick-action span {
+      color: var(--gold-light);
+
+      font-size: 25px;
+    }
+
+    .quick-action strong {
+      font-size: 13px;
+
+      font-weight: 500;
+    }
+
+
+    /* =========================
+       REQUESTS
+    ========================= */
+
+    .requests-panel {
+      margin-bottom: 24px;
+    }
+
+    .request-list {
+      display: grid;
+
+      gap: 13px;
+    }
+
+    .request-item {
+      min-height: 78px;
+
+      padding: 14px 18px;
+
+      display: grid;
+
+      grid-template-columns:
+        1fr auto;
+
+      align-items: center;
+
+      gap: 15px;
+
+      border:
+        1px solid
+        var(--soft-border);
+
+      border-radius: 13px;
+
+      background:
+        rgba(255,255,255,0.018);
+    }
+
+    .request-item h4 {
+      margin-bottom: 5px;
+
+      font-size: 15px;
+
+      font-weight: 500;
+    }
+
+    .request-item p {
+      color: var(--muted);
+
+      font-size: 12px;
+
+      line-height: 1.5;
+    }
+
+    .request-status {
+      padding: 7px 12px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.35);
+
+      border-radius: 50px;
+
+      color: var(--gold-light);
+
+      font-size: 11px;
+
+      text-transform: capitalize;
+    }
+
+    .empty-state {
+      padding: 35px 10px;
+
+      text-align: center;
+
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+
+    /* =========================
+       REWARD BANNER
+    ========================= */
+
+    .reward-banner {
+      padding: 25px 28px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 25px;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(216,161,63,0.06),
+          rgba(5,30,49,0.9)
+        );
+    }
+
+    .reward-banner h3 {
+      margin-bottom: 5px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 23px;
+    }
+
+    .reward-banner p {
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+    .gold-button {
+      min-height: 47px;
+
+      padding: 0 22px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      border: none;
+
+      border-radius: 10px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #b67a23,
+          #e0aa47
+        );
+
+      color: white;
+
+      font-weight: 500;
+    }
+
+    .gold-button:disabled {
+      opacity: 0.55;
+
+      cursor: not-allowed;
+    }
+
+
+    /* =========================
+       MODAL
+    ========================= */
+
+    .holiday-modal {
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 9999;
+
+      display: none;
+      align-items: center;
+      justify-content: center;
+
+      padding: 24px;
+
+      background:
+        rgba(0,8,16,0.78);
+
+      backdrop-filter:
+        blur(10px);
+    }
+
+    .holiday-modal.open {
+      display: flex;
+    }
+
+    .holiday-modal-card {
+      width:
+        min(
+          680px,
+          100%
+        );
+
+      max-height: 90vh;
+
+      overflow-y: auto;
+
+      position: relative;
+
+      padding: 36px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.35);
+
+      border-radius: 22px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(7,29,47,0.99),
+          rgba(1,15,27,0.99)
+        );
+
+      box-shadow:
+        0 30px 80px
+        rgba(0,0,0,0.55);
+    }
+
+    .holiday-modal-card h2 {
+      margin-bottom: 10px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 38px;
+
+      font-weight: 400;
+    }
+
+    .modal-intro {
+      margin-bottom: 28px;
+
+      color: var(--muted);
+
+      line-height: 1.6;
+    }
+
+    .modal-close {
+      position: absolute;
+
+      top: 18px;
+      right: 20px;
+
+      width: 40px;
+      height: 40px;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 50%;
+
+      background:
+        transparent;
+
+      color: var(--gold-light);
+
+      font-size: 24px;
+    }
+
+    .modal-row {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 16px;
+    }
+
+    .modal-field {
+      margin-bottom: 18px;
+    }
+
+    .modal-field label {
+      display: block;
+
+      margin-bottom: 8px;
+
+      color: white;
+
+      font-size: 13px;
+    }
+
+    .modal-field input,
+    .modal-field textarea {
+      width: 100%;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.12);
+
+      border-radius: 12px;
+
+      background:
+        rgba(255,255,255,0.025);
+
+      color: white;
+
+      outline: none;
+
+      font-family:
+        "DM Sans",
+        sans-serif;
+
+      font-size: 14px;
+    }
+
+    .modal-field input {
+      height: 54px;
+
+      padding:
+        0 16px;
+    }
+
+    .modal-field textarea {
+      padding:
+        14px 16px;
+
+      resize: vertical;
+    }
+
+    .modal-field input:focus,
+    .modal-field textarea:focus {
+      border-color:
+        var(--gold);
+
+      box-shadow:
+        0 0 0 3px
+        rgba(216,161,63,0.08);
+    }
+
+    .modal-submit {
+      width: 100%;
+
+      margin-top: 6px;
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 1150px) {
+
+      .stats-grid {
+        grid-template-columns:
+          repeat(2,1fr);
+      }
+
+      .dashboard-grid {
+        grid-template-columns:
+          1fr;
+      }
+
+    }
+   
+    @media (max-width: 850px) {
+
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 160px minmax(0, 1fr);
+    align-items: start;
+    position: relative;
+}
+    .dashboard-layout::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 160px;
+    right: 0;
+    height: 72px;
+    background: rgba(1, 18, 31, 0.98);
+    z-index: 0;
+}
+
+   .sidebar {
+    position: relative;
+       height: auto;
+    min-height: 0;
+    padding: 22px 10px;
+    overflow: visible;
+    z-index: 5;
+    position: relative;
+    z-index: 10;
+    border-right: none;
+}
+
+    .sidebar .logo {
+        transform: scale(0.62);
+        transform-origin: top left;
+        width: 210px;
+        margin-bottom: -20px;
+    }
+
+    .sidebar-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .sidebar-link {
+        font-size: 13px;
+        padding: 11px 8px;
+        gap: 8px;
+        white-space: normal;
+    }
+
+    .sidebar-link-icon {
+        font-size: 18px;
+        min-width: 22px;
+    }
+
+   .giveaway-box {
+    display: none;
+}
+
+    .member-footer {
+        display: none;
+    }
+
+   .dashboard-main {
+    grid-column: 2;
+    min-width: 0;
+   padding: 80px 10px 28px;
+}
+
+   .topbar {
+    padding: 0;
+    min-width: 0;
+}
+
+.member-hero {
+    width: 100%;
+    min-width: 0;
+    margin: 18px 0 0;
+    max-width: 430px;
+    height: 495px;
+    transform: translateY(-20px);
+}
+
+.dashboard-bottom {
+    width: calc(100vw - 32px);
+   margin-left: -160px;
+    padding: 0;
+    position: relative;
+    z-index: 20;
+    }
+.dashboard-bottom .stats-grid {
+    width: 100%;
+}
+.dashboard-bottom > * {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+}
+    @media (max-width: 600px) {
+
+      .stats-grid,
+      .sidebar-nav {
+        grid-template-columns:
+          1fr;
+      }
+
+      .member-hero {
+        padding:
+          32px 25px;
+      }
+
+      .topbar {
+        align-items:
+          flex-start;
+
+        flex-direction:
+          column;
+      }
+
+      .topbar h1 {
+        font-size: 37px;
+      }
+
+      .points-content {
+        flex-direction:
+          column;
+
+        align-items:
+          flex-start;
+      }
+
+      .quick-actions {
+        grid-template-columns:
+          1fr;
+      }
+
+      .reward-banner {
+        flex-direction:
+          column;
+
+        align-items:
+          flex-start;
+      }
+
+      .modal-row {
+        grid-template-columns:
+          1fr;
+      }
+
+      .request-item {
+        grid-template-columns:
+          1fr;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="dashboard-layout">
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+      <a
+        href="index.html"
+        class="brand"
+      >
+
+        <img
+          src="images/logo-small.webp"
+          alt="GoldenGetaways logo"
+        >
+
+        <div class="brand-text">
+
+          <strong>
+            GoldenGetaways
+          </strong>
+
+          <small>
+            EST 2025
+          </small>
+
+        </div>
+
+      </a>
+
+
+      <nav class="sidebar-nav">
+
+
+        <a
+          href="dashboard.html"
+          class="nav-link active"
+        >
+
+          <span class="nav-icon">
+            ▦
+          </span>
+
+          Dashboard
+
+        </a>
+
+
+        <a
+          href="member-membership.html"
+          class="nav-link"
+        >
+
+          <span class="nav-icon">
+            ♔
+          </span>
+
+          Membership
+
+        </a>
+
+
+        <a
+    href="my-requests.html"
+    class="nav-link member-only-link"
+>
+
+          <span class="nav-icon">
+            ✈
+          </span>
+
+          My Requests
+
+        </a>
+
+
+       <a
+    href="points.html"
+    class="nav-link member-only-link"
+>
+
+          <span class="nav-icon">
+            ★
+          </span>
+
+          Points & Rewards
+
+        </a>
+
+
+        <a
+    href="group-chat.html"
+    class="nav-link member-only-link"
+>
+
+          <span class="nav-icon">
+            💬
+          </span>
+
+          Group Chat
+
+        </a>
+        <a
+  href="mini-games.html"
+  class="nav-link"
+>
+
+  <span class="nav-icon">
+    🎮
+  </span>
+
+  Mini Games
+
+</a>
+
+        <a
+          href="referrals.html"
+          class="nav-link"
+        >
+
+          <span class="nav-icon">
+            ♧
+          </span>
+
+          Referrals
+
+        </a>
+
+
+        <a
+          href="competitions.html"
+          class="nav-link"
+        >
+
+          <span class="nav-icon">
+            ♕
+          </span>
+
+          Competitions
+
+        </a>
+
+
+        <a
+          href="support.html"
+          class="nav-link"
+        >
+
+          <span class="nav-icon">
+            ◉
+          </span>
+
+          Support
+
+        </a>
+
+
+        <a
+          href="account-settings.html"
+          class="nav-link"
+        >
+
+          <span class="nav-icon">
+            ⚙
+          </span>
+
+          Account Settings
+
+        </a>
+
+
+        <!-- ADMIN ONLY -->
+
+        <a
+          href="admin.html"
+          class="nav-link admin-nav-link"
+          id="adminPortalLink"
+          hidden
+        >
+
+          <span class="nav-icon">
+            ♜
+          </span>
+
+          Admin Portal
+
+        </a>
+
+
+      </nav>
+
+
+      <div class="giveaway-box">
+
+        <h3>
+          🎁 Monthly Giveaway
+        </h3>
+
+        <p>
+          Enter this month's
+          GoldenGetaways member points
+          competition.
+        </p>
+
+        <a href="competitions.html">
+          View Giveaway →
+        </a>
+
+      </div>
+
+
+      <div class="member-footer">
+
+        <div
+          class="member-avatar"
+          id="memberInitials"
+        >
+          GG
+        </div>
+
+        <div>
+
+          <strong id="sidebarName">
+            Member
+          </strong>
+
+          <small>
+            GoldenGetaways Member
+          </small>
+
+        </div>
+
+      </div>
+
+    </aside>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="dashboard-main">
+
+
+      <!-- TOP BAR -->
+
+      <div class="topbar">
+
+        <div>
+
+          <h1>
+            Welcome back,
+            <span id="welcomeName">
+              Member
+            </span>
+          </h1>
+
+          <p>
+            Here’s everything happening
+            with your membership.
+          </p>
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- HERO -->
+
+      <section class="member-hero">
+
+        <div class="hero-content">
+
+          <div class="eyebrow">
+            YOUR MEMBERSHIP
+          </div>
+
+          <h2>
+            Your next escape
+            <br>
+            <em>starts here.</em>
+          </h2>
+
+          <p>
+            Request personalised holidays,
+            earn rewards and enjoy exclusive
+            GoldenGetaways member benefits.
+          </p>
+
+        </div>
+
+     </section>
+
+<button class="logout-button" id="logoutButton">Log Out</button>
+
+<div class="dashboard-bottom">
+
+      <!-- STATS -->
+
+      <section class="stats-grid">
+
+
+        <article class="stat-card">
+
+          <div class="stat-icon">
+            ♔
+          </div>
+
+          <div>
+
+            <div class="stat-label">
+              Membership Status
+            </div>
+
+            <div
+              class="stat-value"
+              id="membershipStatus"
+            >
+              Loading...
+            </div>
+
+            <div class="stat-sub">
+              GoldenGetaways member
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <article class="stat-card">
+
+          <div class="stat-icon">
+            ★
+          </div>
+
+          <div>
+
+            <div class="stat-label">
+              Total Points
+            </div>
+
+            <div
+              class="stat-value"
+              id="points"
+            >
+              0
+            </div>
+
+            <div class="stat-sub">
+              Keep earning rewards
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <article class="stat-card">
+
+          <div class="stat-icon">
+            ♧
+          </div>
+
+          <div>
+
+            <div class="stat-label">
+              Referrals
+            </div>
+
+            <div
+              class="stat-value"
+              id="referrals"
+            >
+              0
+            </div>
+
+            <div class="stat-sub">
+              Friends referred
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <article class="stat-card">
+
+          <div class="stat-icon">
+            ◫
+          </div>
+
+          <div>
+
+            <div class="stat-label">
+              Member Since
+            </div>
+
+            <div
+              class="stat-value"
+              id="memberSince"
+            >
+              Loading...
+            </div>
+
+            <div class="stat-sub">
+              Your membership journey
+            </div>
+
+          </div>
+
+        </article>
+
+
+      </section>
+
+
+
+      <!-- POINTS + QUICK ACTIONS -->
+
+      <section class="dashboard-grid">
+
+
+        <article class="panel">
+
+          <div class="panel-header">
+
+            <h3>
+              Your Points
+            </h3>
+
+            <a href="points.html">
+              How to earn points →
+            </a>
+
+          </div>
+
+
+          <div class="points-content">
+
+            <div class="points-circle">
+              ★
+            </div>
+
+
+            <div class="points-info">
+
+              <div class="points-total">
+
+                <span id="pointsLarge">
+                  0
+                </span>
+
+                <span>
+                  / 500 points
+                </span>
+
+              </div>
+
+
+              <div class="progress-track">
+
+                <div
+                  class="progress-fill"
+                  id="pointsProgress"
+                ></div>
+
+              </div>
+
+
+              <div class="progress-text">
+
+                <span>
+                  Level 1
+                </span>
+
+                <span>
+                  Level 2
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+
+        <article class="panel">
+
+          <div class="panel-header">
+
+            <h3>
+              Quick Actions
+            </h3>
+
+          </div>
+
+
+          <div class="quick-actions">
+
+
+            <a
+              href="#"
+              class="quick-action"
+              id="requestHolidayButton"
+            >
+
+              <span>
+                ✈
+              </span>
+
+              <strong>
+                Request a Holiday
+              </strong>
+
+            </a>
+
+
+            <a
+              href="group-chat.html"
+              class="quick-action"
+            >
+
+              <span>
+                💬
+              </span>
+
+              <strong>
+                Member Group
+              </strong>
+
+            </a>
+
+
+            <a
+              href="referrals.html"
+              class="quick-action"
+            >
+
+              <span>
+                ♧
+              </span>
+
+              <strong>
+                Refer a Friend
+              </strong>
+
+            </a>
+
+
+            <a
+              href="support.html"
+              class="quick-action"
+            >
+
+              <span>
+                ◉
+              </span>
+
+              <strong>
+                Contact Support
+              </strong>
+
+            </a>
+
+
+          </div>
+
+        </article>
+
+      </section>
+
+
+
+      <!-- RECENT REQUESTS -->
+
+      <section
+        class="panel requests-panel"
+      >
+
+        <div class="panel-header">
+
+          <h3>
+            Recent Holiday Requests
+          </h3>
+
+          <a href="my-requests.html">
+            View all →
+          </a>
+
+        </div>
+
+
+        <div
+          class="request-list"
+          id="requestList"
+        >
+
+          <div class="empty-state">
+            Loading your holiday requests...
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- REWARD BANNER -->
+
+      <section class="reward-banner">
+
+        <div>
+
+          <h3>
+            Make the most of your membership.
+          </h3>
+
+          <p>
+            Enter the monthly competition,
+            refer friends and earn
+            GoldenGetaways rewards.
+          </p>
+
+        </div>
+
+
+        <a
+          href="competitions.html"
+          class="gold-button"
+        >
+          View Competition →
+        </a>
+
+      </section>
+
+
+    </main>
+
+  </div>
+
+
+
+  <!-- =========================
+       HOLIDAY REQUEST MODAL
+  ========================== -->
+
+  <div
+    id="holidayModal"
+    class="holiday-modal"
+  >
+
+    <div class="holiday-modal-card">
+
+
+      <button
+        id="closeHolidayModal"
+        class="modal-close"
+        type="button"
+        aria-label="Close holiday request"
+      >
+        ×
+      </button>
+
+
+      <p class="eyebrow">
+        PERSONALISED TRAVEL REQUEST
+      </p>
+
+
+      <h2>
+        Request a Holiday
+      </h2>
+
+
+      <p class="modal-intro">
+        Tell us what you're looking for
+        and we'll start building your
+        perfect escape.
+      </p>
+
+
+      <form id="holidayRequestForm">
+
+
+        <div class="modal-field">
+
+          <label for="destination">
+            Destination
+          </label>
+
+          <input
+            id="destination"
+            type="text"
+            placeholder="e.g. Maldives, Greece, Dubai"
+            maxlength="150"
+            required
+          >
+
+        </div>
+
+
+
+        <div class="modal-field">
+
+          <label for="localAirport">
+            Local airport
+          </label>
+
+          <input
+            id="localAirport"
+            type="text"
+            placeholder="e.g. Manchester, Liverpool, Birmingham"
+            maxlength="150"
+            required
+          >
+
+        </div>
+
+
+
+        <div class="modal-row">
+
+
+          <div class="modal-field">
+
+            <label for="adults">
+              Adults
+            </label>
+
+            <input
+              id="adults"
+              type="number"
+              min="1"
+              max="20"
+              value="2"
+              required
+            >
+
+          </div>
+
+
+          <div class="modal-field">
+
+            <label for="children">
+              Children
+            </label>
+
+            <input
+              id="children"
+              type="number"
+              min="0"
+              max="20"
+              value="0"
+            >
+
+          </div>
+
+
+        </div>
+
+
+
+        <div class="modal-row">
+
+
+          <div class="modal-field">
+
+            <label for="nights">
+              Nights
+            </label>
+
+            <input
+              id="nights"
+              type="number"
+              min="1"
+              max="365"
+              value="7"
+              required
+            >
+
+          </div>
+
+
+          <div class="modal-field">
+
+            <label for="budget">
+              Budget (£)
+            </label>
+
+            <input
+              id="budget"
+              type="number"
+              min="0"
+              placeholder="1500"
+            >
+
+          </div>
+
+
+        </div>
+
+
+
+        <div class="modal-field">
+
+          <label for="notes">
+            Anything else?
+          </label>
+
+          <textarea
+            id="notes"
+            rows="5"
+            maxlength="2000"
+            placeholder="Hotel style, dates, board basis, special requests..."
+          ></textarea>
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="gold-button modal-submit"
+          id="holidaySubmitButton"
+        >
+          Send Holiday Request →
+        </button>
+
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+
+
+  <script>
+
+    // =====================================
+    // SAFE TEXT
+    // =====================================
+
+    function escapeHTML(value) {
+
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+    }
+
+
+
+    // =====================================
+    // DASHBOARD
+    // =====================================
+
+    async function loadDashboard() {
+
+      const {
+        data: { session }
+      } =
+        await supabaseClient
+          .auth
+          .getSession();
+
+
+      if (!session) {
+
+        window.location.href =
+          "join.html";
+
+        return;
+
+      }
+
+
+      const user =
+        session.user;
+
+
+
+      // =====================================
+      // ADMIN ACCESS
+      // =====================================
+
+      const {
+        data: isAdmin,
+        error: adminCheckError
+      } =
+        await supabaseClient.rpc(
+          "is_admin"
+        );
+
+
+      if (adminCheckError) {
+
+        console.error(
+          "Admin check error:",
+          adminCheckError
+        );
+
+      }
+
+
+      if (
+        isAdmin === true
+      ) {
+
+        const adminPortalLink =
+          document.getElementById(
+            "adminPortalLink"
+          );
+
+
+        if (adminPortalLink) {
+
+          adminPortalLink.hidden =
+            false;
+
+        }
+
+      }
+
+
+
+      // =====================================
+      // PROFILE
+      // =====================================
+
+      const {
+        data: profile,
+        error
+      } =
+        await supabaseClient
+          .from(
+            "profiles"
+          )
+          .select(
+            "full_name, membership_status, points, referral_count, member_since"
+          )
+          .eq(
+            "id",
+            user.id
+          )
+          .maybeSingle();
+
+
+      if (error) {
+
+        console.error(
+          "Profile error:",
+          error
+        );
+
+        return;
+
+      }
+      // Block anyone without an active membership
+if (!profile || profile.membership_status !== "active") {
+  window.location.href = "member-membership.html?checkout=1";
+    return;
+}
+
+
+      const fallbackName =
+        user.email
+          ? user.email.split("@")[0]
+          : "Member";
+
+
+      const memberName =
+        profile?.full_name ||
+        user.user_metadata?.full_name ||
+        fallbackName;
+
+
+
+      // NAME
+
+      document
+        .getElementById(
+          "welcomeName"
+        )
+        .textContent =
+          memberName;
+
+
+      document
+        .getElementById(
+          "sidebarName"
+        )
+        .textContent =
+          memberName;
+
+
+      document
+        .getElementById(
+          "memberInitials"
+        )
+        .textContent =
+          memberName
+            .substring(
+              0,
+              2
+            )
+            .toUpperCase();
+
+
+
+      // MEMBERSHIP STATUS
+
+      const membershipStatus =
+        profile?.membership_status ||
+        "pending";
+const hasActiveMembership = membershipStatus === "active";
+document.querySelectorAll(".member-only-link").forEach(link => {
+  link.addEventListener("click", (event) => {
+    if (!hasActiveMembership) {
+      event.preventDefault();
+      window.location.href = "membership.html";
+    }
+  });
+});
+
+      document
+        .getElementById(
+          "membershipStatus"
+        )
+        .textContent =
+          membershipStatus
+            .charAt(0)
+            .toUpperCase() +
+          membershipStatus
+            .slice(1);
+
+
+
+      // POINTS
+
+      const points =
+        Number(
+          profile?.points ??
+          0
+        );
+
+
+      document
+        .getElementById(
+          "points"
+        )
+        .textContent =
+          points;
+
+
+      document
+        .getElementById(
+          "pointsLarge"
+        )
+        .textContent =
+          points;
+
+
+
+      // REFERRALS
+
+      document
+        .getElementById(
+          "referrals"
+        )
+        .textContent =
+          Number(
+            profile?.referral_count ??
+            0
+          );
+
+
+
+      // MEMBER SINCE
+
+      const memberSinceElement =
+        document.getElementById(
+          "memberSince"
+        );
+
+
+      if (
+        profile?.member_since
+      ) {
+
+        const memberDate =
+          new Date(
+            profile.member_since
+          );
+
+
+        if (
+          !Number.isNaN(
+            memberDate.getTime()
+          )
+        ) {
+
+          memberSinceElement
+            .textContent =
+              memberDate
+                .toLocaleDateString(
+                  "en-GB",
+                  {
+                    month:
+                      "short",
+
+                    year:
+                      "numeric"
+                  }
+                );
+
+        } else {
+
+          memberSinceElement
+            .textContent =
+              "—";
+
+        }
+
+      } else {
+
+        memberSinceElement
+          .textContent =
+            "—";
+
+      }
+
+
+
+      // POINT PROGRESS
+
+      const progress =
+        Math.min(
+          Math.max(
+            (
+              points /
+              500
+            ) *
+            100,
+            0
+          ),
+          100
+        );
+
+
+      document
+        .getElementById(
+          "pointsProgress"
+        )
+        .style
+        .width =
+          progress +
+          "%";
+
+
+
+      // REQUESTS
+
+      await loadHolidayRequests(
+        user.id
+      );
+
+    }
+
+
+
+    // =====================================
+    // HOLIDAY REQUESTS
+    // =====================================
+
+    async function loadHolidayRequests(
+      userId
+    ) {
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient
+          .from(
+            "holiday_requests"
+          )
+          .select(
+            "destination, local_airport, adults, children, nights, budget, status, created_at"
+          )
+          .eq(
+            "user_id",
+            userId
+          )
+          .order(
+            "created_at",
+            {
+              ascending:
+                false
+            }
+          )
+          .limit(3);
+
+
+      const list =
+        document.getElementById(
+          "requestList"
+        );
+
+
+      if (error) {
+
+        console.error(
+          "Holiday requests error:",
+          error
+        );
+
+
+        list.innerHTML = `
+          <div class="empty-state">
+            Unable to load holiday requests.
+          </div>
+        `;
+
+        return;
+
+      }
+
+
+      if (
+        !data ||
+        data.length === 0
+      ) {
+
+        list.innerHTML = `
+          <div class="empty-state">
+            You haven't submitted
+            any holiday requests yet.
+          </div>
+        `;
+
+        return;
+
+      }
+
+
+      list.innerHTML =
+        data
+          .map(
+            request => {
+
+              const details =
+                [];
+
+
+              if (
+                request.local_airport
+              ) {
+
+                details.push(
+                  escapeHTML(
+                    request.local_airport
+                  )
+                );
+
+              }
+
+
+              details.push(
+                `${Number(
+                  request.adults ??
+                  1
+                )} Adults`
+              );
+
+
+              if (
+                Number(
+                  request.children ??
+                  0
+                ) >
+                0
+              ) {
+
+                details.push(
+                  `${Number(
+                    request.children
+                  )} Children`
+                );
+
+              }
+
+
+              if (
+                request.nights
+              ) {
+
+                details.push(
+                  `${Number(
+                    request.nights
+                  )} Nights`
+                );
+
+              }
+
+
+              if (
+                request.budget
+              ) {
+
+                details.push(
+                  `£${Number(
+                    request.budget
+                  ).toLocaleString(
+                    "en-GB"
+                  )} budget`
+                );
+
+              }
+
+
+              return `
+                <div class="request-item">
+
+                  <div>
+
+                    <h4>
+                      ${escapeHTML(
+                        request.destination ||
+                        "Holiday Request"
+                      )}
+                    </h4>
+
+                    <p>
+                      ${details.join(
+                        " • "
+                      )}
+                    </p>
+
+                  </div>
+
+                  <span class="request-status">
+                    ${escapeHTML(
+                      (
+                        request.status ||
+                        "pending"
+                      ).replaceAll(
+                        "_",
+                        " "
+                      )
+                    )}
+                  </span>
+
+                </div>
+              `;
+
+            }
+          )
+          .join("");
+
+    }
+
+
+
+    // =====================================
+    // LOGOUT
+    // =====================================
+
+    document
+      .getElementById(
+        "logoutButton"
+      )
+      .addEventListener(
+        "click",
+        async () => {
+
+          await supabaseClient
+            .auth
+            .signOut();
+
+
+          window.location.href =
+            "join.html";
+
+        }
+      );
+
+
+
+    // =====================================
+    // HOLIDAY MODAL
+    // =====================================
+
+    const requestHolidayButton =
+      document.getElementById(
+        "requestHolidayButton"
+      );
+
+
+    const holidayModal =
+      document.getElementById(
+        "holidayModal"
+      );
+
+
+    const closeHolidayModal =
+      document.getElementById(
+        "closeHolidayModal"
+      );
+
+
+    const holidayRequestForm =
+      document.getElementById(
+        "holidayRequestForm"
+      );
+
+
+    const holidaySubmitButton =
+      document.getElementById(
+        "holidaySubmitButton"
+      );
+
+
+
+    function openHolidayModal() {
+
+      holidayModal
+        .classList
+        .add(
+          "open"
+        );
+
+    }
+
+
+
+    function closeHolidayRequestModal() {
+
+      holidayModal
+        .classList
+        .remove(
+          "open"
+        );
+
+    }
+
+
+
+    requestHolidayButton
+      .addEventListener(
+        "click",
+        event => {
+
+          event.preventDefault();
+
+          openHolidayModal();
+
+        }
+      );
+
+
+
+    if (
+      window.location.hash ===
+      "#requestHoliday"
+    ) {
+
+      openHolidayModal();
+
+    }
+
+
+
+    closeHolidayModal
+      .addEventListener(
+        "click",
+        () => {
+
+          closeHolidayRequestModal();
+
+        }
+      );
+
+
+
+    holidayModal
+      .addEventListener(
+        "click",
+        event => {
+
+          if (
+            event.target ===
+            holidayModal
+          ) {
+
+            closeHolidayRequestModal();
+
+          }
+
+        }
+      );
+
+
+
+    document
+      .addEventListener(
+        "keydown",
+        event => {
+
+          if (
+            event.key ===
+              "Escape" &&
+            holidayModal
+              .classList
+              .contains(
+                "open"
+              )
+          ) {
+
+            closeHolidayRequestModal();
+
+          }
+
+        }
+      );
+
+
+
+    // =====================================
+    // SUBMIT HOLIDAY REQUEST
+    // =====================================
+
+    holidayRequestForm
+      .addEventListener(
+        "submit",
+        async event => {
+
+          event.preventDefault();
+
+
+          const {
+            data: {
+              session
+            }
+          } =
+            await supabaseClient
+              .auth
+              .getSession();
+
+
+          if (!session) {
+
+            window.location.href =
+              "join.html";
+
+            return;
+
+          }
+
+
+          const destination =
+            document
+              .getElementById(
+                "destination"
+              )
+              .value
+              .trim();
+
+
+          const localAirport =
+            document
+              .getElementById(
+                "localAirport"
+              )
+              .value
+              .trim();
+
+
+          const adults =
+            Number(
+              document
+                .getElementById(
+                  "adults"
+                )
+                .value
+            );
+
+
+          const children =
+            Number(
+              document
+                .getElementById(
+                  "children"
+                )
+                .value
+            );
+
+
+          const nights =
+            Number(
+              document
+                .getElementById(
+                  "nights"
+                )
+                .value
+            );
+
+
+          const budgetValue =
+            document
+              .getElementById(
+                "budget"
+              )
+              .value;
+
+
+          const budget =
+            budgetValue
+              ? Number(
+                  budgetValue
+                )
+              : null;
+
+
+          const notes =
+            document
+              .getElementById(
+                "notes"
+              )
+              .value
+              .trim();
+
+
+          holidaySubmitButton
+            .disabled =
+              true;
+
+
+          holidaySubmitButton
+            .textContent =
+              "Sending...";
+
+
+          const {
+            error
+          } =
+            await supabaseClient
+              .from(
+                "holiday_requests"
+              )
+              .insert({
+
+                user_id:
+                  session.user.id,
+
+                destination:
+                  destination,
+
+                local_airport:
+                  localAirport,
+
+                adults:
+                  adults,
+
+                children:
+                  children,
+
+                nights:
+                  nights,
+
+                budget:
+                  budget,
+
+                notes:
+                  notes ||
+                  null,
+
+                status:
+                  "pending"
+
+              });
+
+
+          if (error) {
+
+            console.error(
+              "Holiday request error:",
+              error
+            );
+
+
+            alert(
+              "We couldn't send your holiday request. Please try again."
+            );
+
+
+            holidaySubmitButton
+              .disabled =
+                false;
+
+
+            holidaySubmitButton
+              .textContent =
+                "Send Holiday Request →";
+
+
+            return;
+
+          }
+
+
+          alert(
+            "Holiday request sent successfully."
+          );
+
+
+          holidayRequestForm
+            .reset();
+
+
+          document
+            .getElementById(
+              "adults"
+            )
+            .value =
+              "2";
+
+
+          document
+            .getElementById(
+              "children"
+            )
+            .value =
+              "0";
+
+
+          document
+            .getElementById(
+              "nights"
+            )
+            .value =
+              "7";
+
+
+          holidaySubmitButton
+            .disabled =
+              false;
+
+
+          holidaySubmitButton
+            .textContent =
+              "Send Holiday Request →";
+
+
+          closeHolidayRequestModal();
+
+
+          await loadHolidayRequests(
+            session.user.id
+          );
+
+        }
+      );
+
+
+
+    // =====================================
+    // START
+    // =====================================
+
+    loadDashboard();
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,2112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Our Getaways | All Inclusive, Cheap, Family, City Breaks & More | GoldenGetaways
+  </title>
+
+  <meta
+    name="description"
+    content="Explore GoldenGetaways holiday categories including all inclusive holidays, cheap holidays, family holidays, last minute holidays, beach holidays, city breaks, luxury holidays, adults only holidays and couples holidays."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  >
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+
+      background:
+        radial-gradient(
+          circle at 70% 5%,
+          #08263c 0%,
+          #00111f 38%,
+          #000b15 100%
+        );
+
+      color: white;
+
+      overflow-x: hidden;
+    }
+
+
+  
+    /* =========================================
+       PAGE
+    ========================================= */
+
+    .getaways-shell {
+      width: 100%;
+    }
+
+    .page-inner {
+      width: 88%;
+
+      max-width: 1500px;
+
+      margin:
+        0 auto;
+    }
+
+
+    /* =========================================
+       HEADER
+    ========================================= */
+
+    .header {
+      position: absolute;
+
+      top: 0;
+      left: 0;
+
+      width: 100%;
+
+      z-index: 1000;
+
+      background: transparent;
+    }
+
+
+    /* =========================================
+       HERO
+    ========================================= */
+
+    .getaways-hero {
+      position: relative;
+
+      width: 100%;
+
+      min-height: 750px;
+
+      display: flex;
+
+      align-items: center;
+
+      overflow: hidden;
+
+      border: none;
+background:
+  linear-gradient(
+    90deg,
+    rgba(2,18,32,0.62) 0%,
+    rgba(2,18,32,0.35) 31%,
+    rgba(2,18,32,0.08) 58%,
+    rgba(2,18,32,0.00) 100%
+  ),
+  url("images/getaways-hero.webp")
+  center / cover
+  no-repeat;
+    }
+
+    .hero-layout {
+      position: relative;
+
+      z-index: 2;
+
+      width: 100%;
+
+       min-height: 750px;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0,1fr)
+        minmax(340px,430px);
+
+      align-items: center;
+
+      gap: 70px;
+
+      padding:
+        150px 6% 70px;
+    }
+
+    .hero-copy {
+      max-width: 720px;
+    }
+
+    .hero-eyebrow {
+      margin-bottom: 20px;
+
+      color: var(--gold-light);
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      letter-spacing: 4px;
+    }
+
+    .hero-copy h1 {
+      margin:
+        0 0 25px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size:
+        clamp(
+          58px,
+          5.8vw,
+          88px
+        );
+
+      font-weight: 400;
+
+      line-height: 0.95;
+    }
+
+    .hero-copy h1 em {
+      color: var(--gold-light);
+
+      font-weight: 400;
+    }
+
+    .hero-line {
+      width: 48px;
+
+      height: 2px;
+
+      margin-bottom: 25px;
+
+      background: var(--gold);
+    }
+
+    .hero-description {
+      max-width: 610px;
+
+      margin-bottom: 30px;
+
+      color: #eef1f3;
+
+      font-size: 16px;
+
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 13px;
+    }
+
+    .secondary-button {
+      min-height: 54px;
+
+      padding:
+        0 25px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.46);
+
+      border-radius: 12px;
+
+      background:
+        rgba(0,17,31,0.48);
+
+      color: var(--gold-light);
+
+      font-size: 14px;
+
+      transition: 0.2s ease;
+    }
+
+    .secondary-button:hover {
+      background:
+        rgba(216,161,63,0.09);
+
+      transform:
+        translateY(-2px);
+    }
+
+
+    /* =========================================
+       HERO INFO PANEL
+    ========================================= */
+
+    .hero-info-panel {
+      padding: 29px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.42);
+
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          160deg,
+          rgba(5,30,49,0.93),
+          rgba(0,14,25,0.98)
+        );
+
+      backdrop-filter:
+        blur(14px);
+
+      box-shadow:
+        0 25px 70px
+        rgba(0,0,0,0.34);
+    }
+
+    .hero-info-panel > p {
+      margin:
+        0 0 20px;
+
+      color: var(--gold-light);
+
+      font-size: 10px;
+
+      font-weight: 600;
+
+      letter-spacing: 2.8px;
+    }
+
+    .hero-info-item {
+      display: grid;
+
+      grid-template-columns:
+        58px 1fr;
+
+      align-items: center;
+
+      gap: 17px;
+
+      padding:
+        20px 0;
+    }
+
+    .hero-info-item:first-of-type {
+      padding-top: 0;
+    }
+
+    .hero-info-item:last-of-type {
+      padding-bottom: 0;
+    }
+
+    .hero-info-divider {
+      height: 1px;
+
+      background:
+        rgba(255,255,255,0.08);
+    }
+
+    .hero-info-icon {
+      width: 58px;
+
+      height: 58px;
+
+      display: grid;
+
+      place-items: center;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.25);
+
+      border-radius: 50%;
+
+      color: var(--gold-light);
+
+      font-size: 25px;
+    }
+
+    .hero-info-copy h3 {
+      margin:
+        0 0 5px;
+
+      font-size: 16px;
+
+      font-weight: 600;
+    }
+
+    .hero-info-copy p {
+      margin: 0;
+
+      color: #cfd5da;
+
+      font-size: 13px;
+
+      line-height: 1.55;
+    }
+
+
+    /* =========================================
+       INTRO
+    ========================================= */
+
+    .intro-section {
+      padding:
+        82px 0 40px;
+    }
+
+    .section-heading {
+      max-width: 830px;
+    }
+
+    .section-eyebrow {
+      margin:
+        0 0 13px;
+
+      color: var(--gold-light);
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      letter-spacing: 4px;
+    }
+
+    .section-heading h2 {
+      margin:
+        0 0 14px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size:
+        clamp(
+          44px,
+          4.3vw,
+          62px
+        );
+
+      font-weight: 400;
+
+      line-height: 1.04;
+    }
+
+    .section-heading h2 em {
+      color: var(--gold-light);
+
+      font-weight: 400;
+    }
+
+    .section-heading p {
+      margin: 0;
+
+      color: #c9d0d6;
+
+      font-size: 15px;
+
+      line-height: 1.72;
+    }
+
+
+    /* =========================================
+       CATEGORY GRID
+    ========================================= */
+
+    .categories-section {
+      padding-bottom: 80px;
+    }
+
+    .category-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          3,
+          minmax(0,1fr)
+        );
+
+      gap: 20px;
+    }
+
+    .category-card {
+      position: relative;
+
+      display: flex;
+
+      flex-direction: column;
+
+      overflow: hidden;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.34);
+
+      border-radius: 18px;
+
+      background: #031827;
+
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .category-card:hover {
+      transform:
+        translateY(-5px);
+
+      border-color:
+        rgba(216,161,63,0.68);
+
+      box-shadow:
+        0 22px 55px
+        rgba(0,0,0,0.25);
+    }
+
+    .category-image {
+      position: relative;
+
+      height: 245px;
+
+      overflow: hidden;
+
+      flex-shrink: 0;
+    }
+
+    .category-image img {
+      width: 100%;
+
+      height: 100%;
+
+      display: block;
+
+      object-fit: cover;
+
+      transition:
+        transform 0.4s ease;
+    }
+
+    .category-card:hover
+    .category-image img {
+      transform:
+        scale(1.04);
+    }
+
+    .category-badge {
+      position: absolute;
+
+      z-index: 3;
+
+      top: 16px;
+
+      left: 16px;
+
+      min-height: 30px;
+
+      padding:
+        0 12px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.65);
+
+      border-radius: 50px;
+
+      background:
+        rgba(0,17,31,0.92);
+
+      color: var(--gold-light);
+
+      font-size: 9px;
+
+      font-weight: 600;
+
+      letter-spacing:
+        1.35px;
+
+      backdrop-filter:
+        blur(7px);
+    }
+
+    .category-content {
+      flex: 1;
+
+      display: flex;
+
+      flex-direction: column;
+
+      padding:
+        24px 22px 22px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #062238 0%,
+          #031827 100%
+        );
+    }
+
+    .category-small {
+      margin:
+        0 0 8px;
+
+      color: var(--gold-light);
+
+      font-size: 10px;
+
+      font-weight: 600;
+
+      letter-spacing:
+        1.7px;
+    }
+
+    .category-card h2 {
+      margin:
+        0 0 9px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size:
+        clamp(
+          24px,
+          2vw,
+          29px
+        );
+
+      font-weight: 400;
+
+      line-height: 1.08;
+    }
+
+    .category-meta {
+      margin:
+        0 0 13px;
+
+      color: #f1f2f3;
+
+      font-size: 12px;
+
+      line-height: 1.5;
+    }
+
+    .category-description {
+      min-height: 64px;
+
+      margin:
+        0 0 20px;
+
+      color: #cbd2d7;
+
+      font-size: 13px;
+
+      line-height: 1.65;
+    }
+
+    .view-button {
+      width: 100%;
+
+      min-height: 48px;
+
+      margin-top: auto;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border-radius: 9px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #b77b24,
+          #e0aa47
+        );
+
+      color: white;
+
+      font-size: 14px;
+
+      font-weight: 500;
+
+      text-align: center;
+
+      transition:
+        0.2s ease;
+    }
+
+    .view-button:hover {
+      transform:
+        translateY(-2px);
+    }
+
+
+    /* =========================================
+       HOW IT WORKS
+    ========================================= */
+
+    .how-section {
+      padding:
+        70px 0;
+
+      border-top:
+        1px solid
+        rgba(255,255,255,0.05);
+    }
+
+    .how-grid {
+      margin-top: 30px;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          3,
+          1fr
+        );
+
+      gap: 18px;
+    }
+
+    .how-card {
+      padding: 27px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.26);
+
+      border-radius: 16px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(7,29,47,0.95),
+          rgba(1,15,27,0.98)
+        );
+    }
+
+    .how-number {
+      width: 48px;
+
+      height: 48px;
+
+      margin-bottom: 18px;
+
+      display: grid;
+
+      place-items: center;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.5);
+
+      border-radius: 50%;
+
+      color: var(--gold-light);
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 21px;
+    }
+
+    .how-card h3 {
+      margin:
+        0 0 8px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 24px;
+
+      font-weight: 400;
+    }
+
+    .how-card p {
+      margin: 0;
+
+      color: #c7ced4;
+
+      font-size: 13px;
+
+      line-height: 1.65;
+    }
+
+
+    /* =========================================
+       SEO
+    ========================================= */
+
+    .seo-section {
+      padding:
+        70px 0;
+
+      border-top:
+        1px solid
+        rgba(255,255,255,0.05);
+    }
+
+    .seo-grid {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0,1fr)
+        minmax(300px,420px);
+
+      gap: 70px;
+
+      align-items: start;
+    }
+
+    .seo-copy h2 {
+      margin:
+        0 0 18px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size:
+        clamp(
+          38px,
+          3.5vw,
+          52px
+        );
+
+      font-weight: 400;
+
+      line-height: 1.08;
+    }
+
+    .seo-copy h2 em {
+      color: var(--gold-light);
+
+      font-weight: 400;
+    }
+
+    .seo-copy p {
+      margin:
+        0 0 16px;
+
+      color: #cad1d6;
+
+      font-size: 14px;
+
+      line-height: 1.8;
+    }
+
+    .seo-links {
+      padding: 26px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.35);
+
+      border-radius: 17px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(6,32,51,0.91),
+          rgba(1,17,30,0.97)
+        );
+    }
+
+    .seo-links h3 {
+      margin:
+        0 0 17px;
+
+      color: var(--gold-light);
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      letter-spacing:
+        2.5px;
+    }
+
+    .seo-link {
+      min-height: 53px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      border-bottom:
+        1px solid
+        rgba(255,255,255,0.07);
+
+      color: #eef1f3;
+
+      font-size: 13px;
+
+      transition:
+        0.2s;
+    }
+
+    .seo-link:last-child {
+      border-bottom: none;
+    }
+
+    .seo-link span {
+      color: var(--gold-light);
+    }
+
+    .seo-link:hover {
+      padding-left: 4px;
+
+      color: var(--gold-light);
+    }
+
+
+    /* =========================================
+       CTA
+    ========================================= */
+
+    .member-cta {
+      margin-bottom: 82px;
+
+      padding:
+        38px 42px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 35px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.45);
+
+      border-radius: 19px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(216,161,63,0.065),
+          rgba(3,27,44,0.98)
+        );
+    }
+
+    .member-cta h2 {
+      margin:
+        0 0 8px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 36px;
+
+      font-weight: 400;
+    }
+
+    .member-cta p {
+      max-width: 700px;
+
+      margin: 0;
+
+      color: #cdd3d8;
+
+      font-size: 14px;
+
+      line-height: 1.65;
+    }
+
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+
+    @media (max-width: 1200px) {
+
+      .hero-layout {
+        grid-template-columns:
+          1fr
+          360px;
+      }
+
+    }
+
+
+    @media (max-width: 950px) {
+
+      .hero-layout {
+        grid-template-columns:
+          1fr;
+      }
+
+      .hero-info-panel {
+        max-width: 620px;
+      }
+
+      .category-grid {
+        grid-template-columns:
+          repeat(
+            2,
+            minmax(0,1fr)
+          );
+      }
+
+      .how-grid {
+        grid-template-columns:
+          1fr;
+      }
+
+      .seo-grid {
+        grid-template-columns:
+          1fr;
+
+        gap: 35px;
+      }
+
+    }
+
+
+    @media (max-width: 650px) {
+
+      .hero-layout {
+        min-height: auto;
+
+        padding:
+          125px 5% 55px;
+      }
+
+      .hero-copy h1 {
+        font-size: 52px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions a {
+        width: 100%;
+      }
+
+      .hero-info-panel {
+        padding: 22px;
+      }
+
+      .page-inner {
+        width:
+          calc(100% - 36px);
+      }
+
+      .category-grid {
+        grid-template-columns:
+          1fr;
+      }
+
+      .category-image {
+        height: 235px;
+      }
+
+      .member-cta {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding:
+          29px 24px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================================
+       HEADER
+  ========================================= -->
+
+  <header class="header">
+
+
+    <a
+      href="index.html"
+      class="logo"
+    >
+
+      <div class="logo-icon">
+
+        <img
+          src="images/logo-small.webp"
+          alt="GoldenGetaways icon"
+        >
+
+      </div>
+
+
+      <div class="logo-text">
+
+        <span>
+          GoldenGetaways
+        </span>
+
+        <small>
+          EST 2025
+        </small>
+
+      </div>
+
+    </a>
+
+
+    <nav class="desktop-nav">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="membership.html">
+        Membership
+      </a>
+
+      <a
+        href="our-getaways.html"
+        class="active"
+      >
+        Our Getaways
+      </a>
+
+      <a href="how-it-works.html">
+        How It Works
+      </a>
+
+      <a href="reviews.html">
+        Reviews
+      </a>
+
+      <a href="faq.html">
+        FAQ
+      </a>
+
+      <a href="join.html">
+        Login / Join
+      </a>
+
+    </nav>
+
+
+    <a
+      href="join.html"
+      class="button gold-button header-button"
+    >
+      Join Now
+      <span>→</span>
+    </a>
+
+
+    <button
+      class="mobile-menu-button"
+      id="menuButton"
+      aria-label="Open menu"
+    >
+      ☰
+    </button>
+
+
+  </header>
+
+
+  <main class="getaways-shell">
+
+
+    <!-- =========================================
+         HERO
+    ========================================= -->
+
+    <section class="getaways-hero">
+
+
+      <div class="hero-layout">
+
+
+        <div class="hero-copy">
+
+
+          <p class="hero-eyebrow">
+            OUR GETAWAYS
+          </p>
+
+
+          <h1>
+
+            Find your next
+
+            <br>
+
+            <em>
+              getaway.
+            </em>
+
+          </h1>
+
+
+          <div class="hero-line"></div>
+
+
+          <p class="hero-description">
+
+            From relaxing all inclusive escapes
+            and great-value holidays to family breaks,
+            beach getaways, city breaks and luxury resorts,
+            explore GoldenGetaways by the type of holiday
+            you actually want.
+
+          </p>
+
+
+          <div class="hero-actions">
+
+
+            <a
+              href="#holiday-types"
+              class="button gold-button"
+            >
+              Explore Getaways
+              <span>↓</span>
+            </a>
+
+
+            <a
+              href="join.html"
+              class="secondary-button"
+            >
+              Become a Member
+            </a>
+
+
+          </div>
+
+
+        </div>
+
+
+        <aside class="hero-info-panel">
+
+
+          <p>
+            GOLDENGETAWAYS HOLIDAYS
+          </p>
+
+
+          <div class="hero-info-item">
+
+            <div class="hero-info-icon">
+              ✈
+            </div>
+
+            <div class="hero-info-copy">
+
+              <h3>
+                9 Holiday Categories
+              </h3>
+
+              <p>
+                Browse holidays based on exactly
+                the type of getaway you're looking for.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="hero-info-divider"></div>
+
+
+          <div class="hero-info-item">
+
+            <div class="hero-info-icon">
+              ★
+            </div>
+
+            <div class="hero-info-copy">
+
+              <h3>
+                10 Handpicked Holidays
+              </h3>
+
+              <p>
+                Each category features 10 selected
+                holidays that can be regularly updated.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="hero-info-divider"></div>
+
+
+          <div class="hero-info-item">
+
+            <div class="hero-info-icon">
+              ♕
+            </div>
+
+            <div class="hero-info-copy">
+
+              <h3>
+                Member Booking Access
+              </h3>
+
+              <p>
+                Join GoldenGetaways to request
+                personalised searches and get
+                help finding your trip.
+              </p>
+
+            </div>
+
+          </div>
+
+
+        </aside>
+
+
+      </div>
+
+
+    </section>
+
+
+    <div class="page-inner">
+
+
+      <!-- =========================================
+           INTRO
+      ========================================= -->
+
+      <section
+        class="intro-section"
+        id="holiday-types"
+      >
+
+
+        <div class="section-heading">
+
+
+          <p class="section-eyebrow">
+            EXPLORE BY HOLIDAY TYPE
+          </p>
+
+
+          <h2>
+
+            What kind of holiday
+
+            <em>
+              are you looking for?
+            </em>
+
+          </h2>
+
+
+          <p>
+
+            Choose from nine GoldenGetaways holiday categories.
+            Each category features 10 handpicked holidays
+            that can be updated as new deals
+            and destinations become available.
+
+          </p>
+
+
+        </div>
+
+
+      </section>
+
+
+      <!-- =========================================
+           CATEGORIES
+      ========================================= -->
+
+      <section class="categories-section">
+
+
+        <div class="category-grid">
+
+
+          <!-- 1. ALL INCLUSIVE -->
+
+          <article class="category-card">
+
+            <div class="category-image">
+
+              <img
+               src="images/all-inclusive-main.webp"
+                alt="All inclusive holidays"
+              >
+
+              <span class="category-badge">
+                MEMBER FAVOURITE
+              </span>
+
+            </div>
+
+
+            <div class="category-content">
+
+              <p class="category-small">
+                10 HANDPICKED HOLIDAYS
+              </p>
+
+              <h2>
+                All Inclusive Getaways
+              </h2>
+
+              <p class="category-meta">
+                Meals • Drinks • Resort Entertainment
+              </p>
+
+              <p class="category-description">
+                Discover relaxing all inclusive holidays
+                where more of your getaway
+                is already covered.
+              </p>
+
+              <a
+                href="all-inclusive-holidays.html"
+                class="view-button"
+              >
+                View All Inclusive Holidays →
+              </a>
+
+            </div>
+
+          </article>
+
+
+          <!-- 2. CHEAP -->
+
+          <article class="category-card">
+
+            <div class="category-image">
+
+              <img
+               src="images/cheap-holidays-main.webp"
+                alt="Cheap holidays"
+              >
+
+              <span class="category-badge">
+                GREAT VALUE
+              </span>
+
+            </div>
+
+
+            <div class="category-content">
+
+              <p class="category-small">
+                10 HANDPICKED HOLIDAYS
+              </p>
+
+              <h2>
+                Cheap Getaways
+              </h2>
+
+              <p class="category-meta">
+                Great Value • Popular Resorts • More for Less
+              </p>
+
+              <p class="category-description">
+                Discover great-value holidays
+                and affordable escapes across
+                popular destinations.
+              </p>
+
+              <a
+                href="cheap-holidays.html"
+                class="view-button"
+              >
+                View Cheap Holidays →
+              </a>
+
+            </div>
+
+          </article>
+
+
+          <!-- 3. FAMILY -->
+
+          <article class="category-card">
+
+            <div class="category-image">
+
+              <img
+             src="images/family-holidays-main.webp"
+                alt="Family holidays"
+              >
+
+              <span class="category-badge">
+                FAMILY
+              </span>
+
+            </div>
+
+
+            <div class="category-content">
+
+              <p class="category-small">
+                10 HANDPICKED HOLIDAYS
+              </p>
+
+              <h2>
+                Family Getaways
+              </h2>
+
+              <p class="category-meta">
+                Kids Clubs • Pools • Family Resorts
+              </p>
+
+              <p class="category-description">
+                Find family-friendly escapes
+                with pools, entertainment
+                and something for everyone.
+              </p>
+
+              <a
+                href="family-holidays.html"
+                class="view-button"
+              >
+                View Family Holidays →
+              </a>
+
+            </div>
+
+          </article>
+
+
+          <!-- 4. LAST MINUTE -->
+
+          <article class="category-card">
+
+            <div class="category-image">
+
+              <img
+               src="images/lastmingetaways.webp"
+                alt="Last minute holidays"
+              >
+
+              <span class="category-badge">
+                GET AWAY SOON
+              </span>
+
+            </div>
+
+
+            <div class="category-content">
+
+              <p class="category-small">
+                10 HANDPICKED HOLIDAYS
+              </p>
+
+              <h2>
+                Last Minute Getaways
+              </h2>
+
+              <p class="category-meta">
+                Late Deals • Quick Escapes • Sunshine
+              </p>
+
+              <p class="category-description">
+                Ready to leave soon?
+                Browse last minute escapes
+                and spontaneous getaway inspiration.
+              </p>
+
+              <a
+                href="last-minute-holidays.html"
+                class="view-button"
+              >
+                View Last Minute Holidays →
+              </a>
+
+            </div>
+
+          </article>
+
+
+          <!-- 5. BEACH -->
+
+          <article class="category-card">
+
+            <div class="category-image">
+
+              <img
+                src="images/beach-holidays-main.webp"
+                alt="Beach holidays"
+              >
+
+              <span class="category-badge">
+                BEACH
+              </span>
+
+            </div>
+
+
+            <div class="category-content">
+
+              <p class="category-small">
+                10 HANDPICKED HOLIDAYS
+              </p>
+
+              <h2>
+                Beach Getaways
+              </h2>
+
+              <p class="category-meta">
+                Sea Views • Sandy Beaches • Sunshine
+              </p>
+
+              <p class="category-description">
+                Stay close to the coast
+                with beachfront hotels,
+                sea views and sunshine escapes.
+              </p>
+
+              <a
+                href="beach-holidays.html"
+                class="view-button"
+              >
+                View Beach Holidays →
+              </a>
+
+            </div>
+
+          </article>
+
+
+          <!-- 6. CITY BREAKS -->
+
+          <article class="category-card">
+
+            <div class="category-image">
+
+              <img
+                src="images/city-breaks-main.webp"
+                alt="City break holidays"
+              >
+
+              <span class="category-badge">
+                CITY BREAKS
+              </span>
+
+            </div>
+
+
+            <div class="category-content">
+
+              <p class="category-small">
+                10 HANDPICKED HOLIDAYS
+              </p>
+
+              <h2>
+                City Break Getaways
+              </h2>
+
+              <p class="category-meta">
+                Short Stays • Culture • Weekend Escapes
+              </p>
+
+              <p class="category-description">
+                Discover exciting city breaks
+                perfect for sightseeing, food,
+                shopping and short escapes.
+              </p>
+
+              <a
+                href="city-breaks.html"
+                class="view-button"
+              >
+                View City Breaks →
+              </a>
+
+            </div>
+
+          </article>
+
+
+          <!-- 7. LUXURY -->
+
+          <article class="category-card">
+
+            <div class="category-image">
+
+              <img
+                src="images/luxury-holidays-main.webp"
+                alt="Luxury holidays"
+              >
+
+              <span class="category-badge">
+                PREMIUM
+              </span>
+
+            </div>
+
+
+            <div class="category-content">
+
+              <p class="category-small">
+                10 HANDPICKED HOLIDAYS
+              </p>
+
+              <h2>
+                Luxury Getaways
+              </h2>
+
+              <p class="category-meta">
+                5 Star • Spa • Premium Resorts
+              </p>
+
+              <p class="category-description">
+                Explore premium hotels,
+                standout resorts and
+                unforgettable luxury escapes.
+              </p>
+
+              <a
+                href="luxury-holidays.html"
+                class="view-button"
+              >
+                View Luxury Holidays →
+              </a>
+
+            </div>
+
+          </article>
+
+
+          <!-- 8. ADULTS ONLY -->
+
+          <article class="category-card">
+
+            <div class="category-image">
+
+              <img
+               src="images/adults-only-main.webp"
+                alt="Adults only holidays"
+              >
+
+              <span class="category-badge">
+                ADULTS ONLY
+              </span>
+
+            </div>
+
+
+            <div class="category-content">
+
+              <p class="category-small">
+                10 HANDPICKED HOLIDAYS
+              </p>
+
+              <h2>
+                Adults Only Getaways
+              </h2>
+
+              <p class="category-meta">
+                Peaceful • Stylish • Relaxing
+              </p>
+
+              <p class="category-description">
+                Discover quieter adults-only
+                resorts ideal for relaxing
+                and enjoying a peaceful getaway.
+              </p>
+
+              <a
+                href="adults-only-holidays.html"
+                class="view-button"
+              >
+                View Adults Only Holidays →
+              </a>
+
+            </div>
+
+          </article>
+
+
+          <!-- 9. COUPLES -->
+
+          <article class="category-card">
+
+            <div class="category-image">
+
+              <img
+                src="images/cta-bg.webp"
+                alt="Couples holidays"
+              >
+
+              <span class="category-badge">
+                COUPLES
+              </span>
+
+            </div>
+
+
+            <div class="category-content">
+
+              <p class="category-small">
+                10 HANDPICKED HOLIDAYS
+              </p>
+
+              <h2>
+                Couples Getaways
+              </h2>
+
+              <p class="category-meta">
+                Romantic • Relaxing • Memorable
+              </p>
+
+              <p class="category-description">
+                Discover beautiful escapes
+                for two, from relaxing
+                beach stays to luxury resorts.
+              </p>
+
+              <a
+                href="couples-holidays.html"
+                class="view-button"
+              >
+                View Couples Holidays →
+              </a>
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+
+      </section>
+
+
+      <!-- =========================================
+           HOW IT WORKS
+      ========================================= -->
+
+      <section class="how-section">
+
+
+        <div class="section-heading">
+
+          <p class="section-eyebrow">
+            FIND YOUR GETAWAY
+          </p>
+
+          <h2>
+            Finding inspiration
+            <em>
+              made simple.
+            </em>
+          </h2>
+
+        </div>
+
+
+        <div class="how-grid">
+
+
+          <article class="how-card">
+
+            <div class="how-number">
+              01
+            </div>
+
+            <h3>
+              Choose a category
+            </h3>
+
+            <p>
+              Start with the kind of holiday
+              you want, whether that's
+              all inclusive, great value,
+              family, city or something else.
+            </p>
+
+          </article>
+
+
+          <article class="how-card">
+
+            <div class="how-number">
+              02
+            </div>
+
+            <h3>
+              Browse 10 holidays
+            </h3>
+
+            <p>
+              Each category features
+              10 handpicked GoldenGetaways
+              holiday recommendations.
+            </p>
+
+          </article>
+
+
+          <article class="how-card">
+
+            <div class="how-number">
+              03
+            </div>
+
+            <h3>
+              Join & find your trip
+            </h3>
+
+            <p>
+              Become a member and request
+              a personalised search
+              based on your budget,
+              dates and preferences.
+            </p>
+
+          </article>
+
+
+        </div>
+
+
+      </section>
+
+
+      <!-- =========================================
+           SEO
+      ========================================= -->
+
+      <section class="seo-section">
+
+
+        <div class="seo-grid">
+
+
+          <div class="seo-copy">
+
+            <p class="section-eyebrow">
+              HOLIDAY INSPIRATION
+            </p>
+
+            <h2>
+              Discover holidays
+              <em>
+                your way.
+              </em>
+            </h2>
+
+            <p>
+              GoldenGetaways makes it easier to explore
+              different styles of holiday. Whether you're
+              looking for an all inclusive escape,
+              a cheap holiday, a family-friendly resort,
+              a last minute deal, a beach holiday
+              or a city break, our getaway categories
+              help you narrow down your search.
+            </p>
+
+            <p>
+              You can also explore luxury holidays,
+              adults only escapes and couples getaways.
+              Browse our handpicked holiday inspiration
+              and become a GoldenGetaways member
+              to request a personalised search tailored
+              to your dates, departure airport,
+              budget and preferences.
+            </p>
+
+          </div>
+
+
+          <aside class="seo-links">
+
+            <h3>
+              EXPLORE HOLIDAYS
+            </h3>
+
+            <a
+              href="all-inclusive-holidays.html"
+              class="seo-link"
+            >
+              All Inclusive Holidays
+              <span>→</span>
+            </a>
+
+            <a
+              href="cheap-holidays.html"
+              class="seo-link"
+            >
+              Cheap Holidays
+              <span>→</span>
+            </a>
+
+            <a
+              href="family-holidays.html"
+              class="seo-link"
+            >
+              Family Holidays
+              <span>→</span>
+            </a>
+
+            <a
+              href="last-minute-holidays.html"
+              class="seo-link"
+            >
+              Last Minute Holidays
+              <span>→</span>
+            </a>
+
+            <a
+              href="beach-holidays.html"
+              class="seo-link"
+            >
+              Beach Holidays
+              <span>→</span>
+            </a>
+
+            <a
+              href="city-breaks.html"
+              class="seo-link"
+            >
+              City Breaks
+              <span>→</span>
+            </a>
+
+            <a
+              href="luxury-holidays.html"
+              class="seo-link"
+            >
+              Luxury Holidays
+              <span>→</span>
+            </a>
+
+            <a
+              href="adults-only-holidays.html"
+              class="seo-link"
+            >
+              Adults Only Holidays
+              <span>→</span>
+            </a>
+
+            <a
+              href="couples-holidays.html"
+              class="seo-link"
+            >
+              Couples Holidays
+              <span>→</span>
+            </a>
+
+          </aside>
+
+
+        </div>
+
+
+      </section>
+
+
+      <!-- =========================================
+           CTA
+      ========================================= -->
+
+      <section class="member-cta">
+
+
+        <div>
+
+          <h2>
+            Can't find exactly what you're looking for?
+          </h2>
+
+          <p>
+            GoldenGetaways members can request
+            a personalised holiday search
+            based on their dates,
+            preferred departure airport,
+            destination,
+            budget and holiday preferences.
+          </p>
+
+        </div>
+
+
+        <a
+          href="join.html"
+          class="button gold-button"
+        >
+          Become a Member
+          <span>→</span>
+        </a>
+
+
+      </section>
+
+
+    </div>
+
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+
+</body>
+
+</html>

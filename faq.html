@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>FAQ | GoldenGetaways</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .faq-hero {
+      position: relative;
+      min-height: 660px;
+      display: flex;
+      align-items: center;
+      padding: 155px 5% 95px;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0,17,31,0.98) 0%,
+          rgba(0,17,31,0.88) 34%,
+          rgba(0,17,31,0.42) 62%,
+          rgba(0,17,31,0.08) 100%
+        ),
+       url("images/faq-hero.webp") center/cover no-repeat;
+    }
+
+    .faq-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 650px;
+    }
+
+    .faq-eyebrow {
+      color: var(--gold-light);
+      font-size: 13px;
+      letter-spacing: 4px;
+      margin-bottom: 22px;
+    }
+
+    .faq-hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(52px, 5.6vw, 80px);
+      line-height: 1.02;
+      font-weight: 400;
+      margin-bottom: 24px;
+    }
+
+    .faq-hero h1 em {
+      color: var(--gold-light);
+      font-style: normal;
+    }
+
+    .faq-description {
+      max-width: 540px;
+      font-size: 18px;
+      line-height: 1.65;
+      color: #eeeeee;
+      margin-bottom: 30px;
+    }
+
+    .faq-hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .faq-outline-button {
+      min-height: 54px;
+      padding: 0 24px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+
+      border: 1px solid var(--gold);
+      border-radius: 14px;
+
+      color: white;
+      background: rgba(0,0,0,0.2);
+
+      font-size: 15px;
+    }
+
+    .faq-outline-button span {
+      color: var(--gold-light);
+      font-size: 20px;
+    }
+
+    .faq-benefits-wrapper {
+      position: relative;
+      z-index: 5;
+      margin-top: -65px;
+      padding: 0 5%;
+    }
+
+    .faq-benefits {
+      width: min(1150px, 100%);
+      margin: auto;
+
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+
+      border: 1px solid var(--border-gold);
+      border-radius: 22px;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(5,31,50,0.98),
+          rgba(0,17,31,0.99)
+        );
+
+      box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+    }
+
+    .faq-benefit {
+      position: relative;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .faq-benefit:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 18%;
+      width: 1px;
+      height: 64%;
+      background: rgba(216,161,63,0.35);
+    }
+
+    .faq-benefit-icon {
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 16px;
+
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+
+      display: grid;
+      place-items: center;
+
+      color: var(--gold-light);
+      font-size: 27px;
+    }
+
+    .faq-benefit h3 {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 7px;
+    }
+
+    .faq-benefit p {
+      color: #d9dde1;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .faq-section {
+      padding: 90px 5% 65px;
+      background: #00111f;
+    }
+
+    .faq-heading {
+      max-width: 850px;
+      margin: 0 auto 45px;
+      text-align: center;
+    }
+
+    .faq-heading .eyebrow {
+      margin-bottom: 10px;
+    }
+
+    .faq-heading h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(38px, 4vw, 52px);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    .faq-list {
+      width: min(1050px, 100%);
+      margin: auto;
+
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+
+    .faq-item {
+      border: 1px solid rgba(216,161,63,0.35);
+      border-radius: 16px;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(5,29,47,0.97),
+          rgba(0,17,31,0.98)
+        );
+    }
+
+    .faq-question {
+      width: 100%;
+      min-height: 74px;
+
+      padding: 18px 22px;
+
+      border: none;
+      background: transparent;
+      color: white;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .faq-question-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .faq-question-icon {
+      width: 34px;
+      height: 34px;
+
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+
+      display: grid;
+      place-items: center;
+
+      color: var(--gold-light);
+      flex-shrink: 0;
+    }
+
+    .faq-question h3 {
+      font-size: 17px;
+      font-weight: 500;
+    }
+
+    .faq-toggle {
+      color: var(--gold-light);
+      font-size: 30px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .faq-answer {
+      display: none;
+
+      padding:
+        0
+        24px
+        24px
+        72px;
+
+      max-width: 900px;
+
+      color: #d7dbdf;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    .faq-cta {
+      padding: 10px 5% 60px;
+      background: #00111f;
+    }
+
+    .faq-cta-box {
+      width: min(1150px, 100%);
+      margin: auto;
+
+      padding: 35px 40px;
+
+      border: 1px solid var(--gold);
+      border-radius: 20px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 35px;
+
+      background:
+        linear-gradient(
+          120deg,
+          rgba(4,30,49,0.98),
+          rgba(0,17,31,0.98)
+        );
+    }
+
+    .faq-cta-left {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .faq-heart {
+      width: 72px;
+      height: 72px;
+
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+
+      display: grid;
+      place-items: center;
+
+      color: var(--gold-light);
+      font-size: 35px;
+      flex-shrink: 0;
+    }
+
+    .faq-cta h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 34px;
+      font-weight: 400;
+      margin-bottom: 7px;
+    }
+
+    .faq-cta p {
+      color: #d8dde1;
+      font-size: 14px;
+    }
+
+    @media (max-width: 950px) {
+      .faq-benefits {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .faq-benefit:nth-child(2)::after {
+        display: none;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .faq-hero {
+        min-height: 720px;
+        padding: 145px 24px 90px;
+        background-position: 62% center;
+      }
+
+      .faq-hero h1 {
+        font-size: 50px;
+      }
+
+      .faq-description {
+        font-size: 16px;
+      }
+
+      .faq-benefits {
+        grid-template-columns: 1fr;
+      }
+
+      .faq-benefit::after {
+        display: none;
+      }
+
+      .faq-benefit {
+        border-bottom: 1px solid rgba(216,161,63,0.22);
+      }
+
+      .faq-benefit:last-child {
+        border-bottom: none;
+      }
+
+      .faq-answer {
+        padding: 0 20px 22px;
+      }
+
+      .faq-cta-box {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 28px 24px;
+      }
+
+      .faq-cta-left {
+        align-items: flex-start;
+      }
+
+      .faq-cta h2 {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">
+        <img src="images/logo-small.webp" alt="GoldenGetaways icon">
+      </div>
+
+      <div class="logo-text">
+        <span>GoldenGetaways</span>
+        <small>EST 2025</small>
+      </div>
+    </a>
+
+   <nav class="desktop-nav">
+  <a href="index.html">Home</a>
+  <a href="membership.html">Membership</a>
+  <a href="our-getaways.html">Our Getaways</a>
+  <a href="how-it-works.html">How It Works</a>
+  <a href="reviews.html">Reviews</a>
+  <a href="faq.html" class="active">FAQ</a>
+  <a href="join.html">Login / Join</a>
+</nav>
+
+    <a href="join.html" class="button gold-button header-button">
+      Join Now
+      <span>→</span>
+    </a>
+
+    <button class="mobile-menu-button" id="menuButton">
+      ☰
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="membership.html">Membership</a>
+    <a href="how-it-works.html">How It Works</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="faq.html">FAQ</a>
+    <a href="join.html">Login / Join</a>
+  </div>
+
+  <section class="faq-hero">
+    <div class="faq-hero-content">
+
+      <p class="faq-eyebrow">
+        QUESTIONS? WE'VE GOT ANSWERS.
+      </p>
+
+      <h1>
+        Everything you<br>
+        need to know about<br>
+        <em>GoldenGetaways.</em>
+      </h1>
+
+      <p class="faq-description">
+        Find answers to the most common questions about
+        GoldenGetaways, how the membership works and how we help.
+      </p>
+
+      <div class="faq-hero-buttons">
+        <a href="#questions" class="faq-outline-button">
+          View FAQs
+          <span>↓</span>
+        </a>
+
+        <a href="join.html" class="button gold-button">
+          Join GoldenGetaways
+          <span>→</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="faq-benefits-wrapper">
+    <div class="faq-benefits">
+
+      <div class="faq-benefit">
+        <div class="faq-benefit-icon">◉</div>
+        <h3>Real People</h3>
+        <p>Real support when you need help.</p>
+      </div>
+
+      <div class="faq-benefit">
+        <div class="faq-benefit-icon">ϟ</div>
+        <h3>Fast Responses</h3>
+        <p>Message us instead of searching for hours.</p>
+      </div>
+
+      <div class="faq-benefit">
+        <div class="faq-benefit-icon">★</div>
+        <h3>Member Support</h3>
+        <p>Help before and during your holiday.</p>
+      </div>
+
+      <div class="faq-benefit">
+        <div class="faq-benefit-icon">◷</div>
+        <h3>Simple To Use</h3>
+        <p>Just message us and tell us what you need.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="faq-section" id="questions">
+
+    <div class="faq-heading">
+      <p class="eyebrow centered">
+        FREQUENTLY ASKED QUESTIONS
+      </p>
+
+      <h2>
+        Got a question? We’ve got answers.
+      </h2>
+    </div>
+
+    <div class="faq-list">
+
+      <div class="faq-item active">
+        <button class="faq-question">
+          <div class="faq-question-left">
+            <div class="faq-question-icon">?</div>
+            <h3>What is GoldenGetaways?</h3>
+          </div>
+
+          <div class="faq-toggle">−</div>
+        </button>
+
+        <div class="faq-answer">
+          GoldenGetaways is a travel membership that gives you
+          personal help with holidays, recommendations, searches
+          and support before and during your trip.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <div class="faq-question-left">
+            <div class="faq-question-icon">?</div>
+            <h3>How much does membership cost?</h3>
+          </div>
+
+          <div class="faq-toggle">+</div>
+        </button>
+
+        <div class="faq-answer">
+          GoldenGetaways membership is £2.99 per month.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <div class="faq-question-left">
+            <div class="faq-question-icon">?</div>
+            <h3>How do I join?</h3>
+          </div>
+
+          <div class="faq-toggle">+</div>
+        </button>
+
+        <div class="faq-answer">
+          Click the Join Now button, complete your membership
+          sign-up and you’ll be ready to get started.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <div class="faq-question-left">
+            <div class="faq-question-icon">?</div>
+            <h3>How do custom holiday searches work?</h3>
+          </div>
+
+          <div class="faq-toggle">+</div>
+        </button>
+
+        <div class="faq-answer">
+          Tell us your destination, dates, budget and what kind of
+          holiday you want. We’ll help search and send you options
+          to look through.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <div class="faq-question-left">
+            <div class="faq-question-icon">?</div>
+            <h3>Can you help me while I’m already on holiday?</h3>
+          </div>
+
+          <div class="faq-toggle">+</div>
+        </button>
+
+        <div class="faq-answer">
+          Yes. You can message us while you’re away for things like
+          restaurants, activities, local recommendations and general
+          holiday help.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <div class="faq-question-left">
+            <div class="faq-question-icon">?</div>
+            <h3>Can I cancel my membership?</h3>
+          </div>
+
+          <div class="faq-toggle">+</div>
+        </button>
+
+        <div class="faq-answer">
+          Yes. You can cancel your membership whenever you want.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <div class="faq-question-left">
+            <div class="faq-question-icon">?</div>
+            <h3>Do you book holidays for me?</h3>
+          </div>
+
+          <div class="faq-toggle">+</div>
+        </button>
+
+        <div class="faq-answer">
+          We help you search, compare and find options, but you make
+          the final booking directly with the holiday provider.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <div class="faq-question-left">
+            <div class="faq-question-icon">?</div>
+            <h3>What if I have another question?</h3>
+          </div>
+
+          <div class="faq-toggle">+</div>
+        </button>
+
+        <div class="faq-answer">
+          Just message us. If it’s something we can help with,
+          we’ll do our best to sort it.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="faq-cta">
+    <div class="faq-cta-box">
+
+      <div class="faq-cta-left">
+        <div class="faq-heart">♡</div>
+
+        <div>
+          <h2>Still got a question?</h2>
+
+          <p>
+            Join GoldenGetaways and have travel help in your back pocket.
+          </p>
+        </div>
+      </div>
+
+      <a href="join.html" class="button gold-button">
+        Join GoldenGetaways
+        <span>→</span>
+      </a>
+
+    </div>
+  </section>
+
+  <script>
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach((item) => {
+      const button = item.querySelector(".faq-question");
+      const toggle = item.querySelector(".faq-toggle");
+
+      button.addEventListener("click", () => {
+        const alreadyOpen = item.classList.contains("active");
+
+        faqItems.forEach((faq) => {
+          faq.classList.remove("active");
+          faq.querySelector(".faq-toggle").textContent = "+";
+        });
+
+        if (!alreadyOpen) {
+          item.classList.add("active");
+          toggle.textContent = "−";
+        }
+      });
+    });
+
+    const menuButton = document.getElementById("menuButton");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    if (menuButton && mobileMenu) {
+      menuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("open");
+      });
+    }
+  </script>
+
+</body>
+</html>

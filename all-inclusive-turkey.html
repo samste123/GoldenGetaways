@@ -1,0 +1,2187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    All Inclusive Turkey Holidays | GoldenGetaways
+  </title>
+
+  <meta
+    name="description"
+    content="Browse handpicked all inclusive Turkey holidays with GoldenGetaways. Discover luxury resorts, family stays, beachfront hotels and member holiday deals."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  >
+
+
+  <style>
+
+    body {
+      background:
+        radial-gradient(
+          circle at 70% 5%,
+          #08263c 0%,
+          #00111f 38%,
+          #000b15 100%
+        );
+    }
+
+
+    .all-inclusive-shell {
+      width: 100%;
+      padding: 0 4%;
+    }
+
+
+    .page-top-space {
+      height: 135px;
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .all-inclusive-hero {
+      position: relative;
+
+      min-height: 500px;
+
+      overflow: hidden;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.34);
+
+      border-radius: 22px;
+
+      background:
+        url("images/cta-bg.webp")
+        center/cover
+        no-repeat;
+    }
+
+
+    .all-inclusive-hero::before {
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0,17,31,0.98) 0%,
+          rgba(0,17,31,0.92) 30%,
+          rgba(0,17,31,0.58) 58%,
+          rgba(0,17,31,0.16) 100%
+        );
+    }
+
+
+    .hero-layout {
+      position: relative;
+
+      z-index: 2;
+
+      min-height: 500px;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(430px, 1fr)
+        minmax(330px, 390px);
+
+      align-items: center;
+
+      gap: 55px;
+
+      padding:
+        58px
+        55px;
+    }
+
+
+    .hero-copy {
+      max-width: 690px;
+    }
+
+
+    .hero-eyebrow {
+      margin-bottom: 18px;
+
+      color: var(--gold-light);
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      letter-spacing: 4px;
+    }
+
+
+    .hero-copy h1 {
+      margin-bottom: 24px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size:
+        clamp(
+          58px,
+          5vw,
+          82px
+        );
+
+      font-weight: 400;
+
+      line-height: 0.96;
+    }
+
+
+    .hero-copy h1 em {
+      display: block;
+
+      color: var(--gold-light);
+
+      font-weight: 400;
+    }
+
+
+    .hero-line {
+      width: 48px;
+
+      height: 2px;
+
+      margin-bottom: 24px;
+
+      background: var(--gold);
+    }
+
+
+    .hero-description {
+      max-width: 590px;
+
+      margin-bottom: 27px;
+
+      color: #eef1f3;
+
+      font-size: 16px;
+
+      line-height: 1.75;
+    }
+
+
+    .back-link {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      color: #ffffff;
+
+      font-size: 14px;
+    }
+
+
+    .back-link span {
+      color: var(--gold-light);
+
+      font-size: 20px;
+    }
+
+
+    /* =========================
+       WHY ALL INCLUSIVE
+    ========================= */
+
+    .hero-info-panel {
+      padding: 27px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.42);
+
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          160deg,
+          rgba(5,30,49,0.92),
+          rgba(0,14,25,0.97)
+        );
+
+      backdrop-filter: blur(14px);
+
+      box-shadow:
+        0 25px 70px
+        rgba(0,0,0,0.34);
+    }
+
+
+    .hero-info-panel > p {
+      margin-bottom: 20px;
+
+      color: var(--gold-light);
+
+      font-size: 10px;
+
+      font-weight: 600;
+
+      letter-spacing: 2.8px;
+    }
+
+
+    .hero-info-item {
+      display: grid;
+
+      grid-template-columns:
+        58px
+        1fr;
+
+      align-items: center;
+
+      gap: 17px;
+
+      padding:
+        20px
+        0;
+    }
+
+
+    .hero-info-item:first-of-type {
+      padding-top: 0;
+    }
+
+
+    .hero-info-item:last-of-type {
+      padding-bottom: 0;
+    }
+
+
+    .hero-info-divider {
+      height: 1px;
+
+      background:
+        rgba(255,255,255,0.08);
+    }
+
+
+    .hero-info-icon {
+      width: 58px;
+
+      height: 58px;
+
+      display: grid;
+
+      place-items: center;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.22);
+
+      border-radius: 50%;
+
+      background:
+        rgba(255,255,255,0.035);
+
+      color: var(--gold-light);
+
+      font-size: 25px;
+    }
+
+
+    .hero-info-copy h3 {
+      margin-bottom: 5px;
+
+      color: white;
+
+      font-size: 16px;
+
+      font-weight: 600;
+    }
+
+
+    .hero-info-copy p {
+      color: #cfd5da;
+
+      font-size: 13px;
+
+      line-height: 1.55;
+    }
+
+
+    /* =========================
+       QUICK BENEFITS
+    ========================= */
+
+    .quick-benefits {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 15px;
+
+      margin-top: 18px;
+    }
+
+
+    .quick-benefit {
+      display: grid;
+
+      grid-template-columns:
+        48px
+        1fr;
+
+      align-items: center;
+
+      gap: 13px;
+
+      padding:
+        17px
+        18px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.24);
+
+      border-radius: 13px;
+
+      background:
+        rgba(3,27,44,0.82);
+    }
+
+
+    .quick-benefit-icon {
+      width: 48px;
+
+      height: 48px;
+
+      display: grid;
+
+      place-items: center;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.32);
+
+      border-radius: 50%;
+
+      color: var(--gold-light);
+
+      font-size: 21px;
+    }
+
+
+    .quick-benefit strong {
+      display: block;
+
+      margin-bottom: 3px;
+
+      color: white;
+
+      font-size: 13px;
+
+      font-weight: 600;
+    }
+
+
+    .quick-benefit span {
+      color: #bfc7ce;
+
+      font-size: 11px;
+
+      line-height: 1.4;
+    }
+
+
+    /* =========================
+       FILTER BAR
+    ========================= */
+
+    .filter-section {
+      margin-top: 20px;
+    }
+
+
+    .filter-bar {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      padding:
+        18px
+        20px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.38);
+
+      border-radius: 15px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(4,30,49,0.98),
+          rgba(0,17,31,0.99)
+        );
+    }
+
+
+    .filter-left {
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      flex-wrap: wrap;
+    }
+
+
+    .filter-title {
+      display: flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      margin-right: 8px;
+
+      color: #ffffff;
+
+      font-size: 14px;
+
+      font-weight: 500;
+    }
+
+
+    .filter-title span {
+      color: var(--gold-light);
+
+      font-size: 20px;
+    }
+
+
+    .filter-select {
+      min-height: 46px;
+
+      padding:
+        0
+        16px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.26);
+
+      border-radius: 9px;
+
+      background: #042037;
+
+      color: #ffffff;
+
+      font-family:
+        "DM Sans",
+        sans-serif;
+
+      outline: none;
+    }
+
+
+    .sort-wrap {
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      color: #dce1e5;
+
+      font-size: 13px;
+    }
+
+
+    /* =========================
+       RESULTS
+    ========================= */
+
+    .results-section {
+      padding:
+        38px
+        0
+        70px;
+    }
+
+
+    .results-top {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      margin-bottom: 24px;
+    }
+
+
+    .results-top p {
+      color: #d5d9dd;
+
+      font-size: 14px;
+    }
+
+
+    .results-top span {
+      color: var(--gold-light);
+    }
+
+
+    /* =========================
+       HOTEL GRID
+    ========================= */
+
+    .hotel-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          4,
+          minmax(0,1fr)
+        );
+
+      gap: 18px;
+    }
+
+
+    .hotel-card {
+      overflow: hidden;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.35);
+
+      border-radius: 16px;
+
+      background:
+        linear-gradient(
+          160deg,
+          rgba(5,30,49,0.98),
+          rgba(0,17,31,0.99)
+        );
+
+      transition:
+        transform 0.25s,
+        border-color 0.25s;
+    }
+
+
+    .hotel-card:hover {
+      transform:
+        translateY(-4px);
+
+      border-color:
+        rgba(216,161,63,0.68);
+    }
+
+
+    .hotel-image-wrap {
+      position: relative;
+
+      height: 235px;
+
+      overflow: hidden;
+    }
+
+
+    .hotel-image-wrap img {
+      width: 100%;
+
+      height: 100%;
+
+      object-fit: cover;
+
+      transition:
+        transform 0.35s ease;
+    }
+
+
+    .hotel-card:hover img {
+      transform:
+        scale(1.035);
+    }
+
+
+    .hotel-badge {
+      position: absolute;
+
+      top: 14px;
+
+      left: 14px;
+
+      padding:
+        7px
+        11px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.55);
+
+      border-radius: 50px;
+
+      background:
+        rgba(0,17,31,0.86);
+
+      color: var(--gold-light);
+
+      font-size: 9px;
+
+      font-weight: 600;
+
+      letter-spacing: 1.4px;
+    }
+
+
+    .hotel-content {
+      padding:
+        21px
+        20px
+        22px;
+    }
+
+
+    .hotel-location {
+      margin-bottom: 9px;
+
+      color: var(--gold-light);
+
+      font-size: 10px;
+
+      font-weight: 600;
+
+      letter-spacing: 1.5px;
+    }
+
+
+    .hotel-card h2 {
+      margin-bottom: 9px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 26px;
+
+      font-weight: 400;
+
+      line-height: 1.08;
+    }
+
+
+    .hotel-meta {
+      margin-bottom: 15px;
+
+      color: #e6e9ec;
+
+      font-size: 13px;
+    }
+
+
+    .hotel-meta span {
+      color: var(--gold-light);
+    }
+
+
+    .hotel-features {
+      list-style: none;
+
+      margin-bottom: 18px;
+    }
+
+
+    .hotel-features li {
+      position: relative;
+
+      padding-left: 23px;
+
+      margin-bottom: 7px;
+
+      color: #cdd3d8;
+
+      font-size: 12px;
+
+      line-height: 1.45;
+    }
+
+
+    .hotel-features li::before {
+      content: "✓";
+
+      position: absolute;
+
+      left: 0;
+
+      top: 0;
+
+      width: 15px;
+      height: 15px;
+
+      display: grid;
+
+      place-items: center;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.55);
+
+      border-radius: 50%;
+
+      color: var(--gold-light);
+
+      font-size: 8px;
+    }
+
+
+    .hotel-actions {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 12px;
+
+      margin-top: 18px;
+    }
+
+
+    .hotel-price {
+      color: #cfd5da;
+
+      font-size: 11px;
+    }
+
+
+    .hotel-price strong {
+      display: block;
+
+      color: white;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 24px;
+
+      font-weight: 400;
+    }
+
+
+    .view-details-button {
+      min-height: 46px;
+
+      padding:
+        0
+        18px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border-radius: 9px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #b77b24,
+          #e0aa47
+        );
+
+      color: white;
+
+      font-size: 13px;
+
+      font-weight: 500;
+
+      transition: 0.2s;
+    }
+
+
+    .view-details-button:hover {
+      transform:
+        translateY(-2px);
+    }
+
+
+    /* =========================
+       BOTTOM CTA
+    ========================= */
+
+    .help-cta {
+      margin-bottom: 65px;
+
+      padding:
+        34px
+        38px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 30px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.45);
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(216,161,63,0.06),
+          rgba(3,27,44,0.98)
+        );
+    }
+
+
+    .help-cta-left {
+      display: flex;
+
+      align-items: center;
+
+      gap: 20px;
+    }
+
+
+    .help-cta-icon {
+      width: 62px;
+
+      height: 62px;
+
+      display: grid;
+
+      place-items: center;
+
+      flex-shrink: 0;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.45);
+
+      border-radius: 50%;
+
+      color: var(--gold-light);
+
+      font-size: 27px;
+    }
+
+
+    .help-cta h2 {
+      margin-bottom: 6px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 31px;
+
+      font-weight: 400;
+    }
+
+
+    .help-cta p {
+      max-width: 650px;
+
+      color: #cdd3d8;
+
+      font-size: 14px;
+
+      line-height: 1.6;
+    }
+
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media
+    (max-width: 1200px) {
+
+      .hotel-grid {
+        grid-template-columns:
+          repeat(
+            3,
+            minmax(0,1fr)
+          );
+      }
+
+      .hero-layout {
+        grid-template-columns:
+          1fr
+          350px;
+      }
+
+    }
+
+
+    @media
+    (max-width: 950px) {
+
+      .hero-layout {
+        grid-template-columns:
+          1fr;
+      }
+
+      .hero-info-panel {
+        max-width: 600px;
+      }
+
+      .quick-benefits {
+        grid-template-columns:
+          1fr;
+      }
+
+      .hotel-grid {
+        grid-template-columns:
+          repeat(
+            2,
+            minmax(0,1fr)
+          );
+      }
+
+      .filter-bar {
+        flex-direction: column;
+
+        align-items: flex-start;
+      }
+
+    }
+
+
+    @media
+    (max-width: 650px) {
+
+      .all-inclusive-shell {
+        padding:
+          0
+          18px;
+      }
+
+      .page-top-space {
+        height: 100px;
+      }
+
+      .hero-layout {
+        padding:
+          45px
+          25px;
+      }
+
+      .hero-copy h1 {
+        font-size: 54px;
+      }
+
+      .hero-info-panel {
+        padding: 22px;
+      }
+
+      .hotel-grid {
+        grid-template-columns:
+          1fr;
+      }
+
+      .filter-left {
+        width: 100%;
+      }
+
+      .filter-select {
+        width: 100%;
+      }
+
+      .hotel-actions {
+        align-items: stretch;
+
+        flex-direction: column;
+      }
+
+      .view-details-button {
+        width: 100%;
+      }
+
+      .help-cta {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding:
+          28px
+          24px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- HEADER -->
+
+  <header class="header">
+
+    <a
+      href="index.html"
+      class="logo"
+    >
+
+      <div class="logo-icon">
+
+        <img
+          src="images/logo-small.webp"
+          alt="GoldenGetaways icon"
+        >
+
+      </div>
+
+
+      <div class="logo-text">
+
+        <span>
+          GoldenGetaways
+        </span>
+
+        <small>
+          EST 2025
+        </small>
+
+      </div>
+
+    </a>
+
+
+    <nav class="desktop-nav">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="membership.html">
+        Membership
+      </a>
+
+      <a
+        href="our-getaways.html"
+        class="active"
+      >
+        Our Getaways
+      </a>
+
+      <a href="how-it-works.html">
+        How It Works
+      </a>
+
+      <a href="reviews.html">
+        Reviews
+      </a>
+
+      <a href="faq.html">
+        FAQ
+      </a>
+
+      <a href="join.html">
+        Login / Join
+      </a>
+
+    </nav>
+
+
+    <a
+      href="join.html"
+      class="button gold-button header-button"
+    >
+      Join Now
+      <span>→</span>
+    </a>
+
+
+    <button
+      class="mobile-menu-button"
+      id="menuButton"
+    >
+      ☰
+    </button>
+
+  </header>
+
+
+
+  <main class="all-inclusive-shell">
+
+
+    <div class="page-top-space"></div>
+
+
+    <!-- HERO -->
+
+    <section class="all-inclusive-hero">
+
+      <div class="hero-layout">
+
+
+        <div class="hero-copy">
+
+          <p class="hero-eyebrow">
+            TURKEY • ALL INCLUSIVE
+          </p>
+
+          <h1>
+            All Inclusive
+            <em>Getaways.</em>
+          </h1>
+
+          <div class="hero-line"></div>
+
+          <p class="hero-description">
+
+            Sit back, relax and enjoy it all.
+            Discover handpicked all inclusive
+            Turkey holidays with meals, drinks
+            and selected entertainment included.
+
+          </p>
+
+          <a
+            href="turkey-holidays.html"
+            class="back-link"
+          >
+            <span>←</span>
+            Back to Turkey Holidays
+          </a>
+
+        </div>
+
+
+        <!-- INFO PANEL -->
+
+        <aside class="hero-info-panel">
+
+          <p>
+            WHY ALL INCLUSIVE?
+          </p>
+
+
+          <div class="hero-info-item">
+
+            <div class="hero-info-icon">
+              🍴
+            </div>
+
+            <div class="hero-info-copy">
+
+              <h3>
+                Everything Included
+              </h3>
+
+              <p>
+                Meals, drinks, snacks
+                and selected activities
+                included in your stay.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="hero-info-divider"></div>
+
+
+          <div class="hero-info-item">
+
+            <div class="hero-info-icon">
+              ◇
+            </div>
+
+            <div class="hero-info-copy">
+
+              <h3>
+                Relax & Unwind
+              </h3>
+
+              <p>
+                Less to think about
+                once you arrive —
+                just enjoy the holiday.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="hero-info-divider"></div>
+
+
+          <div class="hero-info-item">
+
+            <div class="hero-info-icon">
+              ✓
+            </div>
+
+            <div class="hero-info-copy">
+
+              <h3>
+                ATOL Protected
+              </h3>
+
+              <p>
+                Flight-inclusive package holidays
+                are financially protected
+                for added peace of mind.
+              </p>
+
+            </div>
+
+          </div>
+
+
+        </aside>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- QUICK BENEFITS -->
+
+    <section class="quick-benefits">
+
+
+      <div class="quick-benefit">
+
+        <div class="quick-benefit-icon">
+          ◉
+        </div>
+
+        <div>
+          <strong>
+            Meals & Snacks
+          </strong>
+
+          <span>
+            Breakfast, lunch and dinner options
+          </span>
+        </div>
+
+      </div>
+
+
+      <div class="quick-benefit">
+
+        <div class="quick-benefit-icon">
+          ◇
+        </div>
+
+        <div>
+          <strong>
+            Drinks Included
+          </strong>
+
+          <span>
+            Selected local drinks included
+          </span>
+        </div>
+
+      </div>
+
+
+      <div class="quick-benefit">
+
+        <div class="quick-benefit-icon">
+          ♫
+        </div>
+
+        <div>
+          <strong>
+            Entertainment
+          </strong>
+
+          <span>
+            Selected activities and entertainment
+          </span>
+        </div>
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- FILTERS -->
+
+    <section class="filter-section">
+
+      <div class="filter-bar">
+
+
+        <div class="filter-left">
+
+          <div class="filter-title">
+
+            <span>☷</span>
+
+            Filter by
+
+          </div>
+
+
+          <select class="filter-select">
+
+            <option>
+              Any Date
+            </option>
+
+            <option>
+              September
+            </option>
+
+            <option>
+              October
+            </option>
+
+            <option>
+              November
+            </option>
+
+            <option>
+              December
+            </option>
+
+          </select>
+
+
+          <select class="filter-select">
+
+            <option>
+              2 Adults
+            </option>
+
+            <option>
+              1 Adult
+            </option>
+
+            <option>
+              2 Adults + 1 Child
+            </option>
+
+            <option>
+              Family
+            </option>
+
+          </select>
+
+
+          <select class="filter-select">
+
+            <option>
+              All Airports
+            </option>
+
+            <option>
+              Manchester
+            </option>
+
+            <option>
+              London
+            </option>
+
+            <option>
+              Birmingham
+            </option>
+
+            <option>
+              Liverpool
+            </option>
+
+          </select>
+
+
+        </div>
+
+
+        <div class="sort-wrap">
+
+          Sort by
+
+          <select class="filter-select">
+
+            <option>
+              Recommended
+            </option>
+
+            <option>
+              Price Low to High
+            </option>
+
+            <option>
+              Most Popular
+            </option>
+
+            <option>
+              Luxury First
+            </option>
+
+          </select>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- RESULTS -->
+
+    <section class="results-section">
+
+
+      <div class="results-top">
+
+        <p>
+          <strong>8</strong>
+          all inclusive getaways found
+        </p>
+
+        <p>
+          Showing
+          <span>1 – 8</span>
+          of 8
+        </p>
+
+      </div>
+
+
+
+      <div class="hotel-grid">
+
+
+        <!-- HOTEL 1 -->
+
+        <article class="hotel-card">
+
+
+          <div class="hotel-image-wrap">
+
+            <img
+              src="images/membership-hero.webp"
+              alt="Turkey all inclusive resort"
+            >
+
+            <span class="hotel-badge">
+              ALL INCLUSIVE
+            </span>
+
+          </div>
+
+
+          <div class="hotel-content">
+
+            <p class="hotel-location">
+              ANTALYA, TURKEY
+            </p>
+
+            <h2>
+              Hotel Name Here
+            </h2>
+
+            <p class="hotel-meta">
+              7 Nights •
+              <span>★★★★★</span>
+              Resort
+            </p>
+
+
+            <ul class="hotel-features">
+
+              <li>
+                All inclusive meals
+              </li>
+
+              <li>
+                Selected drinks included
+              </li>
+
+              <li>
+                Pools & entertainment
+              </li>
+
+            </ul>
+
+
+            <div class="hotel-actions">
+
+              <div class="hotel-price">
+                From
+                <strong>
+                  £699
+                </strong>
+                per person
+              </div>
+
+              <a
+                href="hotel-1.html"
+                class="view-details-button"
+              >
+                View Details →
+              </a>
+
+            </div>
+
+          </div>
+
+
+        </article>
+
+
+
+        <!-- HOTEL 2 -->
+
+        <article class="hotel-card">
+
+          <div class="hotel-image-wrap">
+
+            <img
+              src="images/how-hero.webp"
+              alt="Turkey all inclusive resort"
+            >
+
+            <span class="hotel-badge">
+              ALL INCLUSIVE
+            </span>
+
+          </div>
+
+
+          <div class="hotel-content">
+
+            <p class="hotel-location">
+              BODRUM, TURKEY
+            </p>
+
+            <h2>
+              Hotel Name Here
+            </h2>
+
+            <p class="hotel-meta">
+              7 Nights •
+              <span>★★★★★</span>
+              Resort
+            </p>
+
+
+            <ul class="hotel-features">
+
+              <li>
+                All inclusive dining
+              </li>
+
+              <li>
+                Private beach access
+              </li>
+
+              <li>
+                Evening entertainment
+              </li>
+
+            </ul>
+
+
+            <div class="hotel-actions">
+
+              <div class="hotel-price">
+                From
+                <strong>
+                  £749
+                </strong>
+                per person
+              </div>
+
+              <a
+                href="hotel-2.html"
+                class="view-details-button"
+              >
+                View Details →
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- HOTEL 3 -->
+
+        <article class="hotel-card">
+
+          <div class="hotel-image-wrap">
+
+            <img
+              src="images/cta-bg.webp"
+              alt="Turkey all inclusive resort"
+            >
+
+            <span class="hotel-badge">
+              ALL INCLUSIVE
+            </span>
+
+          </div>
+
+
+          <div class="hotel-content">
+
+            <p class="hotel-location">
+              SIDE, TURKEY
+            </p>
+
+            <h2>
+              Hotel Name Here
+            </h2>
+
+            <p class="hotel-meta">
+              7 Nights •
+              <span>★★★★★</span>
+              Resort
+            </p>
+
+
+            <ul class="hotel-features">
+
+              <li>
+                Meals & snacks included
+              </li>
+
+              <li>
+                Family-friendly pools
+              </li>
+
+              <li>
+                Daily entertainment
+              </li>
+
+            </ul>
+
+
+            <div class="hotel-actions">
+
+              <div class="hotel-price">
+                From
+                <strong>
+                  £649
+                </strong>
+                per person
+              </div>
+
+              <a
+                href="hotel-3.html"
+                class="view-details-button"
+              >
+                View Details →
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- HOTEL 4 -->
+
+        <article class="hotel-card">
+
+          <div class="hotel-image-wrap">
+
+            <img
+              src="images/reviews-hero.webp"
+              alt="Turkey all inclusive resort"
+            >
+
+            <span class="hotel-badge">
+              ALL INCLUSIVE
+            </span>
+
+          </div>
+
+
+          <div class="hotel-content">
+
+            <p class="hotel-location">
+              BELEK, TURKEY
+            </p>
+
+            <h2>
+              Hotel Name Here
+            </h2>
+
+            <p class="hotel-meta">
+              7 Nights •
+              <span>★★★★★</span>
+              Resort
+            </p>
+
+
+            <ul class="hotel-features">
+
+              <li>
+                Premium all inclusive
+              </li>
+
+              <li>
+                Luxury pool areas
+              </li>
+
+              <li>
+                Multiple restaurants
+              </li>
+
+            </ul>
+
+
+            <div class="hotel-actions">
+
+              <div class="hotel-price">
+                From
+                <strong>
+                  £899
+                </strong>
+                per person
+              </div>
+
+              <a
+                href="hotel-4.html"
+                class="view-details-button"
+              >
+                View Details →
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- HOTEL 5 -->
+
+        <article class="hotel-card">
+
+          <div class="hotel-image-wrap">
+
+            <img
+              src="images/faq-hero.webp"
+              alt="Turkey all inclusive resort"
+            >
+
+            <span class="hotel-badge">
+              ALL INCLUSIVE
+            </span>
+
+          </div>
+
+
+          <div class="hotel-content">
+
+            <p class="hotel-location">
+              KEMER, TURKEY
+            </p>
+
+            <h2>
+              Hotel Name Here
+            </h2>
+
+            <p class="hotel-meta">
+              7 Nights •
+              <span>★★★★★</span>
+              Resort
+            </p>
+
+
+            <ul class="hotel-features">
+
+              <li>
+                All meals included
+              </li>
+
+              <li>
+                Unlimited selected drinks
+              </li>
+
+              <li>
+                Beachfront location
+              </li>
+
+            </ul>
+
+
+            <div class="hotel-actions">
+
+              <div class="hotel-price">
+                From
+                <strong>
+                  £729
+                </strong>
+                per person
+              </div>
+
+              <a
+                href="hotel-5.html"
+                class="view-details-button"
+              >
+                View Details →
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- HOTEL 6 -->
+
+        <article class="hotel-card">
+
+          <div class="hotel-image-wrap">
+
+            <img
+              src="images/membership-hero.webp"
+              alt="Turkey all inclusive resort"
+            >
+
+            <span class="hotel-badge">
+              ALL INCLUSIVE
+            </span>
+
+          </div>
+
+
+          <div class="hotel-content">
+
+            <p class="hotel-location">
+              ANTALYA, TURKEY
+            </p>
+
+            <h2>
+              Hotel Name Here
+            </h2>
+
+            <p class="hotel-meta">
+              7 Nights •
+              <span>★★★★★</span>
+              Resort
+            </p>
+
+
+            <ul class="hotel-features">
+
+              <li>
+                All inclusive concept
+              </li>
+
+              <li>
+                Kids club
+              </li>
+
+              <li>
+                Entertainment programme
+              </li>
+
+            </ul>
+
+
+            <div class="hotel-actions">
+
+              <div class="hotel-price">
+                From
+                <strong>
+                  £679
+                </strong>
+                per person
+              </div>
+
+              <a
+                href="hotel-6.html"
+                class="view-details-button"
+              >
+                View Details →
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- HOTEL 7 -->
+
+        <article class="hotel-card">
+
+          <div class="hotel-image-wrap">
+
+            <img
+              src="images/hero-bg.webp"
+              alt="Turkey all inclusive resort"
+            >
+
+            <span class="hotel-badge">
+              ALL INCLUSIVE
+            </span>
+
+          </div>
+
+
+          <div class="hotel-content">
+
+            <p class="hotel-location">
+              DALAMAN, TURKEY
+            </p>
+
+            <h2>
+              Hotel Name Here
+            </h2>
+
+            <p class="hotel-meta">
+              7 Nights •
+              <span>★★★★</span>
+              Resort
+            </p>
+
+
+            <ul class="hotel-features">
+
+              <li>
+                All inclusive meals
+              </li>
+
+              <li>
+                Selected drinks included
+              </li>
+
+              <li>
+                Pool & beach access
+              </li>
+
+            </ul>
+
+
+            <div class="hotel-actions">
+
+              <div class="hotel-price">
+                From
+                <strong>
+                  £599
+                </strong>
+                per person
+              </div>
+
+              <a
+                href="hotel-7.html"
+                class="view-details-button"
+              >
+                View Details →
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- HOTEL 8 -->
+
+        <article class="hotel-card">
+
+          <div class="hotel-image-wrap">
+
+            <img
+              src="images/cta-bg.webp"
+              alt="Turkey all inclusive resort"
+            >
+
+            <span class="hotel-badge">
+              ALL INCLUSIVE
+            </span>
+
+          </div>
+
+
+          <div class="hotel-content">
+
+            <p class="hotel-location">
+              ALANYA, TURKEY
+            </p>
+
+            <h2>
+              Hotel Name Here
+            </h2>
+
+            <p class="hotel-meta">
+              7 Nights •
+              <span>★★★★★</span>
+              Resort
+            </p>
+
+
+            <ul class="hotel-features">
+
+              <li>
+                Full all inclusive
+              </li>
+
+              <li>
+                Poolside snacks
+              </li>
+
+              <li>
+                Day & night entertainment
+              </li>
+
+            </ul>
+
+
+            <div class="hotel-actions">
+
+              <div class="hotel-price">
+                From
+                <strong>
+                  £699
+                </strong>
+                per person
+              </div>
+
+              <a
+                href="hotel-8.html"
+                class="view-details-button"
+              >
+                View Details →
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- HELP CTA -->
+
+    <section class="help-cta">
+
+
+      <div class="help-cta-left">
+
+        <div class="help-cta-icon">
+          ♕
+        </div>
+
+
+        <div>
+
+          <h2>
+            Need help finding the perfect all inclusive holiday?
+          </h2>
+
+          <p>
+            GoldenGetaways members can request a personalised
+            search based on their preferred dates, airport,
+            budget and holiday style.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <a
+        href="join.html"
+        class="button gold-button"
+      >
+        Join GoldenGetaways
+        <span>→</span>
+      </a>
+
+
+    </section>
+
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+
+</body>
+
+</html>

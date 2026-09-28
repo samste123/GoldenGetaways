@@ -1,106 +1,443 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Golden Getaways</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<style>
-body {
-  margin: 0;
-  background: #f3efe8;
-}
+  <title>GoldenGetaways | Your Holidays, Made Effortless</title>
 
-/* WRAPPER */
-.wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 636px;
-  margin: 0 auto;
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-/* IMAGE */
-.main-img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  >
 
-/* CLICK AREAS */
-.click {
-  position: absolute;
-  display: block;
-  cursor: pointer;
-}
-
-/* TOP BUTTON */
-.top-btn {
-  bottom: 48%;
-  left: 10%;
-  width: 80%;
-  height: 6%;
-}
-
-/* PHONE PREVIEW */
-.phone {
-  top: 2%;
-  left: 55%;
-  width: 35%;
-  height: 45%;
-  border-radius: 30px;
-}
-
-/* BOTTOM BUTTON */
-.bottom-btn {
-  bottom: 5%;
-  left: 10%;
-  width: 80%;
-  height: 7%;
-}
-
-/* TEST MODE */
-.show .click {
-  background: rgba(255,0,0,0.2);
-  outline: 2px solid red;
-}
-
-/* MOBILE FIX */
-@media (max-width: 768px) {
-  .wrapper {
-    max-width: 100%;
-  }
-}
-</style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
-<div class="wrapper" id="wrap">
+  <!-- HEADER -->
 
-  <img src="membership.png" class="main-img">
+  <header class="header">
 
-  <!-- CLICK AREAS -->
-  <div class="click top-btn"></div>
-  <div class="click phone"></div>
-  <div class="click bottom-btn"></div>
+    <a href="index.html" class="logo">
+    <div class="logo-icon">
+    <img src="images/logo-small.webp" alt="GoldenGetaways icon">
+  </div>
+      <div class="logo-text">
+        <span>GoldenGetaways</span>
+        <small>EST 2025</small>
+      </div>
+    </a>
 
-</div>
 
-<script>
-const STRIPE_LINK = "https://buy.stripe.com/4gM3cubAZ0ySb232J81oI02";
+    <nav class="desktop-nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="membership.html">Membership</a>
+      <a href="our-getaways.html">Our Getaways</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="faq.html">FAQ</a>
+      <a href="join.html">Login / Join</a>
+    </nav>
 
-// make all clickable areas go to Stripe
-document.querySelectorAll('.click').forEach(el => {
-  el.addEventListener('click', () => {
-    window.open(STRIPE_LINK, '_blank');
-  });
-});
 
-// add ?test=1 to URL to see click zones
-if (window.location.search.includes("test=1")) {
-  document.getElementById("wrap").classList.add("show");
-}
-</script>
+    <a href="join.html" class="button gold-button header-button">
+      Join Now
+      <span>→</span>
+    </a>
+
+
+    <button class="mobile-menu-button" id="menuButton">
+      ☰
+    </button>
+
+  </header>
+
+
+  <!-- MOBILE MENU -->
+
+  <div class="mobile-menu" id="mobileMenu">
+
+    <a href="index.html">Home</a>
+    <a href="membership.html">Membership</a>
+    <a href="how-it-works.html">How It Works</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="faq.html">FAQ</a>
+    <a href="join.html">Login / Join</a>
+    <a href="dashboard.html">Member Dashboard</a>
+
+  </div>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+      <p class="eyebrow">
+        EXCLUSIVE TRAVEL. EXTRAORDINARY VALUE.
+      </p>
+
+      <h1>
+        Your holidays,<br>
+        made <em>effortless.</em>
+      </h1>
+
+      <div class="gold-line"></div>
+
+      <p class="hero-description">
+        Handpicked escapes. Personalised searches.<br>
+        24/7 support. All for just £2.99/month.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="join.html" class="button gold-button">
+          Join Now
+          <span>→</span>
+        </a>
+
+      
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MAIN BENEFITS -->
+
+  <section class="benefits-wrapper">
+
+    <div class="main-benefits">
+
+      <article class="benefit-card">
+
+        <div class="icon-circle">
+          <span>⌕</span>
+        </div>
+
+        <h3>DAILY</h3>
+
+        <p>
+          Handpicked Deals<br>
+          & Inspiration
+        </p>
+
+      </article>
+
+
+      <article class="benefit-card">
+
+        <div class="icon-circle">
+          <span>♙</span>
+        </div>
+
+        <h3>PERSONALISED</h3>
+
+        <p>
+          Holiday Searches<br>
+          Just for You
+        </p>
+
+      </article>
+
+
+      <article class="benefit-card">
+
+        <div class="icon-circle">
+          <span>♧</span>
+        </div>
+
+        <h3>24/7</h3>
+
+        <p>
+          Member Support<br>
+          Whenever You Need Us
+        </p>
+
+      </article>
+
+
+      <article class="benefit-card">
+
+        <div class="icon-circle">
+          <span>◇</span>
+        </div>
+
+        <h3>£2.99</h3>
+
+        <p>
+          Per Month<br>
+          Cancel Anytime
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- EVERYTHING YOU NEED -->
+
+  <section class="everything-section section">
+
+    <p class="eyebrow centered">
+      MORE VALUE. MORE MEMORIES.
+    </p>
+
+    <div class="small-gold-line"></div>
+
+    <h2>
+      Everything you need. All in one place.
+    </h2>
+
+
+    <div class="everything-grid">
+
+      <article class="small-benefit">
+
+        <div class="small-icon">♙</div>
+
+        <h3>MONTHLY GIVEAWAYS</h3>
+
+        <p>
+          Amazing prizes<br>
+          exclusively for<br>
+          our members.
+        </p>
+
+      </article>
+
+
+      <article class="small-benefit">
+
+        <div class="small-icon">♕</div>
+
+        <h3>MEMBERS POINTS</h3>
+
+        <p>
+          Earn points, climb<br>
+          the leaderboard<br>
+          & win rewards.
+        </p>
+
+      </article>
+
+
+      <article class="small-benefit">
+
+        <div class="small-icon">♧</div>
+
+        <h3>REFER & EARN</h3>
+
+        <p>
+          Invite friends,<br>
+          earn points &<br>
+          unlock bonuses.
+        </p>
+
+      </article>
+
+
+      <article class="small-benefit">
+
+        <div class="small-icon">♢</div>
+
+        <h3>ATOL PROTECTED</h3>
+
+        <p>
+          Your financial<br>
+          protection for<br>
+          total peace of mind.
+        </p>
+
+      </article>
+
+
+      <article class="small-benefit">
+
+        <div class="small-icon">▢</div>
+
+        <h3>SECURE PAYMENTS</h3>
+
+        <p>
+          Safe, encrypted<br>
+          & trusted payment<br>
+          with Stripe.
+        </p>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- WHY JOIN -->
+
+  <section class="section why-section">
+
+    <div class="why-card">
+
+      <div class="why-heart">
+        ♡
+      </div>
+
+      <div class="why-content">
+
+        <p class="eyebrow">
+          WHY JOIN GOLDENGETAWAYS?
+        </p>
+
+        <h2>
+          We save you time, money and stress.
+        </h2>
+
+        <p>
+          No endless scrolling. No confusion.
+          Just a personal travel assistant who gets you the very best.
+        </p>
+
+      </div>
+
+
+      <div class="why-points">
+
+        <p>✓ <span>Real people, real support</span></p>
+        <p>✓ <span>Unbeatable value</span></p>
+        <p>✓ <span>Tailored to you</span></p>
+        <p>✓ <span>Travel with confidence</span></p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- BOTTOM CTA -->
+
+  <section class="section">
+
+    <div class="bottom-cta">
+
+      <div class="cta-overlay"></div>
+
+      <div class="cta-content">
+
+        <h2>
+          Your next escape is waiting.
+        </h2>
+
+        <p>
+          Join GoldenGetaways today for just £2.99/month<br>
+          and unlock a world of exclusive travel.
+        </p>
+
+      </div>
+
+      <a href="join.html" class="button gold-button">
+        Join Now
+        <span>→</span>
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- TRUST SECTION -->
+
+  <section class="trust-section">
+
+    <p class="eyebrow centered">
+      TRUSTED. PROTECTED. PERSONAL.
+    </p>
+
+
+    <div class="trust-grid">
+
+      <div class="trust-item">
+
+        <span class="trust-icon">♢</span>
+
+        <div>
+          <strong>ATOL PROTECTED</strong>
+        </div>
+
+      </div>
+
+
+      <div class="trust-item">
+
+        <span class="trust-icon">▣</span>
+
+        <div>
+          <strong>SECURE PAYMENTS</strong>
+          <small>Powered by Stripe</small>
+        </div>
+
+      </div>
+
+
+      <div class="trust-item">
+
+        <span class="trust-icon">♧</span>
+
+        <div>
+          <strong>MEMBER FOCUSED</strong>
+          <small>24/7 Support</small>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="footer-logo">
+      GoldenGetaways
+    </div>
+
+    <p>
+      Making holidays effortless since 2025.
+    </p>
+
+    <div class="footer-links">
+
+      <a href="index.html">Home</a>
+      <a href="membership.html">Membership</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="faq.html">FAQ</a>
+      <a href="join.html">Login / Join</a>
+      <a href="dashboard.html">Member Dashboard</a>
+
+    </div>
+
+    <p class="copyright">
+      © 2026 GoldenGetaways. All rights reserved.
+    </p>
+
+  </footer>
+
+
+  <script src="script.js"></script>
 
 </body>
 </html>

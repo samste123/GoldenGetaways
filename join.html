@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Login | GoldenGetaways</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    body {
+      min-height: 100vh;
+      background: #00111f;
+    }
+
+    .login-page {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      background: #00111f;
+    }
+
+    .login-visual {
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0,17,31,0.22) 0%,
+          rgba(0,17,31,0.18) 65%,
+          rgba(0,17,31,0.85) 100%
+        ),
+       url("images/login-hero.webp") center/cover no-repeat;
+    }
+
+    .login-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(0,10,22,0.1),
+          rgba(0,10,22,0.2)
+        );
+    }
+
+    .login-brand {
+      position: absolute;
+      z-index: 3;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 80%;
+    }
+
+    .login-brand-logo {
+      width: 130px;
+      height: 130px;
+      margin: 0 auto 24px;
+
+      border-radius: 50%;
+      overflow: hidden;
+
+      display: grid;
+      place-items: center;
+    }
+
+    .login-brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .login-brand h1 {
+      font-family: "Playfair Display", serif;
+      font-weight: 400;
+      font-size: clamp(46px, 5vw, 72px);
+      color: #f0bd5c;
+      letter-spacing: 2px;
+      line-height: 0.95;
+    }
+
+    .login-brand h1 span {
+      display: block;
+      font-family: "DM Sans", sans-serif;
+      font-size: 28px;
+      letter-spacing: 10px;
+      margin-top: 13px;
+      font-weight: 400;
+    }
+
+    .brand-line {
+      width: 280px;
+      max-width: 80%;
+      height: 1px;
+      margin: 20px auto 16px;
+      background: rgba(216,161,63,0.65);
+    }
+
+    .login-brand p {
+      letter-spacing: 4px;
+      color: #f3f3f3;
+      font-size: 14px;
+    }
+
+    .login-side {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 50px;
+      background:
+        radial-gradient(
+          circle at 20% 30%,
+          #05233a 0%,
+          #00111f 45%,
+          #000b15 100%
+        );
+    }
+
+    .login-card {
+      width: min(610px, 100%);
+      padding: 55px 58px;
+
+      border: 1px solid rgba(216,161,63,0.25);
+      border-radius: 22px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(6,27,44,0.98),
+          rgba(2,15,27,0.99)
+        );
+
+      box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+    }
+
+    .login-card-header {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .login-card-header h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 48px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .login-card-header p {
+      color: #bfc5cc;
+      font-size: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .input-wrap {
+      position: relative;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 17px;
+      top: 50%;
+      transform: translateY(-50%);
+
+      font-size: 18px;
+      color: #aeb5bd;
+    }
+
+    .input-wrap input {
+      width: 100%;
+      height: 62px;
+      padding: 0 50px;
+
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 12px;
+
+      outline: none;
+
+      color: #ffffff;
+      background: rgba(255,255,255,0.025);
+
+      font-family: "DM Sans", sans-serif;
+      font-size: 15px;
+
+      transition: 0.25s;
+    }
+
+    .input-wrap input::placeholder {
+      color: #8d959f;
+    }
+
+    .input-wrap input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(216,161,63,0.08);
+    }
+
+    .password-toggle {
+      position: absolute;
+      right: 17px;
+      top: 50%;
+      transform: translateY(-50%);
+
+      background: none;
+      border: none;
+      color: #b8bec5;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .forgot-row {
+      text-align: right;
+      margin-top: -8px;
+      margin-bottom: 26px;
+    }
+
+    .forgot-row a {
+      color: var(--gold-light);
+      font-size: 14px;
+    }
+
+    .login-submit {
+      width: 100%;
+      min-height: 62px;
+
+      border: none;
+      border-radius: 12px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #b77b24,
+          #e0aa47,
+          #bd7e20
+        );
+
+      color: white;
+
+      font-family: "DM Sans", sans-serif;
+      font-size: 17px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .login-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(216,161,63,0.2);
+    }
+
+    .divider {
+      margin: 30px 0;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: #b4bbc2;
+      font-size: 14px;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.12);
+    }
+
+    .google-button {
+      width: 100%;
+      min-height: 58px;
+
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 12px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+
+      background: transparent;
+      color: white;
+
+      font-size: 16px;
+      cursor: pointer;
+
+      transition: 0.25s;
+    }
+
+    .google-button:hover {
+      border-color: var(--gold);
+      background: rgba(216,161,63,0.05);
+    }
+
+    .google-icon {
+      width: 24px;
+      height: 24px;
+
+      border-radius: 50%;
+
+      background: white;
+      color: #4285f4;
+
+      display: grid;
+      place-items: center;
+
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .join-row {
+      text-align: center;
+      margin-top: 28px;
+      font-size: 14px;
+      color: #aeb5bd;
+    }
+
+    .join-row a {
+      color: var(--gold-light);
+      margin-left: 7px;
+    }
+
+    .secure-note {
+      margin-top: 45px;
+      padding-top: 24px;
+
+      border-top: 1px solid rgba(255,255,255,0.07);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      color: #a8afb7;
+      font-size: 14px;
+    }
+
+    .back-home {
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      z-index: 10;
+
+      min-height: 44px;
+      padding: 0 18px;
+
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      border: 1px solid rgba(216,161,63,0.5);
+      border-radius: 12px;
+
+      background: rgba(0,17,31,0.65);
+      backdrop-filter: blur(10px);
+
+      color: white;
+      font-size: 13px;
+    }
+
+    .back-home span {
+      color: var(--gold-light);
+    }
+
+    @media (max-width: 950px) {
+      .login-page {
+        grid-template-columns: 1fr;
+      }
+
+      .login-visual {
+        min-height: 440px;
+      }
+
+      .login-side {
+        min-height: auto;
+        padding: 55px 25px;
+      }
+
+      .login-card {
+        padding: 45px 35px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .login-visual {
+        min-height: 360px;
+      }
+
+      .login-brand-logo {
+        width: 95px;
+        height: 95px;
+      }
+
+      .login-brand h1 {
+        font-size: 42px;
+      }
+
+      .login-brand h1 span {
+        font-size: 19px;
+        letter-spacing: 7px;
+      }
+
+      .login-brand p {
+        font-size: 11px;
+        letter-spacing: 3px;
+      }
+
+      .login-card {
+        padding: 38px 22px;
+      }
+
+      .login-card-header h2 {
+        font-size: 39px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <a href="index.html" class="back-home">
+    <span>←</span>
+    Back to Home
+  </a>
+
+  <main class="login-page">
+
+    <section class="login-visual">
+
+      <div class="login-brand">
+        <div class="login-brand-logo">
+         <img src="images/logo-small.webp" alt="GoldenGetaways logo">
+        </div>
+
+        <h1>
+          GOLDEN
+          <span>GETAWAYS</span>
+        </h1>
+
+        <div class="brand-line"></div>
+
+        <p>TRAVEL MORE. STRESS LESS.</p>
+      </div>
+
+    </section>
+
+    <section class="login-side">
+
+      <div class="login-card">
+
+        <div class="login-card-header">
+          <h2>Welcome back</h2>
+          <p>Log in to access your GoldenGetaways account</p>
+        </div>
+
+        <form id="loginForm">
+          <div class="form-group" id="nameGroup" style="display:none;">
+  <label for="fullName">Your name</label>
+
+  <div class="input-wrap">
+    <span class="input-icon">👤</span>
+
+    <input
+      id="fullName"
+      type="text"
+      placeholder="Enter your name"
+      autocomplete="name"
+    >
+  </div>
+</div>
+
+          <div class="form-group">
+            <label for="email">Email address</label>
+
+            <div class="input-wrap">
+              <span class="input-icon">✉</span>
+
+              <input
+                id="email"
+                type="email"
+                placeholder="Enter your email"
+                required
+              >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+
+            <div class="input-wrap">
+              <span class="input-icon">🔒</span>
+
+              <input
+                id="password"
+                type="password"
+                placeholder="Enter your password"
+                required
+              >
+
+              <button
+                type="button"
+                class="password-toggle"
+                id="passwordToggle"
+                aria-label="Show password"
+              >
+                ◉
+              </button>
+            </div>
+          </div>
+
+          <div class="forgot-row">
+            <a href="#">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="login-submit">
+            Log In
+            <span>→</span>
+          </button>
+
+        </form>
+        <div class="join-row">
+    Don’t have an account?
+   <a href="#" id="showSignup">
+    Join GoldenGetaways →
+    </a>
+        </div>
+        <div class="join-row" id="existingMemberRow">
+  Already paying for GoldenGetaways?
+  <a href="#" id="activateExistingMember">
+    Activate your account →
+  </a>
+</div>
+        <div class="join-row" id="loginRow" style="display:none;">
+  Already have an account?
+  <a href="#" id="showLogin">
+    Log in →
+  </a>
+</div>
+        <div class="secure-note">
+          🔒
+          Your data is secure and encrypted
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+  <script>
+    const passwordInput = document.getElementById("password");
+    const passwordToggle = document.getElementById("passwordToggle");
+    const loginForm = document.getElementById("loginForm");
+const showSignup = document.getElementById("showSignup");
+const showLogin = document.getElementById("showLogin");
+const loginRow = document.getElementById("loginRow");
+const activateExistingMember =
+  document.getElementById("activateExistingMember");
+const existingMemberRow =
+  document.getElementById("existingMemberRow");
+let isExistingMemberMode = false;
+const nameGroup = document.getElementById("nameGroup");
+const fullNameInput = document.getElementById("fullName");
+    let isSignupMode = false;
+    const urlParams =
+  new URLSearchParams(window.location.search);
+
+const referralCode =
+  urlParams.get("ref");
+  const existingActivation =
+  localStorage.getItem(
+    "gg_existing_member_activation"
+  ) === "true";
+  const returningExistingMember =
+  urlParams.get("activate") === "existing";
+    passwordToggle.addEventListener("click", () => {
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        passwordToggle.textContent = "◌";
+      } else {
+        passwordInput.type = "password";
+        passwordToggle.textContent = "◉";
+      }
+    });
+    activateExistingMember.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  isSignupMode = true;
+  isExistingMemberMode = true;
+
+  nameGroup.style.display = "block";
+  fullNameInput.required = true;
+
+  document.querySelector(".login-card-header h2").textContent =
+    "Activate your account";
+
+  document.querySelector(".login-card-header p").textContent =
+    "Create your website account using the email you already use for your GoldenGetaways membership";
+
+  document.querySelector(".login-submit").innerHTML =
+    'Activate Account <span>→</span>';
+
+  showSignup.parentElement.style.display = "none";
+  existingMemberRow.style.display = "none";
+  loginRow.style.display = "block";
+});
+ showSignup.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  isSignupMode = true;
+  isExistingMemberMode = false;
+  nameGroup.style.display = "block";
+fullNameInput.required = true;
+  document.querySelector(".login-card-header h2").textContent =
+    "Create your account";
+
+  document.querySelector(".login-card-header p").textContent =
+    "Join GoldenGetaways and unlock your member benefits";
+
+  document.querySelector(".login-submit").innerHTML =
+    'Create Account <span>→</span>';
+
+  showSignup.parentElement.style.display = "none";
+  loginRow.style.display = "block";
+});
+
+showLogin.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  isSignupMode = false;
+  isExistingMemberMode = false;
+
+  document.querySelector(".login-card-header h2").textContent =
+    "Welcome back";
+
+  document.querySelector(".login-card-header p").textContent =
+    "Log in to access your GoldenGetaways account";
+
+  document.querySelector(".login-submit").innerHTML =
+    'Log In <span>→</span>';
+
+  showSignup.parentElement.style.display = "block";
+  loginRow.style.display = "none";
+});
+   loginForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const email = document.getElementById("email").value;
+  const password = passwordInput.value;
+
+  let result;
+
+if (isSignupMode) {
+ result = await supabaseClient.auth.signUp({
+    email,
+    password,
+    options: {
+      emailRedirectTo:
+  window.location.origin +
+  (isExistingMemberMode
+    ? "/join.html?activate=existing"
+    : "/member-membership.html?checkout=1"),
+        data: {
+            referral_code: referralCode || null
+        }
+    }
+})
+} else {
+  result = await supabaseClient.auth.signInWithPassword({
+    email,
+    password
+  });
+}
+
+  const { data, error } = result;
+
+  if (error) {
+    alert(error.message);
+    return;
+  }
+
+ if (isSignupMode) {
+  if (isExistingMemberMode) {
+    localStorage.setItem(
+      "gg_existing_member_activation",
+      "true"
+    );
+  } else {
+    localStorage.removeItem(
+      "gg_existing_member_activation"
+    );
+  }
+
+  alert("Account created. Check your email to verify your account.");
+  return;
+}
+if (returningExistingMember) {
+  const {
+    data: { session }
+  } = await supabaseClient.auth.getSession();
+
+  if (session) {
+    const { data, error } =
+      await supabaseClient.functions.invoke(
+        "activate-existing-member"
+      );
+
+    if (error) {
+      console.error(
+        "Existing member activation failed:",
+        error
+      );
+
+      alert(
+        "We couldn't verify your existing membership automatically. Please contact GoldenGetaways support."
+      );
+
+      return;
+    }
+
+    if (data?.active) {
+      localStorage.removeItem(
+        "gg_existing_member_activation"
+      );
+
+      window.location.href = "dashboard.html";
+      return;
+    }
+  }
+}
+  window.location.href = "dashboard.html";
+});
+async function activateReturningExistingMember() {
+  if (!returningExistingMember) {
+    return;
+  }
+
+  const {
+    data: { session }
+  } = await supabaseClient.auth.getSession();
+
+  if (!session) {
+    alert(
+      "Please log in with the account you just verified to activate your existing membership."
+    );
+    return;
+  }
+
+  const { data, error } =
+    await supabaseClient.functions.invoke(
+      "activate-existing-member"
+    );
+
+  if (error || !data?.active) {
+    console.error(
+      "Existing membership activation failed:",
+      error || data
+    );
+
+    alert(
+      "We couldn't find an active GoldenGetaways membership for this email. Please contact GoldenGetaways support."
+    );
+    return;
+  }
+
+  localStorage.removeItem(
+    "gg_existing_member_activation"
+  );
+
+  window.location.href = "dashboard.html";
+}
+
+activateReturningExistingMember();
+  </script>
+
+</body>
+</html>

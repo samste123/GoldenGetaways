@@ -1,0 +1,1947 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    City Breaks | Handpicked European City Getaways | GoldenGetaways
+  </title>
+
+  <meta
+    name="description"
+    content="Explore handpicked city breaks with GoldenGetaways. Discover short city getaways, weekend breaks, culture trips, food escapes and popular European city holidays from UK airports."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  >
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+
+      background:
+        radial-gradient(
+          circle at 70% 5%,
+          #08263c 0%,
+          #00111f 38%,
+          #000b15 100%
+        );
+
+      color: white;
+
+      overflow-x: hidden;
+    }
+
+
+    /* =========================================
+       HEADER
+    ========================================= */
+
+    .header {
+      position: absolute;
+
+      top: 0;
+      left: 0;
+
+      width: 100%;
+
+      z-index: 1000;
+
+      background: transparent;
+    }
+
+
+    /* =========================================
+       HERO
+    ========================================= */
+
+    .city-hero {
+      position: relative;
+
+      min-height: 650px;
+
+      display: flex;
+
+      align-items: center;
+
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(2,18,32,0.97) 0%,
+          rgba(2,18,32,0.88) 32%,
+          rgba(2,18,32,0.48) 58%,
+          rgba(2,18,32,0.10) 100%
+        ),
+        url("images/reviews-hero.webp")
+        center / cover
+        no-repeat;
+    }
+
+
+    .hero-inner {
+      width: 100%;
+
+      padding:
+        155px 6% 70px;
+
+      position: relative;
+
+      z-index: 2;
+    }
+
+
+    .hero-copy {
+      max-width: 780px;
+    }
+
+
+    .hero-eyebrow {
+      margin-bottom: 18px;
+
+      color: var(--gold-light);
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      letter-spacing: 4px;
+    }
+
+
+    .hero-copy h1 {
+      margin:
+        0 0 24px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size:
+        clamp(
+          58px,
+          5.8vw,
+          88px
+        );
+
+      font-weight: 400;
+
+      line-height: 0.96;
+    }
+
+
+    .hero-copy h1 em {
+      color: var(--gold-light);
+
+      font-weight: 400;
+    }
+
+
+    .hero-line {
+      width: 48px;
+
+      height: 2px;
+
+      margin-bottom: 24px;
+
+      background: var(--gold);
+    }
+
+
+    .hero-copy p {
+      max-width: 690px;
+
+      margin:
+        0 0 30px;
+
+      color: #e1e6ea;
+
+      font-size: 16px;
+
+      line-height: 1.75;
+    }
+
+
+    .hero-actions {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 13px;
+    }
+
+
+    .secondary-button {
+      min-height: 54px;
+
+      padding:
+        0 25px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.46);
+
+      border-radius: 12px;
+
+      background:
+        rgba(0,17,31,0.48);
+
+      color: var(--gold-light);
+
+      font-size: 14px;
+    }
+
+
+    /* =========================================
+       PAGE WIDTH
+    ========================================= */
+
+    .page-inner {
+      width: 88%;
+
+      max-width: 1500px;
+
+      margin:
+        0 auto;
+    }
+
+
+    /* =========================================
+       SEO INTRO
+    ========================================= */
+
+    .seo-intro {
+      padding:
+        80px 0 45px;
+
+      max-width: 1000px;
+    }
+
+
+    .section-eyebrow {
+      margin:
+        0 0 13px;
+
+      color: var(--gold-light);
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      letter-spacing: 4px;
+    }
+
+
+    .seo-intro h2 {
+      margin:
+        0 0 20px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size:
+        clamp(
+          42px,
+          4vw,
+          60px
+        );
+
+      font-weight: 400;
+
+      line-height: 1.05;
+    }
+
+
+    .seo-intro h2 em {
+      color: var(--gold-light);
+
+      font-weight: 400;
+    }
+
+
+    .seo-intro p {
+      margin:
+        0 0 16px;
+
+      color: #cbd2d7;
+
+      font-size: 15px;
+
+      line-height: 1.8;
+    }
+
+
+    /* =========================================
+       HOLIDAY GRID
+    ========================================= */
+
+    .holiday-section {
+      padding-bottom: 80px;
+    }
+
+
+    .holiday-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          2,
+          minmax(0,1fr)
+        );
+
+      gap: 24px;
+    }
+
+
+    .holiday-card {
+      overflow: hidden;
+
+      display: flex;
+
+      flex-direction: column;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.35);
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #062238,
+          #031827
+        );
+
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+
+    .holiday-card:hover {
+      transform:
+        translateY(-5px);
+
+      border-color:
+        rgba(216,161,63,0.68);
+
+      box-shadow:
+        0 22px 55px
+        rgba(0,0,0,0.25);
+    }
+
+
+    .holiday-image {
+      position: relative;
+
+      height: 320px;
+
+      overflow: hidden;
+    }
+
+
+    .holiday-image img {
+      width: 100%;
+
+      height: 100%;
+
+      display: block;
+
+      object-fit: cover;
+
+      transition:
+        transform 0.4s ease;
+    }
+
+
+    .holiday-card:hover
+    .holiday-image img {
+      transform:
+        scale(1.035);
+    }
+
+
+    .holiday-badge {
+      position: absolute;
+
+      top: 18px;
+
+      left: 18px;
+
+      min-height: 31px;
+
+      padding:
+        0 12px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.65);
+
+      border-radius: 50px;
+
+      background:
+        rgba(0,17,31,0.90);
+
+      color: var(--gold-light);
+
+      font-size: 9px;
+
+      font-weight: 600;
+
+      letter-spacing: 1.4px;
+    }
+
+
+    .holiday-content {
+      flex: 1;
+
+      display: flex;
+
+      flex-direction: column;
+
+      padding:
+        25px;
+    }
+
+
+    .holiday-location {
+      margin:
+        0 0 8px;
+
+      color: var(--gold-light);
+
+      font-size: 10px;
+
+      font-weight: 600;
+
+      letter-spacing: 2px;
+    }
+
+
+    .holiday-card h2 {
+      margin:
+        0 0 12px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 31px;
+
+      font-weight: 400;
+
+      line-height: 1.08;
+    }
+
+
+    .holiday-details {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 8px;
+
+      margin-bottom: 16px;
+    }
+
+
+    .holiday-details span {
+      padding:
+        7px 10px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.20);
+
+      border-radius: 7px;
+
+      background:
+        rgba(255,255,255,0.03);
+
+      color: #e6eaed;
+
+      font-size: 12px;
+    }
+
+
+    .holiday-description {
+      margin:
+        0 0 22px;
+
+      color: #c8cfd5;
+
+      font-size: 13px;
+
+      line-height: 1.7;
+    }
+
+
+    .holiday-bottom {
+      margin-top: auto;
+
+      padding-top: 18px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 18px;
+
+      border-top:
+        1px solid
+        rgba(255,255,255,0.07);
+    }
+
+
+    .holiday-price small {
+      display: block;
+
+      margin-bottom: 3px;
+
+      color: #aeb7c1;
+
+      font-size: 11px;
+    }
+
+
+    .holiday-price strong {
+      color: var(--gold-light);
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 30px;
+
+      font-weight: 400;
+    }
+
+
+    .book-button {
+      min-height: 48px;
+
+      padding:
+        0 19px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border-radius: 9px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #b77b24,
+          #e0aa47
+        );
+
+      color: white;
+
+      font-size: 13px;
+
+      font-weight: 500;
+
+      text-align: center;
+    }
+
+
+    /* =========================================
+       SEO BOTTOM
+    ========================================= */
+
+    .seo-bottom {
+      padding:
+        70px 0 80px;
+
+      border-top:
+        1px solid
+        rgba(255,255,255,0.05);
+    }
+
+
+    .seo-bottom-grid {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0,1fr)
+        minmax(300px,420px);
+
+      gap: 70px;
+    }
+
+
+    .seo-bottom h2 {
+      margin:
+        0 0 18px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size:
+        clamp(
+          38px,
+          3.5vw,
+          52px
+        );
+
+      font-weight: 400;
+
+      line-height: 1.08;
+    }
+
+
+    .seo-bottom h2 em {
+      color: var(--gold-light);
+
+      font-weight: 400;
+    }
+
+
+    .seo-bottom p {
+      margin:
+        0 0 16px;
+
+      color: #cad1d6;
+
+      font-size: 14px;
+
+      line-height: 1.8;
+    }
+
+
+    .seo-box {
+      padding: 26px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.35);
+
+      border-radius: 17px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(6,32,51,0.91),
+          rgba(1,17,30,0.97)
+        );
+    }
+
+
+    .seo-box h3 {
+      margin:
+        0 0 17px;
+
+      color: var(--gold-light);
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      letter-spacing: 2.5px;
+    }
+
+
+    .seo-link {
+      min-height: 52px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      border-bottom:
+        1px solid
+        rgba(255,255,255,0.07);
+
+      color: white;
+
+      font-size: 13px;
+    }
+
+
+    .seo-link:last-child {
+      border-bottom: none;
+    }
+
+
+    .seo-link span {
+      color: var(--gold-light);
+    }
+
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+
+    @media (max-width: 950px) {
+
+      .holiday-grid {
+        grid-template-columns:
+          1fr;
+      }
+
+
+      .seo-bottom-grid {
+        grid-template-columns:
+          1fr;
+
+        gap: 35px;
+      }
+
+    }
+
+
+    @media (max-width: 650px) {
+
+      .hero-inner {
+        padding:
+          125px 5% 55px;
+      }
+
+
+      .hero-copy h1 {
+        font-size: 52px;
+      }
+
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+
+      .hero-actions a {
+        width: 100%;
+      }
+
+
+      .page-inner {
+        width:
+          calc(100% - 36px);
+      }
+
+
+      .holiday-image {
+        height: 235px;
+      }
+
+
+      .holiday-bottom {
+        flex-direction: column;
+
+        align-items: stretch;
+      }
+
+
+      .book-button {
+        width: 100%;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================================
+       HEADER
+  ========================================= -->
+
+  <header class="header">
+
+
+    <a
+      href="index.html"
+      class="logo"
+    >
+
+      <div class="logo-icon">
+
+        <img
+          src="images/logo-small.webp"
+          alt="GoldenGetaways icon"
+        >
+
+      </div>
+
+
+      <div class="logo-text">
+
+        <span>
+          GoldenGetaways
+        </span>
+
+        <small>
+          EST 2025
+        </small>
+
+      </div>
+
+    </a>
+
+
+
+    <nav class="desktop-nav">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="membership.html">
+        Membership
+      </a>
+
+      <a
+        href="our-getaways.html"
+        class="active"
+      >
+        Our Getaways
+      </a>
+
+      <a href="how-it-works.html">
+        How It Works
+      </a>
+
+      <a href="reviews.html">
+        Reviews
+      </a>
+
+      <a href="faq.html">
+        FAQ
+      </a>
+
+      <a href="join.html">
+        Login / Join
+      </a>
+
+    </nav>
+
+
+
+    <a
+      href="join.html"
+      class="button gold-button header-button"
+    >
+      Join Now
+      <span>→</span>
+    </a>
+
+
+
+    <button
+      class="mobile-menu-button"
+      id="menuButton"
+      aria-label="Open menu"
+    >
+      ☰
+    </button>
+
+
+  </header>
+
+
+
+  <!-- =========================================
+       HERO
+  ========================================= -->
+
+  <section class="city-hero">
+
+
+    <div class="hero-inner">
+
+
+      <div class="hero-copy">
+
+
+        <p class="hero-eyebrow">
+          CITY BREAKS
+        </p>
+
+
+        <h1>
+
+          Handpicked
+
+          <em>
+            city break
+          </em>
+
+          getaways.
+
+        </h1>
+
+
+        <div class="hero-line"></div>
+
+
+        <p>
+
+          Explore GoldenGetaways handpicked city breaks,
+          from romantic European weekends and culture-filled
+          escapes to food trips, shopping breaks
+          and short stays in some of Europe's most popular cities.
+
+        </p>
+
+
+        <div class="hero-actions">
+
+
+          <a
+            href="#holidays"
+            class="button gold-button"
+          >
+            View City Breaks
+            <span>↓</span>
+          </a>
+
+
+          <a
+            href="our-getaways.html"
+            class="secondary-button"
+          >
+            ← Back to Our Getaways
+          </a>
+
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+
+  <main class="page-inner">
+
+
+    <!-- =========================================
+         SEO INTRO
+    ========================================= -->
+
+    <section class="seo-intro">
+
+
+      <p class="section-eyebrow">
+        OUR HANDPICKED CITY BREAKS
+      </p>
+
+
+      <h2>
+
+        Discover exciting
+
+        <em>
+          city getaways.
+        </em>
+
+      </h2>
+
+
+      <p>
+
+        City breaks are perfect when you want to get away
+        without committing to a full week. Our handpicked
+        city breaks bring together short stays across some
+        of Europe's most popular cities, giving you inspiration
+        for weekend escapes and quick trips from the UK.
+
+      </p>
+
+
+      <p>
+
+        Explore romantic city breaks, culture-filled weekends,
+        food and nightlife trips, shopping escapes and affordable
+        European city holidays. Whether you want iconic landmarks,
+        historic streets, rooftop bars or world-famous restaurants,
+        there's a city getaway for almost every style of trip.
+
+      </p>
+
+
+      <p>
+
+        Browse the 10 featured city breaks below.
+        Prices can vary depending on dates, departure airport
+        and availability, so GoldenGetaways members can also
+        request a personalised city break search based
+        on their budget and preferred destination.
+
+      </p>
+
+
+    </section>
+
+
+
+    <!-- =========================================
+         10 CITY BREAKS
+    ========================================= -->
+
+    <section
+      class="holiday-section"
+      id="holidays"
+    >
+
+
+      <div class="holiday-grid">
+
+
+
+      
+
+
+        <!-- HOLIDAY 1 -->
+
+<article class="holiday-card">
+
+  <div class="holiday-image">
+
+    <img
+      src="images/rome-carpegna-city-break.webp"
+      alt="Rome city break getaway in Italy"
+    >
+
+    <span class="holiday-badge">
+      ROME CITY BREAK
+    </span>
+
+  </div>
+
+  <div class="holiday-content">
+
+    <p class="holiday-location">
+      ITALY • ROME • AURELIO
+    </p>
+
+    <h2>
+      4 Star Rome City Break Getaway
+    </h2>
+
+    <div class="holiday-details">
+
+      <span>7 Nights</span>
+
+      <span>4 Star</span>
+
+      <span>Room Only</span>
+
+      <span>Rome</span>
+
+      <span>Flights Included</span>
+
+    </div>
+
+    <p class="holiday-description">
+      Spend seven nights exploring Rome from a
+      stylish four-star base, perfect for discovering
+      the city's famous sights, restaurants and
+      historic streets.
+    </p>
+
+    <div class="holiday-bottom">
+
+      <div class="holiday-price">
+
+        <small>
+          From
+        </small>
+
+        <strong>
+          £520pp
+        </strong>
+
+      </div>
+
+      <a
+        href="join.html"
+        class="book-button"
+      >
+        Become a Member & Book Now →
+      </a>
+
+    </div>
+
+  </div>
+
+</article>
+   
+
+<!-- HOLIDAY 2 -->
+
+<article class="holiday-card">
+
+  <div class="holiday-image">
+
+    <img
+      src="images/barcelona-sb-glow-city-break.webp?v=2"
+      alt="Barcelona rooftop pool city break"
+    >
+
+    <span class="holiday-badge">
+      BARCELONA ESCAPE
+    </span>
+
+  </div>
+
+  <div class="holiday-content">
+
+    <p class="holiday-location">
+      SPAIN • BARCELONA
+    </p>
+
+    <h2>
+      4 Star Barcelona Rooftop City Break
+    </h2>
+
+    <div class="holiday-details">
+      <span>7 Nights</span>
+      <span>4 Star</span>
+      <span>Room Only</span>
+      <span>Rooftop Pool</span>
+      <span>Flights Included</span>
+    </div>
+
+    <p class="holiday-description">
+      Spend seven nights in Barcelona with a stylish
+      four-star base and rooftop pool, perfect for
+      combining city sightseeing with relaxing views
+      across the Barcelona skyline.
+    </p>
+
+    <div class="holiday-bottom">
+
+      <div class="holiday-price">
+        <small>From</small>
+        <strong>£520pp</strong>
+      </div>
+
+      <a href="join.html" class="book-button">
+        Become a Member & Book Now →
+      </a>
+
+    </div>
+
+  </div>
+
+</article>
+
+
+        <!-- CITY BREAK 3 -->
+
+<article class="holiday-card">
+
+  <div class="holiday-image">
+
+    <img
+      src="images/lisbon-sana-reno-city-break.webp"
+      alt="Lisbon rooftop pool city break"
+    >
+
+    <span class="holiday-badge">
+      LISBON CITY BREAK
+    </span>
+
+  </div>
+
+
+  <div class="holiday-content">
+
+    <p class="holiday-location">
+      PORTUGAL • LISBON
+    </p>
+
+    <h2>
+      Lisbon Rooftop Pool City Break
+    </h2>
+
+    <div class="holiday-details">
+
+      <span>7 Nights</span>
+
+      <span>3 Star</span>
+
+      <span>Bed & Breakfast</span>
+
+      <span>Rooftop Pool</span>
+
+      <span>Flights Included</span>
+
+    </div>
+
+    <p class="holiday-description">
+      Spend seven nights exploring Lisbon from a
+      stylish city base with breakfast included and
+      a rooftop pool, perfect for combining sightseeing
+      with relaxing days in the Portuguese sunshine.
+    </p>
+
+    <div class="holiday-bottom">
+
+      <div class="holiday-price">
+
+        <small>
+          From
+        </small>
+
+        <strong>
+          £420pp
+        </strong>
+
+      </div>
+
+      <a
+        href="join.html"
+        class="book-button"
+      >
+        Become a Member & Book Now →
+      </a>
+
+    </div>
+
+  </div>
+
+</article>
+
+       <!-- CITY BREAK 4 -->
+
+<article class="holiday-card">
+
+  <div class="holiday-image">
+
+    <img
+      src="images/venice-elite-spa-city-break.webp"
+      alt="Venice spa city break"
+    >
+
+    <span class="holiday-badge">
+      VENICE SPA BREAK
+    </span>
+
+  </div>
+
+  <div class="holiday-content">
+
+    <p class="holiday-location">
+      ITALY • VENICE • MESTRE
+    </p>
+
+    <h2>
+      4 Star Venice Spa City Break
+    </h2>
+
+    <div class="holiday-details">
+
+      <span>7 Nights</span>
+
+      <span>4 Star</span>
+
+      <span>Room Only</span>
+
+      <span>Spa</span>
+
+      <span>Flights Included</span>
+
+    </div>
+
+    <p class="holiday-description">
+      Enjoy seven nights near Venice from a stylish
+      four-star spa hotel, giving you the perfect base
+      for exploring the famous canals, historic streets
+      and sights of Venice.
+    </p>
+
+    <div class="holiday-bottom">
+
+      <div class="holiday-price">
+
+        <small>
+          From
+        </small>
+
+        <strong>
+          £390pp
+        </strong>
+
+      </div>
+
+      <a
+        href="join.html"
+        class="book-button"
+      >
+        Become a Member & Book Now →
+      </a>
+
+    </div>
+
+  </div>
+
+</article>
+
+
+
+      <!-- CITY BREAK 5 -->
+
+<article class="holiday-card">
+
+  <div class="holiday-image">
+
+    <img
+      src="images/barcelona-sb-plaza-city-break.webp"
+      alt="Barcelona rooftop pool city break"
+    >
+
+    <span class="holiday-badge">
+      BARCELONA ROOFTOP
+    </span>
+
+  </div>
+
+  <div class="holiday-content">
+
+    <p class="holiday-location">
+      SPAIN • BARCELONA • HOSPITALET
+    </p>
+
+    <h2>
+      Barcelona Rooftop Pool City Break
+    </h2>
+
+    <div class="holiday-details">
+
+      <span>7 Nights</span>
+
+      <span>4 Star</span>
+
+      <span>Room Only</span>
+
+      <span>Rooftop Pool</span>
+
+      <span>Flights Included</span>
+
+    </div>
+
+    <p class="holiday-description">
+      Spend seven nights in Barcelona with a rooftop
+      pool and sweeping city views, giving you a great
+      base for sightseeing, shopping and exploring
+      everything Barcelona has to offer.
+    </p>
+
+    <div class="holiday-bottom">
+
+      <div class="holiday-price">
+
+        <small>
+          From
+        </small>
+
+        <strong>
+          £535pp
+        </strong>
+
+      </div>
+
+      <a
+        href="join.html"
+        class="book-button"
+      >
+        Become a Member & Book Now →
+      </a>
+
+    </div>
+
+  </div>
+
+</article>
+
+
+
+<!-- CITY BREAK 6 -->
+
+<article class="holiday-card">
+
+  <div class="holiday-image">
+
+    <img
+      src="images/copenhagen-island-city-break.webp"
+      alt="Copenhagen waterfront city break"
+    >
+
+    <span class="holiday-badge">
+      COPENHAGEN ESCAPE
+    </span>
+
+  </div>
+
+  <div class="holiday-content">
+
+    <p class="holiday-location">
+      DENMARK • COPENHAGEN
+    </p>
+
+    <h2>
+      4 Star Copenhagen City Break
+    </h2>
+
+    <div class="holiday-details">
+
+      <span>7 Nights</span>
+
+      <span>4 Star</span>
+
+      <span>Room Only</span>
+
+      <span>Waterfront</span>
+
+      <span>Flights Included</span>
+
+    </div>
+
+    <p class="holiday-description">
+      Spend seven nights exploring Copenhagen from a
+      modern four-star waterfront base, perfect for
+      discovering the city's canals, colourful streets,
+      restaurants and famous attractions.
+    </p>
+
+    <div class="holiday-bottom">
+
+      <div class="holiday-price">
+
+        <small>
+          From
+        </small>
+
+        <strong>
+          £510pp
+        </strong>
+
+      </div>
+
+      <a
+        href="join.html"
+        class="book-button"
+      >
+        Become a Member & Book Now →
+      </a>
+
+    </div>
+
+  </div>
+
+</article>
+
+       <!-- CITY BREAK 7 -->
+
+<article class="holiday-card">
+
+  <div class="holiday-image">
+
+    <img
+      src="images/valencia-oceanic-city-break.webp"
+      alt="Valencia city break with outdoor pool"
+    >
+
+    <span class="holiday-badge">
+      VALENCIA ESCAPE
+    </span>
+
+  </div>
+
+  <div class="holiday-content">
+
+    <p class="holiday-location">
+      SPAIN • VALENCIA
+    </p>
+
+    <h2>
+      4 Star Valencia Pool City Break
+    </h2>
+
+    <div class="holiday-details">
+
+      <span>7 Nights</span>
+
+      <span>4 Star</span>
+
+      <span>Room Only</span>
+
+      <span>Outdoor Pool</span>
+
+      <span>Flights Included</span>
+
+    </div>
+
+    <p class="holiday-description">
+      Enjoy seven nights in Valencia from a modern
+      four-star hotel with an outdoor pool, perfectly
+      placed for combining city sightseeing with
+      Mediterranean sunshine.
+    </p>
+
+    <div class="holiday-bottom">
+
+      <div class="holiday-price">
+
+        <small>
+          From
+        </small>
+
+        <strong>
+          £505pp
+        </strong>
+
+      </div>
+
+      <a
+        href="join.html"
+        class="book-button"
+      >
+        Become a Member & Book Now →
+      </a>
+
+    </div>
+
+  </div>
+
+</article>
+
+
+
+     <!-- CITY BREAK 8 -->
+
+<article class="holiday-card">
+
+  <div class="holiday-image">
+
+    <img
+      src="images/berlin-palace-city-break.webp"
+      alt="Berlin luxury city break"
+    >
+
+    <span class="holiday-badge">
+      BERLIN CITY BREAK
+    </span>
+
+  </div>
+
+  <div class="holiday-content">
+
+    <p class="holiday-location">
+      GERMANY • BERLIN • KU'DAMM
+    </p>
+
+    <h2>
+      5 Star Berlin City Break Getaway
+    </h2>
+
+    <div class="holiday-details">
+
+      <span>7 Nights</span>
+
+      <span>5 Star</span>
+
+      <span>Room Only</span>
+
+      <span>Berlin</span>
+
+      <span>Flights Included</span>
+
+    </div>
+
+    <p class="holiday-description">
+      Spend seven nights exploring Berlin from a
+      five-star city base, perfect for discovering
+      famous landmarks, restaurants, nightlife and
+      the German capital's historic sights.
+    </p>
+
+    <div class="holiday-bottom">
+
+      <div class="holiday-price">
+
+        <small>
+          From
+        </small>
+
+        <strong>
+          £570pp
+        </strong>
+
+      </div>
+
+      <a
+        href="join.html"
+        class="book-button"
+      >
+        Become a Member & Book Now →
+      </a>
+
+    </div>
+
+  </div>
+
+</article>   
+
+
+
+    <!-- CITY BREAK 9 -->
+
+<article class="holiday-card">
+
+  <div class="holiday-image">
+
+    <img
+      src="images/krakow-vienna-house-city-break.webp"
+      alt="Krakow city break getaway"
+    >
+
+    <span class="holiday-badge">
+      KRAKOW CITY BREAK
+    </span>
+
+  </div>
+
+  <div class="holiday-content">
+
+    <p class="holiday-location">
+      POLAND • KRAKOW • OLD TOWN
+    </p>
+
+    <h2>
+      Krakow City Break Getaway
+    </h2>
+
+    <div class="holiday-details">
+
+      <span>7 Nights</span>
+
+      <span>3 Star</span>
+
+      <span>Room Only</span>
+
+      <span>Krakow</span>
+
+      <span>Flights Included</span>
+
+    </div>
+
+    <p class="holiday-description">
+      Enjoy seven nights exploring Krakow from a
+      great-value city base, perfect for discovering
+      the Old Town, historic sights, restaurants
+      and nightlife.
+    </p>
+
+    <div class="holiday-bottom">
+
+      <div class="holiday-price">
+
+        <small>
+          From
+        </small>
+
+        <strong>
+          £260pp
+        </strong>
+
+      </div>
+
+      <a
+        href="join.html"
+        class="book-button"
+      >
+        Become a Member & Book Now →
+      </a>
+
+    </div>
+
+  </div>
+
+</article>
+
+
+       <!-- CITY BREAK 10 -->
+
+<article class="holiday-card">
+
+  <div class="holiday-image">
+
+    <img
+      src="images/dublin-clayton-city-break.webp"
+      alt="Dublin city break getaway"
+    >
+
+    <span class="holiday-badge">
+      DUBLIN CITY BREAK
+    </span>
+
+  </div>
+
+  <div class="holiday-content">
+
+    <p class="holiday-location">
+      IRELAND • DUBLIN
+    </p>
+
+    <h2>
+      4 Star Dublin City Break Getaway
+    </h2>
+
+    <div class="holiday-details">
+
+      <span>7 Nights</span>
+
+      <span>4 Star</span>
+
+      <span>Room Only</span>
+
+      <span>Dublin</span>
+
+      <span>Flights Included</span>
+
+    </div>
+
+    <p class="holiday-description">
+      Spend seven nights discovering Dublin from a
+      modern four-star base, perfect for exploring
+      the city's famous attractions, pubs, restaurants
+      and lively atmosphere.
+    </p>
+
+    <div class="holiday-bottom">
+
+      <div class="holiday-price">
+
+        <small>
+          From
+        </small>
+
+        <strong>
+          £375pp
+        </strong>
+
+      </div>
+
+      <a
+        href="join.html"
+        class="book-button"
+      >
+        Become a Member & Book Now →
+      </a>
+
+    </div>
+
+  </div>
+
+</article>
+
+
+
+    <!-- =========================================
+         SEO BOTTOM
+    ========================================= -->
+
+    <section class="seo-bottom">
+
+
+      <div class="seo-bottom-grid">
+
+
+        <div>
+
+
+          <p class="section-eyebrow">
+            CITY BREAK INSPIRATION
+          </p>
+
+
+          <h2>
+
+            Find your next
+
+            <em>
+              European city escape.
+            </em>
+
+          </h2>
+
+
+          <p>
+
+            City breaks are ideal for shorter trips,
+            weekend getaways and travellers who want
+            to pack plenty into a few days.
+            From historic capitals and romantic cities
+            to nightlife hotspots and food destinations,
+            Europe offers a huge variety of city escapes.
+
+          </p>
+
+
+          <p>
+
+            GoldenGetaways features city break inspiration
+            across popular destinations including Paris,
+            Rome, Barcelona, Prague, Amsterdam, Budapest,
+            Lisbon, Krakow, Venice and Berlin.
+
+          </p>
+
+
+          <p>
+
+            If the city breaks above aren't quite right,
+            members can request a personalised search
+            based on their dates, departure airport,
+            budget, preferred destination and trip length.
+
+          </p>
+
+
+        </div>
+
+
+
+        <aside class="seo-box">
+
+
+          <h3>
+            EXPLORE MORE HOLIDAYS
+          </h3>
+
+
+          <a
+            href="cheap-holidays.html"
+            class="seo-link"
+          >
+            Cheap Holidays
+            <span>→</span>
+          </a>
+
+
+          <a
+            href="couples-holidays.html"
+            class="seo-link"
+          >
+            Couples Holidays
+            <span>→</span>
+          </a>
+
+
+          <a
+            href="last-minute-holidays.html"
+            class="seo-link"
+          >
+            Last Minute Holidays
+            <span>→</span>
+          </a>
+
+
+          <a
+            href="luxury-holidays.html"
+            class="seo-link"
+          >
+            Luxury Holidays
+            <span>→</span>
+          </a>
+
+
+          <a
+            href="adults-only-holidays.html"
+            class="seo-link"
+          >
+            Adults Only Holidays
+            <span>→</span>
+          </a>
+
+
+          <a
+            href="our-getaways.html"
+            class="seo-link"
+          >
+            View All Getaways
+            <span>→</span>
+          </a>
+
+
+        </aside>
+
+
+      </div>
+
+
+    </section>
+
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+
+</body>
+
+</html>

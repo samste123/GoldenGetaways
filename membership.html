@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GoldenGetaways Membership</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+  rel="stylesheet"
+/>
+
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: #030b16;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    :root {
+      --navy: #030b16;
+      --navy-light: #071626;
+      --card: #081729;
+      --gold: #e8ae42;
+      --gold-light: #ffd77c;
+      --text-muted: #b9c1cc;
+      --border: rgba(232, 174, 66, 0.35);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* NAV */
+
+F
+    .logo {
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+      color: var(--gold);
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+      font-size: 15px;
+    }
+
+    .nav-links a {
+      color: #f2f2f2;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links .active {
+      color: var(--gold);
+    }
+
+    .login-btn {
+      border: 1px solid var(--gold);
+      padding: 10px 22px;
+      border-radius: 30px;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 630px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      filter: brightness(1.25) saturate(1.12);
+      padding: 80px 6%;
+      background:
+  linear-gradient(
+    90deg,
+   rgba(2, 18, 32, 0.62) 0%,
+rgba(2, 18, 32, 0.35) 33%,
+rgba(2, 18, 32, 0.08) 58%,
+rgba(2, 18, 32, 0.00) 100%
+  ),
+ url("images/membership-hero.webp") center/cover no-repeat;
+    }
+
+    .hero-content {
+      max-width: 600px;
+      z-index: 2;
+    }
+
+    .small-gold-line {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .small-gold-line span {
+      width: 80px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .small-gold-line i {
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(52px, 6vw, 78px);
+      line-height: 0.98;
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+
+    .hero-tagline {
+      color: var(--gold-light);
+      font-size: 20px;
+      margin-bottom: 18px;
+      font-family: "Playfair Display", serif;
+    }
+
+    .hero-text {
+      max-width: 530px;
+      color: #d2d8df;
+      font-size: 17px;
+      margin-bottom: 28px;
+    }
+
+    .price-box {
+      display: inline-block;
+      padding: 17px 28px;
+      border: 1px solid var(--gold);
+      border-radius: 12px;
+      margin-bottom: 18px;
+      background: rgba(3, 11, 22, 0.75);
+    }
+
+    .price {
+      font-family: "DM Sans", sans-serif;
+      font-size: 52px;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+
+    .price small {
+      font-family: "DM Sans", sans-serif;
+      font-size: 16px;
+      color: #ffffff;
+    }
+
+    .cancel {
+      color: #c9d0d8;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    .primary-btn {
+      display: block;
+      width: fit-content;
+      min-width: 340px;
+      text-align: center;
+      padding: 17px 30px;
+      border-radius: 8px;
+      color: #06101c;
+      font-size: 17px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #ffe49a, #daa43f);
+      box-shadow: 0 10px 30px rgba(232, 174, 66, 0.16);
+      transition: 0.25s;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 35px rgba(232, 174, 66, 0.24);
+    }
+
+    /* INCLUDED */
+
+    .included {
+      padding: 85px 6%;
+      max-width: 1500px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-title .decor {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .section-title .decor span {
+      width: 90px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .section-title .decor b {
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .section-title h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 46px;
+      font-weight: 500;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature-card {
+      min-height: 190px;
+      padding: 26px;
+      background: linear-gradient(
+        145deg,
+        rgba(9, 26, 45, 0.98),
+        rgba(5, 17, 31, 0.98)
+      );
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: 0.25s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(232, 174, 66, 0.75);
+    }
+
+    .icon {
+      min-width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 25px;
+    }
+
+    .feature-card h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 20px;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    /* BOTTOM CTA */
+
+    .bottom-wrap {
+      padding: 20px 6% 90px;
+    }
+
+    .bottom-cta {
+      max-width: 1400px;
+      margin: auto;
+      min-height: 330px;
+      border: 1px solid var(--gold);
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 55px;
+      background:
+        linear-gradient(
+          90deg,
+          #06101c 0%,
+          rgba(6, 16, 28, 0.95) 40%,
+          rgba(6, 16, 28, 0.35) 70%
+        ),
+        url("membership-bottom.jpg") center/cover no-repeat;
+    }
+
+    .bottom-content {
+      max-width: 680px;
+      z-index: 2;
+    }
+
+    .bottom-content h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 43px;
+      margin-bottom: 14px;
+      font-weight: 500;
+    }
+
+    .bottom-content p {
+      color: #d2d7df;
+      max-width: 650px;
+      margin-bottom: 14px;
+    }
+
+    .bottom-price {
+      color: var(--gold-light);
+      font-size: 19px;
+      margin-bottom: 20px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 1000px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-links {
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      nav {
+        padding: 0 5%;
+      }
+
+      .logo {
+        font-size: 23px;
+      }
+
+      .nav-links a:not(.login-btn) {
+        display: none;
+      }
+
+      .hero {
+        padding: 70px 5%;
+        min-height: 700px;
+        background:
+          linear-gradient(
+            0deg,
+            rgba(3, 11, 22, 1) 0%,
+            rgba(3, 11, 22, 0.75) 65%,
+            rgba(3, 11, 22, 0.35) 100%
+          ),
+          url("images/membership-hero.webp") center/cover no-repeat;
+      }
+
+      .hero h1 {
+        font-size: 50px;
+      }
+
+      .primary-btn {
+        min-width: 100%;
+      }
+
+      .included {
+        padding: 65px 5%;
+      }
+
+      .section-title h2 {
+        font-size: 36px;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .bottom-wrap {
+        padding: 10px 5% 60px;
+      }
+
+      .bottom-cta {
+        padding: 38px 25px;
+        min-height: 440px;
+        align-items: flex-end;
+        background:
+          linear-gradient(
+            0deg,
+            #06101c 0%,
+            rgba(6, 16, 28, 0.88) 58%,
+            rgba(6, 16, 28, 0.22) 100%
+          ),
+          url("membership-bottom.jpg") center/cover no-repeat;
+      }
+
+      .bottom-content h2 {
+        font-size: 34px;
+      }
+    }
+    /* MATCH HOME HEADER */
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: transparent;
+}
+
+.hero {
+  padding-top: 150px;
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+<header class="header">
+
+<a href="index.html" class="logo">
+
+  <div class="logo-icon">
+   <img src="images/logo-small.webp" alt="GoldenGetaways icon">
+  </div>
+
+  <div class="logo-text">
+    <span>GoldenGetaways</span>
+    <small>EST 2025</small>
+  </div>
+
+</a>
+
+
+<nav class="desktop-nav">
+  <a href="index.html">Home</a>
+  <a href="membership.html" class="active">Membership</a>
+  <a href="our-getaways.html">Our Getaways</a>
+  <a href="how-it-works.html">How It Works</a>
+  <a href="reviews.html">Reviews</a>
+  <a href="faq.html">FAQ</a>
+  <a href="join.html">Login / Join</a>
+</nav>
+
+
+<a href="join.html" class="button gold-button header-button">
+  Join Now
+  <span>→</span>
+</a>
+
+
+<button class="mobile-menu-button" id="menuButton">
+  ☰
+</button>
+
+</header>
+
+
+<!-- MOBILE MENU -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+<a href="index.html">Home</a>
+<a href="membership.html">Membership</a>
+<a href="how-it-works.html">How It Works</a>
+<a href="reviews.html">Reviews</a>
+<a href="faq.html">FAQ</a>
+<a href="join.html">Login / Join</a>
+<a href="dashboard.html">Member Dashboard</a>
+
+</div>
+
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="small-gold-line">
+        <span></span>
+        <i>✦</i>
+        <span></span>
+      </div>
+
+      <h1>
+        GoldenGetaways<br>
+        Membership
+      </h1>
+
+      <p class="hero-tagline">
+        Your personal holiday assistant, in your back pocket.
+      </p>
+
+      <p class="hero-text">
+        Get more than just holiday deals. Get personal help finding trips,
+        support when you need it, exclusive member perks and a community
+        built around making holidays easier.
+      </p>
+
+      <div class="price-box">
+        <div class="price">
+          £2.99
+          <small>/ month</small>
+        </div>
+
+        <div class="cancel">
+          Cancel anytime
+        </div>
+      </div>
+
+      <a href="join.html" class="primary-btn">
+        JOIN GOLDENGETAWAYS
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- EVERYTHING INCLUDED -->
+  <section class="included">
+
+    <div class="section-title">
+
+      <div class="decor">
+        <span></span>
+        <b>✦</b>
+        <span></span>
+      </div>
+
+      <h2>Everything Included</h2>
+
+    </div>
+
+
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <div class="icon">⌕</div>
+
+        <div>
+          <h3>Personal Holiday Searches</h3>
+
+          <p>
+            Tell us where you want to go, your dates and budget,
+            and we'll help search for trips that actually suit you.
+          </p>
+        </div>
+      </div>
+
+
+      <div class="feature-card">
+        <div class="icon">🏷</div>
+
+        <div>
+          <h3>Daily Handpicked Deals</h3>
+
+          <p>
+            Members get fresh holiday deals shared every day
+            so you spend less time searching.
+          </p>
+        </div>
+      </div>
+
+
+      <div class="feature-card">
+        <div class="icon">💬</div>
+
+        <div>
+          <h3>Direct Personal Support</h3>
+
+          <p>
+            Message us directly whenever you need help,
+            advice or a second opinion.
+          </p>
+        </div>
+      </div>
+
+
+      <div class="feature-card">
+        <div class="icon">🌴</div>
+
+        <div>
+          <h3>Help Before & During Your Holiday</h3>
+
+          <p>
+            Need restaurant ideas, activities or help while
+            you're away? We're here to help sort it.
+          </p>
+        </div>
+      </div>
+
+
+      <div class="feature-card">
+        <div class="icon">👥</div>
+
+        <div>
+          <h3>Private Members Community</h3>
+
+          <p>
+            Join the private members group for deals,
+            updates, games and travel chat.
+          </p>
+        </div>
+      </div>
+
+
+      <div class="feature-card">
+        <div class="icon">★</div>
+
+        <div>
+          <h3>Members Points</h3>
+
+          <p>
+            Earn points through referrals, games,
+            taking part and member rewards.
+          </p>
+        </div>
+      </div>
+
+
+      <div class="feature-card">
+        <div class="icon">🎁</div>
+
+        <div>
+          <h3>Monthly Giveaways</h3>
+
+          <p>
+            Enjoy access to regular monthly giveaways
+            and chances to win prizes.
+          </p>
+        </div>
+      </div>
+
+
+      <div class="feature-card">
+        <div class="icon">🏆</div>
+
+        <div>
+          <h3>Games & Challenges</h3>
+
+          <p>
+            Take part in member-only games and challenges
+            with chances to earn more points.
+          </p>
+        </div>
+      </div>
+
+
+      <div class="feature-card">
+        <div class="icon">♛</div>
+
+        <div>
+          <h3>Exclusive Member Perks</h3>
+
+          <p>
+            Get access to extra perks and future benefits
+            that aren't available publicly.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- BOTTOM CTA -->
+
+  <section class="bottom-wrap">
+
+    <div class="bottom-cta">
+
+      <div class="bottom-content">
+
+        <h2>
+          One membership. Everything in one place.
+        </h2>
+
+        <p>
+          Whether you need help finding the holiday, choosing restaurants,
+          planning activities or saving time searching — you message us,
+          we help sort it.
+        </p>
+
+        <div class="bottom-price">
+          £2.99/month &nbsp;•&nbsp; Cancel anytime
+        </div>
+
+        <a href="join.html" class="primary-btn">
+          BECOME A MEMBER
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+  <script>
+const mobileMenuButton = document.querySelector(".mobile-menu-button");
+const mobileMenu = document.querySelector(".mobile-menu");
+
+if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener("click", function () {
+        mobileMenu.classList.toggle("open");
+    });
+}
+</script>
+</body>
+</html>

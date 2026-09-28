@@ -1,0 +1,2069 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    All Inclusive Holidays | Handpicked All Inclusive Deals | GoldenGetaways
+  </title>
+
+  <meta
+    name="description"
+    content="Explore handpicked all inclusive holidays with GoldenGetaways. Discover luxury, adults only and great-value all inclusive getaways across Greece, Turkey, Egypt and Spain."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  >
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+
+      background:
+        radial-gradient(
+          circle at 70% 5%,
+          #08263c 0%,
+          #00111f 38%,
+          #000b15 100%
+        );
+
+      color: white;
+
+      overflow-x: hidden;
+    }
+
+
+    /* =========================================
+       HEADER
+    ========================================= */
+
+    .header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: transparent;
+    }
+
+
+    /* =========================================
+       HERO
+    ========================================= */
+
+    .all-inclusive-hero {
+      position: relative;
+
+      min-height: 650px;
+
+      display: flex;
+      align-items: center;
+
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(2,18,32,0.97) 0%,
+          rgba(2,18,32,0.88) 32%,
+          rgba(2,18,32,0.48) 58%,
+          rgba(2,18,32,0.10) 100%
+        ),
+        url("images/hero-bg.webp")
+        center / cover
+        no-repeat;
+    }
+
+    .hero-inner {
+      width: 100%;
+
+      padding:
+        155px 6% 70px;
+
+      position: relative;
+
+      z-index: 2;
+    }
+
+    .hero-copy {
+      max-width: 780px;
+    }
+
+    .hero-eyebrow {
+      margin-bottom: 18px;
+
+      color: var(--gold-light);
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      letter-spacing: 4px;
+    }
+
+    .hero-copy h1 {
+      margin:
+        0 0 24px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size:
+        clamp(
+          58px,
+          5.8vw,
+          88px
+        );
+
+      font-weight: 400;
+
+      line-height: 0.96;
+    }
+
+    .hero-copy h1 em {
+      color: var(--gold-light);
+
+      font-weight: 400;
+    }
+
+    .hero-line {
+      width: 48px;
+
+      height: 2px;
+
+      margin-bottom: 24px;
+
+      background: var(--gold);
+    }
+
+    .hero-copy p {
+      max-width: 690px;
+
+      margin:
+        0 0 30px;
+
+      color: #e1e6ea;
+
+      font-size: 16px;
+
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 13px;
+    }
+
+    .secondary-button {
+      min-height: 54px;
+
+      padding:
+        0 25px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.46);
+
+      border-radius: 12px;
+
+      background:
+        rgba(0,17,31,0.48);
+
+      color: var(--gold-light);
+
+      font-size: 14px;
+    }
+
+
+    /* =========================================
+       PAGE WIDTH
+    ========================================= */
+
+    .page-inner {
+      width: 88%;
+
+      max-width: 1500px;
+
+      margin:
+        0 auto;
+    }
+
+
+    /* =========================================
+       SEO INTRO
+    ========================================= */
+
+    .seo-intro {
+      padding:
+        80px 0 45px;
+
+      max-width: 1000px;
+    }
+
+    .section-eyebrow {
+      margin:
+        0 0 13px;
+
+      color: var(--gold-light);
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      letter-spacing: 4px;
+    }
+
+    .seo-intro h2 {
+      margin:
+        0 0 20px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size:
+        clamp(
+          42px,
+          4vw,
+          60px
+        );
+
+      font-weight: 400;
+
+      line-height: 1.05;
+    }
+
+    .seo-intro h2 em {
+      color: var(--gold-light);
+
+      font-weight: 400;
+    }
+
+    .seo-intro p {
+      margin:
+        0 0 16px;
+
+      color: #cbd2d7;
+
+      font-size: 15px;
+
+      line-height: 1.8;
+    }
+
+
+    /* =========================================
+       HOLIDAY GRID
+    ========================================= */
+
+    .holiday-section {
+      padding-bottom: 80px;
+    }
+
+    .holiday-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          3,
+          minmax(0,1fr)
+        );
+
+      gap: 20px;
+    }
+     .holiday-grid .holiday-card:last-child {
+  grid-column: 2;
+}
+    .holiday-card {
+      overflow: hidden;
+
+      display: flex;
+
+      flex-direction: column;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.35);
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #062238,
+          #031827
+        );
+
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .holiday-card:hover {
+      transform:
+        translateY(-5px);
+
+      border-color:
+        rgba(216,161,63,0.68);
+
+      box-shadow:
+        0 22px 55px
+        rgba(0,0,0,0.25);
+    }
+
+    .holiday-image {
+      position: relative;
+
+      height: 250px;
+
+      overflow: hidden;
+    }
+
+    .holiday-image img {
+      width: 100%;
+
+      height: 100%;
+
+      display: block;
+
+      object-fit: cover;
+
+      transition:
+        transform 0.4s ease;
+    }
+
+    .holiday-card:hover
+    .holiday-image img {
+      transform:
+        scale(1.035);
+    }
+
+    .holiday-badge {
+      position: absolute;
+
+      top: 18px;
+
+      left: 18px;
+
+      min-height: 31px;
+
+      padding:
+        0 12px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.65);
+
+      border-radius: 50px;
+
+      background:
+        rgba(0,17,31,0.90);
+
+      color: var(--gold-light);
+
+      font-size: 9px;
+
+      font-weight: 600;
+
+      letter-spacing: 1.4px;
+    }
+
+    .holiday-content {
+      flex: 1;
+
+      display: flex;
+
+      flex-direction: column;
+
+      padding: 25px;
+    }
+
+    .holiday-location {
+      margin:
+        0 0 8px;
+
+      color: var(--gold-light);
+
+      font-size: 10px;
+
+      font-weight: 600;
+
+      letter-spacing: 2px;
+    }
+
+    .holiday-card h2 {
+      margin:
+        0 0 12px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 25px;
+
+      font-weight: 400;
+
+      line-height: 1.08;
+    }
+
+    .holiday-details {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 8px;
+
+      margin-bottom: 16px;
+    }
+
+    .holiday-details span {
+      padding:
+        7px 10px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.20);
+
+      border-radius: 7px;
+
+      background:
+        rgba(255,255,255,0.03);
+
+      color: #e6eaed;
+
+      font-size: 12px;
+    }
+
+    .holiday-description {
+      margin:
+        0 0 22px;
+
+      color: #c8cfd5;
+
+      font-size: 13px;
+
+      line-height: 1.7;
+    }
+
+    .holiday-bottom {
+      margin-top: auto;
+
+      padding-top: 18px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 18px;
+
+      border-top:
+        1px solid
+        rgba(255,255,255,0.07);
+    }
+
+    .holiday-price small {
+      display: block;
+
+      margin-bottom: 3px;
+
+      color: #aeb7c1;
+
+      font-size: 11px;
+    }
+
+    .holiday-price strong {
+      color: var(--gold-light);
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 30px;
+
+      font-weight: 400;
+    }
+
+    .book-button {
+      min-height: 48px;
+
+      padding:
+        0 19px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border-radius: 9px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #b77b24,
+          #e0aa47
+        );
+
+      color: white;
+
+      font-size: 13px;
+
+      font-weight: 500;
+
+      text-align: center;
+    }
+
+
+    /* =========================================
+       SEO BOTTOM
+    ========================================= */
+
+    .seo-bottom {
+      padding:
+        70px 0 80px;
+
+      border-top:
+        1px solid
+        rgba(255,255,255,0.05);
+    }
+
+    .seo-bottom-grid {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0,1fr)
+        minmax(300px,420px);
+
+      gap: 70px;
+    }
+
+    .seo-bottom h2 {
+      margin:
+        0 0 18px;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size:
+        clamp(
+          38px,
+          3.5vw,
+          52px
+        );
+
+      font-weight: 400;
+
+      line-height: 1.08;
+    }
+
+    .seo-bottom h2 em {
+      color: var(--gold-light);
+
+      font-weight: 400;
+    }
+
+    .seo-bottom p {
+      margin:
+        0 0 16px;
+
+      color: #cad1d6;
+
+      font-size: 14px;
+
+      line-height: 1.8;
+    }
+
+    .seo-box {
+      padding: 26px;
+
+      border:
+        1px solid
+        rgba(216,161,63,0.35);
+
+      border-radius: 17px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(6,32,51,0.91),
+          rgba(1,17,30,0.97)
+        );
+    }
+
+    .seo-box h3 {
+      margin:
+        0 0 17px;
+
+      color: var(--gold-light);
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      letter-spacing: 2.5px;
+    }
+
+    .seo-link {
+      min-height: 52px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      border-bottom:
+        1px solid
+        rgba(255,255,255,0.07);
+
+      color: white;
+
+      font-size: 13px;
+    }
+
+    .seo-link:last-child {
+      border-bottom: none;
+    }
+
+    .seo-link span {
+      color: var(--gold-light);
+    }
+
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+
+    @media (max-width: 1150px) {
+
+      .holiday-grid {
+        grid-template-columns:
+          repeat(
+            2,
+            minmax(0,1fr)
+          );
+      }
+
+      .seo-bottom-grid {
+        grid-template-columns:
+          1fr;
+
+        gap: 35px;
+      }
+
+    }
+
+
+    @media (max-width: 700px) {
+
+      .holiday-grid {
+        grid-template-columns:
+          1fr;
+      }
+
+    }
+
+
+    @media (max-width: 650px) {
+
+      .hero-inner {
+        padding:
+          125px 5% 55px;
+      }
+
+      .hero-copy h1 {
+        font-size: 52px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions a {
+        width: 100%;
+      }
+
+      .page-inner {
+        width:
+          calc(100% - 36px);
+      }
+
+      .holiday-image {
+        height: 235px;
+      }
+
+      .holiday-bottom {
+        flex-direction: column;
+
+        align-items: stretch;
+      }
+
+      .book-button {
+        width: 100%;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================================
+       HEADER
+  ========================================= -->
+
+  <header class="header">
+
+
+    <a
+      href="index.html"
+      class="logo"
+    >
+
+      <div class="logo-icon">
+
+        <img
+          src="images/logo-small.webp"
+          alt="GoldenGetaways icon"
+        >
+
+      </div>
+
+
+      <div class="logo-text">
+
+        <span>
+          GoldenGetaways
+        </span>
+
+        <small>
+          EST 2025
+        </small>
+
+      </div>
+
+    </a>
+
+
+    <nav class="desktop-nav">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="membership.html">
+        Membership
+      </a>
+
+      <a
+        href="our-getaways.html"
+        class="active"
+      >
+        Our Getaways
+      </a>
+
+      <a href="how-it-works.html">
+        How It Works
+      </a>
+
+      <a href="reviews.html">
+        Reviews
+      </a>
+
+      <a href="faq.html">
+        FAQ
+      </a>
+
+      <a href="join.html">
+        Login / Join
+      </a>
+
+    </nav>
+
+
+    <a
+      href="join.html"
+      class="button gold-button header-button"
+    >
+      Join Now
+      <span>→</span>
+    </a>
+
+
+    <button
+      class="mobile-menu-button"
+      id="menuButton"
+      aria-label="Open menu"
+    >
+      ☰
+    </button>
+
+
+  </header>
+
+
+  <!-- =========================================
+       HERO
+  ========================================= -->
+
+  <section class="all-inclusive-hero">
+
+
+    <div class="hero-inner">
+
+
+      <div class="hero-copy">
+
+
+        <p class="hero-eyebrow">
+          ALL INCLUSIVE HOLIDAYS
+        </p>
+
+
+        <h1>
+
+          Handpicked
+
+          <em>
+            all inclusive
+          </em>
+
+          holidays.
+
+        </h1>
+
+
+        <div class="hero-line"></div>
+
+
+        <p>
+
+          Browse GoldenGetaways handpicked all inclusive holidays
+          across popular sunshine destinations. From luxury
+          five-star resorts and adults-only escapes to
+          great-value Mediterranean getaways.
+
+        </p>
+
+
+        <div class="hero-actions">
+
+
+          <a
+            href="#holidays"
+            class="button gold-button"
+          >
+            View Holidays
+            <span>↓</span>
+          </a>
+
+
+          <a
+            href="./our-getaways.html"
+            class="secondary-button"
+          >
+            ← Back to Our Getaways
+          </a>
+
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+  <main class="page-inner">
+
+
+    <!-- =========================================
+         SEO INTRO
+    ========================================= -->
+
+    <section class="seo-intro">
+
+
+      <p class="section-eyebrow">
+        OUR HANDPICKED ALL INCLUSIVES
+      </p>
+
+
+      <h2>
+
+        Discover our favourite
+
+        <em>
+          all inclusive holidays.
+        </em>
+
+      </h2>
+
+
+      <p>
+
+        Looking for an all inclusive holiday where more of your
+        trip is already taken care of? Our handpicked collection
+        brings together all inclusive holiday deals across
+        popular destinations including Greece, Turkey,
+        Egypt and Spain.
+
+      </p>
+
+
+      <p>
+
+        From luxury five-star resorts and adults-only escapes
+        to great-value sunshine holidays, we've selected
+        a mixture of getaways across different destinations,
+        styles and budgets.
+
+      </p>
+
+
+      <p>
+
+        Browse our 10 featured all inclusive holidays below.
+        Prices can change depending on travel dates,
+        departure airport and availability, so GoldenGetaways
+        members can also request a personalised holiday search.
+
+      </p>
+
+
+    </section>
+
+
+    <!-- =========================================
+         HOLIDAYS
+    ========================================= -->
+
+    <section
+      class="holiday-section"
+      id="holidays"
+    >
+
+
+      <div class="holiday-grid">
+
+
+        <!-- =====================================
+             1. HURGHADA - 5 STAR ADULTS ONLY
+        ====================================== -->
+
+        <article class="holiday-card">
+
+
+          <div class="holiday-image">
+
+            <img
+              src="images/caves-beach-hurghada.webp"
+              alt="Luxury adults only all inclusive holiday in Hurghada Egypt"
+            >
+
+            <span class="holiday-badge">
+              LUXURY ALL INCLUSIVE
+            </span>
+
+          </div>
+
+
+          <div class="holiday-content">
+
+
+            <p class="holiday-location">
+              EGYPT • HURGHADA
+            </p>
+
+
+            <h2>
+              Luxury Adults Only Hurghada Getaway
+            </h2>
+
+
+            <div class="holiday-details">
+
+              <span>8 Nights</span>
+
+              <span>5 Star</span>
+
+              <span>All Inclusive</span>
+
+              <span>Adults Only 16+</span>
+
+              <span>Flights Included</span>
+
+            </div>
+
+
+            <p class="holiday-description">
+
+              A standout adults-only Red Sea escape
+              with striking resort design, a spacious
+              pool area and a relaxing luxury atmosphere.
+
+            </p>
+
+
+            <div class="holiday-bottom">
+
+
+              <div class="holiday-price">
+
+                <small>
+                  From
+                </small>
+
+                <strong>
+                  £775pp
+                </strong>
+
+              </div>
+
+
+              <a
+                href="join.html"
+                class="book-button"
+              >
+                Become a Member & Book Now →
+              </a>
+
+
+            </div>
+
+
+          </div>
+
+
+        </article>
+
+
+        <!-- =====================================
+             2. RHODES - 5 STAR ADULTS ONLY
+        ====================================== -->
+
+        <article class="holiday-card">
+
+
+          <div class="holiday-image">
+
+            <img
+              src="images/ixian-grand.webp"
+              alt="Luxury adults only all inclusive holiday in Rhodes Greece"
+            >
+
+            <span class="holiday-badge">
+              LUXURY ALL INCLUSIVE
+            </span>
+
+          </div>
+
+
+          <div class="holiday-content">
+
+
+            <p class="holiday-location">
+              GREECE • RHODES • IXIA
+            </p>
+
+
+            <h2>
+              Luxury Adults Only Rhodes Getaway
+            </h2>
+
+
+            <div class="holiday-details">
+
+              <span>7 Nights</span>
+
+              <span>5 Star</span>
+
+              <span>All Inclusive</span>
+
+              <span>Adults Only 18+</span>
+
+              <span>Flights Included</span>
+
+            </div>
+
+
+            <p class="holiday-description">
+
+              A luxury adults-only beachfront escape
+              with beautiful sea views, stylish pools
+              and a peaceful setting in Rhodes.
+
+            </p>
+
+
+            <div class="holiday-bottom">
+
+
+              <div class="holiday-price">
+
+                <small>
+                  From
+                </small>
+
+                <strong>
+                  £605pp
+                </strong>
+
+              </div>
+
+
+              <a
+                href="join.html"
+                class="book-button"
+              >
+                Become a Member & Book Now →
+              </a>
+
+
+            </div>
+
+
+          </div>
+
+
+        </article>
+
+
+        <!-- =====================================
+             3. IXIA RHODES - 5 STAR
+        ====================================== -->
+
+        <article class="holiday-card">
+
+
+          <div class="holiday-image">
+
+            <img
+              src="images/akti-imperial-rhodes.webp"
+              alt="Luxury five star all inclusive resort in Ixia Rhodes"
+            >
+
+            <span class="holiday-badge">
+              5 STAR LUXURY
+            </span>
+
+          </div>
+
+
+          <div class="holiday-content">
+
+
+            <p class="holiday-location">
+              GREECE • RHODES • IXIA
+            </p>
+
+
+            <h2>
+              5 Star Rhodes Resort & Spa Getaway
+            </h2>
+
+
+            <div class="holiday-details">
+
+              <span>8 Nights</span>
+
+              <span>5 Star</span>
+
+              <span>All Inclusive</span>
+
+              <span>Resort & Spa</span>
+
+              <span>Flights Included</span>
+
+            </div>
+
+
+            <p class="holiday-description">
+
+              A premium Rhodes escape with expansive
+              swimming pools, contemporary resort facilities
+              and a luxurious all inclusive setting.
+
+            </p>
+
+
+            <div class="holiday-bottom">
+
+
+              <div class="holiday-price">
+
+                <small>
+                  From
+                </small>
+
+                <strong>
+                  £640pp
+                </strong>
+
+              </div>
+
+
+              <a
+                href="join.html"
+                class="book-button"
+              >
+                Become a Member & Book Now →
+              </a>
+
+
+            </div>
+
+
+          </div>
+
+
+        </article>
+
+
+        <!-- =====================================
+             4. SIDE ANTALYA - 5 STAR
+        ====================================== -->
+
+        <article class="holiday-card">
+
+
+          <div class="holiday-image">
+
+            <img
+              src="images/royal-atlantis-side.webp"
+              alt="Luxury five star all inclusive holiday in Side Antalya Turkey"
+            >
+
+            <span class="holiday-badge">
+              5 STAR LUXURY
+            </span>
+
+          </div>
+
+
+          <div class="holiday-content">
+
+
+            <p class="holiday-location">
+              TURKEY • ANTALYA • SIDE
+            </p>
+
+
+            <h2>
+              Luxury Side All Inclusive Getaway
+            </h2>
+
+
+            <div class="holiday-details">
+
+              <span>7 Nights</span>
+
+              <span>5 Star</span>
+
+              <span>All Inclusive</span>
+
+              <span>Luxury Resort</span>
+
+              <span>Flights Included</span>
+
+            </div>
+
+
+            <p class="holiday-description">
+
+              A stylish five-star Turkish getaway
+              with an impressive pool area,
+              modern resort surroundings and
+              a premium all inclusive experience.
+
+            </p>
+
+
+            <div class="holiday-bottom">
+
+
+              <div class="holiday-price">
+
+                <small>
+                  From
+                </small>
+
+                <strong>
+                  £610pp
+                </strong>
+
+              </div>
+
+
+              <a
+                href="join.html"
+                class="book-button"
+              >
+                Become a Member & Book Now →
+              </a>
+
+
+            </div>
+
+
+          </div>
+
+
+        </article>
+
+
+        <!-- =====================================
+             5. KIOTARI RHODES - 5 STAR
+        ====================================== -->
+
+        <article class="holiday-card">
+
+
+          <div class="holiday-image">
+
+            <img
+              src="images/mitsis-rodos-village.webp"
+              alt="Five star all inclusive holiday in Kiotari Rhodes Greece"
+            >
+
+            <span class="holiday-badge">
+              5 STAR ALL INCLUSIVE
+            </span>
+
+          </div>
+
+
+          <div class="holiday-content">
+
+
+            <p class="holiday-location">
+              GREECE • RHODES • KIOTARI
+            </p>
+
+
+            <h2>
+              5 Star Kiotari All Inclusive Getaway
+            </h2>
+
+
+            <div class="holiday-details">
+
+              <span>8 Nights</span>
+
+              <span>5 Star</span>
+
+              <span>All Inclusive</span>
+
+              <span>Sea Views</span>
+
+              <span>Flights Included</span>
+
+            </div>
+
+
+            <p class="holiday-description">
+
+              A beautiful five-star Rhodes getaway
+              with palm-lined pools, sea views
+              and a relaxed resort atmosphere
+              close to the coast.
+
+            </p>
+
+
+            <div class="holiday-bottom">
+
+
+              <div class="holiday-price">
+
+                <small>
+                  From
+                </small>
+
+                <strong>
+                  £655pp
+                </strong>
+
+              </div>
+
+
+              <a
+                href="join.html"
+                class="book-button"
+              >
+                Become a Member & Book Now →
+              </a>
+
+
+            </div>
+
+
+          </div>
+
+
+        </article>
+
+
+        <!-- =====================================
+             6. CRETE - 4 STAR SPA
+        ====================================== -->
+
+        <article class="holiday-card">
+
+
+          <div class="holiday-image">
+
+            <img
+              src="images/aelius-crete.webp"
+              alt="Luxury all inclusive spa holiday in Kato Gouves Crete"
+            >
+
+            <span class="holiday-badge">
+              SPA ESCAPE
+            </span>
+
+          </div>
+
+
+          <div class="holiday-content">
+
+
+            <p class="holiday-location">
+              GREECE • CRETE • KATO GOUVES
+            </p>
+
+
+            <h2>
+              Crete All Inclusive Spa Getaway
+            </h2>
+
+
+            <div class="holiday-details">
+
+              <span>8 Nights</span>
+
+              <span>4 Star</span>
+
+              <span>All Inclusive</span>
+
+              <span>Spa Style Escape</span>
+
+              <span>Flights Included</span>
+
+            </div>
+
+
+            <p class="holiday-description">
+
+              A contemporary Crete escape with
+              elegant pool areas, stylish accommodation
+              and a calm setting ideal for a
+              relaxing all inclusive break.
+
+            </p>
+
+
+            <div class="holiday-bottom">
+
+
+              <div class="holiday-price">
+
+                <small>
+                  From
+                </small>
+
+                <strong>
+                  £570pp
+                </strong>
+
+              </div>
+
+
+              <a
+                href="join.html"
+                class="book-button"
+              >
+                Become a Member & Book Now →
+              </a>
+
+
+            </div>
+
+
+          </div>
+
+
+        </article>
+
+
+        <!-- =====================================
+             7. SALOU - 4 STAR ADULTS ONLY
+        ====================================== -->
+
+        <article class="holiday-card">
+
+
+          <div class="holiday-image">
+
+            <img
+              src="images/salou-adults-only.webp"
+              alt="Adults only all inclusive holiday in Salou Costa Dorada"
+            >
+
+            <span class="holiday-badge">
+              ADULTS ONLY
+            </span>
+
+          </div>
+
+
+          <div class="holiday-content">
+
+
+            <p class="holiday-location">
+              SPAIN • COSTA DORADA • SALOU
+            </p>
+
+
+            <h2>
+              Adults Only Salou All Inclusive Getaway
+            </h2>
+
+
+            <div class="holiday-details">
+
+              <span>7 Nights</span>
+
+              <span>4 Star</span>
+
+              <span>All Inclusive</span>
+
+              <span>Adults Only</span>
+
+              <span>Flights Included</span>
+
+            </div>
+
+
+            <p class="holiday-description">
+
+              A stylish adults-only escape
+              with a modern pool area,
+              contemporary surroundings and
+              a relaxing Costa Dorada atmosphere.
+
+            </p>
+
+
+            <div class="holiday-bottom">
+
+
+              <div class="holiday-price">
+
+                <small>
+                  From
+                </small>
+
+                <strong>
+                  £640pp
+                </strong>
+
+              </div>
+
+
+              <a
+                href="join.html"
+                class="book-button"
+              >
+                Become a Member & Book Now →
+              </a>
+
+
+            </div>
+
+
+          </div>
+
+
+        </article>
+
+
+        <!-- =====================================
+             8. BENIDORM - 4 STAR
+        ====================================== -->
+
+        <article class="holiday-card">
+
+
+          <div class="holiday-image">
+
+            <img
+              src="images/villa-espana-benidorm.webp"
+              alt="Four star all inclusive holiday in Benidorm Costa Blanca"
+            >
+
+            <span class="holiday-badge">
+              SEA VIEW ESCAPE
+            </span>
+
+          </div>
+
+
+          <div class="holiday-content">
+
+
+            <p class="holiday-location">
+              SPAIN • COSTA BLANCA • BENIDORM
+            </p>
+
+
+            <h2>
+              4 Star Benidorm All Inclusive Getaway
+            </h2>
+
+
+            <div class="holiday-details">
+
+              <span>7 Nights</span>
+
+              <span>4 Star</span>
+
+              <span>All Inclusive</span>
+
+              <span>Sea Views</span>
+
+              <span>Flights Included</span>
+
+            </div>
+
+
+            <p class="holiday-description">
+
+              A stylish Benidorm escape with
+              impressive Mediterranean views,
+              modern surroundings and easy access
+              to the Costa Blanca sunshine.
+
+            </p>
+
+
+            <div class="holiday-bottom">
+
+
+              <div class="holiday-price">
+
+                <small>
+                  From
+                </small>
+
+                <strong>
+                  £525pp
+                </strong>
+
+              </div>
+
+
+              <a
+                href="join.html"
+                class="book-button"
+              >
+                Become a Member & Book Now →
+              </a>
+
+
+            </div>
+
+
+          </div>
+
+
+        </article>
+
+
+        <!-- =====================================
+             9. SALOU - 4 STAR
+        ====================================== -->
+
+        <article class="holiday-card">
+
+
+          <div class="holiday-image">
+
+            <img
+              src="images/salou-all-inclusive.webp"
+              alt="Four star all inclusive holiday in Salou Costa Dorada"
+            >
+
+            <span class="holiday-badge">
+              GREAT VALUE
+            </span>
+
+          </div>
+
+
+          <div class="holiday-content">
+
+
+            <p class="holiday-location">
+              SPAIN • COSTA DORADA • SALOU
+            </p>
+
+
+            <h2>
+              4 Star Salou All Inclusive Getaway
+            </h2>
+
+
+            <div class="holiday-details">
+
+              <span>7 Nights</span>
+
+              <span>4 Star</span>
+
+              <span>All Inclusive</span>
+
+              <span>Great Value</span>
+
+              <span>Flights Included</span>
+
+            </div>
+
+
+            <p class="holiday-description">
+
+              A great-value Costa Dorada getaway
+              with a large outdoor pool,
+              popular resort surroundings and
+              plenty of Spanish sunshine.
+
+            </p>
+
+
+            <div class="holiday-bottom">
+
+
+              <div class="holiday-price">
+
+                <small>
+                  From
+                </small>
+
+                <strong>
+                  £500pp
+                </strong>
+
+              </div>
+
+
+              <a
+                href="join.html"
+                class="book-button"
+              >
+                Become a Member & Book Now →
+              </a>
+
+
+            </div>
+
+
+          </div>
+
+
+        </article>
+
+
+        <!-- =====================================
+             10. IBIZA - 3 STAR
+        ====================================== -->
+
+        <article class="holiday-card">
+
+
+          <div class="holiday-image">
+
+            <img
+              src="images/nereida-ibiza.webp"
+              alt="All inclusive holiday in San Antonio Bay Ibiza"
+            >
+
+            <span class="holiday-badge">
+              IBIZA ESCAPE
+            </span>
+
+          </div>
+
+
+          <div class="holiday-content">
+
+
+            <p class="holiday-location">
+              SPAIN • IBIZA • SAN ANTONIO BAY
+            </p>
+
+
+            <h2>
+              San Antonio Bay All Inclusive Getaway
+            </h2>
+
+
+            <div class="holiday-details">
+
+              <span>7 Nights</span>
+
+              <span>3 Star</span>
+
+              <span>All Inclusive</span>
+
+              <span>Pool</span>
+
+              <span>Flights Included</span>
+
+            </div>
+
+
+            <p class="holiday-description">
+
+              A relaxed Ibiza getaway in San Antonio Bay
+              with a spacious pool area and an
+              easy-going setting for an affordable
+              all inclusive sunshine break.
+
+            </p>
+
+
+            <div class="holiday-bottom">
+
+
+              <div class="holiday-price">
+
+                <small>
+                  From
+                </small>
+
+                <strong>
+                  £585pp
+                </strong>
+
+              </div>
+
+
+              <a
+                href="join.html"
+                class="book-button"
+              >
+                Become a Member & Book Now →
+              </a>
+
+
+            </div>
+
+
+          </div>
+
+
+        </article>
+
+
+      </div>
+
+
+    </section>
+
+
+    <!-- =========================================
+         SEO BOTTOM
+    ========================================= -->
+
+    <section class="seo-bottom">
+
+
+      <div class="seo-bottom-grid">
+
+
+        <div>
+
+
+          <p class="section-eyebrow">
+            ALL INCLUSIVE HOLIDAY DEALS
+          </p>
+
+
+          <h2>
+
+            Find the right
+
+            <em>
+              all inclusive escape.
+            </em>
+
+          </h2>
+
+
+          <p>
+
+            All inclusive holidays can make planning
+            your getaway simpler, with meals, drinks
+            and selected resort facilities often included.
+
+          </p>
+
+
+          <p>
+
+            GoldenGetaways features handpicked all inclusive
+            inspiration across Greece, Spain, Turkey and Egypt,
+            including five-star resorts, adults-only stays,
+            beachfront escapes and great-value holidays.
+
+          </p>
+
+
+          <p>
+
+            If none of these getaways are quite right,
+            GoldenGetaways members can request a personalised
+            search based on their budget, dates,
+            departure airport and holiday preferences.
+
+          </p>
+
+
+        </div>
+
+
+        <aside class="seo-box">
+
+
+          <h3>
+            EXPLORE MORE HOLIDAYS
+          </h3>
+
+
+          <a
+            href="luxury-holidays.html"
+            class="seo-link"
+          >
+            Luxury Holidays
+            <span>→</span>
+          </a>
+
+
+          <a
+            href="family-holidays.html"
+            class="seo-link"
+          >
+            Family Holidays
+            <span>→</span>
+          </a>
+
+
+          <a
+            href="adults-only-holidays.html"
+            class="seo-link"
+          >
+            Adults Only Holidays
+            <span>→</span>
+          </a>
+
+
+          <a
+            href="cheap-holidays.html"
+            class="seo-link"
+          >
+            Cheap Holidays
+            <span>→</span>
+          </a>
+
+
+          <a
+            href="beach-holidays.html"
+            class="seo-link"
+          >
+            Beach Holidays
+            <span>→</span>
+          </a>
+
+
+          <a
+            href="our-getaways.html"
+            class="seo-link"
+          >
+            View All Getaways
+            <span>→</span>
+          </a>
+
+
+        </aside>
+
+
+      </div>
+
+
+    </section>
+
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+
+</body>
+
+</html>
