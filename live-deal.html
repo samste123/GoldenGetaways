@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>GoldenGetaways Live Deal</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+   body {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 10, 24, 0.20) 0%,
+      rgba(0, 10, 24, 0.08) 48%,
+      rgba(0, 10, 24, 0.35) 100%
+    ),
+    url("images/live-deal-background.png") center center / cover no-repeat;
+
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+   #liveDeal {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 38px 48px 38px 54%;
+}
+
+    .waiting {
+      text-align: center;
+    }
+
+    .waiting h1 {
+      font-family: Georgia, serif;
+      font-size: 52px;
+      margin-bottom: 15px;
+    }
+
+    .waiting p {
+      color: #9bb2c3;
+      font-size: 18px;
+    }
+   .live-branding {
+  position: absolute;
+  left: 3vw;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46vw;
+  text-align: center;
+  z-index: 5;
+
+  padding: 42px 28px;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 18, 35, 0.62) 0%,
+    rgba(0, 18, 35, 0.42) 48%,
+    rgba(0, 18, 35, 0.05) 78%,
+    transparent 100%
+  );
+
+  text-shadow: 0 5px 22px rgba(0,0,0,.95);
+}
+
+.brand-small {
+  font-size: 22px;
+  letter-spacing: 9px;
+  color: rgba(255,255,255,.9);
+  margin-bottom: 18px;
+}
+
+.brand-title span {
+  display: block;
+  font-family: Georgia, serif;
+  font-size: clamp(48px, 4.5vw, 82px);
+  line-height: .95;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 5px 25px rgba(0,0,0,.6);
+}
+
+.brand-title strong {
+  display: block;
+  font-family: Georgia, serif;
+  font-size: clamp(82px, 8vw, 145px);
+  line-height: .9;
+  font-style: italic;
+  color: #f4c45e;
+  text-shadow:
+    0 0 25px rgba(244,185,66,.3),
+    0 8px 30px rgba(0,0,0,.65);
+}
+
+.brand-line {
+  width: 120px;
+  height: 3px;
+  margin: 28px auto;
+  background: #f4b942;
+}
+
+.member-pill {
+  display: inline-block;
+  background: linear-gradient(180deg,#ffe18a,#e9ad37);
+  color: #071725;
+  padding: 16px 34px;
+  border-radius: 50px;
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 30px rgba(0,0,0,.35);
+}
+
+.link-bio {
+  margin-top: 18px;
+  font-size: 22px;
+  letter-spacing: 5px;
+  color: white;
+}
+  </style>
+</head>
+
+<body>
+
+  <main id="liveDeal">
+    <div class="live-branding">
+  <div class="brand-small">MORE THAN A HOLIDAY</div>
+
+  <div class="brand-title">
+    <span>FINDING DEALS</span>
+    <strong>LIVE</strong>
+  </div>
+
+  <div class="brand-line"></div>
+
+  <div class="member-pill">
+    👑 BECOME A MEMBER
+  </div>
+
+  <div class="link-bio">
+    🔗 LINK IN BIO
+  </div>
+</div>
+    <div class="waiting">
+      <h1>GoldenGetaways</h1>
+      <p>Waiting for a live holiday deal...</p>
+    </div>
+  </main>
+<script>
+  const liveDeal = document.getElementById("liveDeal");
+
+  function loadHoliday() {
+    const incomingData =
+      localStorage.getItem("gg_live_holiday");
+
+    if (!incomingData) {
+      return;
+    }
+
+    try {
+      const holiday = JSON.parse(incomingData);
+
+      console.log("LIVE DEAL RECEIVED:", holiday);
+
+    const text = holiday.text || "";
+
+const hotelName =
+  (holiday.title || "GoldenGetaways Live Deal")
+    .split(" - ")[0]
+    .replace(/\s*\|\s*On the Beach.*$/i, "")
+    .replace(/\s*-\s*onthebeach\.co\.uk.*$/i, "")
+    .trim();
+
+ const price =
+  holiday.price ||
+  text.match(/£\s*[\d,]+\s*pp/i)?.[0] ||
+  "";
+
+const totalPrice =
+  holiday.totalPrice ||
+  text.match(/£\s*[\d,]+\s*Total Price/i)?.[0] ||
+  "";
+const nightsMatch =
+  text.match(/\((\d+)\s*nights?\)/i);
+
+const nights =
+  nightsMatch ? `${nightsMatch[1]} Nights` : "";
+const adults =
+  text.match(/\b\d+\s*Adults?\b/i)?.[0] || "";
+
+const date =
+  text.match(
+    /(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\s+\d{1,2}\s+[A-Za-z]+\s+\d{4}/i
+  )?.[0] || "";
+  const board =
+  text.match(/\b(All Inclusive|Half Board|Full Board|Bed & Breakfast|Room Only|Self Catering)\b/i)?.[0] || "";
+
+const beachMatch =
+  text.match(/\b(Beachfront|On the Beach|Private Beach|\d+\s*(?:m|metres?|km)\s*(?:from|to)\s*(?:the\s*)?beach)\b/i)?.[0] || "";
+
+const beach =
+  /beachfront|on the beach/i.test(beachMatch)
+    ? "Beachfront"
+    : beachMatch;
+
+const waterpark =
+  /\b(waterpark|water park|aqua park|waterslides?|water slides)\b/i.test(text)
+    ? "Waterpark"
+    : "";
+
+const poolsMatch =
+  text.match(/\b(\d+)\s*(?:outdoor\s+|indoor\s+)?pools?\b/i);
+
+const pools =
+  poolsMatch ? `${poolsMatch[1]} Pools` : "";
+
+const familyFriendly =
+  /\b(family friendly|family-friendly|kids club|children'?s club|kids'? pool)\b/i.test(text)
+    ? "Family Friendly"
+    : "";
+
+
+  const adultsOnly =
+  !familyFriendly &&
+  /\b(adults only|adults-only|adult only|adult-only)\b/i.test(text)
+    ? "Adults Only"
+    : "";
+
+liveDeal.innerHTML = `
+<div class="live-branding">
+  <div class="brand-small">MORE THAN A HOLIDAY</div>
+
+  <div class="brand-title">
+    <span>FINDING DEALS</span>
+    <strong>LIVE</strong>
+  </div>
+
+  <div class="brand-line"></div>
+
+  <div class="member-pill">👑 BECOME A MEMBER</div>
+
+  <div class="link-bio">🔗 LINK IN BIO</div>
+</div>
+  <div style="
+    width:min(1180px,94vw);
+    background:#031d2c;
+    border:1px solid rgba(244,185,66,.45);
+    border-radius:28px;
+    overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,.45);
+  ">
+
+    ${holiday.image ? `
+      <img
+      src="${holiday.image
+  ?.replace(/width=\d+/i, "width=3840")
+  ?.replace(/quality=\d+/i, "quality=95")}"
+        alt="${hotelName}"
+        style="
+          width:100%;
+          height:520px;
+          object-fit:cover;
+          display:block;
+        "
+      >
+    ` : ""}
+
+    <div style="padding:38px 44px 42px;">
+
+      <div style="
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  width:max-content;
+  background:linear-gradient(180deg,#ffe28a,#e9ad37);
+  color:#071725;
+  padding:9px 16px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:1.5px;
+  margin-bottom:18px;
+  box-shadow:0 6px 18px rgba(0,0,0,.25);
+">
+  🔥 LIVE DEAL
+</div>
+
+      <h1 style="
+        font-family:Georgia,serif;
+        font-size:46px;
+        line-height:1.08;
+        margin:0 0 30px;
+        color:white;
+      ">
+        ${hotelName}
+      </h1>
+
+    <div style="
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:0 0 24px;
+">
+
+  ${board ? `
+    <div style="
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:12px;
+      background:rgba(255,255,255,.04);
+      font-size:14px;
+      font-weight:700;
+    ">🍽️ ${board}</div>
+  ` : ""}
+
+  ${beach ? `
+    <div style="
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:12px;
+      background:rgba(255,255,255,.04);
+      font-size:14px;
+      font-weight:700;
+    ">🏖️ ${beach}</div>
+  ` : ""}
+
+  ${pools ? `
+    <div style="
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:12px;
+      background:rgba(255,255,255,.04);
+      font-size:14px;
+      font-weight:700;
+    ">🏊 ${pools}</div>
+  ` : ""}
+
+  ${waterpark ? `
+    <div style="
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:12px;
+      background:rgba(255,255,255,.04);
+      font-size:14px;
+      font-weight:700;
+    ">💦 ${waterpark}</div>
+  ` : ""}
+
+  ${familyFriendly ? `
+    <div style="
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:12px;
+      background:rgba(255,255,255,.04);
+      font-size:14px;
+      font-weight:700;
+    ">👨‍👩‍👧 ${familyFriendly}</div>
+  ` : ""}
+
+  ${adultsOnly ? `
+    <div style="
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:12px;
+      background:rgba(255,255,255,.04);
+      font-size:14px;
+      font-weight:700;
+    ">🥂 ${adultsOnly}</div>
+  ` : ""}
+
+</div>
+
+<div style="
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:25px;
+">
+
+  <div>
+    <div style="
+      color:#f4c45e;
+      font-size:46px;
+      line-height:1;
+      font-weight:900;
+    ">
+      ${price}
+    </div>
+
+    <div style="
+      margin-top:10px;
+      font-size:16px;
+      color:#d8e3ea;
+    ">
+      ${nights}${board ? ` • ${board}` : ""}
+    </div>
+  </div>
+
+  <div style="
+    text-align:right;
+    font-size:16px;
+    line-height:1.8;
+    color:#fff;
+  ">
+    ${totalPrice ? `<div>💰 ${totalPrice}</div>` : ""}
+    ${adults ? `<div>👥 ${adults}</div>` : ""}
+    ${date ? `<div>✈️ ${date}</div>` : ""}
+  </div>
+
+</div>
+    </div>
+  </div>
+`;
+
+    } catch (error) {
+      console.error("Could not load live holiday:", error);
+    }
+  }
+
+  loadHoliday();
+
+  window.addEventListener("storage", (event) => {
+    if (event.key === "gg_live_holiday") {
+      loadHoliday();
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Holiday Card Puller | GoldenGetaways</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top right, #06314a 0%, transparent 35%),
+        #001421;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 50px;
+    }
+
+    .puller {
+      max-width: 950px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      color: #f4b942;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-family: Georgia, serif;
+      font-size: 52px;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      color: #a9bdd0;
+      font-size: 16px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: rgba(4, 27, 43, 0.92);
+      border: 1px solid rgba(244, 185, 66, 0.28);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+    }
+
+    label {
+      display: block;
+      color: #f4b942;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .url-row {
+      display: flex;
+      gap: 12px;
+    }
+
+    #holidayUrl {
+      flex: 1;
+      min-width: 0;
+      padding: 18px 20px;
+      border-radius: 10px;
+      border: 1px solid #315066;
+      background: #061b2a;
+      color: white;
+      font-size: 15px;
+      outline: none;
+    }
+
+    #holidayUrl:focus {
+      border-color: #f4b942;
+    }
+
+    #pullButton {
+      border: none;
+      border-radius: 10px;
+      padding: 0 30px;
+      background: #f4b942;
+      color: #071521;
+      font-weight: 800;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    #pullButton:hover {
+      filter: brightness(1.08);
+    }
+
+    #pullButton:disabled {
+      opacity: 0.65;
+      cursor: wait;
+    }
+
+    .status {
+      margin-top: 18px;
+      color: #8fa7b9;
+      font-size: 14px;
+    }
+
+    .preview {
+      margin-top: 30px;
+      min-height: 180px;
+      border: 1px dashed #315066;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #6f899d;
+      padding: 30px;
+    }
+
+    .holiday-card {
+      width: 100%;
+      text-align: left;
+      background: #031d2c;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(244, 185, 66, 0.35);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .holiday-image {
+      width: 100%;
+      height: 390px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .holiday-content {
+      padding: 30px 32px 34px;
+    }
+
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: linear-gradient(180deg, #ffe28a, #e9ad37);
+      color: #071725;
+      padding: 8px 15px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 1.3px;
+      margin-bottom: 18px;
+    }
+
+    .holiday-title {
+      color: white;
+      font-family: Georgia, serif;
+      font-size: 34px;
+      line-height: 1.08;
+      margin: 0 0 22px;
+    }
+
+    .feature-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    .feature-tag {
+      background: #09283a;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: white;
+      border-radius: 10px;
+      padding: 9px 13px;
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .deal-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 25px;
+    }
+
+    .deal-price {
+      color: #f4c45e;
+      font-size: 42px;
+      line-height: 1;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .deal-subtitle {
+      color: #e6edf2;
+      font-size: 15px;
+    }
+
+    .deal-details {
+      text-align: right;
+      color: white;
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 25px 15px;
+      }
+
+      h1 {
+        font-size: 38px;
+      }
+
+      .url-row {
+        flex-direction: column;
+      }
+
+      #pullButton {
+        padding: 17px;
+      }
+
+      .preview {
+        padding: 12px;
+      }
+
+      .holiday-image {
+        height: 260px;
+      }
+
+      .holiday-content {
+        padding: 24px 20px;
+      }
+
+      .holiday-title {
+        font-size: 27px;
+      }
+
+      .deal-bottom {
+        display: block;
+      }
+
+      .deal-details {
+        text-align: left;
+        margin-top: 20px;
+      }
+
+      .deal-price {
+        font-size: 36px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="puller">
+
+    <div class="eyebrow">
+      GOLDENGETAWAYS LIVE TOOLS
+    </div>
+
+    <h1>Holiday Card Puller</h1>
+
+    <p class="subtitle">
+      Paste a holiday link and generate your live deal card.
+    </p>
+
+    <section class="card">
+
+      <label for="holidayUrl">
+        HOLIDAY LINK
+      </label>
+
+      <div class="url-row">
+
+        <input
+          id="holidayUrl"
+          type="url"
+          placeholder="Paste On the Beach holiday link..."
+          autocomplete="off"
+        >
+
+        <button id="pullButton">
+          Pull Holiday →
+        </button>
+
+      </div>
+
+      <div class="status" id="status">
+        Ready for a holiday link.
+      </div>
+
+      <div class="preview" id="preview">
+        Your pulled holiday will appear here.
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script>
+
+    const holidayUrl =
+      document.getElementById("holidayUrl");
+
+    const pullButton =
+      document.getElementById("pullButton");
+
+    const status =
+      document.getElementById("status");
+
+    const preview =
+      document.getElementById("preview");
+
+
+    /* ========================================
+       DISPLAY HOLIDAY
+    ======================================== */
+
+    function showHoliday(holiday) {
+
+      if (!holiday) return;
+
+      console.log(
+        "GG LIVE HOLIDAY:",
+        holiday
+      );
+
+
+      holidayUrl.value =
+        holiday.url || "";
+
+
+      const text =
+        holiday.text ||
+        holiday.description ||
+        "";
+
+
+      /* HOTEL NAME */
+
+      const hotelName =
+        (holiday.title || "Holiday Deal")
+          .split(" - ")[0]
+          .replace(
+            /\s*\|\s*On the Beach.*$/i,
+            ""
+          )
+          .replace(
+            /\s*-\s*onthebeach\.co\.uk.*$/i,
+            ""
+          )
+          .trim();
+
+
+      /* PRICE */
+
+const price =
+  holiday.price ||
+  text.match(/£\s*[\d,]+(?:\.\d{2})?\s*pp\b/i)?.[0] ||
+  "";
+
+
+/* TOTAL PRICE */
+
+const totalPrice =
+  holiday.totalPrice ||
+  text.match(/£\s*[\d,]+(?:\.\d{2})?\s*Total\s*Price/i)?.[0] ||
+  "";
+
+
+      /* NIGHTS */
+
+      const nights =
+        text.match(
+          /\b(?:[1-9]|1[0-9]|2[0-9]|3[0-1])\s+nights?\b/i
+        )?.[0] || "";
+
+
+      /* ADULTS */
+
+      const adults =
+        text.match(
+          /\b\d+\s*Adults?\b/i
+        )?.[0] || "";
+
+
+      /* DATE */
+
+      const date =
+        text.match(
+          /(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\s+\d{1,2}\s+[A-Za-z]+\s+\d{4}/i
+        )?.[0] || "";
+
+
+      /* BOARD */
+
+     const boardCode =
+  new URL(holiday.url).searchParams.get("boardCode") || "";
+
+const boardMap = {
+  AI: "All Inclusive",
+  HB: "Half Board",
+  FB: "Full Board",
+  BB: "Bed & Breakfast",
+  RO: "Room Only",
+  SC: "Self Catering"
+};
+
+const board =
+  boardMap[boardCode.toUpperCase()] ||
+  text.match(/\b(All Inclusive|Half Board|Full Board|Bed & Breakfast|Bed and Breakfast|Room Only|Self Catering)\b/i)?.[0] ||
+  "";
+
+
+      /* BEACH */
+
+      let beach = "";
+
+      if (
+        /\b(beachfront|beach front|on the beach|private beach)\b/i
+          .test(text)
+      ) {
+
+        beach = "Beachfront";
+
+      } else {
+
+        const beachDistance =
+          text.match(
+            /\b\d+(?:\.\d+)?\s*(?:m|metres?|km)\s*(?:from|to)\s*(?:the\s*)?beach\b/i
+          );
+
+        if (beachDistance) {
+          beach = beachDistance[0];
+        }
+      }
+
+
+      /* WATERPARK */
+
+      const waterpark =
+        /\b(waterpark|water park|aqua park|waterslides?|water slides?)\b/i
+          .test(text)
+          ? "Waterpark"
+          : "";
+
+
+      /* POOLS */
+
+      const poolsMatch =
+        text.match(
+          /\b(\d+)\s+(?:outdoor\s+|indoor\s+)?pools?\b/i
+        );
+
+      const pools =
+        poolsMatch
+          ? `${poolsMatch[1]} Pools`
+          : "";
+
+
+      /* FAMILY FRIENDLY */
+
+      const familyFriendly =
+        /\b(family friendly|family-friendly|kids club|children'?s club|kids'? pool)\b/i
+          .test(text)
+          ? "Family Friendly"
+          : "";
+
+
+      /* ADULTS ONLY */
+
+      const adultsOnly =
+        /\b(adults only|adults-only)\b/i
+          .test(text)
+          ? "Adults Only"
+          : "";
+
+
+      /* BUILD FEATURE TAGS */
+
+      const features = [];
+
+
+      if (board) {
+        features.push(
+          `🍽️ ${board}`
+        );
+      }
+
+
+      if (beach) {
+        features.push(
+          `🏖️ ${beach}`
+        );
+      }
+
+
+      if (waterpark) {
+        features.push(
+          `💦 ${waterpark}`
+        );
+      }
+
+
+      if (pools) {
+        features.push(
+          `🏊 ${pools}`
+        );
+      }
+
+
+      if (familyFriendly) {
+        features.push(
+          `👨‍👩‍👧‍👦 ${familyFriendly}`
+        );
+      }
+
+
+      if (adultsOnly) {
+        features.push(
+          `🥂 ${adultsOnly}`
+        );
+      }
+
+
+      /* FEATURES HTML */
+
+      const featureHTML =
+        features.length
+          ? `
+            <div class="feature-tags">
+
+              ${features
+                .map(
+                  feature => `
+                    <div class="feature-tag">
+                      ${feature}
+                    </div>
+                  `
+                )
+                .join("")}
+
+            </div>
+          `
+          : "";
+
+
+      /* IMAGE */
+
+      let imageUrl =
+        holiday.image || "";
+
+
+      if (imageUrl) {
+
+        imageUrl =
+          imageUrl
+            .replace(
+              /width=\d+/i,
+              "width=2400"
+            )
+            .replace(
+              /quality=\d+/i,
+              "quality=95"
+            );
+      }
+
+
+      /* NIGHTS + BOARD LINE */
+
+      let stayLine = "";
+
+      if (nights) {
+        stayLine += nights;
+      }
+
+      if (nights && board) {
+        stayLine += " • ";
+      }
+
+      if (board) {
+        stayLine += board;
+      }
+
+
+      /* RENDER CARD */
+
+      preview.innerHTML = `
+
+        <div class="holiday-card">
+
+          ${
+            imageUrl
+              ? `
+                <img
+                  class="holiday-image"
+                  src="${imageUrl}"
+                  alt="${hotelName}"
+                >
+              `
+              : ""
+          }
+
+
+          <div class="holiday-content">
+
+
+            <div class="live-badge">
+              🔥 LIVE DEAL
+            </div>
+
+
+            <h2 class="holiday-title">
+              ${hotelName}
+            </h2>
+
+
+            ${featureHTML}
+
+
+            <div class="deal-bottom">
+
+
+              <div>
+
+                ${
+                  price
+                    ? `
+                      <div class="deal-price">
+                        ${price}
+                      </div>
+                    `
+                    : ""
+                }
+
+
+                ${
+                  stayLine
+                    ? `
+                      <div class="deal-subtitle">
+                        ${stayLine}
+                      </div>
+                    `
+                    : ""
+                }
+
+              </div>
+
+
+              <div class="deal-details">
+
+
+                ${
+                  totalPrice
+                    ? `
+                      <div>
+                        💰 ${totalPrice}
+                      </div>
+                    `
+                    : ""
+                }
+
+
+                ${
+                  adults
+                    ? `
+                      <div>
+                        👥 ${adults}
+                      </div>
+                    `
+                    : ""
+                }
+
+
+                ${
+                  date
+                    ? `
+                      <div>
+                        ✈️ ${date}
+                      </div>
+                    `
+                    : ""
+                }
+
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      `;
+
+
+      status.textContent =
+        "Holiday received from On the Beach ✓";
+    }
+
+
+
+    /* ========================================
+       RECEIVE FROM ON THE BEACH
+    ======================================== */
+
+    window.addEventListener(
+      "message",
+      (event) => {
+
+        if (
+          event.origin !==
+          "https://www.onthebeach.co.uk"
+        ) {
+          return;
+        }
+
+
+        if (
+          event.data?.type ===
+          "GG_LIVE_HOLIDAY"
+        ) {
+
+          const holiday =
+            event.data.holiday;
+
+
+          localStorage.setItem(
+            "gg_live_holiday",
+            JSON.stringify(holiday)
+          );
+
+
+          showHoliday(holiday);
+        }
+
+      }
+    );
+
+
+
+    /* ========================================
+       LOAD LAST SAVED HOLIDAY
+    ======================================== */
+
+    const savedHoliday =
+      localStorage.getItem(
+        "gg_live_holiday"
+      );
+
+
+    if (savedHoliday) {
+
+      try {
+
+        const holiday =
+          JSON.parse(savedHoliday);
+
+
+        showHoliday(holiday);
+
+      } catch (error) {
+
+        console.error(
+          "Couldn't load saved holiday:",
+          error
+        );
+      }
+    }
+
+
+
+    /* ========================================
+       PULL HOLIDAY USING LINK
+    ======================================== */
+
+    pullButton.addEventListener(
+      "click",
+      async () => {
+
+
+        const url =
+          holidayUrl.value.trim();
+
+
+        if (!url) {
+
+          status.textContent =
+            "Paste a holiday link first.";
+
+          return;
+        }
+
+
+        status.textContent =
+          "Pulling holiday...";
+
+
+        pullButton.disabled =
+          true;
+
+
+        pullButton.textContent =
+          "Pulling...";
+
+
+        try {
+
+
+          const response =
+            await fetch(
+
+              "https://pinakafjbpqrzuarisba.supabase.co/functions/v1/pull-holiday",
+
+              {
+
+                method: "POST",
+
+                headers: {
+                  "Content-Type":
+                    "application/json"
+                },
+
+                body:
+                  JSON.stringify({
+                    url: url
+                  })
+
+              }
+
+            );
+
+
+          const data =
+            await response.json();
+
+
+          console.log(
+            "Holiday pull result:",
+            data
+          );
+
+
+          if (
+            !response.ok ||
+            !data.success
+          ) {
+
+            throw new Error(
+              data.error ||
+              "Couldn't pull this holiday."
+            );
+          }
+
+
+          /*
+            Convert response into the
+            same format as live holiday data
+          */
+
+          const holiday = {
+
+            url: url,
+
+            title:
+              data.title ||
+              "Holiday Deal",
+
+            image:
+              data.image ||
+              "",
+
+            text:
+              data.text ||
+              data.description ||
+              ""
+
+          };
+
+
+          /* SAVE IT */
+
+          localStorage.setItem(
+            "gg_live_holiday",
+            JSON.stringify(holiday)
+          );
+
+
+          /* DISPLAY IT */
+
+          showHoliday(holiday);
+
+
+          status.textContent =
+            "Holiday pulled successfully ✓";
+
+
+        } catch (error) {
+
+
+          console.error(error);
+
+
+          status.textContent =
+            "Couldn't pull holiday: " +
+            error.message;
+
+        }
+
+
+        pullButton.disabled =
+          false;
+
+
+        pullButton.textContent =
+          "Pull Holiday →";
+
+      }
+    );
+
+
+
+    /* ========================================
+       ENTER KEY
+    ======================================== */
+
+    holidayUrl.addEventListener(
+      "keydown",
+      (event) => {
+
+        if (
+          event.key === "Enter"
+        ) {
+
+          pullButton.click();
+
+        }
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
